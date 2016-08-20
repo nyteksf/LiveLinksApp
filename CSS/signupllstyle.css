@@ -1,0 +1,339 @@
+body {
+  background: lightgray !important;
+}
+
+body a:hover {
+  color: lightpink !important;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -220px !important;
+  margin-left: -450px !important;
+  height: 500px !important;
+  width: 800px !important;
+  background: #FFFFFF;
+  background: url(http://i63.tinypic.com/n16s95.jpg);
+  background-size: contain;
+  color: #FFFFFF;
+  border: 22px solid #333333;
+}
+
+#navTxt {
+  font-size: 1.025em;
+}
+
+#topNavbar {
+  font-size: 1.35em;
+}
+
+span#greetTxt {
+  font-size: 1.25em;
+  color: #4d4d4d;
+  font-family: inherit;
+}
+
+.container small {
+  color: #FFFFFF !important;
+}
+
+#holder {
+  position: relative;
+  top: -5px;
+  left: 2px;
+}
+
+#passResetLnk {
+  position: relative;
+  top: 12px;
+  left: -21px;
+  font-size: .85em !important;
+  float: right;
+  font-weight: bold;
+}
+
+#githubLoginBtn {
+  position: relative;
+  margin-top: -18px;
+  height: 47px;
+}
+
+#modalTrig {
+  display: none;
+}
+
+#eighthModalTrig {
+  display: none;
+}
+
+div.modal-body {
+  padding: 3px 15px 3px 15px !important;
+}
+
+#registerUNameModal {
+  font-weight: bold;
+  color: red;
+  position: relative;
+  top: -15px;
+}
+
+#formModalDiv {
+  position: relative;
+  top:6px;
+}
+
+#myModal {
+  position: absolute;
+  top: 21%;
+}
+
+#myModal .btn-success,
+#myModal .btn-danger {
+  font-weight: bold !important;
+  font-family: 'Cantarell', sans-serif;
+}
+
+#thirdModal .modal-footer button {
+  font-weight: bold;
+}
+
+#fifthModal {
+  position: relative;
+  top: -5.5%; /* SMALL MODE */
+  top: 22%;
+}
+
+#fifthModalOkBtn {
+  font-weight: bold;
+  position: relative;
+  left: -41%;
+  width: 105px;
+}
+
+#seventhModalTrig {
+    display: none;
+}
+
+.row {
+  position: relative;
+  top: 35px;
+}
+
+a#passResetLnk {
+  color: #4d4d4d;
+}
+
+#registerNowLnk {
+  position: relative;
+  top: -13px;
+  color: #4d4d4d;
+}
+
+.fa {
+  font-size: 1.3em !important;
+}
+
+#submitBtn {
+  position: relative;
+  top: -20px;
+}
+
+#googleLoginBtn {
+  margin-top: 2px;
+  height: 47px;
+}
+
+#setCookieDiv {
+  position: relative;
+  top: -5px;
+  left: 21px;
+  font-size: .95em;
+}
+
+#newAcctDiv {
+  position: relative;
+  top: -13px;
+  left: 38px;
+  display: block;
+  font-size: .98em;
+}
+
+#myModal label {
+  font-size: 1.1em
+}
+
+#xClose {
+  position: relative;
+  top: 2px;
+  font-weight: bold;
+  font-size: 2.1em !important;
+}
+
+#anonCBDiv {
+  position: relative;
+  left: 74%;
+}
+
+#validName,
+#validUName {
+  color: #419641;
+  font-weight: bold;
+  font-size: .925em;
+  display: none;
+}
+
+#validUName {
+  position: relative;
+  font-size: 1em;
+  left: 122px;
+}
+
+#invalidName,
+#invalidUName {
+  color: #C12E2A;
+  font-weight: bold;
+  font-size: .925em;
+  display: none;
+}
+
+#invalidUName {
+  position: relative;
+  left: 103px;
+  font-size: 1em;
+}
+
+#persistCBDiv {
+  position: relative;
+  left: 5px;
+}
+
+#signinBtnModal,
+#dangerBtnModal {
+  font-weight: bold;
+}
+
+#fourthModal,
+#thirdModal {
+  position: relative;
+  top: 22%;
+}
+
+#fourthModalTrig {
+  display: none;
+}
+
+#fourthModal .modal-body {
+  text-align: center;
+}
+
+#fifthModalTrig {
+  display: none;
+}
+
+.modal-header {
+  /* NEED TO ADD IN BORDER-RADIUS TO FIX NOW SQUARE EDGES ONCE COLOR CHANGES */
+  //background: lightgray !important;
+  font-size: 1.25em;
+}
+
+.row h1 {
+  font-family: 'Cantarell', sans-serif;
+}
+
+#modalBody {
+  font-family: 'Fjalla', sans-serif;
+}
+
+.row input {
+  font-family: 'Fjalla', sans-serif;
+}
+
+#modalTitle {
+  font-family: 'Cantarell', sans-serif;
+  font-size: 1.4em !important;
+}
+
+.row button {
+  font-family: 'Fjalla', sans-serif;
+}
+
+#submitBtn {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+#ninthModalTrig {
+  display: none;
+}
+
+#smbAboutDialogBody {
+  font-weight: bold;
+  color: #333333;
+}
+
+#optionModalOkBtn {
+  font-weight: bold;
+  position: relative;
+  left: -41%;
+  width: 100px;
+}
+
+#secondModalOkBtn {
+  position: relative;
+  font-size: 1.1em;
+  font-weight: bold;
+  left: -32%;
+  width: 100px;
+}
+
+#thirdModalTrig {
+  display: none;
+}
+
+.row a {
+  font-family: 'Fjalla', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#secondModalTrig {
+  display: none;
+}
+
+#secondModal {
+  position: relative;
+  top: 19%;
+}
+
+label.checkbox {
+  font-family: 'Cantarell', sans-serif;
+  font-size: .95em;
+  top: 1px;
+  left: 0 !important;
+  font-weight: bold !important;
+  position: relative;
+  left: 2px;
+}
+
+.btnTxtGH {
+  position: relative;
+  top: -2px;
+  font-size: .75em;
+  margin-left: 11px;
+}
+
+.btnTxt {
+  position: relative;
+  top: -2px;
+  font-size: .75em;
+}
+
+#orLogin {
+  color: #333333;
+  position: absolute;
+  left: 50px;
+  top: -3px;
+  font-size: 1.3em;
+}

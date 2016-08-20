@@ -1,0 +1,208 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <!-- Fav Icon -->
+  <link rel="icon" href="../img/livelinksIco.jpg" />
+
+  <!-- Scripts -->
+  <script src="https://use.fontawesome.com/fca801246c.js"></script>
+  <script src="../JS/underscore-min.js"></script>
+  <script src="../JS/jquery-1.11.3.js" type="text/javascript"></script>
+  <script src="../JS/moment.js" type="text/javascript"></script>
+  <script src="../JS/livestamp.js" type="text/javascript"></script>
+  <script src="../JS/scotchPanels.js" type="text/javascript"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js" type="text/javascript"></script>
+  <script   src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous" type="text/javascript"></script>
+
+  <script src="../JS/functions_cryptography.js"></script>
+  <script type="text/javascript">
+    let crypt = new Crypt();
+  </script>
+
+
+  <!-- Style Related -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/llstyle.css" />
+
+
+  <!-- jQuery UI Dialog Segment Begin -->
+  <div id="toggleFirstDialog">
+    <div id="dialog" title="Add/Change Username">
+
+    <div id="usernameDiv">
+      <span id="curUserLabel">Current Username:</span>
+      <div id="secondBorderDiv">
+        <div id="checkCurUsernameDiv"><span id="curUsername"></span></div>
+      </div>
+
+      <div id="containUNameSearch">
+        <input type="text" id="newUsernameInput" placeholder="New Username Here..."></input>
+        <span id="validName"> - Available</span>
+        <span id="invalidName"> - Unavailable</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div id="throwDynamicErr" title="Error!">
+    <center id="dynamicErrDialogBody">
+      Unique Firebase generated error message content goes here.
+    </center>
+  </div>
+
+  <div id="confirmDeleteDialog" title="Deactivate">
+    <p><center id="confirmDelDialogBody">
+      Are you <i>really</i> sure you want to leave LiveLinks?
+      <br><br>
+      This action will result in the permanent loss of
+       any currently associated username, and all related
+       posts.
+    </center></p>
+  </div>
+
+
+<div id="changeEmail" title="Change Primary Email">
+  <p>
+    <div id="curEmailDivWrapper">
+      <span id="curEmailOutput">Current Email:</span>
+      <div id="curEmailDispBox"></div>
+    </div>
+    <div id="newEmailInputWrapper">
+      <input type="text" id="newEmailInput" placeholder="New Primary Email..." />
+    </div>
+  </p>
+</div>
+
+  <div id="noUserErrDialog" title="Error!">
+    <p><center id="errDialogBody">
+      Please be sure to set a username through your user menu before attempting to post again.
+    </center></p>
+  </div>
+
+  <div class="deleteRestricted" title="WARNING!">
+    <p><center id="deleteRestrictedDialogBody">
+      Users are only allowed to delete posts created with their own usernames.
+    </center></p>
+  </div>
+
+  <div id="emptyFieldDialog" title="Error!">
+    <p><center id="emptyFieldErrBody"><strong>
+      Please be sure to choose a username between 1-10 characters in length.
+    </strong></center></p>
+  </div>
+
+  <div id="invalidFormInput" title="Error!">
+    <p><center id="emptyFieldErrBody">
+      <strong>
+        Please check to ensure that all fields have been properly filled out before resubmitting.
+      </strong>
+    </center></p>
+  </div>
+
+  <ul id="menu">
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-futbol-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Sports</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-university dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Politics</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-line-chart dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Finance</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-film dropdownIco"  aria-hidden="true"></i>
+      <span class="menuTxtStyle menuEntTxt">Entertainment</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-bar-chart dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Science</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-lightbulb-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Technology</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-newspaper-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">News</span></span></div>
+  </li>
+  <li>
+    <div><span class="menuItemWrap"><i class="fa fa-asterisk dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Misc.</span></span></div>
+  </li>
+</ul>
+
+
+<div id="smbAboutDialog" title="About">
+  <p><center id="smbAboutDialogBody">
+    This webpage is home to a project created with the intent of providing context
+    for learning how to use Firebase; being a "JavaScript-centric" NoSQL database
+    service. The project idea itself behind the creation of "LiveLinks"
+    roughly came from observing a Firebase iPhone app tutorial written in Java. Much
+    of said projects planned lessons had been essentially unusable given the differences in
+    language, and how it was moreover a project geared towards phone users instead of those
+    on the web.
+    As a result, said original project offered almost no guidance for construction, but was still
+    resultantly ported to JavaScript, and with parts being modified accordingly as
+    per the demands of taste and necessity.
+    <br><br>
+    This projects author is a San Franciscan transplant from New York named Joe Coviello
+    whom also at times is known by the handle, "nyteksf", online. Reverse engineering his first programs in BASIC
+    back in middle school, and later tinkering with websites on angelfire and geocities long before
+    the current trend began; now specializing in
+    Front End development:--He has also been trained in numerous tools covering the depth of the
+    full stack. Some
+    of these a person might recognize are: Twitter Bootstrap, jQuery, HTML5, and
+    CSS3. He is also known to have amassed skilled in SQL queries and management, the administration and management of
+    Amazon Web Services, Bash scripting, Sysadmin work/system hardening, and has
+    dabbled in C, PHP and Java.
+  </center></p>
+</div>
+
+  <!-- App jQuery UI Dialog/Menu Segment -->
+  <script src="../JS/appy.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <a href="http://127.0.0.1:8000/livelinks.html" id="titleLink"><h1>LiveLinks</h1></a>
+
+    <div class="link-form">
+      <form>
+        <input type="text" class="link-title" id="linkTitle" placeholder="New Title..." />
+        <input type="text" class="link-url" id="linkUrl" placeholder="New URL..." />
+        <button type="button" id="selectTypeButton" title="SELECT A CATEGORY"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+        <button type="button" id="submitButton" title="SUBMIT"><i class="fa fa-cloud-upload" aria-hidden="true"></i> SUBMIT</button>
+        <button type="button" id="refreshButton" title="REFRESH"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+      </form>
+    </div>
+
+
+    <div id="holderDiv">
+      <div id="togglePanel">
+        <button type="submit" id="smbLogOut" class="btn slideMenuBtn"><span class="sldMenuTxt">Log Out</span></button>
+        <button type="submit" id="smbAbout" class="btn slideMenuBtn"><span class="sldMenuTxt">About</span></button>
+        <button type="submit" id="smbXtra" class="btn slideMenuBtn"><span class="sldMenuTxt">Add/Chg. Username</span></button>
+        <button type="submit" id="smbChgPass" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Password</span></button>
+        <button type="submit" id="smbChgEmail" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Email</span></button>
+        <button type="submit" id="smbDeactivate" class="btn slideMenuBtn"><span class="sldMenuTxt">Unregister Account</span></button>
+      </div>
+      <div id="dispLinksDiv">
+        <div id="linkOutputHeader">
+          <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div id="linkDisplayDiv"></div>
+        <!-- body here implied: ie, ...posted links & their contents... -->
+        <div id="firebase-ico-divFooter">
+          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true"></i>
+          <img src="../img/firebase-ico.jpg" title="FIREBASE" id="firebase-ico" />
+        </div>
+      </div>
+    </div>
+    <!-- MAIN APP FUNCTIONALITY -->
+    <script src="../JS/appy2.js" type="text/javascript"></script>
+</body>
+</html>
