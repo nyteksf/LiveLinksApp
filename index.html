@@ -1133,14 +1133,14 @@ function getCookie(name) {
 
 function checkInitialCookie() {
     let returned = getCookie("returnVisitor=");
-    if (returned === "true") {
+    if (returned === "true" && localStorage.getItem('user') !== null) {
         $('#greetTxt').html('Hello, ' + localStorage.getItem('user') + '!');
 
         return true;
     } else {
-        $('#greetTxt').html('Welcome, New User!');
-        $('#greetTxt').css('font-size', '1em');
-        setInitCookie();
+      $('#greetTxt').html('Welcome, New User!');
+      $('#greetTxt').css('font-size', '1em');
+      setInitCookie();
     }
 }
 
