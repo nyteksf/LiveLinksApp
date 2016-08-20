@@ -22,7 +22,7 @@
 
 <body>
 <!-- SIGNUP/LOGIN OR TAKE AUTH'd USER TO THEIR CORRES. HOMEPAGE -->
-<img src="http://i67.tinypic.com/343okcg.gif" id="loadingGif">
+<img src="img/ezgif-252354146.gif" alt="LOADING..." id="loadingGif">
 
 <script>
 
@@ -31,20 +31,17 @@
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
-       // NEED TO CHANGE LIVELINKS.HTML TO LOAD USER INFO, AND OPTION TO SIGN OUT, ET AL!
-          alert(1);
-          window.open("http://127.0.0.1:8000/livelinks.html", "_self");
+       // NEED TO CHANGE LIVELINKS.HTML TO LOAD USER INFO, AND OPTION TO SIGN OUT, ET AL.
+          window.open("http://nyteksf.github.io/LiveLinksApp/livelinks.html", "_self");
       } else {
         // No user is signed in, thus:
         // LOAD LOGIN PAGE:
-        window.open("http://127.0.0.1:8000/signupll.html", "_self");
+        window.open("http://nyteksf.github.io/LiveLinksApp/index.html", "_self");
       }
     });
 
   }, 975);
 
 </script>
-
 </body>
-
 </html>
