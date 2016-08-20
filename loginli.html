@@ -1,0 +1,50 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+  <title>LIVELINKS</title>
+  <script></script>
+  <link type="text/css" rel="stylesheet" href="loginlistyle.css" />
+
+  <script src="https://use.fontawesome.com/fca801246c.js"></script>
+  <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA",
+      authDomain: "livelinks01125.firebaseapp.com",
+      databaseURL: "https://livelinks01125.firebaseio.com",
+      storageBucket: "livelinks01125.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+
+<body>
+<!-- SIGNUP/LOGIN OR TAKE AUTH'd USER TO THEIR CORRES. HOMEPAGE -->
+<img src="http://i67.tinypic.com/343okcg.gif" id="loadingGif">
+
+<script>
+
+  setTimeout(function() {
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+       // NEED TO CHANGE LIVELINKS.HTML TO LOAD USER INFO, AND OPTION TO SIGN OUT, ET AL!
+          alert(1);
+          window.open("http://127.0.0.1:8000/livelinks.html", "_self");
+      } else {
+        // No user is signed in, thus:
+        // LOAD LOGIN PAGE:
+        window.open("http://127.0.0.1:8000/signupll.html", "_self");
+      }
+    });
+
+  }, 975);
+
+</script>
+
+</body>
+
+</html>

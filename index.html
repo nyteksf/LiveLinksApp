@@ -1,0 +1,1226 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+  <title>LiveLinks</title>
+
+  <!-- Fav Icon -->
+  <link rel="icon" href="img/livelinksIco.jpg" />
+
+  <!-- CUSTOM CSS -->
+  <link type="text/css" rel="stylesheet" href="CSS/signupllstyle.css" />
+
+  <!-- JQUERY -->
+  <script src="JS/jquery-1.11.3.js" type="text/javascript"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="JS/bootstrap.min.js" type="text/javascript"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="CSS/bootstrap-theme.min.css" />
+
+  <!-- FONTAWESOME -->
+  <script src="https://use.fontawesome.com/fca801246c.js"></script>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA",
+      authDomain: "livelinks01125.firebaseapp.com",
+      databaseURL: "https://livelinks01125.firebaseio.com",
+      storageBucket: "livelinks01125.appspot.com",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!-- CRYPTO -->
+  <script type="text/javascript" src="JS/functions_cryptography.js"></script>
+  <script type="text/javascript">
+    let crypt = new Crypt();
+  </script>
+
+  <!-- GRAB USER'S IP -->
+  <script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse" id="topNavbar">
+    <div class="container-fluid">
+    <!-- Brand and toggle grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" id="navTxt" href="http://nyteksf.github.io/LiveLinksApp/index.html">LiveLinks</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="javascript:void(0);" id="aboutNavBtn">About</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="javascript:void(0);" id="resetPWOption">Reset Password</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="javascript:void(0);" id="registerAcctOption">Register Acct. Via Email</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse end -->
+  </div><!-- /.container-fluid end -->
+</nav>
+
+
+  <div class="container" id="ctnr">
+      <div class="row">
+          <div class="col-sm-6 col-md-4 col-md-offset-4">
+              <h1 class="text-center login-title">LiveLinks
+                <br><small><i><span id="greetTxt">Welcome Back!</span></i></small></h1>
+              <div class="account-wall">
+                  <form class="form-signin">
+                  <input type="email" class="form-control" id="emailInput" placeholder="EMAIL" required autofocus>
+                  <input type="password" class="form-control" id="passwInput" placeholder="PASSWORD" required>
+                  <div id="setCookieDiv">
+                    <label title="WORKS FOR GOOGLE AND GITHUB, TOO!" class="checkbox pull-left">
+                        <input type="checkbox" id="mainRememberMeChkBox" value="remember-me" alt="Remember Me">
+                        Auto Login
+                    </label>
+                    <a href="javascript:void(0);" id="passResetLnk" title="Forgot Password?">Forgot password?</a>
+                    <br><span class="clearfix"></span>
+                    </form>
+                  </div>
+                  <button class="btn btn-lg btn-success btn-block" id="submitBtn" type="submit">
+                      SUBMIT</button>
+                  <button class="btn btn-lg btn-default btn-block" id="githubLoginBtn" type="submit">
+                    <i class="fa fa-github-square" aria-hidden="true"></i>
+                                 <span class="btnTxtGH">SIGN IN WITH GITHUB</button></span>
+                  <button class="btn btn-lg btn-danger btn-block" id="googleLoginBtn" type="submit">
+                    <i class="fa fa-google-plus-square" aria-hidden="true"></i>
+                          <span class="btnTxt">SIGN IN WITH GOOGLE</button></span>
+                      <br>
+                  <div id="holder">
+
+                <div id="newAcctDiv">
+                  <br>
+                  <a href="javascript:void(0);" class="text-center new-account" id="registerNowLnk" title="Register An Account?" data-toggle="modal" data-target="#myModal">Register an account? </a>
+                </div>
+
+            </div>  <!-- holder div end -->
+          </div> <!-- ACCT. WALL end -->
+        </div> <!-- BOOTSTRAP SIZING end -->
+    </div> <!-- ROW end -->
+  </div> <!-- CONTAINER end -->
+
+
+  <div id="myModal" class="modal fade">
+    <!-- First Modal - MEDIUM SIZE - REGISTRATION OF EMAIL BASED ACCT -->
+    <div class="modal-dialog modal-md">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Register With An Email Address</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="inputUNameModal">Username</label><span id="validName"> - Available</span><span id="invalidName"> - Unavailable</span>
+                      <input type="text" class="form-control" id="inputUNameModal" placeholder="Username"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPasswordModal">Password</label>
+                      <input type="password" class="form-control" id="inputPasswordModal" placeholder="Password"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmailModal">Email address</label>
+                      <input type="email" class="form-control" id="inputEmailModal" placeholder="Email"/>
+                  </div>
+                  <div class="checkbox">
+                    <label id="anonCBDiv">
+                        <input type="checkbox" id="anonCB" /> Login Anonymously
+                    </label>
+                  </div>
+                </form>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">CLOSE</button>
+          <button type="button" class="btn btn-success pull-left" id="submitBtnModal" data-dismiss="modal">SIGN UP</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Trigger First Modal -->
+  <button type="button" class="btn btn-info btn-lg" id="modalTrig" data-toggle="modal" data-target="#myModal"></button>
+
+
+  <!-- Second Modal - SMALL SIZE - ANON-MODE WARNING -->
+  <div id="secondModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Warning!</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <center><i>READ-ONLY MODE ACTIVATED<STRONG>:</STRONG></i><br>
+               PLEASE REGISTER WITH A VALID EMAIL ADDRESS OR LOGIN USING THE AUTHORIZATION METHOD OF YOUR CHOICE TO BEGIN USING LIVELINKS.</center>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="secondModalOkBtn" class="btn btn-danger" data-dismiss="modal">OK</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger 2nd Modal -->
+  <button type="button" id="SecondModalTrig" class="btn btn-default" data-toggle="modal" data-target="#secondModal"></button>
+
+
+  <!-- Third Modal - SMALL SIZE - PASSWORD RESET -->
+  <div id="thirdModal" class="modal fade">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Reset Password</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="inputEmail">Enter Registered Email</label>
+                      <input type="email" id="emailResetInput" class="form-control"
+                      id="inputEmail" placeholder="Enter Email..." />
+                  </div>
+                </form>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="thirdModalCancelBtn" data-dismiss="modal">CLOSE</button>
+          <button type="button" class="btn btn-primary" id="submitEmailModal" data-dismiss="modal">SUBMIT</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Trigger 3rd modal -->
+  <button type="button" id="thirdModalTrig" class="btn btn-info btn-lg" data-toggle="modal" data-target="#thirdModal"></button>
+
+
+  <!-- Fourth Modal - SMALL SIZE - INCOMPLETE PASSWORD ERROR DIALOG -->
+  <div id="fourthModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Error!</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              Please ensure that all input fields have been properly completed before attempting to resubmit the corresponding form.
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="secondModalOkBtn" class="btn btn-danger" data-dismiss="modal">OK</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger 4th Modal -->
+  <button type="button" id="fourthModalTrig" class="btn btn-default" data-toggle="modal" data-target="#fourthModal"></button>
+
+
+  <!-- Fifth Modal - MD SIZE - GENERAL ERRORS (DYNAMIC) -->
+  <div id="fifthModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle"></h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="fifthModalOkBtn" class="btn btn-danger" data-dismiss="modal">OK</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger 5th Modal -->
+  <button type="button" id="fifthModalTrig" class="btn btn-default" data-toggle="modal" data-target="#fifthModal"></button>
+
+
+  <!-- Sixth Modal - SMALL SIZE - PASSWORD RESET -->
+  <div id="sixthModal" class="modal fade">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle"></h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="inputEmail">Registered Email</label>
+                      <input type="email" id="emailInputModal" class="form-control"
+                      id="inputEmail" placeholder="Enter Email"/>
+                  </div>
+                </form>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
+          <button type="button" class="btn btn-primary" id="submitBtnModal" data-dismiss="modal">SUBMIT</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger 6th modal -->
+  <button type="button" id="thirdModalTrig" class="btn btn-info btn-lg" data-toggle="modal" data-target="#thirdModal"></button>
+
+
+  <!-- Seventh Modal - SMALL SIZE - LINKING EXISTING USER ACCOUNTS -->
+  <div id="seventhModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Account Successfully Linked</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <center>
+                Account has been successfully linked to the existing Firebase user.
+                <br>Please click 'OK' to continue loading.
+              </center>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="secondModalOkBtn seventhModalOkBtn" class="btn btn-danger" data-dismiss="modal">OK</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger 7th Modal -->
+  <button type="button" id="seventhModalTrig" class="btn btn-default" data-toggle="modal" data-target="#seventhModal"></button>
+
+
+  <!-- 8th Modal: USERNAME REGISTRATION PROMPT - SMALL SIZE -->
+  <div id="eighthModal" class="modal fade">
+    <div class="modal-dialog modal-sm">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">Register Username?</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <center><span id="registerUNameModal">A username is required to post.</span></center>
+                <div id="formModalDiv">
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="uNameModal">Username</label><span id="validUName"> - Available</span><span id="invalidUName"> - Unavailable</span>
+                        <input type="text" class="form-control" id="uNameModal" placeholder="Username"/>
+                    </div>
+                  </form>
+                </div>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="dangerBtnModal" data-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-success" id="signinBtnModal" data-dismiss="modal">SUBMIT</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger Eighth Modal -->
+  <button type="button" class="btn btn-info btn-lg" id="eighthModalTrig" data-toggle="modal" data-target="#eighthModal"></button>
+
+
+  <!-- Ninth Modal - LG SIZE - ABOUT THE PROJECT/CREATOR: -->
+  <div id="ninthModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <button type="button" class="close" id="xClose" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="modalTitle">About</h4>
+        </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <p><center id="smbAboutDialogBody">
+                This webpage is home to a project created with the intent of providing context
+                for learning how to use Firebase; being a "JavaScript-centric" NoSQL database
+                service. The project idea itself behind the creation of "LiveLinks"
+                roughly came from observing a Firebase iPhone app tutorial written in Java. Much
+                of said projects planned lessons had been essentially unusable given the differences in
+                language, and how it was moreover a project geared towards phone users instead of those
+                on the web.
+                As a result, said original project offered almost no guidance for construction, but was still
+                resultantly ported to JavaScript, and with parts being modified accordingly as
+                per the demands of taste and necessity.
+                <br><br>
+                This projects author is a San Franciscan transplant from New York named Joe Coviello
+                whom also at times is known by the handle, "nyteksf", online. Reverse engineering his first programs in BASIC
+                back in middle school, and later tinkering with websites on angelfire and geocities long before
+                the current trend began; now specializing in
+                Front End development:--He has also been trained in numerous tools covering the depth of the
+                full stack. Some
+                of these a person might recognize are: Twitter Bootstrap, jQuery, HTML5, and
+                CSS3. He is also known to have amassed skilled in SQL queries and management, the administration and management of
+                Amazon Web Services, Bash scripting, Sysadmin work/system hardening, and has
+                dabbled in C, PHP and Java.
+                <br><br>
+                Furthermore, and on a personal note: though raised as an animal lover within a "zoo" of
+                a household, Joe considers himself to be primarily a "dog person"; one who also enjoys a
+                good German beer or Belgian ale, the visiting of museums, modification and racing of American muscle cars,
+                studying contemporary schools of psychology such as Ericksonian hypnosis and 'NLP' for
+                deeper insight and for marketing purposes, or just escaping into a captivating movie
+                scene or documentary for a little while now and then.
+              </center></p>
+            </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="optionModalOkBtn" class="btn btn-danger" data-dismiss="modal">OK</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trigger Eighth Modal -->
+  <button type="button" class="btn btn-info btn-lg" id="ninthModalTrig" data-toggle="modal" data-target="#ninthModal"></button>
+
+<script>
+$('#validUName').hide();
+$('#invalidUName').hide();
+
+let token;
+let storedToken;
+let storedEmail;
+
+
+function writeCookie(key, value, seconds) {
+    window.document.cookie = key + "=" + value + ";max-age=" + seconds + ";path=/";
+
+    return value;
+};
+
+
+let goToApp = function() {
+    window.open("https://nyteksf.github.io/LiveLinksApp/livelinks.html", "_self");
+};
+
+
+//MAKE SURE MULTIPLE MODALS FIRE WITHOUT OVERLAP VIA Z-INDEX:
+$(document).on('show.bs.modal', '.modal', function() {
+    var zIndex = Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('*'), function(el) {
+        return +el.style.zIndex;
+    })) + 10;
+    $(this).css('z-index', zIndex);
+    setTimeout(function() {
+        $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+    }, 0);
+});
+
+
+let undoCheckboxClick = function() {
+    $('#emailInputModal').prop('disabled', false);
+    $('#passwordInputModal').prop('disabled', false);
+    $('#persistCB').prop('disabled', false);
+    $("#anonCB:checked").prop('checked', false);
+    $("#persistCB:checked").prop('checked', false);
+};
+
+
+//ENABLE ENTER KEY USAGE FOR MAIN LOGIN FORM
+$('#emailInput, #passwInput').keyup(function(evt) {
+    if (evt.keyCode === 13) {
+        $('#submitBtn').click();
+    }
+});
+
+
+let checkUName = function(uName, modalName) {
+    if (modalName === "signinModal") {
+        if (uName.toLowerCase() !== $('#uNameModal').val().toLowerCase()) {
+            $('#validUName').show();
+            $('#invalidUName').hide();
+            $('#signinBtnModal').prop('disabled', false);
+        } else {
+            $('#invalidUName').show();
+            $('#validUName').hide();
+            $('#signinBtnModal').prop('disabled', true);
+        }
+    }
+    if (modalName === "registerModal") {
+        if (uName.toLowerCase() !== $('#inputUNameModal').val().toLowerCase()) {
+            $('#validName').show();
+            $('#invalidName').hide();
+            $('#submitBtnModal').prop('disabled', false);
+        } else {
+            $('#invalidName').show();
+            $('#validName').hide();
+            $('#submitBtnModal').prop('disabled', true);
+        }
+    }
+};
+
+
+let setNewUName = function(uidNo, uName) {
+    firebase.database().ref("" + "users/" + uidNo).set({
+        user: uName,
+        uid: uidNo
+    });
+};
+
+
+let userName;
+$("#inputUNameModal, #uNameModal").keyup(function(evt) {
+    let alternateModal = false;
+    let inputLength;
+    let input;
+    if ($("#inputUNameModal").val().length > 0) {
+        inputLength = $("#inputUNameModal").val().length;
+        input = $("#inputUNameModal").val();
+    }
+    if ($('#uNameModal').val().length > 0) {
+        inputLength = $('#uNameModal').val().length;
+        input = $("#uNameModal").val();
+        alternateModal = true;
+    }
+    let uN;
+    let regexp = /[^a-zA-Z\d:]/g;
+    if (regexp.test(input)) {
+        // PREP FIFTH MODAL:
+        $('#fifthModal .modal-title').html("Error!");
+        $('#fifthModal .modal-body').html("<center>Non-Alphanumeric Character Detected:<br>Valid usernames are limited to use of 'a-z' and '0-9'. Please delete the current character, and try your desired name once again.</center>");
+        // LOAD FIFTH MODAL:
+        $('#fifthModalTrig').click();
+        // DO SOME OTHER STUFF:
+        if (alternateModal) {
+            $('#signinBtnModal').prop('disabled', true);
+            $('#validUName').hide();
+            $('#invalidUName').show();
+            alternateModal = false;
+        } else {
+            $("#submitBtnModal").prop('disabled', true);
+            $('#validName').hide();
+            $('#invalidName').show();
+        }
+    } else {
+        if (evt.keyCode === 46 || evt.keyCode === 8) {
+            $('#invalidName').hide();
+            $('#invalidUName').hide();
+            $('#validUName').hide();
+            $('#validName').hide();
+        }
+        if (inputLength > 0 && inputLength <= 10) {
+            $("#submitBtnModal").prop('disabled', false);
+            username = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
+                uN = username.responseJSON;
+
+                for (let obj in uN) {
+                    uName = uN[obj].username || uN[obj].user;
+                    let breaker;
+                    if (inputLength !== 0) {
+                        if ($("#inputUNameModal").val().length > 0) {
+                            breaker = checkUName(uName, "registerModal");
+                        }
+                        if ($('#uNameModal').val().length > 0) {
+                            breaker = checkUName(uName, "signinModal");
+                        }
+                        if (breaker) {
+                            break;
+                        }
+                    }
+                }
+            });
+        } else {
+            if ($("#inputUNameModal").val().length > 0) {
+                $("#submitBtnModal").prop('disabled', true);
+                $('#invalidName').show();
+                $('#validName').hide();
+            } else if ($('#uNameModal').val().length > 0) {
+                $("#submitBtnModal").prop('disabled', true);
+                $('#invalidUName').show();
+                $('#validUName').hide();
+            }
+        }
+    }
+});
+
+
+// FIRST MODAL: ie, ACCT. REGISTRATION CANCEL BTN
+$('#myModal .btn-danger').click(function() {
+    undoCheckboxClick();
+});
+
+
+let providerName;
+let prov;
+
+
+let _providerFromName = function(pName, pCred, uName, email, password, isPasswdAcct) {
+    let tokenRes;
+
+    if (pName[0] === "google.com") {
+        firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
+            // Remember that the user may have signed in with an account that has a different email
+            // address than the first one. This can happen as Firebase doesn't control the provider's
+            // sign in flow and the user is free to login using whichever account he owns.
+            // Step 4b.
+            // Link to GitHub credential.
+            // As we have access to the pending credential, we can directly call the link method.
+            if (isPasswdAcct) {
+                pCred = firebase.auth.EmailAuthProvider.credential(email, password);
+            }
+            result.user.link(pCred).then(function() {
+                // Account successfully linked to the existing Firebase user.
+
+                // CHANGE TO SIXTH MODAL -- MAKE BTN-SUCCESS TRIGGER GOTOAPP();
+                $('#seventhModal .modal-title').html("Account Added");
+                if (isPasswdAcct) {
+                    $('#seventhModal .modal-body').html("Password account successfully linked to the existing Firebase user.<BR>Please click 'OK' to continue.");
+                } else {
+                    $('#seventhModal .modal-body').html("GitHub account successfully linked to the existing Firebase user.<BR>Please click 'OK' to continue.");
+                }
+                //LOAD SEVENTH MODAL:
+                $('#seventhModalTrig').click();
+            });
+        });
+    } else if (pName[0] === "github.com") {
+        firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(function(result) {
+            // Remember that the user may have signed in with an account that has a different email
+            // address than the first one. This can happen as Firebase doesn't control the provider's
+            // sign in flow and the user is free to login using whichever account he owns.
+            // Step 4b.
+            // Link to GitHub credential.
+            // As we have access to the pending credential, we can directly call the link method.
+            if (isPasswdAcct) {
+                pCred = firebase.auth.EmailAuthProvider.credential(email, password);
+            }
+            result.user.link(pCred).then(function() {
+                // Account successfully linked to the existing Firebase user.
+                if (isPasswdAcct) {
+                    $('#seventhModal .modal-title').html("Password Account Successfully Added");
+                } else {
+                    $('#seventhModal .modal-title').html("Github Account Successfully Added");
+                }
+                $('#seventhModal .modal-body').html("Google account successfully linked to the existing Firebase user.");
+                //LOAD FIFTH MODAL:
+                $('#seventhModalTrig').click();
+            });
+        });
+    }
+    setTimeout(function() {
+        goToApp();
+    }, 3000);
+};
+
+
+//RETURN A LIST OF PROVIDERS FOR AUTHd USER:
+let getProviderForProviderId = function(pCred, email, uName, password, isPasswdAcct) {
+    let uEmail = email || firebase.auth().currentUser.email;
+
+    return firebase.auth().fetchProvidersForEmail(uEmail).then(function(provider) {
+        _providerFromName(provider, pCred, uName, email, password, isPasswdAcct);
+    });
+};
+
+
+$('#submitBtn').click(function() {
+    if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
+        $('#fourthModalTrig').click();
+        //INSUFFICIENT INPUT MODAL NOW FIRED
+
+        return false;
+    } else {
+        let email = $('#emailInput').val().toLowerCase();
+        let password = $('#passwInput').val();
+        let errTest = false;
+
+        localStorage.setItem('lastProvider', 'password');
+
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here:
+            if (error) {
+                errTest = true;
+                if (error.code === "auth/wrong-password") {
+                    $('#fifthModal .modal-title').html(error.code);
+                    $('#fifthModal .modal-body').html("<center>" + error.message + "<br>Please try first registering an email/password account,<br>or performing a password reset.</center>");
+                    //LOAD FIFTH MODAL:
+                    $('#fifthModalTrig').click();
+                } else {
+                    //PASS DYNAMIC INFO TO FIFTH MODAL:
+                    $('#fifthModal .modal-title').html(error.code);
+                    $('#fifthModal .modal-body').html(error.message);
+                    //LOAD FIFTH MODAL:
+                    $('#fifthModalTrig').click();
+                }
+                return true;
+            }
+        }).then(function(errTest) {
+            if (errTest !== true) {
+                if ($('input#mainRememberMeChkBox').is(':checked')) {
+                    // FOR AUTO-LOGIN WHEN USER SELECTED PERSISTENCE; LOAD CODE BELOW:
+                    let pass = $("#passwInput").val();
+                    let email = $('#emailInput').val();
+                    localStorage.setItem('autoLogin', true);
+                    localStorage.setItem('pw', pass);
+                } else { // IF NO CHECKBOX FOR SET PERSIST, SET TO FALSE:
+                    localStorage.setItem('autoLogin', false);
+                } // BUT EITHER WAY, STORE THESE FOR LATER:
+                localStorage.setItem('ip', userip);
+                localStorage.setItem('email', email);
+                localStorage.setItem('uid', firebase.auth().currentUser.uid);
+
+                // THEN TAKE TO APP LANDING PAGE:
+                setTimeout(function() {
+                    goToApp();
+                }, 1200);
+            }
+        });
+    }
+});
+
+
+let canIHazUsername = function(errorStatus) {
+    if (errorStatus === false) {
+        let curUser = rawUData = firebase.auth().currentUser;
+        let email = curUser.email;
+        let uid = curUser.uid;
+
+        localStorage.setItem('email', email);
+        localStorage.setItem('uid', uid);
+        localStorage.setItem('ip', userip);
+
+        if ($('input#mainRememberMeChkBox').is(':checked')) {
+            //FOR AUTO-LOGIN ON PAGE LOAD WHEN SIGNED OUT ALREADY, LOAD CODE BELOW:
+            //IF ALL ELSE FAILS: localStorage.setItem("token", userData);
+            localStorage.setItem('autoLogin', true);
+        } else {
+            localStorage.setItem('autoLogin', false);
+        }
+        //THEN FIND USERNAME IF EXISTS:
+        $.getJSON('https://livelinks01125.firebaseio.com/users.json', function(userList) {
+            let curUID = firebase.auth().currentUser.uid;
+            let userFound = false;
+            for (let uName in userList) {
+                if (curUID === userList[uName].uid) {
+                    localStorage.setItem('user', userList[uName].user);
+
+                    userFound = true;
+                    break;
+                }
+            }
+            if (!userFound) {
+                $('#eighthModalTrig').click();
+                //BOTH 8th MODAL BUTTONS LAUNCH APP--ie, 'CANCEL' AND 'SUBMIT'
+            } else {
+                //...LOAD LANDING PAGE IF FINISHED:
+                setTimeout(function() {
+                    goToApp();
+                }, 2000);
+            }
+        });
+
+    }
+}
+
+
+let errorStatus = false;
+let pCred;
+$('#googleLoginBtn').click(function() {
+    localStorage.setItem('lastProvider', 'google.com');
+    // Step 1.
+    // User tries to sign in to Google.
+    token = firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(error) {
+        // An error happened. NOTIFY USER OF ERROR, AND OFFER REMEDY.
+        if (error.code) {
+            errorStatus = true;
+            if (error.code !== 'auth/account-exists-with-different-credential') {
+                //PASS DYNAMIC INFO ABOUT ERROR TO FIFTH MODAL:
+                $('#fifthModal .modal-title').html(error.code);
+                $('#fifthModal .modal-body').html(error.message);
+                //LOAD FIFTH MODAL:
+                $('#fifthModalTrig').click();
+            } else {
+                // Step 2.
+                // User's email already exists.
+                // The pending Google credential.
+                let pendingCred = error.credential;
+                // The provider account's email address.
+                let email = error.email;
+                // Get registered providers for this email.
+                auth.fetchProvidersForEmail(email).then(function(providers) {
+                    // Step 3.
+                    // If the user has several providers,
+                    // the first provider in the list will be the "recommended" provider to use.
+                    if (providers[0] === 'password') {
+                        // Asks the user his password.
+                        // In a real scenario, you should handle this asynchronously.
+                        let password = prompt("PLEASE ENTER YOUR PASSWORD TO CONTINUE LOGGING IN:"); // TODO: implement promptUserForPassword.
+                        auth.signInWithEmailAndPassword(email, password).then(function(user) {
+                            // Step 4a.
+                            return user.link(pendingCred);
+                        });
+                        return;
+                    }
+                });
+                //END OF ACCT EXISTS ERROR MSG
+                // All the other cases are external providers.
+                // Construct provider object for that provider.
+                getProviderForProviderId(pendingCred);
+            }
+        }
+    }).then(function() {
+        //check for uName and assign if not present
+        canIHazUsername(errorStatus);
+    });
+
+});
+
+
+$('#githubLoginBtn').click(function() {
+    localStorage.setItem('lastProvider', 'github.com');
+    //Step 1.
+    //User tries to sign in to GitHub.
+    firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider()).catch(function(error) {
+        //An error happened.
+        errorStatus = true;
+        if (error.code) {
+            if (error.code !== 'auth/account-exists-with-different-credential') {
+                //PASS DYNAMIC INFO ON ERROR TO FIFTH MODAL:
+                $('#fifthModal .modal-title').html(error.code);
+                $('#fifthModal .modal-body').html(error.message);
+                //LOAD FIFTH MODAL:
+                $('#fifthModalTrig').click();
+            } else {
+                // Step 2.
+                // User's email already exists.
+                // The pending GitHub credential.
+                var pendingCred = error.credential;
+
+                // The provider account's email address.
+                var email = error.email; //=> "email.nytek@gmail.com"
+
+                // Get registered providers for this email.
+                firebase.auth().fetchProvidersForEmail(email).then(function(providers) {
+                    // Step 3.
+                    // If the user has several providers,
+                    // the first provider in the list will be the "recommended" provider to use.
+                    if (providers[0] === 'password') {
+                        // Asks the user his password. (IF PASSWORD ACCT IS PRE SET UP)
+                        // In real scenario, you should handle this asynchronously.
+                        var password = prompt("PLEASE ENTER YOUR PASSWORD:"); // TODO: implement promptUserForPassword modal.
+                        firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
+                            // Step 4a.
+                            return user.link(pendingCred);
+                        }).then(function() {
+                            // GitHub account successfully linked to the existing Firebase user.
+                            $('#fifthModal .modal-title').html("Account Successfully Linked");
+                            $('#fifthModal .modal-body').html("GitHub account successfully linked to the existing Firebase user.");
+                            //LOAD FIFTH MODAL:
+                            $('#fifthModalTrig').click();
+
+                            setTimeout(function() {
+                                goToApp();
+                            }, 2000);
+                        });
+                    }
+                });
+                //WHEN DEALING WITH REGISTRATION ATTEMPT OF A SECOND EXTERNAL PROVIDER SERVICE:
+                // All the other cases are external providers:
+                getProviderForProviderId(pendingCred, email);
+            }; /* if (error.code == ...) ends */
+        }
+    }).then(function() {
+        //check for uName and assign if not present
+        canIHazUsername(errorStatus);
+    });
+});
+
+
+//TRIGGER FOR FIRST MODAL -- ACCT REG.
+$('#registerNowLnk').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $('#modalTrig').click();
+});
+
+
+//ON TOGGLE OF ANONYMOUS LOGIN CHECKBOX
+let anonLogin = false;
+$('#anonCB').change(function() {
+    if ($(this).is(':checked')) {
+        anonLogin = true;
+        $('#inputEmailModal').val("");
+        $('#inputPasswordModal').val("");
+        $('#inputUNameModal').val("");
+        $('#myModal .btn-success').text('LOGIN');
+        $("#persistCB:checked").prop('checked', false);
+        $('#inputEmailModal').prop('disabled', true);
+        $('#inputUNameModal').prop('disabled', true);
+        $('#inputPasswordModal').prop('disabled', true);
+        $('#persistCB').prop('disabled', true);
+        $('#SecondModalTrig').click();
+        $('.modal-body span').hide();
+    } else {
+        anonLogin = false;
+        $('#inputEmailModal').prop('disabled', false);
+        $('#inputPasswordModal').prop('disabled', false);
+        $('#inputUNameModal').prop('disabled', false);
+        $('#persistCB').prop('disabled', false);
+        $('#myModal .btn-success').text('SIGN UP');
+    }
+});
+
+
+$('#submitEmailModal').click(function(e) {
+    //e.stopPropagation();
+    e.preventDefault();
+    if ($('#emailResetInput').val().length === 0) {
+        $('#fifthModal .modal-title').html("Error!");
+        $('#fifthModal .modal-body').html("Please input your email address and try again!");
+        $('#fifthModalTrig').click();
+    } else {
+        let email = $('#emailResetInput').val();
+        firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
+            // Handle Errors here:
+            if (error) {
+                //PASS DYNAMIC INFO TO FIFTH MODAL:
+                $('#fifthModal .modal-title').html(error.code);
+                $('#fifthModal .modal-body').html(error.message);
+                //LOAD FIFTH MODAL:
+                $('#fifthModalTrig').click();
+            }
+            return;
+        });
+    }
+    $('#emailResetInput').val("");
+});
+
+
+$('#passResetLnk').click(function() {
+    //MODAL APPEARS AND PROMPTS FOR EMAIL.
+    //OK BUTTON GRABS VALUE OF INPUT AND FIRES FUNC:
+    $('#thirdModalTrig').click();
+});
+
+
+//ie SUBMITBTNMODAL:
+$('#myModal').delegate('.btn-success', 'click', function() {
+    if (anonLogin) {
+        undoCheckboxClick();
+
+        setTimeout(function() {
+            goToApp();
+        }, 1500);
+    } else {
+        //OR IF REGISTER ACCT:
+        if ($('#inputEmailModal').val().length > 0 && $('#inputPasswordModal').val().length > 0 && $('#inputUNameModal').val().length > 0) {
+            let email = $('#inputEmailModal').val();
+            let password = $('#inputPasswordModal').val();
+            let uName = $('#inputUNameModal').val();
+            let err = false;
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+                err = true;
+                // Handle Errors here:
+                if (error) {
+                    if (error.code === "auth/email-already-in-use") {
+                        let pendingCred = 'null';
+                        getProviderForProviderId(pendingCred, email, uName, password, true);
+                    } else {
+                        //PASS DYNAMIC INFO TO FIFTH MODAL:
+                        $('#fifthModal .modal-title').html(error.code);
+                        $('#fifthModal .modal-body').html("<center>" + error.message + "</center>");
+                        //FIRE OFF FIFTH MODAL:
+                        $('#fifthModalTrig').click();
+                    }
+                }
+            }).then(function() {
+                if (!err) {
+                    let userid = firebase.auth().currentUser.uid;
+                    setNewUName(userid, uName);
+
+                    setTimeout(function() {
+                        goToApp();
+                    }, 2000);
+                } else {
+                    alert(error);
+                    console.log(error);
+                }
+            });
+        } else {
+            $('#fourthModalTrig').click();
+
+            return;
+        }
+        //ON EXIT: CLEAR OLD INPUTS & HIDE ALL GUIDING COMMENTARY
+        $('#inputEmailModal').val("");
+        $('#inputPasswordModal').val("");
+        $('#inputUNameModal').val("");
+        $('#validName').hide();
+        $('#invalidName').hide();
+    }
+});
+
+$('#signinBtnModal').click(function() {
+    let uidNo = localStorage["uid"] || firebase.auth().currentUser.uid;
+    //ADD USERNAME TO FIREBASE DATABASE, AND THEN LOGIN/GOTOAPP()
+    let username = $('#uNameModal').val();
+
+    if (username.length > 0 && username.length <= 10) {
+        setNewUName(uidNo, username);
+        setTimeout(function() {
+            goToApp();
+        }, 2300);
+
+        return true;
+    } else {
+
+        return false;
+    }
+});
+
+
+//ENGAGE READ ONLY MODE; LOGIN
+$('#dangerBtnModal').click(function() {
+    setTimeout(function() {
+        goToApp();
+    }, 500);
+});
+
+
+$(document).ready(function() {
+    let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
+    let randBG = function() {
+        return Math.floor(Math.random() * 8);
+    };
+    let BGUrl = backgroundImgs[randBG()];
+
+    if (BGUrl === 'img/background0.jpg' || BGUrl === 'img/background2.jpg' || BGUrl === 'img/background4.jpg') {
+        $('a#registerNowLnk').css('color', '#FFFFFF');
+    }
+
+    if (BGUrl === 'img/background2.jpg') {
+        $('span#greetTxt').css('color', '#333333');
+    }
+
+    if (BGUrl === 'img/background3.jpg') {
+        $('span#greetTxt').css('color', '#C7AC98');
+        $('span#greetTxt').css('font-weight', 'bold');
+    }
+
+    if (BGUrl === 'img/background1.jpg') {
+        $('span#greetTxt').css('color', '#2A224B');
+        $('span#greetTxt').css('font-weight', 'bold');
+    }
+
+    if (BGUrl === 'img/background0.jpg') {
+        $('span#greetTxt').css('font-weight', 'bold');
+    }
+
+    $('.container').css('background', 'url(' + BGUrl + ')');
+    $('.container').css('background-size', 'cover');
+    $('.container').css('background-repeat', 'no-repeat');
+});
+
+
+function setInitCookie() {
+    writeCookie("returnVisitor", true, 604800);
+}
+
+function getCookie(name) {
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) !== -1) return c.substring(name.length, c.length);
+    }
+
+    return "";
+}
+
+function checkInitialCookie() {
+    let returned = getCookie("returnVisitor=");
+    if (returned === "true") {
+        $('#greetTxt').html('Hello, ' + localStorage.getItem('user') + '!');
+
+        return true;
+    } else {
+        $('#greetTxt').html('Welcome, New User!');
+        $('#greetTxt').css('font-size', '1em');
+        setInitCookie();
+    }
+}
+
+
+function checkForJWT() {
+    let isUserRegd = localStorage['autoLogin'];
+    if (isUserRegd === "true") {
+        $('input#mainRememberMeChkBox').prop('checked', 'true');
+
+        // QUERY WHAT LAST PROVIDER IS AND LOGIN USING IT
+        let lastProvider = localStorage["lastProvider"];
+        switch (lastProvider) {
+            case "google.com":
+                $('#googleLoginBtn').click();
+                break;
+            case "github.com":
+                $('githubLoginBtn').click();
+                break;
+            case "password":
+                let encryptedPW = localStorage["pw"];
+                let k = $.getJSON('https://livelinks01125.firebaseio.com/crypt/' + localStorage["uid"] + '/key.json');
+                k.done(function(encodedKey) {
+                    decodedKey = decodeURIComponent(encodedKey);
+                    let email = localStorage['email'];
+
+                    // Decrypt:
+                    let plaintextPW = crypt.AES.decrypt(encryptedPW, decodedKey);
+
+                    $('#emailInput').val(email);
+                    $('#passwInput').val(plaintextPW);
+                    $('#submitBtn').click();
+                });
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+function salty() {
+    let letters = '0123456789ABCDEFGHIJKLMNO';
+    let rand = '';
+    for (var i = 0; i < 5; i++) {
+        rand += letters[Math.floor(Math.random() * 24)];
+    }
+
+    return rand;
+}
+
+
+let keyGen = function() {
+    let part1 = salty();
+    let part2 = salty();
+    let part3 = salty();
+    let part4 = salty();
+    let key = "" + part1 + part2 + part3 + part4;
+
+    key = crypt.AES.encrypt(key);
+    return key
+};
+
+
+$('#aboutNavBtn').click(function() {
+    $('#ninthModalTrig').click();
+});
+
+$('#resetPWOption').click(function() {
+    $('#passResetLnk').click();
+});
+
+$('#registerAcctOption').click(function() {
+    $('#registerNowLnk').click();
+});
+
+
+//SET PAGE UP FOR USAGE:
+checkInitialCookie();
+checkForJWT();
+</script>
+</body>
+
+</html>
