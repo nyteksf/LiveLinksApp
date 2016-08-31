@@ -83,6 +83,11 @@ span#greetTxt {
     color: #FFFFFF !important;
 }
 
+.btn-default.active:hover {
+    background-color: #d9534f !important;
+    color: #FFFFFF !important;
+}
+
 
 div.modal-body {
   padding: 3px 15px 3px 15px !important;
