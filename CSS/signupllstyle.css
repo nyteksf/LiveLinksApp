@@ -78,12 +78,12 @@ span#greetTxt {
   width: 79px !important;
 }
 
-.btn-default.active.sort-hover-active {
+.btn-default.sort-hover-active {
     background-color: #d9534f !important;
     color: #FFFFFF !important;
 }
 
-.btn-default.active:hover {
+.btn-default:hover {
     background-color: #d9534f !important;
     color: #FFFFFF !important;
 }
