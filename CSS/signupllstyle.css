@@ -87,7 +87,8 @@ span#greetTxt {
 
 .btn-default:hover {
     background-color: #d9534f !important;
-    color: white !important;
+    color: #FFFFFF !important;
+    background-position: 0px;
 }
 
 
