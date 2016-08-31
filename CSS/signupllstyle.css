@@ -68,6 +68,10 @@ span#greetTxt {
   display: none;
 }
 
+#cancelBtnModal {
+  color: darkred !important;
+}
+
 div.modal-body {
   padding: 3px 15px 3px 15px !important;
 }
