@@ -70,6 +70,7 @@ span#greetTxt {
 
 #cancelBtnModal {
   color: darkred !important;
+  font-weight: bold;
 }
 
 div.modal-body {
