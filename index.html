@@ -1204,14 +1204,12 @@ let keyGen = function() {
 };
 
 $('#cancelBtnModal').mouseenter(function() {
-  $('#cancelBtnModal').addClass('btn-danger');
-  $('#cancelBtnModal').removeClass('btn-default');
+  $('#cancelBtnModal').addClass('btn-danger whiteText').removeClass('btn-default');
   $('#cancelBtnModal').css('color','green !important');
 });
 
 $('#cancelBtnModal').mouseleave(function() {
-  $('#cancelBtnModal').addClass('btn-default');
-  $('#cancelBtnModal').removeClass('btn-danger');
+  $('#cancelBtnModal').addClass('btn-default darkredText').removeClass('btn-danger whiteText');
   $('#cancelBtnModal').css('color','darkred !important');
 });
 
