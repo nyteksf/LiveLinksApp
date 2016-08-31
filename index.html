@@ -1203,11 +1203,30 @@ let keyGen = function() {
     return key
 };
 
-
-$('#cancelBtnModal').hover(function() {
-  console.log("hahahaahaaaaa");
+$('#cancelBtnModal').mouseenter(function() {
+  alert(1)
 });
 
+$('#cancelBtnModal').mouseleave(function() {
+  alert(2)
+});
+
+/*
+$('body').delegate('cancelBtnModal', 'mouseenter', function() {
+  $('#cancelBtnModal').addClass('btn-danger');
+  $('#cancelBtnModal').removeClass('btn-default');
+  
+  alert(1)
+});
+
+
+$('body').delegate('cancelBtnModal', 'mouseleave', function() {
+  $('#cancelBtnModal').addClass('btn-default');
+  $('#cancelBtnModal').removeClass('btn-danger');
+
+  alert(2)
+});
+*/
 
 $('#aboutNavBtn').click(function() {
     $('#ninthModalTrig').click();
