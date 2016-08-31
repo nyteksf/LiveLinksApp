@@ -73,12 +73,9 @@ span#greetTxt {
   font-weight: bold;
 }
 
-#darkredText {
-  color: darkred !important;  
-}
-
 #whiteText {
   color: #FFFFFF !important;
+  width: 79px;
 }
 
 div.modal-body {
