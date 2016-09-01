@@ -83,6 +83,10 @@ span#greetTxt {
 }
 */
 
+#thirdModalCancelBtn:hover {
+  border-color: red !important;
+}
+
 #whiteText {
   color: #FFFFFF !important;
   padding-left: 8px !important;
