@@ -85,7 +85,6 @@ span#greetTxt {
 
 #thirdModalCancelBtn:hover {
   border-color: lightpink !important;
-  color: red !important;
 }
 
 #whiteText {
@@ -276,7 +275,6 @@ a#passResetLnk {
 
 .modal-header {
   /* NEED TO ADD IN BORDER-RADIUS TO FIX NOW SQUARE EDGES ONCE COLOR CHANGES */
-  //background: lightgray !important;
   font-size: 1.25em;
 }
 
