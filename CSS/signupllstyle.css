@@ -92,14 +92,14 @@ span#greetTxt {
 }
 
 /* default button */
-    .btn-default {
+    #cancelBtnModal {
         font-weight: bold !important;
         border-color: #adadad !important;
     }
     
-    .btn-default:not(#githubLoginBtn):hover,
-    .btn-default:not(#githubLoginBtn):focus,
-    .btn-default:not(#githubLoginBtn):active    {
+    #cancelBtnModal:hover,
+    #cancelBtnModal:focus,
+    #cancelBtnModal:active    {
         color: #FFFFFF !important;
         //background: #6d0019 !important; /* Old browsers */
         background-color: #BD1B1B !important;
