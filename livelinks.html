@@ -1272,10 +1272,12 @@ $('#smbChgEmail').click(function() {
       modal: true,
       buttons: [{
           text: "Cancel",
+          hover: function() {
+            $('.addChgUNameBtn').css('border-color','lightpink');
+          },
           click: function() {
               $('#changeEmail').dialog("close");
               $('input#newEmailInput').val("");
-              $('.addChgUNameBtn').css('border-color','lightpink');
               checkPanelState();
           },
           class: "addChgUNameBtn",
