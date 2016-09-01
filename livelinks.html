@@ -1275,9 +1275,7 @@ $('#smbChgEmail').click(function() {
           click: function() {
               $('#changeEmail').dialog("close");
               $('input#newEmailInput').val("");
-              console.log($(this));
-              console.log($(this).parent());
-              console.log($(this).parent().parent());
+              console.log($(this).parent().closest('button'));
               checkPanelState();
           },
           class: "addChgUNameBtn",
