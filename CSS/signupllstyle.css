@@ -87,7 +87,7 @@ span#greetTxt {
 
 /* default button */
     #cancelBtnModal {
-        font-weight: bold !important;
+        //font-weight: bold !important;
         border-color: #adadad !important;
     }
     
