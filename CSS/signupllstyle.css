@@ -15,7 +15,7 @@ body a:hover {
   height: 500px !important;
   width: 800px !important;
   background: #FFFFFF;
-  background: url(http://i63.tinypic.com/n16s95.jpg);
+  background: url(https://i63.tinypic.com/n16s95.jpg);
   background-size: contain;
   color: #FFFFFF;
   border: 22px solid #333333;
@@ -91,23 +91,20 @@ span#greetTxt {
   color: #FFFFFF !important;
   padding-left: 8px !important;
   padding-right: 8px !important;
-  //width: 79px !important;
 }
 
 /* default button */
-    #cancelBtnModal {
-        //font-weight: bold !important;
-        border-color: #adadad !important;
-    }
+  #cancelBtnModal {
+    border-color: #adadad !important;
+  }
     
-    #cancelBtnModal:hover,
-    #cancelBtnModal:focus,
-    #cancelBtnModal:active    {
-        color: #FFFFFF !important;
-        //background: #6d0019 !important; /* Old browsers */
-        background-color: #BD1B1B !important;
-	*background-color: #003bb3 !important;
-    }
+  #cancelBtnModal:hover,
+  #cancelBtnModal:focus,
+  #cancelBtnModal:active    {
+    color: #FFFFFF !important;
+    background-color: #BD1B1B !important;
+    *background-color: #003bb3 !important;
+  }
 
 div.modal-body {
   padding: 3px 15px 3px 15px !important;
