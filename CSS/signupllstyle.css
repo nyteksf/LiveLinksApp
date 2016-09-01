@@ -71,6 +71,7 @@ span#greetTxt {
 #cancelBtnModal {
   color: darkred !important;
   font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 #whiteText {
