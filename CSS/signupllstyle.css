@@ -97,13 +97,13 @@ span#greetTxt {
         border-color: #adadad !important;
     }
     
-    .btn-default:hover,
-    .btn-default:focus,
-    .btn-default:active    {
+    .btn-default:hover:not(#githubLoginBtn),
+    .btn-default:focus:not(#githubLoginBtn),
+    .btn-default:active:not(#githubLoginBtn)    {
         color: #FFFFFF !important;
         //background: #6d0019 !important; /* Old browsers */
-        background-color: #BD1B1B;
-	      *background-color: #003bb3;
+        background-color: #BD1B1B !important;
+	*background-color: #003bb3 !important;
     }
 
 div.modal-body {
