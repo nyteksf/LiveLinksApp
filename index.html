@@ -1204,31 +1204,15 @@ let keyGen = function() {
 };
 
 
-
 $('#cancelBtnModal').mouseenter(function() {
   $('#cancelBtnModal').addClass('btn-danger whiteText');
 });
+
 
 $('#cancelBtnModal').mouseleave(function() {
   $('#cancelBtnModal').removeClass('btn-danger whiteText');
 });
 
-
-$('body').delegate('cancelBtnModal', 'mouseenter', function() {
-  $('#cancelBtnModal').addClass('btn-danger');
-  $('#cancelBtnModal').removeClass('btn-default');
-  
-  alert(1)
-});
-
-
-$('body').delegate('cancelBtnModal', 'mouseleave', function() {
-  $('#cancelBtnModal').addClass('btn-default');
-  $('#cancelBtnModal').removeClass('btn-danger');
-
-  alert(2)
-});
-*/
 
 $('#aboutNavBtn').click(function() {
     $('#ninthModalTrig').click();
