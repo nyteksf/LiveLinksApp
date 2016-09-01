@@ -75,15 +75,8 @@ span#greetTxt {
 
 #whiteText {
   color: #FFFFFF !important;
-  width: 79px !important;
+  //width: 79px !important;
 }
-
-/*
-.btn-default.sort-hover-active {
-    background-color: #d9534f !important;
-    color: #FFFFFF !important;
-}
-*/
 
 /* default button */
     #cancelBtnModal {
