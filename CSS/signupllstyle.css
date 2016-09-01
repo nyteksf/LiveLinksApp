@@ -97,9 +97,9 @@ span#greetTxt {
         border-color: #adadad !important;
     }
     
-    .btn-default:hover:not(#githubLoginBtn),
-    .btn-default:focus:not(#githubLoginBtn),
-    .btn-default:active:not(#githubLoginBtn)    {
+    .btn-default:not(#githubLoginBtn):hover,
+    .btn-default:not(#githubLoginBtn):focus,
+    .btn-default:not(#githubLoginBtn):active    {
         color: #FFFFFF !important;
         //background: #6d0019 !important; /* Old browsers */
         background-color: #BD1B1B !important;
