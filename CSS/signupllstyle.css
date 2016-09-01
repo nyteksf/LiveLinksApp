@@ -94,17 +94,15 @@ span#greetTxt {
 /* default button */
     .btn-default {
         font-weight: bold !important;
-        background-color: #FFF !important;
+        background: #333333 !important;
         border-color: #adadad !important;
-        border-radius: 25px !important;
     }
     
     .btn-default:hover,
     .btn-default:focus,
     .btn-default:active    {
-        background-color: red !important;
+        background: red !important;
         color: #FFFFFF !important;
-        border-color: #adadad !important;
     }
 
 div.modal-body {
