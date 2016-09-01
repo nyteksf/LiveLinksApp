@@ -85,12 +85,6 @@ span#greetTxt {
 }
 */
 
-.btn-default:hover {
-    background-color: #d9534f !important;
-    color: #FFFFFF !important;
-    background-position: 0px !important;
-}
-
 /* default button */
     #cancelBtnModal {
         font-weight: bold !important;
