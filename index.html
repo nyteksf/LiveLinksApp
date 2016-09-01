@@ -1205,11 +1205,11 @@ let keyGen = function() {
 
 
 $('#cancelBtnModal').mouseenter(function() {
-  $('#cancelBtnModal').addClass('btn-danger whiteText').css('font-weight','normal !important');
+  $('#cancelBtnModal').removeClass('btn-default').addClass('btn-danger whiteText');
 });
 
 $('#cancelBtnModal').mouseleave(function() {
-  $('#cancelBtnModal').removeClass('btn-danger whiteText').css('font-weight','bold !important');
+  $('#cancelBtnModal').removeClass('btn-danger whiteText').addClass('btn-default');
 });
 
 
