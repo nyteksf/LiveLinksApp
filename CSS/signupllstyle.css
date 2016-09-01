@@ -70,9 +70,9 @@ span#greetTxt {
 
 #cancelBtnModal {
   color: darkred !important;
-  font-weight: bold;
-  font-family: Helvetica, Arial, sans-serif;
-  width: 70px;
+  font-weight: bold !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  width: 70px !important;
 }
 
 #cancelBtnModalTxt {
