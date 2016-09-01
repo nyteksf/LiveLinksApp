@@ -85,7 +85,7 @@ span#greetTxt {
 
 #thirdModalCancelBtn:hover {
   border-color: lightpink !important;
-  color: gray !important;
+  color: lightgray !important;
 }
 
 #whiteText {
