@@ -94,7 +94,6 @@ span#greetTxt {
 /* default button */
     .btn-default {
         font-weight: bold !important;
-        background: #333333 !important;
         border-color: #adadad !important;
     }
     
