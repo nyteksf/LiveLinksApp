@@ -91,6 +91,12 @@ span#greetTxt {
     background-position: 0px !important;
 }
 
+.btn-hover {
+  font-weight: bold !important;
+  color: #FFFFFF !important;
+  cursor: pointer;
+  background-color: inherit !important;
+}
 
 div.modal-body {
   padding: 3px 15px 3px 15px !important;
