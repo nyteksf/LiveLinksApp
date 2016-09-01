@@ -91,12 +91,22 @@ span#greetTxt {
     background-position: 0px !important;
 }
 
-.btn-hover {
-  font-weight: bold !important;
-  color: #FFFFFF !important;
-  cursor: pointer;
-  background-color: inherit !important;
-}
+/* default button */
+    .btn-default {
+        font-weight: bold !important;
+        background-color: #FFF;
+        color: #333;
+        border-color: #adadad;
+        border-radius: 25px;
+    }
+    
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default:active    {
+        background-color: red;
+        color: #FFFFFF;
+        border-color: #adadad;
+    }
 
 div.modal-body {
   padding: 3px 15px 3px 15px !important;
