@@ -112,7 +112,7 @@ img#firebase-ico:hover {
 }
 
 .okBtn:hover {
-  color: orange !important;
+  border-color: #000080 !important;
 }
 
 .partitionDot {
