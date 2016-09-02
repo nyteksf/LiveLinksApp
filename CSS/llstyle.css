@@ -111,6 +111,10 @@ img#firebase-ico:hover {
   color: red !important;
 }
 
+.okBtn:hover {
+  border: green !important;
+}
+
 .partitionDot {
   position: relative;
   //top: -19px;
