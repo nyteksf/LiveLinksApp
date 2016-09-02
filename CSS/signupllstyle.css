@@ -82,16 +82,8 @@ span#greetTxt {
   width: 70px !important;
 }
 
-/*
-#cancelBtnModalTxt {
-  position: relative;
-  top: -2px;
-  left: -3px;
-}
-*/
-
-#thirdModalCancelBtn:hover {
-  border-color: lightpink !important;
+#cancelBtnModalSecond:hover {
+  color: #FFFFFF !important;
 }
 
 #whiteText {
