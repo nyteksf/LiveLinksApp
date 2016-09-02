@@ -1276,24 +1276,12 @@ $('#smbChgEmail').click(function() {
       modal: true,
       buttons: [{
           text: "Cancel",
-          hover: function() {
-            if(!hoverTracker.prototype.hover) {
-              hoverTracker.prototype.hover = true;  
-              $('.addChgUNameBtn').css('border-color','lightpink !important');
-            } 
-            else if(hoverTracker.prototype.hover) {
-              hoverTracker.prototype.hover = false;
-              $('.addChgUNameBtn').css('border-color','#D3D3D3 !important');
-            } else {
-              alert("ERROR!");
-            }
-          },
           click: function() {
               $('#changeEmail').dialog("close");
               $('input#newEmailInput').val("");
               checkPanelState();
           },
-          class: "addChgUNameBtn",
+          class: "chgEmailBtnCancel",
           style: "color:lightpink"
       }, {
           text: "Submit",
