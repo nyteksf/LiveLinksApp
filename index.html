@@ -229,7 +229,7 @@
 
         <!-- Modal Footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" id="cancelBtnModal" data-dismiss="modal"><span id="cancelBtnModalTxt">CLOSE</span></button>
+          <button type="button" class="btn btn-default" id="cancelBtnModalSecond" data-dismiss="modal"><span id="cancelBtnModalTxt">CLOSE</span></button>
           <button type="button" class="btn btn-success" id="submitEmailModal" data-dismiss="modal">SUBMIT</button>
         </div>
 
@@ -1204,11 +1204,11 @@ let keyGen = function() {
 };
 
 
-$('#cancelBtnModal').mouseenter(function() {
+$('#cancelBtnModal, #cancelBtnModalSecond').mouseenter(function() {
   $('#cancelBtnModal').addClass('btn-danger whiteText').removeClass('btn-default');
 });
 
-$('#cancelBtnModal').mouseleave(function() {
+$('#cancelBtnModal, #cancelBtnModalSecond').mouseleave(function() {
   $('#cancelBtnModal').removeClass('btn-danger whiteText').addClass('btn-default');
 });
 
