@@ -115,6 +115,10 @@ img#firebase-ico:hover {
   border-color: #23297A !important;
 }
 
+.cancelDialogBtn:hover {
+  border-color: darkred !important;
+}
+
 .partitionDot {
   position: relative;
   //top: -19px;
