@@ -108,6 +108,7 @@ img#firebase-ico:hover {
 
 .chgEmailBtnCancel:hover {
   border-color: purple !important;
+  color: red !important;
 }
 
 .partitionDot {
