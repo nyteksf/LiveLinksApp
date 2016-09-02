@@ -96,6 +96,7 @@ span#greetTxt {
 /* default button */
   #cancelBtnModal {
     border-color: #adadad !important;
+    color: darkred !important;
   }
     
   #cancelBtnModal:hover,
