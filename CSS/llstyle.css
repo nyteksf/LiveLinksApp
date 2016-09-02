@@ -107,7 +107,7 @@ img#firebase-ico:hover {
 }
 
 .chgEmailBtnCancel:hover {
-  border-color: purple !important;
+  border-color: darkred !important;
   color: red !important;
 }
 
