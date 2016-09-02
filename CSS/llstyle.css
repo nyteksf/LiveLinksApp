@@ -106,6 +106,10 @@ img#firebase-ico:hover {
   font-weight: bold;
 }
 
+.addChgUNameBtn:hover {
+  border-color: lightpink !important;
+}
+
 .partitionDot {
   position: relative;
   //top: -19px;
