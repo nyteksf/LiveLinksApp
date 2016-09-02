@@ -75,6 +75,13 @@ span#greetTxt {
   width: 70px !important;
 }
 
+#cancelBtnModalSecond {
+  color: darkred !important;
+  //font-weight: bold !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  width: 70px !important;
+}
+
 /*
 #cancelBtnModalTxt {
   position: relative;
