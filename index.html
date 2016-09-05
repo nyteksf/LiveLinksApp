@@ -539,6 +539,8 @@ let checkUName = function(uName, modalName) {
             $('#invalidUName').show();
             $('#validUName').hide();
             $('#signinBtnModal').prop('disabled', true);
+            
+            return true;
         }
     }
     if (modalName === "registerModal") {
@@ -548,11 +550,12 @@ let checkUName = function(uName, modalName) {
             console.log(uName.toLowerCase()+" | "+$('#inputUNameModal').val().toLowerCase())
             $('#submitBtnModal').prop('disabled', false);
         } else {
-                console.log(uName.toLowerCase()+" | "+$('#inputUNameModal').val().toLowerCase())
                 console.log("bleh")
             $('#invalidName').show();
             $('#validName').hide();
             $('#submitBtnModal').prop('disabled', true);
+            
+            return true;
         }
     }
 };
