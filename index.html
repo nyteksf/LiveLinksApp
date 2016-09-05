@@ -547,8 +547,10 @@ let checkUName = function(uName, modalName) {
         if (uName.toLowerCase() !== $('#inputUNameModal').val().toLowerCase()) {
             $('#validName').show();
             $('#invalidName').hide();
+            alert("hahaaaaa")
             $('#submitBtnModal').prop('disabled', false);
         } else {
+            alert("wtfbro")
             $('#invalidName').show();
             $('#validName').hide();
             $('#submitBtnModal').prop('disabled', true);
