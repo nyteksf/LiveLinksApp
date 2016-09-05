@@ -545,11 +545,11 @@ let checkUName = function(uName, modalName) {
         if (uName.toLowerCase() !== $('#inputUNameModal').val().toLowerCase()) {
             $('#validName').show();
             $('#invalidName').hide();
-            console.log(uName.toLowerCase()+" | "+#inputUNameModal').val().toLowerCase())
+            console.log(uName.toLowerCase()+" | "+$('#inputUNameModal').val().toLowerCase())
             $('#submitBtnModal').prop('disabled', false);
         } else {
-                      console.log(uName.toLowerCase()+" | "+#inputUNameModal').val().toLowerCase())
-                      console.log("bleh")
+                console.log(uName.toLowerCase()+" | "+$('#inputUNameModal').val().toLowerCase())
+                console.log("bleh")
             $('#invalidName').show();
             $('#validName').hide();
             $('#submitBtnModal').prop('disabled', true);
