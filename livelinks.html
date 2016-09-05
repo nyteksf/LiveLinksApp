@@ -839,7 +839,8 @@ let uName;
 $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   evt.preventDefault();
   evt.stopPropagation();
-  console.log($(this).find("a").attr("url"))
+  let pUrl = $(this).find("a").attr("url");
+  console.log(decodeURIComponent(pUrl))
   window.open($(this).find("a").attr("url"), '_blank');
 
   return false;
