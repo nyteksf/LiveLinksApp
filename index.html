@@ -535,9 +535,7 @@ let checkUName = function(uName, modalName) {
             $('#validUName').show();
             $('#invalidUName').hide();
             $('#signinBtnModal').prop('disabled', false);
-            alert("aA")
         } else {
-            alert("bB")
             $('#invalidUName').show();
             $('#validUName').hide();
             $('#signinBtnModal').prop('disabled', true);
@@ -547,10 +545,11 @@ let checkUName = function(uName, modalName) {
         if (uName.toLowerCase() !== $('#inputUNameModal').val().toLowerCase()) {
             $('#validName').show();
             $('#invalidName').hide();
-            alert("hahaaaaa")
+            console.log(uName.toLowerCase()+" | "+#inputUNameModal').val().toLowerCase())
             $('#submitBtnModal').prop('disabled', false);
         } else {
-            alert("wtfbro")
+                      console.log(uName.toLowerCase()+" | "+#inputUNameModal').val().toLowerCase())
+                      console.log("bleh")
             $('#invalidName').show();
             $('#validName').hide();
             $('#submitBtnModal').prop('disabled', true);
