@@ -464,6 +464,7 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               
               console.log(likeCountVal+" likecountval");
+              
               if (likeCountVal <= "0") {
                   alert("ERR");
 
@@ -473,6 +474,7 @@ populatePageWLinks = function() {
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NO.
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
+              
               $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
                   return +val-1;
               }); //UPDATE LIKECOUNT
@@ -494,8 +496,8 @@ populatePageWLinks = function() {
                           console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
 
                               setTimeout(function() {
-                                  $('#linkDisplayDiv').html("");
-                                  location.reload(); //populatePageWLinks();
+                                  //$('#linkDisplayDiv').html("");
+                                  //location.reload(); //populatePageWLinks();
                               }, 1000);
                           }));
                           break;
