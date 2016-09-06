@@ -216,7 +216,7 @@ a#passResetLnk {
 
 #anonCBDiv {
   position: relative;
-  left: 74%;
+  padding-left: 429px;
 }
 
 #validName,
