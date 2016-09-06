@@ -117,6 +117,11 @@ div.modal-body {
   top: -15px;
 }
 
+.closeBtnTxt {
+  position: relative;
+  left: -3px;
+}
+
 #formModalDiv {
   position: relative;
   top:6px;
