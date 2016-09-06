@@ -410,7 +410,7 @@ populatePageWLinks = function() {
               console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
-                  return +val + 1
+                  return +val+1;
               });
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
               $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
@@ -462,7 +462,8 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
-
+              
+              console.log(likeCountVal+" likecountval");
               if (likeCountVal <= "0") {
                   alert("ERR");
 
@@ -473,9 +474,8 @@ populatePageWLinks = function() {
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
               $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
-                  return +val - 1
+                  return +val-1;
               }); //UPDATE LIKECOUNT
-              //$this.parent().parent().parent().find('.likeCount').text(likeCountVal-1);
 
               let cNm2 = $this.attr('class').split(' ');
               let auth = cNm2[0];
