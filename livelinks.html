@@ -598,8 +598,6 @@ populatePageWLinks = function() {
                   }
               }
               //'toggle':
-              //if uname in likeunamelist then disable button
-              //else enable it
               uNameFound = false;
               if (likeUNameList.indexOf("" + outputUName) !== -1) {
                   //AUTHED USER'S UNAME FOUND IN LIKE-LIST FOR CUR POST
@@ -627,7 +625,7 @@ populatePageWLinks = function() {
                   newPost.innerHTML += '<span class=\'divBody\'><a href=\'javascript:void(0);\' url=' + newPost.rawUrl + '>' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href=\'javascript:void(0);\' class="authorDescribe" title=' + newPost.ip + '>Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
               } else { //...LOAD VERSION WITH LIKES INSTEAD, BUT PRECLUDE FROM FURTHER CLICKS:
                   if (likeUNameList.indexOf("" + outputUName) !== -1) {
-                      newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href=\'javascript:void(0);\' url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco killCursor"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss ">&times;</button><br />';
+                      newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href=\'javascript:void(0);\' url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss ">&times;</button><br />';
                       newPost.innerHTML += '<span class=\'divBody\'><a href=\'javascript:void(0);\' url=' + newPost.rawUrl + '>' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href=\'javascript:void(0);\' class="authorDescribe" title=' + newPost.ip + '>Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                   } else {
                       newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href=\'javascript:void(0);\' url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot; <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss ">&times;</button><br />';
@@ -839,6 +837,7 @@ let result;
 let uName;
 
 
+//OPEN TARGET LINK IF AND WHEN POSTED LINK DIV CLICKED UPON:
 $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   evt.preventDefault();
   evt.stopPropagation();
