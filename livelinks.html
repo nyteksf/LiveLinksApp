@@ -464,7 +464,8 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               
               console.log(likeCountVal+" likecountval");
-              
+              console.log(typeof likeCountVal)
+                            
               if (likeCountVal <= "0") {
                   alert("ERR");
 
