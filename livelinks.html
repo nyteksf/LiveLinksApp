@@ -407,7 +407,7 @@ populatePageWLinks = function() {
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
-              console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
+              //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
@@ -437,7 +437,7 @@ populatePageWLinks = function() {
                   //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE
 
                   for (let link in responseList) {
-                      console.log(responseList[link]);
+                      //console.log(responseList[link]);
                       responseURL = decodeURIComponent(responseList[link].url);
                       if (responseURL === url && responseList[link].author === pAuth) {
                           let pKey = link;
@@ -490,11 +490,11 @@ populatePageWLinks = function() {
                   //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE
 
                   for (let link in responseList) {
-                      console.log(responseList[link]);
+                      //console.log(responseList[link]);
                       responseURL = decodeURIComponent(responseList[link].url);
                       if (responseURL === postURL && responseList[link].author === auth) {
                           let thisPKey = link;
-                          console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
+                          //console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
 
                               setTimeout(function() {
                                   //$('#linkDisplayDiv').html("");
@@ -1232,10 +1232,10 @@ $('#smbDeactivate').click(function() {
                   if (counter < providerCount) {
                       setTimeout(function() {
                           let cur = provNames[counter];
-                          console.log(firebase.auth().currentUser.unlink(cur));
+                          //console.log(firebase.auth().currentUser.unlink(cur));
 
                           counter++;
-                          console.log(counter);
+                          //console.log(counter);
                           start(counter);
                       }, 1200);
                   }
