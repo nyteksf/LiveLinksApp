@@ -400,7 +400,7 @@ populatePageWLinks = function() {
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
-              console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
+              //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
@@ -444,6 +444,7 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION:
               console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE");
+              alert("ASB")
               let likeCountVal = $this.parent().parent().parent().find(".likeCount").text();
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
