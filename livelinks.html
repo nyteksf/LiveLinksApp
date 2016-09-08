@@ -407,6 +407,7 @@ populatePageWLinks = function() {
               });
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
               $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
+              
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
               let pAuth = cN[0];
@@ -414,6 +415,7 @@ populatePageWLinks = function() {
               let uidNo = localStorage['uid'] || firebase.auth().currentUser.uid;
               findIfUserExists(uidNo);
               let storedName = localStorage["user"];
+              
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
                   //CUSTOM DYNAMIC JSON KEY VALUE GENERATOR:
@@ -442,9 +444,8 @@ populatePageWLinks = function() {
               });
               return;
           } else {
-              //FIRE 'UNLIKE' FUNCTION:
-              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE");
-              alert("ASB")
+              //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
+              //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
               let likeCountVal = $this.parent().parent().parent().find(".likeCount").text();
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
@@ -464,32 +465,33 @@ populatePageWLinks = function() {
               
               $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
                   return +val-1;
-              }); //UPDATE LIKECOUNT
-              let cNm2 = $this.attr('class').split(' ');
-              let auth = cNm2[0];
-              let postURL = cNm2[3];
+              }); //UPDATE OF LIKECOUNT COMPLETE
+              
+              //GATHER POST META-DATA
+              let cNm2    = $this.attr('class').split(' ');
+              let auth 	  = cNm2[0];
+              let postedURL = cNm2[3];
 
-            	//  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
+              //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
                   $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
                     //COMPARE AGAINST EXISTING POSTS IN DATABASE TO FIND LIKED POST
                     //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE      
                     for (let link in responseList) {
                       //console.log(responseList[link]);
                       responseURL = decodeURIComponent(responseList[link].url);
-                      if (responseURL === postURL && responseList[link].author === auth) {
+                      if (responseURL === postedURL && responseList[link].author === auth) {
                         let thisPKey = link;
-                        //console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
+                        console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
                   
-                        setTimeout(function() {
-                          //$('#linkDisplayDiv').html("");
-                          //location.reload(); //populatePageWLinks();
-                        }, 1000);
-                  
-                        break;
+	                        setTimeout(function() {
+	                          //$('#linkDisplayDiv').html("");
+	                          //location.reload(); //populatePageWLinks();
+	                        }, 1000);
+	                  
+	                        break;
                       }
                     }
-									});
-
+	      });
               //CLEAN UP: REMOVE USERNAME FROM LIKEUSER DIV -OR- REFRESH PAGE SO CANNOT CLICK AGAIN
               return;
           }
@@ -497,6 +499,8 @@ populatePageWLinks = function() {
           alert("ERROR--NEITHER CASE WORKED");
       }
   } //END RUNONETIME() FUNCTION
+  
+  
   findIfUserExists = function(uidNo) {
       let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
           usernameList = usernameList.responseJSON;
