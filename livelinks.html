@@ -484,15 +484,15 @@ populatePageWLinks = function() {
                         console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
                   
 	                        setTimeout(function() {
-	                          //$('#linkDisplayDiv').html("");
-	                          //location.reload(); //populatePageWLinks();
+	                          $('#linkDisplayDiv').html("");
+	                          location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
 	                        }, 1000);
 	                  
                       }));
                       
                       break;
                       }
-	                }
+	              }
 	            });
               //CLEAN UP: REMOVE USERNAME FROM LIKEUSER DIV -OR- REFRESH PAGE SO CANNOT CLICK AGAIN
               return;
