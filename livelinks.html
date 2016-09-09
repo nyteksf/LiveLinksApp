@@ -451,25 +451,23 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               
-              console.log(likeCountVal+" likecountval");
-              let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
+              //console.log(likeCountVal+" likecountval");
+              //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
                             
               if (likeCountVal <= "0") {
                   alert("ERR");
                   return false;
               } else if (likeCountVal === "1") {
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
-                  $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NO.
+                  $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
-              } else {
-                  alert(curLikeCount);
-                  $this.parent().parent().parent().find('.likeCount').html(curLikeCount-1);
+              }
+              $this.parent().parent().parent().find('.likeCount').text(curLikeCount-1);
                   /*
                   $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
                       return (+val)-1;
                   });
                   */
-              }; 
               
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
