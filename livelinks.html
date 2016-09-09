@@ -464,7 +464,7 @@ populatePageWLinks = function() {
               }
               
               $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
-                  return +val-1;
+                  return (+val)-1;
               }); //UPDATE OF LIKECOUNT COMPLETE
               
               //GATHER POST META-DATA
