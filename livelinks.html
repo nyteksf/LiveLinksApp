@@ -462,7 +462,7 @@ populatePageWLinks = function() {
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
-              $this.parent().parent().parent().find('.likeCount').text(curLikeCount-1);
+              $this.parent().parent().parent().find('.likeCount').text(likeCountVal-1);
                   /*
                   $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
                       return (+val)-1;
