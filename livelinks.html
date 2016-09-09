@@ -381,7 +381,7 @@ populatePageWLinks = function() {
       console.log("!!!!!-1-x-1");
       */
       
-      let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text());
+      //let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text());
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
@@ -394,7 +394,7 @@ populatePageWLinks = function() {
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
-              $this.parent().parent().parent().find('.likeCount').text(likeCountVal+1);
+              $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())+1);
               /*
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
@@ -457,7 +457,7 @@ populatePageWLinks = function() {
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
-              $this.parent().parent().parent().find('.likeCount').text(likeCountVal-1);
+              $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
                   /*
                   $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
                       return (+val)-1;
