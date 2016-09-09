@@ -468,8 +468,8 @@ populatePageWLinks = function() {
               }); //UPDATE OF LIKECOUNT COMPLETE
               
               //GATHER POST META-DATA
-              let cNm2    = $this.attr('class').split(' ');
-              let auth 	  = cNm2[0];
+              let cNm2      = $this.attr('class').split(' ');
+              let auth 	    = cNm2[0];
               let postedURL = cNm2[3];
 
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
@@ -488,8 +488,9 @@ populatePageWLinks = function() {
 	                          //location.reload(); //populatePageWLinks();
 	                        }, 1000);
 	                  
-	                        break;
                       }));
+                      
+                      break;
                       }
 	                }
 	            });
@@ -765,7 +766,7 @@ populatePageWLinks = function() {
       }); //END HERE -- INNER FUNC
   }); //END HERE -- FIRST FUNC -- OUTERMOST
 }; //END HERE -- populatePageWLinks() WRAPPER
-//populatePageWLinks(); //RETURN HERE NOW
+populatePageWLinks(); //RETURN HERE NOW
 let res;
 let resString;
 let result;
