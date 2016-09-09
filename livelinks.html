@@ -381,30 +381,25 @@ populatePageWLinks = function() {
       console.log("!!!!!-1-x-1");
       */
       
+      let likeCountVal = $this.parent().parent().parent().find(".likeCount").text();
+      
       let postID = $this.parent().parent().parent()[0].className.split(" ");
-      /*
-      console.log("postID NEXT")
-      console.log(postID[1]);
-      console.log(postID[3]);
-      console.log("postID PRIOR")
-      */
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
       postID = postID[3]; //DOM ID OF DIV BEING CLICKED HERE
       let isPostLikedAlready = $this[0].className.split(" ");
-      console.log("!_!_!")
-      console.log(isPostLikedAlready)
-      console.log("!_!_!")
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
-      console.log(isPostLikedAlready)
-      console.log("!_!_!")
+      
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
+              $this.parent().parent().parent().find('.likeCount').text(likeCountVal+1);
+              /*
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
               });
+              */
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
               $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
               
@@ -432,6 +427,7 @@ populatePageWLinks = function() {
                       if (responseURL === url && responseList[link].author === pAuth) {
                           let pKey = link;
                           let res = constructJson(pKey);
+                          
                           firebase.database().ref('postLikes/' + outputUName).update(res).then(function() {
                               setTimeout(function() {
                                   $('#linkDisplayDiv').html("");
@@ -491,7 +487,6 @@ populatePageWLinks = function() {
 	                        }, 1000);
 	                  
                       }));
-                      
                       break;
                       }
 	              }
