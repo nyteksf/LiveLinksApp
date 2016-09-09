@@ -452,7 +452,7 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               
               console.log(likeCountVal+" likecountval");
-              console.log(typeof likeCountVal);
+              let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
                             
               if (likeCountVal <= "0") {
                   alert("ERR");
@@ -461,13 +461,15 @@ populatePageWLinks = function() {
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NO.
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
-              }
-              let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
-              alert(curLikeCount);
-              
-              $this.parent().parent().parent().find('.likeCount').html(function(i, val) { //WAS .HTML NOT .TEXT BEFORE
-                  return (+val)-1;
-              }); //UPDATE OF LIKECOUNT COMPLETE
+              } else {
+                  alert(curLikeCount);
+                  $this.parent().parent().parent().find('.likeCount').html(curLikeCount-1);
+                  /*
+                  $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
+                      return (+val)-1;
+                  }
+                  */
+              }); 
               
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
@@ -486,8 +488,8 @@ populatePageWLinks = function() {
                         console.log(firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {
                   
 	                        setTimeout(function() {
-	                          $('#linkDisplayDiv').html("");
-	                          location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
+	                          //$('#linkDisplayDiv').html("");
+	                          //location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
 	                        }, 1000);
 	                  
                       }));
@@ -496,8 +498,7 @@ populatePageWLinks = function() {
                       }
 	              }
 	            });
-              //CLEAN UP: REMOVE USERNAME FROM LIKEUSER DIV -OR- REFRESH PAGE SO CANNOT CLICK AGAIN
-              return;
+                return;
           }
       } else {
           alert("ERROR--NEITHER CASE WORKED");
