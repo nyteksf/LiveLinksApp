@@ -45,6 +45,11 @@ span#greetTxt {
   left: 2px;
 }
 
+#okBtnModal:hover {
+  border: red;
+  color: lightred;
+'}
+
 #passResetLnk {
   position: relative;
   top: 12px;
