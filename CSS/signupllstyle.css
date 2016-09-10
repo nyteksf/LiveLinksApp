@@ -45,7 +45,7 @@ span#greetTxt {
   left: 2px;
 }
 
-#okBtnModal:hover {
+#optionModalOkBtn:hover {
   border: red;
   color: lightred;
 }
