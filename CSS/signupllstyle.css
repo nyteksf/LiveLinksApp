@@ -98,9 +98,9 @@ span#greetTxt {
     color: darkred !important;
   }
     
-  #fuckyoubro:hover,
-  #fuckyoubro:focus,
-  #fuckyoubro:active {
+  #optionModalOkBtn:hover,
+  #optionModalOkBtn:focus,
+  #optionModalOkBtn:active {
     background: #FFFFFF !important;
     border: black !important;
   }  
