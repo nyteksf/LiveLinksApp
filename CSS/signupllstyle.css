@@ -98,13 +98,6 @@ span#greetTxt {
     color: darkred !important;
   }
     
-  #optionModalOkBtn:hover,
-  #optionModalOkBtn:focus,
-  #optionModalOkBtn:active {
-    background: #FFFFFF !important;
-    border: black !important;
-  }  
-    
   #cancelBtnModal:hover,
   #cancelBtnModal:focus,
   #cancelBtnModal:active    {
@@ -327,6 +320,13 @@ a#passResetLnk {
   position: relative;
   left: -41%;
   width: 100px;
+}
+
+#optionModalOkBtn:hover,
+#optionModalOkBtn:focus,
+#optionModalOkBtn:active {
+  background: #FFFFFF !important;
+  border: orange !important;
 }
 
 #secondModalOkBtn {
