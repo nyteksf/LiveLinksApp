@@ -322,13 +322,6 @@ a#passResetLnk {
   width: 100px;
 }
 
-#fuckyoubro:hover,
-#fuckyoubro:focus,
-#fuckyoubro:active {
-  background: #FFFFFF !important;
-  border: orange !important;
-}
-
 #secondModalOkBtn {
   position: relative;
   font-size: 1.1em;
