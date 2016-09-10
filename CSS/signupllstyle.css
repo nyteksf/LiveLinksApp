@@ -75,11 +75,6 @@ span#greetTxt {
   width: 70px !important;
 }
 
-#optionModalOkBtn:hover {
-  color: #FFFFFF;
-  border: lightred;
-}
-
 #cancelBtnModalSecond {
   color: darkred !important;
   //font-weight: bold !important;
@@ -102,6 +97,13 @@ span#greetTxt {
     border-color: #adadad !important;
     color: darkred !important;
   }
+    
+  #fuckyoubro:hover,
+  #fuckyoubro:focus,
+  #fuckyoubro:active {
+    background: #FFFFFF;
+    border: black;
+  }  
     
   #cancelBtnModal:hover,
   #cancelBtnModal:focus,
