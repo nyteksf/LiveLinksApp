@@ -394,7 +394,9 @@ populatePageWLinks = function() {
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
-              $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())+1);
+              $this.parent().parent().parent().find('.likeCount').text(function() { 
+                  return parseInt($this.parent().parent().parent().find(".likeCount").text())+1);
+              }
               /*
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
@@ -442,6 +444,8 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
+              console.log($this.parent().parent().parent().find(".selectNumber"));
+              alert("LIKED POST LIST LOADED?")
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
