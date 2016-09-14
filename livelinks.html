@@ -414,8 +414,8 @@ populatePageWLinks = function() {
               let storedName = localStorage["user"];
               
               // ADD USER TO LIKE LIST
-              let $listContent = $this.parent().parent().parent().find(".selectNumber");
-              console.log($listContent.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
+              console.log($this.parent().parent().parent().find(".selectNumber").append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
+              $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
               
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
@@ -448,16 +448,14 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
-              
-              
-              /* 
+               
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               alert("LIKED POST LIST LOADED?")
               //console.log(likeCountVal+" likecountval");
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
-                */            
+                          
               if (likeCountVal <= "0") {
                   alert("ERR");
                   return false;
