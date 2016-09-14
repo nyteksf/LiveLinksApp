@@ -413,6 +413,10 @@ populatePageWLinks = function() {
               findIfUserExists(uidNo);
               let storedName = localStorage["user"];
               
+              // ADD USER TO LIKE LIST
+              let listContent = $this.parent().parent().parent().find(".selectNumber")[0].innerHTML()
+              console.log($this.parent().parent().parent().find(".selectNumber")[0].innerHTML(listContent+'<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>)');
+              
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
                   //CUSTOM DYNAMIC JSON KEY VALUE GENERATOR:
@@ -432,8 +436,8 @@ populatePageWLinks = function() {
                           
                           firebase.database().ref('postLikes/' + outputUName).update(res).then(function() {
                               setTimeout(function() {
-                                  $('#linkDisplayDiv').html("");
-                                  populatePageWLinks();
+                                  //$('#linkDisplayDiv').html("");
+                                  //populatePageWLinks();
                               }, 1000);
                           });
                           break;
@@ -444,12 +448,13 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
-              console.log($this.parent().parent().parent().find(".selectNumber"));
-              alert("LIKED POST LIST LOADED?")
+              
+              
+              
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
-              
+              alert("LIKED POST LIST LOADED?")
               //console.log(likeCountVal+" likecountval");
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
                             
