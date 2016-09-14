@@ -414,8 +414,8 @@ populatePageWLinks = function() {
               let storedName = localStorage["user"];
               
               // ADD USER TO LIKE LIST
-              let listContent = $this.parent().parent().parent().find(".selectNumber")[0].innerHTML();
-              console.log($this.parent().parent().parent().find(".selectNumber")[0].innerHTML(listContent+'<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>'));
+              let $listContent = $this.parent().parent().parent().find(".selectNumber");
+              console.log($listContent.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>'); 
               
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
