@@ -414,7 +414,9 @@ populatePageWLinks = function() {
               let storedName = localStorage["user"];
               
               // ADD USER TO LIKE LIST
-              console.log($this.parent().parent().parent().find(".selectNumber"));
+              console.log($this.parent().parent().parent().find(".selectNumber")
+              console.log($this.parent().parent().parent().find(".selectNumber").split("</option>"));
+              console.log($this.parent().parent().parent().find(".selectNumber").split("</option>").length);
               //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
               
@@ -449,22 +451,26 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
+	      console.log($this.parent().parent().parent().find(".selectNumber"));
                
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
-              alert("LIKED POST LIST LOADED?")
-              //console.log(likeCountVal+" likecountval");
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
                           
               if (likeCountVal <= "0") {
+        
                   alert("ERR");
+                  
                   return false;
               } else if (likeCountVal === "1") {
+                  //ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
+              
+              //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
               $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
                   /*
                   $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
@@ -674,25 +680,32 @@ populatePageWLinks = function() {
               $(this).parent().parent().parent().parent().find('.selectNumber').removeClass('fadeIn');
               $(this).parent().parent().parent().parent().find('.selectNumber').css('visibility', 'hidden');
           });
+          
+          
           let hideLikeDisp;
           $('#dispLinksDiv').delegate('div.likeIco', 'mouseenter', function(evt) {
               evt.stopPropagation();
               evt.preventDefault();
               let likeUserCount = $(this).parent().parent().find(".likeCount").text();
               if (likeUserCount === "") {
+              	
                   return false;
               } else {
                   $(this).parent().parent().find('.selectNumber').addClass('fadeIn');
                   $(this).parent().parent().find('.selectNumber').css('visibility', 'visible');
+                 
                   return true;
               }
           });
+          
           $('#dispLinksDiv').delegate('div.likeIco', 'mouseleave', function(evt) {
               evt.stopPropagation();
               evt.preventDefault();
               $(this).parent().parent().find('.selectNumber').removeClass('fadeIn');
               $(this).parent().parent().find('.selectNumber').css('visibility', 'hidden');
           });
+          
+          
           $('#dispLinksDiv').delegate('i.fa.fa-heart-o, i.fa.fa-heart', 'click', function(evt) {
               let $this = $(this);
               let $this0 = $(this)[0];
@@ -700,14 +713,19 @@ populatePageWLinks = function() {
               evt.preventDefault();
               runOneTime($this, $this0);
           });
+          
+          
           $('#menu').delegate('.ui-menu-item', 'mouseenter', function() {
               $(this).css('color', 'gray');
               $(this).find('.dropdownIco').css('color', 'gray');
           });
+          
           $('#menu').delegate('.ui-menu-item', 'mouseleave', function() {
               $(this).css('color', '#333333');
               $(this).find('.dropdownIco').css('color', '#333333');
           });
+          
+          
           let textRes;
           // CAPTURE/RECORD DATA REGARDING DELETION OF POSTS
           searchAndDestroy = function(url) {
