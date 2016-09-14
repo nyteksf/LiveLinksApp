@@ -415,7 +415,7 @@ populatePageWLinks = function() {
               
               // ADD USER TO LIKE LIST
               let $listContent = $this.parent().parent().parent().find(".selectNumber");
-              console.log($listContent.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>'); 
+              console.log($listContent.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
