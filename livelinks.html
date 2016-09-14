@@ -396,7 +396,7 @@ populatePageWLinks = function() {
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
-              }
+              });
               /*
               $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
                   return +val+1;
