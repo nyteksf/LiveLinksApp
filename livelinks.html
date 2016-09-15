@@ -414,7 +414,11 @@ populatePageWLinks = function() {
               let storedName = localStorage["user"];
               
               // ADD USER TO LIKE LIST
-              console.log($this.parent().parent().parent().find(".selectNumber"));
+              console.log(1);
+              console.log($this.parent().parent().find(".selectNumber"));
+              console.log(2);
+              console.log($this.parent().parent().parent().parent().find(".selectNumber"));
+              
               //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
               
