@@ -377,7 +377,7 @@ populatePageWLinks = function() {
       console.log($this);
       console.log($this0.className);
       console.log("---THIS---\/");
-      console.log($this.parent().parent().parent());
+      let targetPost = $this.parent().parent().parent();
       console.log("---THIS---/\\");
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
@@ -417,6 +417,8 @@ populatePageWLinks = function() {
               
               // ADD USER TO LIKE LIST
               console.log(0);
+              console.log(targetPost)
+              console.log(1);
               console.log($this.parent().parent().parent());
               
               //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
