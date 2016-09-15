@@ -372,16 +372,18 @@ $('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) {
 let thisPKey;
 populatePageWLinks = function() {
   function runOneTime($this, $this0) { //WHEN A LIKE BUTTON IS CLICKED
-      
+      /*
       console.log("!!!!-1-x-1");
       console.log($this);
       console.log($this0.className);
       console.log("---THIS---\/");
+      */	
       let targetPost = $this.parent().parent().parent();
+      /*
       console.log("---THIS---/\\");
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
-      
+      */
       
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text());
       
@@ -417,7 +419,7 @@ populatePageWLinks = function() {
               
               // ADD USER TO LIKE LIST
               console.log(0);
-              console.log(targetPost)
+              console.log(targetPost.find(".selectNumber"))
               console.log(1);
               console.log($this.parent().parent().parent());
               
