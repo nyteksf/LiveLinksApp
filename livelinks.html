@@ -377,14 +377,14 @@ populatePageWLinks = function() {
       console.log($this);
       console.log($this0.className);
       console.log("---THIS---\/");
-      */	
-      let targetPost = $this.parent().parent().parent();
-      /*
       console.log("---THIS---/\\");
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
       */
       
+      let targetPost = $this.parent().parent().parent();
+      let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").split("<option");
+      console.log(uniqueLikeCount)
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text());
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
