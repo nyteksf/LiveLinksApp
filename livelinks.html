@@ -421,7 +421,7 @@ populatePageWLinks = function() {
               console.log(0);
               console.log(targetPost.find(".selectNumber").innerHTML())
               console.log(1);
-              console.log($this.parent().parent().parent());
+              console.log(targetPost.find(".selectNumber")[0]())
               
               //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
