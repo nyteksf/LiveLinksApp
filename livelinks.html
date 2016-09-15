@@ -414,10 +414,16 @@ populatePageWLinks = function() {
               let storedName = localStorage["user"];
               
               // ADD USER TO LIKE LIST
-              console.log(1);
-              console.log($this.parent().parent().find(".selectNumber"));
+              console.log(0);
+              console.log($this);
+              console.log(1)
+              console.log($this.parent());
               console.log(2);
-              console.log($this.parent().parent().parent().parent().find(".selectNumber"));
+              console.log($this.parent().parent());
+              console.log(3);
+              console.log($this.parent().parent().parent());
+              console.log(4)
+              console.log($this.parent().parent().parent().parent());
               
               //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
@@ -453,7 +459,7 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
-	      console.log($this.parent().parent().parent().find(".selectNumber"));
+	      console.log($this.parent().parent().parent());
                
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
