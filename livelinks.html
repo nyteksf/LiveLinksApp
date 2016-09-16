@@ -399,6 +399,7 @@ populatePageWLinks = function() {
 
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
+              console.log("like added")
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
