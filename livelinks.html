@@ -384,6 +384,7 @@ populatePageWLinks = function() {
       
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
+      console.log(uniqueLikeCount.split("</option"))
       console.log(uniqueLikeCount.split("</option").slice(1))
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text());
       
