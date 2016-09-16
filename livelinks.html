@@ -454,8 +454,10 @@ populatePageWLinks = function() {
               return;
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
-              //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE"); //USER LIKED POST? RETURNS TRUE OR FALSE
+              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
 	      $this.parent().parent().parent().find(".userListed").val("false");
+	      console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
+
 	       
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
