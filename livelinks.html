@@ -457,18 +457,19 @@ populatePageWLinks = function() {
               });
               return;
           } else {
-              alert("b")
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
-              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
-	      $this.parent().parent().parent().find(".userListed").val("false");
-	      console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
-
-	       
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
-                          
+              
+                         
+              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
+    	      $this.parent().parent().parent().find(".userListed").val("false");
+	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
+	          alert("b")
+	          
+	          
               if (likeCountVal <= "0") {
         
                   alert("ERR");
