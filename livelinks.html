@@ -371,7 +371,7 @@ $('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) {
 });
 let thisPKey;
 populatePageWLinks = function() {
-  function runOneTime($this, $this0) { //WHEN A LIKE BUTTON IS CLICKED
+  function runOneTime($this, $this0) { //WHENEVER A LIKE BUTTON IS CLICKED, DO THIS:
       /*
       console.log("!!!!-1-x-1");
       console.log($this);
@@ -400,6 +400,7 @@ populatePageWLinks = function() {
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
           if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
               console.log("like added")
+              alert("a")
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
               // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
@@ -456,6 +457,7 @@ populatePageWLinks = function() {
               });
               return;
           } else {
+              alert("b")
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
 	      $this.parent().parent().parent().find(".userListed").val("false");
