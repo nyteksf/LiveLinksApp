@@ -235,10 +235,8 @@
   setTimeout(function() {
     let userID = localStorage['uid']; // = firebase.auth().currentUser.uid;
 
-    if (localStorage["lastProvider"] === "password" && localStorage["autoLogin"] === "true") {
-        let k;
-        let encryptedPW;
-        let user;
+    if (localStorage["lastProvider"] === "password") {
+    	let user;
         let userIsFound = false;
         let curUID = localStorage['uid'] || firebase.auth().currentUser.uid;
         $.getJSON('https://livelinks01125.firebaseio.com/users.json', function(userlist) {
@@ -253,23 +251,29 @@
             }
             if (!userIsFound) {
                 alert("ERR! No username created!");
-            } else {
-                /* encrypt */
-                let passToCrypt = localStorage['pw'];
-                encryptedPW = crypt.AES.encrypt(passToCrypt, k);
-
-                /* store one-use key w/ UID */
-                localStorage['pw'] = encryptedPW;
-                let encodedPW = encodeURIComponent(encryptedPW);
-                let setKey = createJSON("key", encodeURIComponent(k));
-                let uid = localStorage["uid"] || firebase.auth().currentUser.uid;
-                let setUID = createJSON("uid", uid);
-
-                firebase.database().ref('crypt/' + uid).update(setUID);
-                firebase.database().ref('crypt/' + uid).update(setKey);
             }
-        });
+    	}); 
     }
+    
+    if (localStorage["autoLogin"] === "true") {
+        let k;
+        let encryptedPW;
+        
+     /* encrypt */
+        let passToCrypt = localStorage['pw'];
+        encryptedPW = crypt.AES.encrypt(passToCrypt, k);
+
+     /* store one-use key w/ UID */
+        localStorage['pw'] = encryptedPW;
+        let encodedPW = encodeURIComponent(encryptedPW);
+        let setKey = createJSON("key", encodeURIComponent(k));
+        let uid = localStorage["uid"] || firebase.auth().currentUser.uid;
+        let setUID = createJSON("uid", uid);
+
+        firebase.database().ref('crypt/' + uid).update(setUID);
+        firebase.database().ref('crypt/' + uid).update(setKey);
+     }
+    
   }, 900);
 </script>
 
