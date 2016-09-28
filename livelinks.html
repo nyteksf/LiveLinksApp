@@ -390,11 +390,12 @@ populatePageWLinks = function() {
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
       console.log(uniqueLikeCount)
+      alert(uniqueLikeCount)
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
-      postID = postID[3]; //DOM ID OF DIV BEING CLICKED HERE
+      postID = postID[3]; //ID OF DIV BEING CLICKED HERE
       let isPostLikedAlready = $this[0].className.split(" ");
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
@@ -462,7 +463,6 @@ populatePageWLinks = function() {
               return;
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
-              alert(localStorage["user"]+" poop")
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
