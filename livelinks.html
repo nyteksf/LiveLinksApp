@@ -463,10 +463,12 @@ populatePageWLinks = function() {
               return;
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
-              $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).val("");
-              $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).className = "";
-              $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'none');
+              $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
+              $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
+              $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
+		  
+	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
               
                          
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
