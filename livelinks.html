@@ -463,6 +463,7 @@ populatePageWLinks = function() {
               return;
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
+		alert('b');
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
