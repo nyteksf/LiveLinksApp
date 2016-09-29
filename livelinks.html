@@ -403,11 +403,12 @@ populatePageWLinks = function() {
           console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE 1st"); //USER LIKED POST? RETURNS TRUE OR FALSE
 
           // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
-          if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {
-              console.log("like added")
+          if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {// ...==="false"
+              console.log("like has been added")
               alert("a")
+	      $this.parent().parent().parent().find(".userListed").val("true");
               //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
-              // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
+	      // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
               });
@@ -464,19 +465,17 @@ populatePageWLinks = function() {
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
 		alert('b');
+		console.log("like has been removed")
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
               //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
 		  
 	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
-              
                          
-              //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
-    	      //$this.parent().parent().parent().find(".userListed").val("false");
-	          //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
-	          //alert("b")
-	          
+              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
+    	      $this.parent().parent().parent().find(".userListed").val("false");
+	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
 	          
               if (likeCountVal <= "0") {
         
