@@ -386,16 +386,17 @@ populatePageWLinks = function() {
       
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
-      uniqueLikeCount = (uniqueLikeCount === undefined) ? $.noop() : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
-      console.log(uniqueLikeCount)
+      uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
+      console.log(uniqueLikeCount) // ABOVE WAS $.noop()
       alert(uniqueLikeCount)
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
       postID = postID[3]; //ID OF DIV BEING CLICKED HERE
-      let isPostLikedAlready = $this[0].className.split(" ");
-	  console.log(isPostLikedAlready+" !!!!")
+      let classNameInfo = "";	
+      let isPostLikedAlready = classNameInfo = $this[0].className.split(" ");
+      console.log(classNameInfo+" !!!!")
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
@@ -411,7 +412,7 @@ populatePageWLinks = function() {
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
               });
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
-              $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
+              //$this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
               
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
@@ -476,7 +477,7 @@ populatePageWLinks = function() {
 		//ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
-                  $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
+                  $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
               
               //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
