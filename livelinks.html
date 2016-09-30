@@ -385,7 +385,6 @@ populatePageWLinks = function() {
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
       */
-	  /*?*/
       
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
@@ -402,9 +401,9 @@ populatePageWLinks = function() {
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
           console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE 1st"); //USER LIKED POST? RETURNS TRUE OR FALSE
-
-          // DOES USER HAVE AN EXISTING LIKE ATTRIBUTED TO CUR POST?
-          if ("" + $this.parent().parent().parent().find(".userListed").val() !== "true") {// ...==="false"
+          let isUserListedInLikes = $this.parent().parent().parent().find(".userListed").val();
+          
+          if ("" + isUserListedInLikes !== "true") {// ...==="false"
               console.log("like has been added")
               alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
@@ -478,13 +477,15 @@ populatePageWLinks = function() {
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
 	          
-              if (likeCountVal <= "0") {
+              //if (likeCountVal <= "0") {
+                if (uniqueLikeCount <= "0") {  
         
                   alert("ERR");
                   
                   return false;
-              } else if (likeCountVal === "1") {
-                  //ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
+              //} else if (likeCountVal === "1") {
+               } else if (uniqueLikeCount === "1") { 
+                //ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
