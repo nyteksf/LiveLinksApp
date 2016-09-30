@@ -396,6 +396,7 @@ populatePageWLinks = function() {
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
       postID = postID[3]; //ID OF DIV BEING CLICKED HERE
       let isPostLikedAlready = $this[0].className.split(" ");
+	  console.log(isPostLikedAlready+" !!!!")
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
@@ -406,16 +407,10 @@ populatePageWLinks = function() {
               console.log("like has been added")
               alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
-              //console.log($this.parent().parent().parent().find(".userListed").val() + " VAL1");
-	      // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
+	   // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
               });
-              /*
-              $this.parent().parent().parent().find(".likeCount").html(function(i, val) {
-                  return +val+1;
-              });
-              */
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
               $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
               
@@ -468,7 +463,6 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
-              //let curLikeCount = parseInt($this.parent().parent().parent().find('.likeCount').text());
 		  
 	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
                          
@@ -488,11 +482,6 @@ populatePageWLinks = function() {
               
               //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
               $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
-                  /*
-                  $this.parent().parent().parent().find('.likeCount').html(function(i, val) {
-                      return (+val)-1;
-                  });
-                  */
               
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
