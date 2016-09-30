@@ -475,8 +475,7 @@ populatePageWLinks = function() {
               console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
-	     console.log(""+uniqueLikeCount+" =uniqueLikeCount");    
-                if (uniqueLikeCount <= 0) {  
+               if (uniqueLikeCount <= 0) {  
                   alert("ERR");
                   
                   return false;
