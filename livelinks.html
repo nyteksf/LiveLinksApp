@@ -476,15 +476,12 @@ populatePageWLinks = function() {
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
 	     console.log(""+uniqueLikeCount+" =uniqueLikeCount");    
-              //if (likeCountVal <= "0") {
                 if (uniqueLikeCount <= 0) {  
                   alert("ERR");
                   
                   return false;
-              //} else if (likeCountVal === "1") {
                } else if (uniqueLikeCount === 1) { 
-                alert("WHO DOESNT THIS HIDE LIKECOUNT AND CHANGE ICON");
-		       //ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
+		//ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="fa fa-heart-o" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
