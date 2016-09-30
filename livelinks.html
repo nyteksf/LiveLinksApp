@@ -37,7 +37,7 @@
       </div>
 
       <div id="containUNameSearch">
-        <input type="text" id="newUsernameInput" placeholder="New Username Here..."></input>
+        <input type="text" id="newUsernameInput" placeholder="New Username Here..." />
         <span id="validName"> - Available</span>
         <span id="invalidName"> - Unavailable</span>
       </div>
@@ -65,7 +65,6 @@
 
 
   <div id="changeEmail" title="Change Primary Email">
-    <p>
       <div id="curEmailDivWrapper">
         <span id="curEmailOutput">Current Email:</span>
         <div id="curEmailDispBox"></div>
@@ -73,7 +72,6 @@
       <div id="newEmailInputWrapper">
         <input type="text" id="newEmailInput" placeholder="New Primary Email..." />
       </div>
-    </p>
   </div>
 
 
@@ -385,6 +383,7 @@ populatePageWLinks = function() {
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
       */
+	  /* - */
       
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
@@ -476,10 +475,9 @@ populatePageWLinks = function() {
               console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
-	          
+	     console.log(uniqueLikeCount+" =uniqueLikeCount");    
               //if (likeCountVal <= "0") {
                 if (uniqueLikeCount <= "0") {  
-        
                   alert("ERR");
                   
                   return false;
