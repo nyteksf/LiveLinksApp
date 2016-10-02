@@ -383,7 +383,6 @@ populatePageWLinks = function() {
       console.log($this.parent().parent().parent()[0].className);
       console.log("!!!!!-1-x-1");
       */
-      
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
@@ -397,9 +396,12 @@ populatePageWLinks = function() {
       let classNameInfo = "";
 	  
       let isPostLikedAlready = classNameInfo = $this[0].className.split(" ");
-      	  console.log("!_-!");
-	  console.log(classNameInfo);
-	  console.log("!_-!");
+      let indexOfIcon = classNameInfo.indexOf("fa-heart") || classNameInfo.indexOf("fa-heart-o");
+      	  
+	  //console.log("!_-!");
+	  //classNameInfo.splice(indexOfIcon,1);
+	  //console.log(classNameInfo);
+	  //console.log("!_-!");
 	  
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
@@ -411,13 +413,14 @@ populatePageWLinks = function() {
               console.log("like has been added")
               alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
+		  
 	   // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
               $this.parent().parent().parent().find('.likeCount').text(function() { 
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
               });
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
               //$this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
-		  
+	      classNameInfo.splice(indexOfIcon, 1, "fa-heart");
               $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>');
 		  
               // GATHER POSTED LINK META-DATA:
@@ -480,6 +483,7 @@ populatePageWLinks = function() {
                   
                   return false;
                } else if (uniqueLikeCount === 1) { 
+		  classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
 		//ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').hide();
                   $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
