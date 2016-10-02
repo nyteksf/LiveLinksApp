@@ -427,7 +427,7 @@ populatePageWLinks = function() {
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
-		  $this.parent().html('<i class="'classNameInfo'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
+		  $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
               }
 	       
 
