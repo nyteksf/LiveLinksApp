@@ -416,7 +416,8 @@ populatePageWLinks = function() {
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-
+		
+		  uniqueLikeCount++;
 		  return parseInt($this.parent().parent().parent().find(".likeCount").text()+1);
               });	  
 		  
@@ -428,6 +429,9 @@ populatePageWLinks = function() {
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
+		  console.log("!_-1!!!--1")
+		  console.log(classNameInfo+" SHOULD BE SWITCHED TO FA-HEART");
+		  console.log("!_-1!!!--1")
 		  $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
               }     
 		  
