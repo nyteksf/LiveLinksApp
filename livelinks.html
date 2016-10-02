@@ -431,6 +431,14 @@ populatePageWLinks = function() {
 		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
 		      classNameInfo = classNameInfo.toString();
+		       
+		       for(let c = 0; c < classNameInfo.length; c++) {
+		           let curChar = classNameInfo[c];
+                   
+                   if (curChar === ",") {
+                      alert(",")    
+                   }
+		       }
 		  console.log("!_-1!!!--1")
 		  console.log(typeof classNameInfo+" SHOULD BE SWITCHED TO FA-HEART");
 		  console.log("!_-1!!!--1")
