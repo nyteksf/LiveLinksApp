@@ -413,15 +413,24 @@ populatePageWLinks = function() {
               console.log("like has been added")
               alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
-		  
-	   // IF NOT, ADD 1 LIKE AND CHANGE THE ICON:
+
+	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
-              });
-              $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
-              //$this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
-	      classNameInfo.splice(indexOfIcon, 1, "fa-heart");
-              $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>');
+              });	  
+		  
+	      if (uniqueLikeCount <= 0) {  
+                  alert("ERR");
+                  
+                  return false;
+               } else if (uniqueLikeCount === 1) { 
+	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
+		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
+	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
+		  $this.parent().html('<i class="'classNameInfo'" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
+              }
+	       
+
 		  
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
