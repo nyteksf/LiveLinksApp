@@ -420,7 +420,7 @@ populatePageWLinks = function() {
               });	  
 		  
 	      if (uniqueLikeCount <= 0) {  
-                  alert("ERR");
+                  alert("ERR LIKE");
                   
                   return false;
                } else if (uniqueLikeCount === 1) { 
@@ -488,7 +488,7 @@ populatePageWLinks = function() {
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
                if (uniqueLikeCount <= 0) {  
-                  alert("ERR");
+                  alert("ERR UNLIKE");
                   
                   return false;
                } else if (uniqueLikeCount === 1) { 
