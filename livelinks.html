@@ -386,8 +386,10 @@ populatePageWLinks = function() {
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
+      
       console.log(uniqueLikeCount) // ABOVE WAS $.noop()
-      alert(uniqueLikeCount)
+      alert(uniqueLikeCount+" = uniqueLikeCount")
+      
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
@@ -396,13 +398,11 @@ populatePageWLinks = function() {
       let classNameInfo = "";
 	  
       let isPostLikedAlready = classNameInfo = $this[0].className.split(" ");
-      let indexOfIcon = classNameInfo.indexOf("fa-heart") || classNameInfo.indexOf("fa-heart-o");
-      	  
-	  //console.log("!_-!");
-	  //classNameInfo.splice(indexOfIcon,1);
-	  //console.log(classNameInfo);
-	  //console.log("!_-!");
-	  
+	
+   // GRAB LOCATION OF ICON IN CLASSNAME ARRAY  
+      let indexOfIcon = classNameInfo.indexOf("fa-heart"); 
+      indexOfIcon = (indexOfIcon === -1) ? classNameInfo.indexOf("fa-heart-o") : $.noop();
+      	 
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
@@ -428,6 +428,7 @@ populatePageWLinks = function() {
                } else if (uniqueLikeCount === 1) { 
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
+		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
 		  console.log("!_-1!!!--1")
 		  console.log(classNameInfo+" SHOULD BE SWITCHED TO FA-HEART");
