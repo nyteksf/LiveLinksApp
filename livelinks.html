@@ -429,7 +429,8 @@ populatePageWLinks = function() {
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
 		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
-	          classNameInfo.splice(indexOfIcon, 1, "fa-heart").split(",");
+	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
+		      classNameInfo = classNameInfo.split(",");
 		  console.log("!_-1!!!--1")
 		  console.log(classNameInfo+" SHOULD BE SWITCHED TO FA-HEART");
 		  console.log("!_-1!!!--1")
