@@ -412,8 +412,10 @@ populatePageWLinks = function() {
                   return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
               });
               $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
-              $this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
-              
+              //$this.parent().html('<i class="' + postAuth + ' fa fa-heart" aria-hidden="true"></i>');
+		  
+              $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>');
+		  
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
               let pAuth = cN[0];
