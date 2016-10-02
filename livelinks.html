@@ -394,9 +394,9 @@ populatePageWLinks = function() {
       let postID = $this.parent().parent().parent()[0].className.split(" ");
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
       postID = postID[3]; //ID OF DIV BEING CLICKED HERE
-      let classNameInfo = "";	
-      let isPostLikedAlready = classNameInfo = $this[0].className.split(" ");
-      console.log(classNameInfo.split(",")+" !!!!")
+      let classNameInfo = $this[0].className;	
+      let isPostLikedAlready = $this[0].className.split(" ");
+      console.log(classNameInfo)
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
