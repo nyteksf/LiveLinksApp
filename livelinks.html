@@ -522,14 +522,10 @@ populatePageWLinks = function() {
               
               //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
               //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
-              // ADD 1 TO TOTAL COUNT OF LIKES:	  
-              $this.parent().parent().parent().find('.likeCount').text(function() { 
-		  let numOfLikes = parseInt($this.parent().parent().parent().find(".likeCount").text());
-		      console.log(numOfLikes+" 8=D")
-		      alert("anal sack")
-		  return numOfLikes-1;
+              // SUB 1 FROM TOTAL COUNT OF LIKES:	  
+              $this.parent().parent().parent().find('.likeCount').text("0");
               });
-		  alert("shitsweats");
+	      
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
               let auth 	    = cNm2[0];
