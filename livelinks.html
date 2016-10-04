@@ -528,7 +528,13 @@ populatePageWLinks = function() {
 	      	alert("ASSHOLE")
 		return parseInt($this.parent().parent().parent().find('.likeCount').text())-1;
 	      });*/
-	      $this.parent().parent().parent().find('.likeCount').html(parseInt(likeCountVal)-1);
+	      //$this.parent().parent().parent().find('.likeCount').text(uniqueLikeCount-1);
+		  
+		  $this.parent().parent().parent().find('.likeCount').text(function() { 
+		
+		      return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;
+              });	
+		  
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
               let auth 	    = cNm2[0];
