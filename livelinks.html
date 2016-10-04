@@ -524,7 +524,9 @@ populatePageWLinks = function() {
               //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
               //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
               // SUB 1 FROM TOTAL COUNT OF LIKES:	  
-	      $this.parent().parent().parent().find('.likeCount').text(uniqueLikeCount-1);
+	      $this.parent().parent().parent().find('.likeCount').text(function() {
+		      return uniqueLikeCount-1
+	      });
 		/*  
 		  $this.parent().parent().parent().find('.likeCount').text(function() { 
 		
