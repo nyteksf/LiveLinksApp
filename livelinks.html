@@ -510,7 +510,7 @@ populatePageWLinks = function() {
 		  classNameInfo.splice(indexOfIcon, 1, "fa-heart-o").join(" ");
 		//ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   //$this.parent().parent().parent().find(".selectNumber").html('').hide();
-                  $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
+                  //$this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
               
