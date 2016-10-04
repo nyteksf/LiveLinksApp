@@ -387,8 +387,8 @@ populatePageWLinks = function() {
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
       
-      console.log(uniqueLikeCount) // ABOVE WAS $.noop()
-      alert(uniqueLikeCount+" = uniqueLikeCount")
+      //console.log(uniqueLikeCount) // ABOVE WAS $.noop()
+      //alert(uniqueLikeCount+" = uniqueLikeCount")
       
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
@@ -524,11 +524,11 @@ populatePageWLinks = function() {
               //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
               //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
               // SUB 1 FROM TOTAL COUNT OF LIKES:	  
-              $this.parent().parent().parent().find('.likeCount').html(function() {
+              /*$this.parent().parent().parent().find('.likeCount').html(function() {
 	      	alert("ASSHOLE")
 		return parseInt($this.parent().parent().parent().find('.likeCount').text())-1;
-	      });
-              
+	      });*/
+	      $this.parent().parent().parent().find('.likeCount').html(parseInt(likeCountVal)-1);
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
               let auth 	    = cNm2[0];
