@@ -523,7 +523,7 @@ populatePageWLinks = function() {
               //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
               // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-		  let numOfLikes = parseInt($this.parent().parent().parent().find(".likeCount").text();
+		  let numOfLikes = parseInt($this.parent().parent().parent().find(".likeCount").text());
 		  return numOfLikes-1;
               });
 		  
