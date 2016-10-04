@@ -432,14 +432,14 @@ populatePageWLinks = function() {
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
 		      classNameInfo = classNameInfo.toString();
 		       let counterrr = 0;
-		       for(let c = 0; c < classNameInfo.length; c++) {
+		       /*for(let c = 0; c < classNameInfo.length; c++) {
 		           let curChar = classNameInfo[c];
                    
 			   if (curChar === ",") {
 			      curChar.replaceAll(","," ");   
 			   }
-		       }
-		       //classNameInfo.join(",");
+		       }*/
+		       classNameInfo.replaceAll(","," ");
 		  console.log("!_-1!!!--1")
 		  console.log(classNameInfo+" SHOULD BE SWITCHED TO FA-HEART");
 		  console.log("!_-1!!!--1")
