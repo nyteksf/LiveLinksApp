@@ -411,7 +411,7 @@ populatePageWLinks = function() {
           
           if ("" + isUserListedInLikes !== "true") {// ...==="false"
               console.log("like has been added")
-              alert("a")
+              //alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
@@ -491,7 +491,7 @@ populatePageWLinks = function() {
               return;
           } else {
               //FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
-		alert('b');
+		//alert('b');
 		console.log("like has been removed")
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
