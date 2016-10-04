@@ -436,7 +436,7 @@ populatePageWLinks = function() {
 		           let curChar = classNameInfo[c];
                    
 			   if (curChar === ",") {
-			      curChar.replace(/[,]/, " ")    
+			      curChar.replaceAll(","," ");   
 			   }
 		       }
 		       //classNameInfo.join(",");
