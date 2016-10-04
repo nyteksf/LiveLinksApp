@@ -499,10 +499,11 @@ populatePageWLinks = function() {
 		  
 	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
                          
-              console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
+              //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
     	      $this.parent().parent().parent().find(".userListed").val("false");
-	          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
-               if (uniqueLikeCount <= 0) {  
+	      //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
+               
+		  if (uniqueLikeCount <= 0) {  
                   alert("ERR UNLIKE");
                   
                   return false;
