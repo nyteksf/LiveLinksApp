@@ -387,9 +387,6 @@ populatePageWLinks = function() {
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
       
-      //console.log(uniqueLikeCount) // ABOVE WAS $.noop()
-      //alert(uniqueLikeCount+" = uniqueLikeCount")
-      
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
       let postID = $this.parent().parent().parent()[0].className.split(" ");
@@ -418,7 +415,11 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find('.likeCount').text(function() { 
 		
 		  uniqueLikeCount++;
-		  return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;
+		      if($this.parent().parent().parent().find(".likeCount").text() !== undefined) {
+		      	return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
+		      } else {
+		      	return 1;
+		      }
               });	  
 		  
 	      if (uniqueLikeCount < 0) {  
@@ -524,7 +525,7 @@ populatePageWLinks = function() {
               //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
               // SUB 1 FROM TOTAL COUNT OF LIKES:	  
 	      $this.parent().parent().parent().find('.likeCount').text(function() {
-		      return uniqueLikeCount-1
+		      return uniqueLikeCount-1;
 	      });
 		/*  
 		  $this.parent().parent().parent().find('.likeCount').text(function() { 
