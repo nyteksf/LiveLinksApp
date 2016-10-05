@@ -413,7 +413,7 @@ populatePageWLinks = function() {
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-		console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT)
+		console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT")
 		  uniqueLikeCount++;
 		      if(uniqueLikeCount > 1) {
 		      	return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
@@ -523,7 +523,7 @@ populatePageWLinks = function() {
 		  console.log("fuckfuckfuck")
 		  
 		  
-		  console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT)
+		  console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT")
 		  
 			      if(uniqueLikeCount < 0) {
 		      alert("ERR: NEGATIVE LIKE COUNT");
