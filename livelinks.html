@@ -418,7 +418,7 @@ populatePageWLinks = function() {
 		      if(uniqueLikeCount > 1) {
 		      	return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
 		      } else {
-			      let fuck = $this.parent().parent().parent().find(".likeCount").text()
+			      let fuck = parseInt($this.parent().parent().parent().find(".likeCount").text())
 			      console.log(fuck)
 		      	return 1;
 		      }
