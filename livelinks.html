@@ -531,7 +531,17 @@ populatePageWLinks = function() {
 		  console.log(uniqueLikeCount)
 		  console.log("fuckfuckfuck")
 		  
-	      $this.parent().parent().parent().find('.likeCount').text(function() { 
+		  if(uniqueLikeCount < 0) {
+		      alert("ERR: NEGATIVE LIKE COUNT");
+		  }
+		  else if(uniqueLikeCount > 1) {
+	              alert("h0h0h0h000--BACK TO ZERO WE GO!")
+		      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
+		  } else {
+		      alert("REDUCED BY 1!")
+		      $this.parent().parent().parent().find(".likeCount").text("0");
+		  }
+/*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
 		  if(uniqueLikeCount < 0) {
 		      alert("ERR: NEGATIVE LIKE COUNT");
@@ -544,7 +554,7 @@ populatePageWLinks = function() {
 			  alert("REDUCED BY 1!")
 		      return 0;
 		  }
-              });
+              }); */
 		/*  
 		  $this.parent().parent().parent().find('.likeCount').text(function() { 
 		
