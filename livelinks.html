@@ -413,7 +413,7 @@ populatePageWLinks = function() {
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-		console.log($this.parent().parent().parent().find(".likeCount").text())
+		console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT)
 		  uniqueLikeCount++;
 		      if(uniqueLikeCount > 1) {
 		      	return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
@@ -431,17 +431,8 @@ populatePageWLinks = function() {
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
 		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
-		  classNameInfo = classNameInfo.join(" ");     
-		      //classNameInfo = classNameInfo.toString();
+		  classNameInfo = classNameInfo.join(" ");
 		       let counterrr = 0;
-		       /*for(let c = 0; c < classNameInfo.length; c++) {
-		           let curChar = classNameInfo[c];
-                   
-			   if (curChar === ",") {
-			      curChar.replaceAll(","," ");   
-			   }
-		       }*/
-		       //classNameInfo = classNameInfo.join(",");
 		  console.log("!_-1!!!--1")
 		  console.log(classNameInfo);
 		  console.log("!_-1!!!--1")
@@ -531,7 +522,10 @@ populatePageWLinks = function() {
 		  console.log(uniqueLikeCount)
 		  console.log("fuckfuckfuck")
 		  
-		  if(uniqueLikeCount < 0) {
+		  
+		  console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT)
+		  
+			      if(uniqueLikeCount < 0) {
 		      alert("ERR: NEGATIVE LIKE COUNT");
 		  }
 		  else if(uniqueLikeCount > 1) {
