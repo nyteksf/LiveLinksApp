@@ -413,8 +413,6 @@ populatePageWLinks = function() {
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-	          console.log($this.parent().parent().parent().find(".likeCount").html()+"LIKECOUNT HTML")
-		  console.log($this.parent().parent().parent().find(".likeCount").innerHTML()+"LIKECOUNT INNERHTML")
 		  uniqueLikeCount++;
 		  if(uniqueLikeCount > 1) {
 		      	
@@ -520,15 +518,8 @@ populatePageWLinks = function() {
               // SUB 1 FROM TOTAL COUNT OF LIKES:	  
 	     /* $this.parent().parent().parent().find('.likeCount').text(function() {
 		      return uniqueLikeCount-1;
-	      }); */
-		  console.log("fuckfuckfuck")
-		  console.log(uniqueLikeCount)
-		  console.log("fuckfuckfuck")
-		  
-		  
-		  console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT")
-		  
-			      if(uniqueLikeCount < 0) {
+	      }); */		  
+		  if(uniqueLikeCount < 0) {
 		      alert("ERR: NEGATIVE LIKE COUNT");
 		  }
 		  else if(uniqueLikeCount > 1) {
@@ -536,7 +527,10 @@ populatePageWLinks = function() {
 		      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
 		  } else {
 		      alert("REDUCED BY 1!")
-		      console.log($this.parent().parent().parent().find(".likeCount").text());
+		      console.log($this.parent().find(".likeCount"));
+		      console.log($this.parent().parent().find(".likeCount"));
+		      console.log($this.parent().parent().parent().find(".likeCount"));
+	   	      console.log($this.parent().parent().parent().parent().find(".likeCount"));
 		      $this.parent().parent().parent().find(".likeCount").text(function() {
 		          return 0;
 		      });
