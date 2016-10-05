@@ -539,7 +539,9 @@ populatePageWLinks = function() {
 		      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
 		  } else {
 		      alert("REDUCED BY 1!")
-		      $this.parent().parent().parent().find(".likeCount").text("0");
+		      $this.parent().parent().parent().find(".likeCount").text(function() {
+		          return 0;
+		      });
 		  }
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
