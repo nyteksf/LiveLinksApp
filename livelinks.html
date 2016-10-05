@@ -530,12 +530,18 @@ populatePageWLinks = function() {
 		  console.log("fuckfuckfuck")
 		  console.log(uniqueLikeCount)
 		  console.log("fuckfuckfuck")
+		  
 	      $this.parent().parent().parent().find('.likeCount').text(function() { 
-		  if(uniqueLikeCount > 1) {
-			  alert("h0h0h0h000")
+		      console.log('HAIL SATAN')
+		  if(uniqueLikeCount < 0) {
+		      alert("ERR: NEGATIVE LIKE COUNT");
+		  }
+		  else if(uniqueLikeCount > 1) {
+	              alert("h0h0h0h000--BACK TO ZERO WE GO!")
+		      
 		      return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;	
 		  } else {
-			  alert("hahaha")
+			  alert("REDUCED BY 1!")
 		      return 0;
 		  }
               });
