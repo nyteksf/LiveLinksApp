@@ -413,16 +413,17 @@ populatePageWLinks = function() {
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() { 
-		console.log($this.parent().parent().parent().find(".likeCount").text()+"LIKECOUNT TXT")
+	          console.log($this.parent().parent().parent().find(".likeCount").html()+"LIKECOUNT HTML")
+		  console.log($this.parent().parent().parent().find(".likeCount").innerHTML()+"LIKECOUNT INNERHTML")
 		  uniqueLikeCount++;
-		      if(uniqueLikeCount > 1) {
-		      	return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
-		      } else {
-			      let fuck = $this.parent().parent().parent().find(".likeCount").html() || $this.parent().parent().parent().find(".likeCount").innerHTML();
-			      console.log(fuck)
-		      	return 1;
-		      }
-              });	  
+		  if(uniqueLikeCount > 1) {
+		      	
+		      return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
+		  } else {
+		      	
+		      return 1;
+		  }
+            });	  
 		  
 	      if (uniqueLikeCount < 0) {  
                   alert("ERR LIKE");
