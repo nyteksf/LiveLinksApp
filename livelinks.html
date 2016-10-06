@@ -527,13 +527,15 @@ populatePageWLinks = function() {
 		      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
 		  } else {
 		      alert("REDUCED BY 1!")
-		      console.log($this.parent().find(".likeCount"));
-		      console.log($this.parent().parent().find(".likeCount"));
-		      console.log($this.parent().parent().parent().find(".likeCount"));
-	   	      console.log($this.parent().parent().parent().parent().find(".likeCount"));
 		      $this.parent().parent().parent().find(".likeCount").text(function() {
-		          return 0;
+		          return "0";
 		      });
+			  
+			  $this.parent().parent().parent().find(".likeCount").innerHTML("0");
+			  $this.parent().parent().parent().find(".likeCount").innerText("0");
+		      $this.parent().parent().parent().find(".likeCount").outerText(function() {
+		          return "0";
+		      });	  
 		  }
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
