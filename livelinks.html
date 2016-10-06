@@ -523,13 +523,16 @@ populatePageWLinks = function() {
 		      alert("ERR: NEGATIVE LIKE COUNT");
 		  }
 		  else if(uniqueLikeCount > 1) {
-	              alert("h0h0h0h000--BACK TO ZERO WE GO!")
-		      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
+	              alert("h0h0h0--over 1 like counted!");
+                                $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
 		  } else {
-		      alert("REDUCED BY 1!")
-		      $this.parent().parent().parent().find(".likeCount").text(function() {
+		      alert("COUNT OF ONE--NOW REDUCED BY ONE!")
+		      /* $this.parent().parent().parent().find(".likeCount").text(function() {
 		          return "0";
 		      });
+                      */
+                      $this.parent().parent().parent().find('.likeCount').text("0");	
+    
 		  }
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
