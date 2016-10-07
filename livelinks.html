@@ -496,8 +496,6 @@ populatePageWLinks = function() {
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	      //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
                
-		  		 console.log($this.parent().parent().parent().find('.likeCount').text())
-
 		  if (uniqueLikeCount <= 0) {  
                   alert("ERR UNLIKE");
                   
@@ -536,6 +534,7 @@ populatePageWLinks = function() {
 		      
                       $this.parent().parent().parent().find('.likeCount').html("0");	
 		  }
+		  console.log($this.parent().parent().parent().find('.likeCount').text())
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
 		  if(uniqueLikeCount < 0) {
