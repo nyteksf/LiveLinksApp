@@ -496,13 +496,13 @@ populatePageWLinks = function() {
     	      $this.parent().parent().parent().find(".userListed").val("false");
 	      //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
                
+		  		 console.log($this.parent().parent().parent().find('.likeCount').text())
+
 		  if (uniqueLikeCount <= 0) {  
                   alert("ERR UNLIKE");
                   
                   return false;
-               } else if (uniqueLikeCount === 1) { 
-		 console.log($this.parent().parent().parent().find('.likeCount').text())
-		       
+               } else if (uniqueLikeCount === 1) { 		       
 		 classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
 		 classNameInfo = classNameInfo.join(" ");		       
 		 console.log("#(@#)($@#$!!!!!!!")
@@ -535,7 +535,6 @@ populatePageWLinks = function() {
                       */
 		      
                       $this.parent().parent().parent().find('.likeCount').html("0");	
-    
 		  }
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
