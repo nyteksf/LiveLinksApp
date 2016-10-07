@@ -501,6 +501,8 @@ populatePageWLinks = function() {
                   
                   return false;
                } else if (uniqueLikeCount === 1) { 
+		 console.log($this.parent().parent().parent().find('.likeCount').text())
+		       
 		 classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
 		 classNameInfo = classNameInfo.join(" ");		       
 		 console.log("#(@#)($@#$!!!!!!!")
@@ -531,7 +533,7 @@ populatePageWLinks = function() {
 		          return "0";
 		      });
                       */
-		      console.log($this.parent().parent().parent().find('.likeCount').text())
+		      
                       $this.parent().parent().parent().find('.likeCount').html("0");	
     
 		  }
