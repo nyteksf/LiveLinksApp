@@ -524,7 +524,7 @@ populatePageWLinks = function() {
 		  }
 		  else if(uniqueLikeCount > 1) {
 	              alert("h0h0h0--over 1 like counted!");
-                                $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
+                                //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
 		  } else {
 		      alert("COUNT OF ONE--NOW REDUCED BY ONE!")
 		      /* $this.parent().parent().parent().find(".likeCount").text(function() {
@@ -532,9 +532,10 @@ populatePageWLinks = function() {
 		      });
                       */
 		      
-                      $this.parent().parent().parent().find('.likeCount').html("0");	
+                      //$this.parent().parent().parent().find('.likeCount').html("0");	
 		  }
-		  console.log($this.parent().parent().parent().find('.likeCount').text())
+              		  console.log($this.parent().parent().parent().find('.likeCount').text())
+
 /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
 		  if(uniqueLikeCount < 0) {
