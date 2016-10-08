@@ -374,15 +374,6 @@ $('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) {
 let thisPKey;
 populatePageWLinks = function() {
   function runOneTime($this, $this0) { //WHENEVER A LIKE BUTTON IS CLICKED, DO THIS:
-      /*
-      console.log("!!!!-1-x-1");
-      console.log($this);
-      console.log($this0.className);
-      console.log("---THIS---\/");
-      console.log("---THIS---/\\");
-      console.log($this.parent().parent().parent()[0].className);
-      console.log("!!!!!-1-x-1");
-      */
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
@@ -408,7 +399,6 @@ populatePageWLinks = function() {
           
           if ("" + isUserListedInLikes !== "true") {// ...==="false"
               console.log("like has been added")
-              //alert("a")
 	      $this.parent().parent().parent().find(".userListed").val("true");
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
@@ -429,26 +419,19 @@ populatePageWLinks = function() {
                   return false;
                } else if (uniqueLikeCount === 1) {
 		  let storedName = localStorage["user"];
-		  //targetPost.find(".selectNumber").append('<option class="'+storedName+'" value="'+storedName+'">'+storedName+'</option>');
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
-		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
 	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
 		  classNameInfo = classNameInfo.join(" ");
 		       let counterrr = 0;
-		  console.log("!_-1!!!--1")
-		  console.log(classNameInfo);
-		  console.log("!_-1!!!--1")
                   
 		  //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
                   //  ONLY SHOW CURUSER IN THIS CASE:
                       let $userDropToAdd = document.createElement("div"); // CREATE DIV
                       $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
                       let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
-	         	      let post = $this; // WHERE IT GOES
+	              let post = $this; // WHERE IT GOES
                    
-                      console.log($this.parent())
-
               	      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
                       el.className = "firstOptionDD";
                       el.textContent = " ";
@@ -457,16 +440,10 @@ populatePageWLinks = function() {
 		      
 		      el = null; // RESET EL
                         
-              targetPost.append($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
+             	      targetPost.append($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
               
-              $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
-     
-              setTimeout(function() {
-                  //$('#linkDisplayDiv').html("");
-	              //location.reload(); //OR USE AJAX VIA JQUERY => 
-		          //populatePageWLinks();
-              },1400);
-	       }
+              	      $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
+	      }
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
               let pAuth = cN[0];
@@ -478,7 +455,6 @@ populatePageWLinks = function() {
               // ADD USER TO LIKE LIST
               targetPost.find(".selectNumber").append('<option class="'+storedName+'" value="'+storedName+'">'+storedName+'</option>');
               
-              //.append('<option class="'+localStorage["user"]+'" value="'+localStorage["user"]+'">'+localStorage["user"]+'</option>')); 
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
               
               //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
