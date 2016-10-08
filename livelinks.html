@@ -439,7 +439,6 @@ populatePageWLinks = function() {
 		  console.log("!_-1!!!--1")
 		  console.log(classNameInfo);
 		  console.log("!_-1!!!--1")
-		  $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
                   
 		  //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
                   //  ONLY SHOW CURUSER IN THIS CASE:
@@ -466,12 +465,14 @@ populatePageWLinks = function() {
 		       
 		      el = null;
                      
-              // post.appendChild($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
-                   
+              targetPost.appendChild($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
+              
+              $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
+     
               setTimeout(function() {
-                  //$('#linkDisplayDiv').html("");
+                  $('#linkDisplayDiv').html("");
 	              //location.reload(); //OR USE AJAX VIA JQUERY => 
-		          //populatePageWLinks();
+		          populatePageWLinks();
               },1400);
 	       }
               // GATHER POSTED LINK META-DATA:
