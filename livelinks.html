@@ -539,24 +539,22 @@ populatePageWLinks = function() {
 		       
 	      // ADD 1 TO TOTAL COUNT OF LIKES:	  
               $this.parent().parent().parent().find('.likeCount').text(function() {
-		      console.log("!!!")
-			console.log(uniqueLikeCount)
-			console.log("!!!")
+		        console.log("!!!")
+		        console.log(uniqueLikeCount)
+			    console.log("!!!")
 		  if(uniqueLikeCount > 1) {
-		      	alert("bloop")
-		      return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;	
+
+		        return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;
 		  } else {
-		      	alert("bleep")
-		      return 0;
+		     // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
+          	    $this.parent().parent().parent().find(".selectNumber").html('').remove();
+         	    $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
+         	    $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
+              
+		        return 0;
 		  }
               });	
-      
-	  // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
-         $this.parent().parent().parent().find(".selectNumber").html('').remove();
-         //$this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
-         $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
-         //WAS }
-		  
+
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
               let auth 	    = cNm2[0];
