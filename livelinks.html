@@ -428,6 +428,7 @@ populatePageWLinks = function() {
                   
                   return false;
                } else if (uniqueLikeCount === 1) {
+		  let storedName = localStorage["user"];
 		  targetPost.find(".selectNumber").append('<option class="'+storedName+'" value="'+storedName+'">'+storedName+'</option>');
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
