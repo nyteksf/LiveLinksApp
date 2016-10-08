@@ -438,27 +438,35 @@ populatePageWLinks = function() {
 		  console.log(classNameInfo);
 		  console.log("!_-1!!!--1")
 		  $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
-                  //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
+                  
+		  //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
                   //  ONLY SHOW CURUSER IN THIS CASE:
-                      let $userToAdd = document.createElement("div"); // CREATE DIV
-                      $userToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
-                      let user = localStorage["user"]; // INPUT UNAME FOR USE
+                      let $userDropToAdd = document.createElement("div"); // CREATE DIV
+                      $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
+                      let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
+		      let post = $this.parent().parent().parent(); // WHERE IT GOES
+		          console.log("POST2--MANUAL")
+		          console.log(post) // SHOULD BE SAME EL AS FROM AUTOMATIC GENERATION
+                          console.log("POST2--MANUAL")
                       
-                      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
+		      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
                       el.className = "firstOptionDD";
                       el.textContent = " ";
                       el.value = " ";
-                      $userToAdd.appendChild(el); // ADD SPACER ELEMENT
+                      $userDropToAdd.appendChild(el); // ADD SPACER ELEMENT IN TOP OF NEW DIV
+		      
+		      el = null; // RESET EL
                               
+		      el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
                       el.className = user; // ADD CURUSER TO LIST
                       el.textContent = user;
                       el.value = user;
-                      $userToAdd.appendChild(el); // "..."
+                      $userDropToAdd.appendChild(el); // "..."
+		       
+		      el = null;
                      
-                      newPost.appendChild($userToAdd); // <=ONTO $THIS INSTEAD?
+                      //post.appendChild($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
               
-      }     
-		  
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
               let pAuth = cN[0];
