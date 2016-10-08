@@ -531,7 +531,8 @@ populatePageWLinks = function() {
 	      // REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
           // SUB 1 FROM TOTAL COUNT OF LIKES:	  
 	      $this.parent().parent().parent().find('.likeCount').text(function() {
-	          return uniqueLikeCount-1;
+	          
+		  return parseInt($this.parent().parent().parent().find('.likeCount').text())-1;
 	      }); 
       
 	  // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
