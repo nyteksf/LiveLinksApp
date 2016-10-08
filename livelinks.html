@@ -527,7 +527,8 @@ populatePageWLinks = function() {
                } else if (uniqueLikeCount === 1) { 		       
 		 classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
 		 classNameInfo = classNameInfo.join(" ");		       
-/*
+	       }
+	/*
 	      // REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
           // SUB 1 FROM TOTAL COUNT OF LIKES:	  
 	      $this.parent().parent().parent().find('.likeCount').text(function() {
@@ -548,13 +549,13 @@ populatePageWLinks = function() {
 		      	alert("bleep")
 		      return 0;
 		  }
-            });	
+              });	
       
 	  // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
          $this.parent().parent().parent().find(".selectNumber").html('').remove();
          //$this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
          $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
-         }
+         //WAS }
 		  
               //GATHER POST META-DATA
               let cNm2      = $this.attr('class').split(' ');
