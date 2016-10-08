@@ -444,13 +444,17 @@ populatePageWLinks = function() {
                       let $userDropToAdd = document.createElement("div"); // CREATE DIV
                       $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
                       let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
-		      let post = $this.parent(); // WHERE IT GOES
+		      let post = $this; // WHERE IT GOES
 		          console.log("POST2--MANUAL")
 		          console.log(post) // SHOULD BE SAME EL AS FROM AUTOMATIC GENERATION
 			  console.log(post.parent())
 			  console.log(post.parent().parent())
 			  console.log(post.parent().parent().parent())
 			  console.log(post.parent().parent().parent().parent())
+			  console.log(post.parent().parent().parent().parent().parent())
+			  console.log(post.parent().parent().parent().parent().parent().parent())
+			  console.log(post.closest("div"))
+			  console.log(post.find("div"))
                           console.log("POST2--MANUAL")
                       
 		      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
