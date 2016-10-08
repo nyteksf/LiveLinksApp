@@ -444,20 +444,11 @@ populatePageWLinks = function() {
                       let $userDropToAdd = document.createElement("div"); // CREATE DIV
                       $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
                       let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
-		      let post = $this; // WHERE IT GOES
-		          console.log("POST2--MANUAL")
-		          console.log(post) // SHOULD BE SAME EL AS FROM AUTOMATIC GENERATION
-			  console.log(post.parent())
-			  console.log(post.parent().parent())
-			  console.log(post.parent().parent().parent())
-			  console.log(post.parent().parent().parent().parent())
-			  console.log(post.parent().parent().parent().parent().parent())
-			  console.log(post.parent().parent().parent().parent().parent().parent())
-			  console.log(post.closest(".linkOutputDiv"))
-			  console.log(post.find(".linkOutputDiv"))
-                          console.log("POST2--MANUAL")
-                      
-		      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
+	         	      let post = $this; // WHERE IT GOES
+                   
+                      console.log($this.parent())
+
+              	      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
                       el.className = "firstOptionDD";
                       el.textContent = " ";
                       el.value = " ";
@@ -473,7 +464,12 @@ populatePageWLinks = function() {
 		       
 		      el = null;
                      
-                      //post.appendChild($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
+              // post.appendChild($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
+                   
+              setTimeout(function() {
+                  $('#linkDisplayDiv').html("");
+	              location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
+              });
 	       }
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
