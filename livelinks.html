@@ -427,7 +427,8 @@ populatePageWLinks = function() {
                   alert("ERR LIKE");
                   
                   return false;
-               } else if (uniqueLikeCount === 1) { 
+               } else if (uniqueLikeCount === 1) {
+		  targetPost.find(".selectNumber").append('<option class="'+storedName+'" value="'+storedName+'">'+storedName+'</option>');
 	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
 		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
 		  console.log(classNameInfo+" SHOULD NOT BE SWITCHED TO FA-HEART");     
