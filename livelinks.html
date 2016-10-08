@@ -469,7 +469,7 @@ populatePageWLinks = function() {
               setTimeout(function() {
                   $('#linkDisplayDiv').html("");
 	              location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
-              });
+              },1200);
 	       }
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
