@@ -394,11 +394,9 @@ populatePageWLinks = function() {
       isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
-          console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE 1st"); //USER LIKED POST? RETURNS TRUE OR FALSE
           let isUserListedInLikes = $this.parent().parent().parent().find(".userListed").val();
           
           if ("" + isUserListedInLikes !== "true") {// ...==="false"
-              console.log("like has been added")
 	      $this.parent().parent().parent().find(".userListed").val("true");
 
 	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
@@ -468,18 +466,14 @@ populatePageWLinks = function() {
                   //COMPARE AGAINST EXISTING POSTS IN DATABASE TO FIND LIKED POST
                   //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE
                   for (let link in responseList) {
-                      //console.log(responseList[link]);
                       responseURL = decodeURIComponent(responseList[link].url);
                       if (responseURL === url && responseList[link].author === pAuth) {
                           let pKey = link;
                           let res = constructJson(pKey);
                           
                           firebase.database().ref('postLikes/' + outputUName).update(res).then(function() {
-                              setTimeout(function() {
-                                  //$('#linkDisplayDiv').html("");
-                                  //populatePageWLinks();
-                              }, 1000);
-                          });
+                           // NOOP
+			  });
                           break;
                       }
                   }
@@ -969,7 +963,6 @@ let d;
 let dt;
 $('#dispLinksDiv').delegate('span.postCatIcon', 'click', function(evt) {
   evt.stopPropagation();
-  //alert(".POSTCATICON SELECTED");
 });
 $('#refreshButton').click(function() {
   $('#linkDisplayDiv').html("");
