@@ -456,15 +456,7 @@ populatePageWLinks = function() {
                       $userDropToAdd.appendChild(el); // ADD SPACER ELEMENT IN TOP OF NEW DIV
 		      
 		      el = null; // RESET EL
-                              
-		      el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
-                      el.className = user; // ADD CURUSER TO LIST
-                      el.textContent = user;
-                      el.value = user;
-                      $userDropToAdd.appendChild(el); // "..."
-		       
-		      el = null;
-                     
+                        
               targetPost.append($userDropToAdd); // <=STICK ONTO $THIS INSTEAD FOR DIV?
               
               $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
