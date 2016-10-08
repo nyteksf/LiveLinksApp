@@ -468,8 +468,8 @@ populatePageWLinks = function() {
                    
               setTimeout(function() {
                   $('#linkDisplayDiv').html("");
-	              location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
-              },1200);
+	          location.reload(); //OR USE AJAX VIA JQUERY => populatePageWLinks();
+              },1400);
 	       }
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
@@ -522,10 +522,7 @@ populatePageWLinks = function() {
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
 		  
 	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
-                         
-              //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE A"); //USER LIKED POST? RETURNS TRUE OR FALSE
     	      $this.parent().parent().parent().find(".userListed").val("false");
-	      //console.log($this.parent().parent().parent().find(".userListed").val() + " VALUE B"); //USER LIKED POST? RETURNS TRUE OR FALSE
                
 		  if (uniqueLikeCount <= 0) {  
                   alert("ERR UNLIKE");
@@ -534,40 +531,42 @@ populatePageWLinks = function() {
                } else if (uniqueLikeCount === 1) { 		       
 		 classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
 		 classNameInfo = classNameInfo.join(" ");		       
-		 console.log("#(@#)($@#$!!!!!!!")
-		 console.log(classNameInfo)
-		 console.log("#(@#)($@#$!!!!!!!")
-		 
+		 /*      
+		 setTimeout(function() {
+		     $('#linkDisplayDiv').html("");
+		     location.reload();
+		 },2300);
+		 */     
+		       //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
+              //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
+              // SUB 1 FROM TOTAL COUNT OF LIKES:	  
+	      $this.parent().parent().parent().find('.likeCount').text(function() {
+		      return uniqueLikeCount-1;
+	      }); /*		  
+		  if(uniqueLikeCount < 0) {
+		      alert("ERR: NEGATIVE LIKE COUNT");
+		  }
+		  else if(uniqueLikeCount > 1) {
+	              alert("h0h0h0--over 1 like counted!");
+                      $this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
+		  } else {
+		      alert("COUNT OF ONE--NOW REDUCED BY ONE!")
+		      $this.parent().parent().parent().find(".likeCount").text(function() {
+		          return "0";
+		      }); */
+                      */
+		      
+                      //$this.parent().parent().parent().find('.likeCount').html("0");	
+		  }
+                  console.log($this.parent().parent().parent().find('.likeCount').text())
+      
 		//ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
                   $this.parent().parent().parent().find(".selectNumber").html('').remove();
                   //$this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
                   $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               }
               
-              //REDUCE NUMBER OF LIKES BY 1 CORRESPONDINGLY:
-              //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);
-              // SUB 1 FROM TOTAL COUNT OF LIKES:	  
-	     /* $this.parent().parent().parent().find('.likeCount').text(function() {
-		      return uniqueLikeCount-1;
-	      }); */		  
-		  if(uniqueLikeCount < 0) {
-		      alert("ERR: NEGATIVE LIKE COUNT");
-		  }
-		  else if(uniqueLikeCount > 1) {
-	              alert("h0h0h0--over 1 like counted!");
-                                //$this.parent().parent().parent().find('.likeCount').text(parseInt($this.parent().parent().parent().find(".likeCount").text())-1);	
-		  } else {
-		      alert("COUNT OF ONE--NOW REDUCED BY ONE!")
-		      /* $this.parent().parent().parent().find(".likeCount").text(function() {
-		          return "0";
-		      });
-                      */
-		      
-                      //$this.parent().parent().parent().find('.likeCount').html("0");	
-		  }
-              		  console.log($this.parent().parent().parent().find('.likeCount').text())
-
-/*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
+        /*	      $this.parent().parent().parent().find('.likeCount').text(function() { 
 		      console.log('HAIL SATAN')
 		  if(uniqueLikeCount < 0) {
 		      alert("ERR: NEGATIVE LIKE COUNT");
