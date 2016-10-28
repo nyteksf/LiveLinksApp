@@ -1,6 +1,5 @@
 <!DOCTYPE html5>
 <html>
-
 <head>
   <title>LiveLinks</title>
 
@@ -35,18 +34,18 @@
     firebase.initializeApp(config);
   </script>
 
-  <!-- CRYPTO -->
+  <!-- CRYPTO.JS -->
   <script type="text/javascript" src="JS/functions_cryptography.js"></script>
   <script type="text/javascript">
     let crypt = new Crypt();
   </script>
 
-  <!-- GRAB USER'S IP -->
+  <!-- GRAB USER'S IP FOR SECURITY/CONTROL -->
   <script type="text/javascript" src="https://l2.io/ip.js?var=userip"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse" id="topNavbar">
+    <nav class="navbar navbar-inverse" id="topNavbar">
     <div class="container-fluid">
     <!-- Brand and toggle grouped for better mobile display -->
     <div class="navbar-header">
@@ -479,6 +478,7 @@
   <!-- Trigger Eighth Modal -->
   <button type="button" class="btn btn-info btn-lg" id="ninthModalTrig" data-toggle="modal" data-target="#ninthModal"></button>
 
+  
 <script>
 $('#validUName').hide();
 $('#invalidUName').hide();
@@ -1060,6 +1060,7 @@ $('#myModal').delegate('.btn-success', 'click', function() {
     }
 });
 
+  
 $('#signinBtnModal').click(function() {
     let uidNo = localStorage["uid"] || firebase.auth().currentUser.uid;
     //ADD USERNAME TO FIREBASE DATABASE, AND THEN LOGIN/GOTOAPP()
@@ -1126,6 +1127,7 @@ function setInitCookie() {
     writeCookie("returnVisitor", true, 604800);
 }
 
+  
 function getCookie(name) {
     let ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
@@ -1137,6 +1139,7 @@ function getCookie(name) {
     return "";
 }
 
+  
 function checkInitialCookie() {
     let returned = getCookie("returnVisitor=");
     if (returned === "true" && localStorage.getItem('user') !== null) {
@@ -1238,6 +1241,6 @@ $('#registerAcctOption').click(function() {
 checkInitialCookie();
 checkForJWT();
 </script>
-</body>
 
+</body>
 </html>
