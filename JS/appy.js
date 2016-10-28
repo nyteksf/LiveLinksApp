@@ -1,5 +1,3 @@
-/esversion: 6/
-
   $('#noUserErrDialog').hide();
   $('#emptyFieldDialog').hide();
   $('.deleteRestricted').hide();
