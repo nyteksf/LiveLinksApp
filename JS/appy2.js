@@ -1,5 +1,3 @@
- /*jshint esversion: 6 */
-
 let curUser;
 let selectedMenuItem = "";
 let uNameFound = false;
@@ -9,17 +7,17 @@ $('#firebase-ico').click(function(evt) {
   window.open('http://www.firebase.com/','_blank');
 });
 
+
 //-=-SUMMARY OF FUNCTION:-=-
-//ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL DUE TO INITIAL AUTO OPEN-CLOSE SEQUENCE ON LOAD
+//ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL DUE TO INITIAL 
+//AUTO OPEN-CLOSE SEQUENCE ON LOAD
 //INSTEAD OF USING NORMAL DUMB .CLICK() ACTION FOR TOGGLE
 function checkPanelState() {
-  if(menuToggleStatus.prototype.menuPanelState === "opened") {
-    //Close SP as normal w/ toggle:
+  if(menuToggleStatus.prototype.menuPanelState === "opened") { // Close SP as normal w/ toggle:
     $('#offscreenMenuIco').click();
 
     return true;
-  } else {
-    //OR WE DO NOTHING IF SP ALREADY CLOSED FOR CURRENT TOGGLE EVENT:
+  } else { // OR DO NOTHING IF SP ALREADY CLOSED FOR CURRENT TOGGLE EVENT:
 
     return false;
   }
@@ -46,6 +44,7 @@ let toggleMenuPanel = $('#togglePanel').scotchPanel({
   enableEscapeKey: true // Clicking Esc will close the panel
 });
 
+
 let constructJson = function(jsonKey, val) {
   let jsonObj = {};
   jsonObj[jsonKey] = val;
@@ -53,10 +52,12 @@ let constructJson = function(jsonKey, val) {
   return jsonObj;
 };
 
+
 // ON PAGE LOAD: Auto-open....
    setTimeout(function(){
      $('#offscreenMenuIco').click();
    },500);
+
 
 // ....then auto-close off canvas slide-menu w/ time delay
 setTimeout(function(){
@@ -159,7 +160,7 @@ function runOneTime($this) {
 
             break;
           }
-      }//RETURN USER OR NOTHING
+      }// RETURN THE USER OR NOTHING
       if(!curUser) {
 
         return false;
