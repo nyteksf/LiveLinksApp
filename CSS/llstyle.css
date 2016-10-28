@@ -122,9 +122,6 @@ img#firebase-ico:hover {
 
 .partitionDot {
   position: relative;
-  //top: -19px;
-  //padding: 0 8px 0 10px;
-  //margin-left: 10px;
 }
 
 .likeCount {
@@ -242,7 +239,12 @@ input#newUsernameInput {
   font-weight: bold;
 }
 
-.ui-button, .ui-button-text,.ui-button-icon-only, .ui-button-text, .ui-button-icons-only, .ui-button-text {
+.ui-button,
+.ui-button-text,
+.ui-button-icon-only,
+.ui-button-text,
+.ui-button-icons-only,
+.ui-button-text {
   outline-width: 0 !important;
 }
 
