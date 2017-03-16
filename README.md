@@ -1,5 +1,7 @@
-# LiveLinksApp
-A Learning Project For Firebase
+# LiveLinksApp - Learning NoSQL via Firebase
+
+# https://nyteksf.github.io/LiveLinksApp/index.html
+
 
 
 
