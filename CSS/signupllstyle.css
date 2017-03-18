@@ -23,6 +23,11 @@ body a:hover {
   border: 22px solid #333333;
 }
 
+.login-panel {
+  position: absolute;
+  left: 25%;
+}
+
 #navTxt {
   font-size: 1.025em;
 }
