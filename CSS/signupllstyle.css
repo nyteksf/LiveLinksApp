@@ -2,8 +2,12 @@ body {
   background: lightgray !important;
 }
 
-body a:hover {
+body a:hover:not(.navbarLinks) {
   color: lightpink !important;
+}
+
+.navbarLinks {
+  color: #FFFFFF;
 }
 
 .container {
@@ -20,7 +24,6 @@ body a:hover {
 
 div.row {
     margin: 0 auto !important;
-    //text-align: center;
 }
 
 .login-panel {
