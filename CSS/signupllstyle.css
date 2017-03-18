@@ -205,7 +205,7 @@ a#passResetLnk {
 #newAcctDiv {
   position: relative;
   top: -13px;
-  left: 38px;
+  text-align: center;
   display: block;
   font-size: .98em;
 }
