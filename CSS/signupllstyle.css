@@ -78,7 +78,6 @@ span#greetTxt {
 
 #cancelBtnModalSecond {
   color: darkred !important;
-  //font-weight: bold !important;
   font-family: Helvetica, Arial, sans-serif !important;
   width: 70px !important;
 }
@@ -129,7 +128,6 @@ div.modal-body {
 }
 
 #myModal {
-  position: absolute;
   top: 21%;
 }
 
@@ -277,7 +275,6 @@ a#passResetLnk {
 }
 
 .modal-header {
-  /* NEED TO ADD IN BORDER-RADIUS TO FIX NOW SQUARE EDGES ONCE COLOR CHANGES */
   font-size: 1.25em;
 }
 
