@@ -2,12 +2,12 @@ body {
   background: lightgray !important;
 }
 
-body a:hover {
-  color: lightpink !important;
-}
-
 .navbarLinks:hover {
   color: #FFFFFF;
+}
+
+body a:hover {
+  color: lightpink !important;
 }
 
 .container {
