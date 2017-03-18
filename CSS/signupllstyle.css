@@ -8,6 +8,7 @@ body a:hover {
 
 .container {
   position: absolute;
+  margin: 0 auto;
   height: 500px !important;
   width: 800px !important;
   background: #FFFFFF;
