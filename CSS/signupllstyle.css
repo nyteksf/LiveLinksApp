@@ -2,7 +2,7 @@ body {
   background: lightgray !important;
 }
 
-#passResetLnk:hover #registerNowLnk:hover {
+a#passResetLnk:hover, a#registerNowLnk:hover {
   color: lightpink !important;
 }
 
