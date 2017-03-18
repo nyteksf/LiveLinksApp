@@ -18,6 +18,10 @@ body a:hover {
   border: 22px solid #333333;
 }
 
+#ctnr, div.row {
+    margin: 0 auto;
+}
+
 .login-panel {
   position: absolute;
   left: 25%;
