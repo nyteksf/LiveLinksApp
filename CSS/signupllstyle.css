@@ -21,7 +21,7 @@ body a:hover {
   border: 22px solid #333333;
 }
 
-#ctnr {
+#ctnr, div.row {
     margin: 0 auto;
 }
 
