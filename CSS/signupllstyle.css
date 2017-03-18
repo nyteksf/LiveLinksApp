@@ -20,7 +20,7 @@ body a:hover {
 
 div.row {
     margin: 0 auto !important;
-    text-align: center;
+    //text-align: center;
 }
 
 .login-panel {
