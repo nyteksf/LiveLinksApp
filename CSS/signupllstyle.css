@@ -3,7 +3,7 @@ body {
 }
 
 a#passResetLnk:hover, a#registerNowLnk:hover {
-  color: lightpink !important;
+  color: lightpink;
 }
 
 .navbarLinks:hover {
