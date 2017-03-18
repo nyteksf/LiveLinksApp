@@ -2,12 +2,12 @@ body {
   background: lightgray !important;
 }
 
-body a:hover:not(.navbarLinks) {
-  color: lightpink !important;
+#passResetLnk:hover #registerNowLnk:hover {
+  color: lightpink;
 }
 
 .navbarLinks:hover {
-  color: #FFFFFF !important;
+  color: #FFFFFF;
 }
 
 .container {
