@@ -2,7 +2,11 @@ body {
   background: lightgray !important;
 }
 
-body a:hover:not(.navbarLinks) {
+body a:hover {
+  color: lightpink;
+}
+
+.navbarLinks {
   color: lightpink !important;
 }
 
