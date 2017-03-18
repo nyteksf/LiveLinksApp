@@ -21,6 +21,10 @@ body a:hover {
   border: 22px solid #333333;
 }
 
+#ctnr {
+    margin: 0 auto;
+}
+
 #navTxt {
   font-size: 1.025em;
 }
