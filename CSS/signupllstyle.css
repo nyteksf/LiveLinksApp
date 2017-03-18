@@ -3,14 +3,10 @@ body {
 }
 
 body a:hover {
-  color: lightpink;
-}
-
-.navbarLinks {
   color: lightpink !important;
 }
 
-.navbarLinks {
+.navbarLinks:hover {
   color: #FFFFFF;
 }
 
