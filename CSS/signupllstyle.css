@@ -10,6 +10,10 @@ a#passResetLnk:hover, a#registerNowLnk:hover {
   color: #FFFFFF;
 }
 
+.navbar-inverse {
+  font-size: 1.2em;
+}
+
 #container-wrapper {
   position: absolute;
   width: 100%;
