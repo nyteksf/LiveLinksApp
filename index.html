@@ -63,11 +63,11 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="javascript:void(0);" id="aboutNavBtn">About</a></li>
+        <li><a href="javascript:void(0);" id="aboutNavBtn" class="navbarLinks">About</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="javascript:void(0);" id="resetPWOption">Reset Password</a></li>
+            <li><a href="javascript:void(0);" id="resetPWOption" class="navbarLinks">Reset Password</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="javascript:void(0);" id="registerAcctOption">Register Acct. Via Email</a></li>
           </ul>
@@ -76,8 +76,7 @@
     </div><!-- /.navbar-collapse end -->
   </div><!-- /.container-fluid end -->
 </nav>
-
-
+  <div id="container-wrapper">
   <div class="container" id="ctnr">
       <div class="row">
           <div class="col-sm-6 col-md-4 col-md-offset-1 login-panel">
@@ -119,7 +118,7 @@
         </div> <!-- BOOTSTRAP SIZING end -->
       </div> <!-- ROW end -->
   </div> <!-- CONTAINER end -->
-
+</div>
 
   <div id="myModal" class="modal fade">
     <!-- First Modal - MEDIUM SIZE - REGISTRATION OF EMAIL BASED ACCT -->
@@ -1071,7 +1070,10 @@ $('#dangerBtnModal').click(function() {
     }, 500);
 });
 
-
+/*
+* Match text color to color theme of given background photo
+**/
+  
 $(document).ready(function() {
     let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
     let randBG = function() {
@@ -1079,7 +1081,12 @@ $(document).ready(function() {
     };
     let BGUrl = backgroundImgs[randBG()];
 
-    if (BGUrl === 'img/background0.jpg' || BGUrl === 'img/background2.jpg' || BGUrl === 'img/background4.jpg') {
+    if (BGUrl === 'img/background0.jpg') {
+      $('a#registerNowLnk').css('color', '#121121');
+      $('a#passResetLnk').CSS('color','#4d4d4d');
+    }
+  
+    if (BGUrl === 'img/background2.jpg' || BGUrl === 'img/background4.jpg') {
         $('a#registerNowLnk').css('color', '#FFFFFF');
     }
 
