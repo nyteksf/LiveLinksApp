@@ -10,7 +10,9 @@ a#passResetLnk:hover, a#registerNowLnk:hover {
   color: #FFFFFF;
 }
 
-.nav > a {
+a#navTxt,
+a#aboutNavBtn,
+a.dropdown-toggle {
     font-size: 1.25em !important;
 }
 
