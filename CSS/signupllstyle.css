@@ -33,10 +33,6 @@ a.dropdown-toggle {
   border: 22px solid #333333;
 }
 
-<<<<<<< HEAD
-#ctnr, div.row {
-    margin: 0 auto;
-=======
 div.row {
     margin: 0 auto !important;
 }
@@ -44,7 +40,6 @@ div.row {
 .login-panel {
   position: absolute;
   left: 25%;
->>>>>>> 6bdb485d6cd6f8b02f75eb2b32db2841faa7645f
 }
 
 #navTxt {
