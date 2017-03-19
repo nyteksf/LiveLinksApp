@@ -2,27 +2,37 @@ body {
   background: lightgray !important;
 }
 
-body a:hover {
-  color: lightpink !important;
+a#passResetLnk:hover, a#registerNowLnk:hover {
+  color: lightpink;
+}
+
+.navbarLinks:hover {
+  color: #FFFFFF;
 }
 
 .container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -220px !important;
-  margin-left: -450px !important;
+  margin: 0 auto;
   height: 500px !important;
   width: 800px !important;
   background: #FFFFFF;
-  background: url(https://i63.tinypic.com/n16s95.jpg);
   background-size: contain;
   color: #FFFFFF;
   border: 22px solid #333333;
 }
 
+<<<<<<< HEAD
 #ctnr, div.row {
     margin: 0 auto;
+=======
+div.row {
+    margin: 0 auto !important;
+}
+
+.login-panel {
+  position: absolute;
+  left: 25%;
+>>>>>>> 6bdb485d6cd6f8b02f75eb2b32db2841faa7645f
 }
 
 #navTxt {
@@ -81,7 +91,6 @@ span#greetTxt {
 
 #cancelBtnModalSecond {
   color: darkred !important;
-  //font-weight: bold !important;
   font-family: Helvetica, Arial, sans-serif !important;
   width: 70px !important;
 }
@@ -132,7 +141,6 @@ div.modal-body {
 }
 
 #myModal {
-  position: absolute;
   top: 21%;
 }
 
@@ -202,7 +210,7 @@ a#passResetLnk {
 #newAcctDiv {
   position: relative;
   top: -13px;
-  left: 38px;
+  text-align: center;
   display: block;
   font-size: .98em;
 }
@@ -280,7 +288,6 @@ a#passResetLnk {
 }
 
 .modal-header {
-  /* NEED TO ADD IN BORDER-RADIUS TO FIX NOW SQUARE EDGES ONCE COLOR CHANGES */
   font-size: 1.25em;
 }
 
