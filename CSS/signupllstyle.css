@@ -10,8 +10,20 @@ a#passResetLnk:hover, a#registerNowLnk:hover {
   color: #FFFFFF;
 }
 
-.container {
+a#navTxt,
+a#aboutNavBtn,
+a.dropdown-toggle {
+    font-size: 1.18em !important;
+}
+
+#container-wrapper {
   position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
   margin: 0 auto;
   height: 500px !important;
   width: 800px !important;
