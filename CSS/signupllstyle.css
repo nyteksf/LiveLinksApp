@@ -14,7 +14,6 @@ a#passResetLnk:hover, a#registerNowLnk:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 4px solid red;
 }
 
 .container {
