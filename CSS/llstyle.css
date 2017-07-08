@@ -14,11 +14,7 @@ body, html {
 
 .navbar-brand,
 #navTxt {
-  display: none !important;
-}
-
-.navbar > a {
-font-size: .75em !important;
+  display: none;
 }
 
 #holderDiv {
