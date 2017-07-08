@@ -12,8 +12,9 @@ body, html {
   color: #333333;
 }
 
-.navbar-brand {
-  visibility: hidden;
+.navbar-brand,
+#navTxt {
+  visibility: hidden !important;
 }
 
 #holderDiv {
