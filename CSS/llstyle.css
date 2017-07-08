@@ -12,6 +12,10 @@ body, html {
   color: #333333;
 }
 
+.navbar-brand {
+  visibility: hidden;
+}
+
 #holderDiv {
   min-height: 100%;
   position: relative;
