@@ -16,7 +16,8 @@ a.dropdown-toggle {
   font-size: 1em !important;
 }
 
-#navTxt {
+.navbar-brand,
+a#navTxt {
   display: none;
 }
 
