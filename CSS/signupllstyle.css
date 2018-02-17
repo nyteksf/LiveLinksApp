@@ -404,14 +404,14 @@ label.checkbox {
   position: relative;
   top: -2px;
   font-size: .75em;
-  margin-left: 12px;
+  margin-left: 11px;
 }
 
 .btnTxt {
   position: relative;
   top: -2px;
   font-size: .75em;
-  margin-left: 0;
+  margin-left: -1px;
 }
 
 #orLogin {
