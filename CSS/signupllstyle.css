@@ -404,7 +404,7 @@ label.checkbox {
   position: relative;
   top: -2px;
   font-size: .75em;
-  margin-left: 9px;
+  margin-left: -1px;
 }
 
 .btnTxt {
