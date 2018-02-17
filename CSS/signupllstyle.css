@@ -102,7 +102,7 @@ span#greetTxt {
 #cancelBtnModal {
   font-weight: bold !important;
   font-family: Helvetica, Arial, sans-serif !important;
-  font-size: 1.1em;
+  font-size: 1.1em !important;
 }
 
 #cancelBtnModalSecond {
@@ -233,7 +233,7 @@ a#passResetLnk {
 }
 
 #myModal label {
-  font-size: 1.1em;
+  font-size: 1.1em !important;
   margin-top: 5px;
 }
 
