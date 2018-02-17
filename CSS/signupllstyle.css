@@ -158,6 +158,10 @@ div.modal-body {
   font-family: 'Cantarell', sans-serif;
 }
 
+.btn {
+  font-size: 1.5em !important;
+}
+
 #thirdModal .modal-footer button {
   font-weight: bold;
 }
