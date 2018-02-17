@@ -36,6 +36,10 @@ a#navTxt {
   background-size: contain;
   color: #FFFFFF;
   border: 22px solid #333333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-40%);
 }
 
 div.row {
