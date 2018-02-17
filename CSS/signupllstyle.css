@@ -1,5 +1,6 @@
 body {
   background: lightgray !important;
+  font-family: 'Montserrat', sans-serif;
 }
 
 a#passResetLnk:hover, a#registerNowLnk:hover {
@@ -368,7 +369,7 @@ a#passResetLnk {
 }
 
 .login-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Esteban', sans-serif;
   //font-family: 'Oswald', sans-serif;
   //font-family: 'Ubuntu', sans-serif;
   //font-family: 'Cantarell', sans-serif;
