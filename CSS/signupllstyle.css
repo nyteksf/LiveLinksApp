@@ -1,6 +1,6 @@
 body {
   background: lightgray !important;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Merriweather', serif;
 }
 
 a#passResetLnk:hover, a#registerNowLnk:hover {
@@ -76,9 +76,10 @@ span#greetTxt {
   position: relative;
   top: 12px;
   left: -21px;
-  font-size: .85em !important;
+  font-size: .9em !important; /* .85em !important; */
   float: right;
   font-weight: bold;
+  font-family: 'Merriweather', serif;
 }
 
 #githubLoginBtn {
@@ -191,6 +192,7 @@ a#passResetLnk {
   position: relative;
   top: -13px;
   color: #4d4d4d;
+  font-size: 1em;
 }
 
 .fa {
@@ -379,8 +381,8 @@ a#passResetLnk {
 }
 
 label.checkbox {
-  font-family: 'Cantarell', sans-serif;
-  font-size: .95em;
+  font-family: 'Merriweather', serif;
+  font-size: .9em;
   top: 1px;
   left: 0 !important;
   font-weight: bold !important;
