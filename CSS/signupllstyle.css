@@ -97,7 +97,6 @@ span#greetTxt {
 #cancelBtnModal {
   font-weight: bold !important;
   font-family: Helvetica, Arial, sans-serif !important;
-  width: 70px !important;
 }
 
 #cancelBtnModalSecond {
@@ -139,7 +138,7 @@ div.modal-body {
 
 .closeBtnTxt {
   position: relative;
-  left: -2px;
+  //left: -2px;
 }
 
 #formModalDiv {
