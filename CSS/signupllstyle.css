@@ -368,6 +368,16 @@ a#passResetLnk {
   top: 19%;
 }
 
+.login-title {
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Cantarell', sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
+  font-family: 'Days One', sans-serif;
+  font-family: 'Pattaya', sans-serif; 
+}
+
 label.checkbox {
   font-family: 'Cantarell', sans-serif;
   font-size: .95em;
