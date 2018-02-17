@@ -76,7 +76,7 @@ span#greetTxt {
   position: relative;
   top: 12px;
   left: -21px;
-  font-size: .9em !important; /* .85em !important; */
+  font-size: .85em !important;
   float: right;
   font-weight: bold;
   font-family: 'Merriweather', serif;
