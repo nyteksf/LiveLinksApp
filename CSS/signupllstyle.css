@@ -21,6 +21,13 @@ a#navTxt {
   //display: none;
 }
 
+.navbar-brand>img {
+    display: block;
+    height: 34px;
+    width: 34px;
+    margin-top: -6px;
+}
+
 #container-wrapper {
   position: absolute;
   width: 100%;
