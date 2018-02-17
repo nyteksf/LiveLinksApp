@@ -194,7 +194,7 @@ a#passResetLnk {
 }
 
 .fa {
-  font-size: 1.3em;
+  font-size: 1em; /* 1.3em; */
 }
 
 #submitBtn {
