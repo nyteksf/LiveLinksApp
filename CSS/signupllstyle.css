@@ -1,6 +1,5 @@
 body {
   background: lightgray !important;
-  font-family: 'Merriweather', serif;
 }
 
 a#passResetLnk:hover, a#registerNowLnk:hover {
@@ -76,7 +75,7 @@ span#greetTxt {
   position: relative;
   top: 12px;
   left: -21px;
-  font-size: .85em !important;
+  font-size: .9em !important;
   float: right;
   font-weight: bold;
   font-family: 'Average', serif;
@@ -196,7 +195,7 @@ a#passResetLnk {
   position: relative;
   top: -13px;
   color: #4d4d4d;
-  font-size: 1em;
+  font-size: .9em;
 }
 
 .fa {
@@ -392,6 +391,7 @@ label.checkbox {
   font-weight: bold !important;
   position: relative;
   left: 2px;
+  font-family: 'Average', sans-serif;
 }
 
 .btnTxtGH {
