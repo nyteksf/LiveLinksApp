@@ -332,7 +332,7 @@ a#passResetLnk {
 }
 
 #submitBtn {
-  font-size: 1.3em;
+  font-size: 1.25em !important;
   font-weight: bold;
 }
 
