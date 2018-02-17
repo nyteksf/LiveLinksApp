@@ -81,6 +81,10 @@ span#greetTxt {
   font-family: 'Average', serif;
 }
 
+#submitBtnModal {
+  font-size: 1.1em;
+}
+
 #githubLoginBtn {
   position: relative;
   margin-top: -18px;
@@ -98,6 +102,7 @@ span#greetTxt {
 #cancelBtnModal {
   font-weight: bold !important;
   font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 1.1em;
 }
 
 #cancelBtnModalSecond {
