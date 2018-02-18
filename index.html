@@ -698,7 +698,7 @@ let _providerFromName = function(pName, pCred, uName, email, password, isPasswdA
 };
 
 
-//RETURN A LIST OF PROVIDERS FOR AUTHd USER:
+// RETURN A LIST OF PROVIDERS FOR AUTHd USER:
 let getProviderForProviderId = function(pCred, email, uName, password, isPasswdAcct) {
     let uEmail = email || firebase.auth().currentUser.email;
 
@@ -707,17 +707,17 @@ let getProviderForProviderId = function(pCred, email, uName, password, isPasswdA
     });
 };
 
-if (userip.indexOf('.') !== -1) {
-    console.log('HAS DECIMALS--VALID IP FOR LOGS');
-} else {
-  console.log('has no decimals');
-  console.log(userip);
+if (userip.indexOf('.') === -1) {
+    $('#fifthModal .modal-title').html("Error");
+    $('#fifthModal .modal-body').html("<center>Error logging IP address. You may be denied write access to your account. Check with your local sysadmin to see if your computer has been assigned an IPV4 or IPV6 address. Currently, this app only supports IPV4 address logging.</center>");
+    
+    // LOAD FIFTH MODAL:
+    $('#fifthModalTrig').click();
 };
 
 $('#submitBtn').click(function() {
     if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
-        $('#fourthModalTrig').click();
-        //INSUFFICIENT INPUT MODAL NOW FIRED
+        $('#fourthModalTrig').click(); // INSUFFICIENT INPUT MODAL NOW FIRED
 
         return false;
     } else {
@@ -1220,15 +1220,16 @@ let keyGen = function() {
     return key
 };
   
+  
 $('#cancelBtnModal, #cancelBtnModalSecond, #cancelBtnModalThird').mouseenter(function() {
   $(this).addClass('btn-danger whiteText').removeClass('btn-default');
- // $(this).css('color', '#FFFFFF');
 });
   
 $('#cancelBtnModal, #cancelBtnModalSecond, #cancelBtnModalThird').mouseleave(function() {
   $(this).removeClass('btn-danger whiteText').addClass('btn-default');
 });
 
+  
 $('#aboutNavBtn').click(function() {
     $('#ninthModalTrig').click();
 });
