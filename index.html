@@ -1206,21 +1206,17 @@ let keyGen = function() {
     key = crypt.AES.encrypt(key);
     return key
 };
-
-
-$('#cancelBtnModal, #cancelBtnModalSecond').mouseenter(function() {
-  $(this).toggleClass('btn-danger whiteText').removeClass('btn-default');
-});
   
-/*
 $('#cancelBtnModal, #cancelBtnModalSecond').mouseenter(function() {
-  $(this).addClass('btn-danger whiteText').removeClass('btn-default');
+  $(this).addClass('btn-danger').removeClass('btn-default');
+  $(this).addClass('whiteText');
+  $(this).css('color', '#FFFFFF');
 });
   
 $('#cancelBtnModal, #cancelBtnModalSecond').mouseleave(function() {
-  $(this).removeClass('btn-danger whiteText').addClass('btn-default');
+  $(this).removeClass('btn-danger').addClass('btn-default');
+  $(this).removeClass('whiteText');
 });
-  */
 
 $('#aboutNavBtn').click(function() {
     $('#ninthModalTrig').click();
