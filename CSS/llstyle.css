@@ -151,7 +151,7 @@ img#firebase-ico:hover {
     position: relative;
     left: 605px;
     top: -15px;
-    height: 13px;
+    height: 15px;
     width: 28px;
 }
 
@@ -682,7 +682,7 @@ input, #submitButton {
 .postedLink {
   position: relative;
   top: -1px;
-  font-size: .75em;
+  font-size: .75em !important;
   color: #333333;
   left: -30px !important;
 }
