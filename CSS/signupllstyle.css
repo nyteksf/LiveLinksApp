@@ -247,7 +247,6 @@ a#passResetLnk {
 
 #myModal label {
   font-size: 1.1em !important;
-  margin-top: 8px !important;
 }
 
 #xClose {
@@ -396,18 +395,11 @@ a#passResetLnk {
   top: 19%;
 }
 
-.login-title {
-  //font-family: 'Esteban', sans-serif;
-  //font-family: 'Oswald', sans-serif;
-  //font-family: 'Ubuntu', sans-serif;
-  //font-family: 'Cantarell', sans-serif;
-  //font-family: 'Julius Sans One', sans-serif;
-  //font-family: 'Days One', sans-serif;
-  //font-family: 'Pattaya', sans-serif; 
+#thirdModal label {
+  margin-top: 8px !important;
 }
 
 label.checkbox {
-  font-family: 'Average', serif;
   font-size: .9em;
   top: 2px;
   left: 0 !important;
