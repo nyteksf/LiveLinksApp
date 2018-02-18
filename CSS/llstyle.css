@@ -21,6 +21,10 @@ div#linkOutputHeader {
   pointer-events: none;
 }
 
+#offscreenMenuIcoTop {
+  pointer-events: all;
+}
+
 .navbar-brand,
 #navTxt {
   display: none;
