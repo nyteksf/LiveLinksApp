@@ -603,6 +603,18 @@ h1 {
   text-decoration: none;
 }
 
+#titleLink h1 {
+  margin-bottom: 0;
+  margin-top: 5px;
+  padding-bottom: 0;
+}
+
+#titleLink h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
 input, #submitButton {
   font-size: .75em;
   font-family: 'Cantarell', sans-serif;
