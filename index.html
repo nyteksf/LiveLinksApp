@@ -969,7 +969,9 @@ $('#submitEmailModal').click(function(e) {
       console.log("email sanity check: " + email);
         firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
             // Handle Errors here:
+          console.log("call to firebase working");
             if (error) {
+              console.log("error: " + error);
                 //PASS DYNAMIC INFO TO FIFTH MODAL:
                 $('#fifthModal .modal-title').html(error.code);
                 $('#fifthModal .modal-body').html(error.message);
