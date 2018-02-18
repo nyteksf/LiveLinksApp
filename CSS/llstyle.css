@@ -87,6 +87,7 @@ body, html {
   top: -2px;
   margin-right: 7px;
   font-size: .7em !important;
+  margin-left: 1px;
 }
 
 .fa-heart:hover,
@@ -540,6 +541,7 @@ fieldset[disabled] .slideMenuBtn.active {
 .menuTxtStyle {
   position: relative;
   right: -3px;
+  float: right;
 }
 
 #offscreenMenuIco {
@@ -679,6 +681,8 @@ input, #submitButton {
 
 .menuItemWrap {
   position: relative;
+  font-size: .85em;
+  
 }
 
 .menuEntTxt {
