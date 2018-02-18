@@ -247,6 +247,11 @@ a#passResetLnk {
 
 #myModal label {
   font-size: 1.1em !important;
+  margin-top: 20px !important;
+}
+
+.input-name {
+  margin-bottom: -15px !important;
 }
 
 #xClose {
