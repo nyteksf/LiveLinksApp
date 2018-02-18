@@ -721,6 +721,10 @@ $('#submitBtn').click(function() {
 
         localStorage.setItem('lastProvider', 'password');
 
+        if (userip.indexOf('.')) {
+            console.log('HAS DECIMALS--VALID IP FOR LOGS');
+        };
+      
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here:
             if (error) {
