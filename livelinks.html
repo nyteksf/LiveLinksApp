@@ -300,12 +300,12 @@
       </div>
       <div id="dispLinksDiv">
         <div id="linkOutputHeader">
-          <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true"></i>
+          <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
         </div>
         <div id="linkDisplayDiv"></div>
         <!-- Body hereby implied: ie, ...posted links & their contents... -->
         <div id="firebase-ico-divFooter">
-          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu></i>
+          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
           <img src="img/firebase-ico.jpg" title="FIREBASE" id="firebase-ico" />
         </div>
       </div>
@@ -363,7 +363,7 @@ setTimeout(function() {
 setTimeout(function() {
   $('#offscreenMenuIco').click();
 }, 2750);
-$('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) {
+$('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) { /* REFACTOR WITH ALL ELSE */
   evt.preventDefault();
   evt.stopPropagation();
   menuToggleStatus();
