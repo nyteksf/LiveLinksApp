@@ -322,8 +322,8 @@ a#passResetLnk {
 }
 
 .row h1 {
-  font-family: 'Istok Web', sans-serif;
-  //font-family: 'Fjalla One', sans-serif;
+  //font-family: 'Istok Web', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 #modalBody {
@@ -396,7 +396,7 @@ a#passResetLnk {
 }
 
 .login-title {
-  font-family: 'Esteban', sans-serif;
+  //font-family: 'Esteban', sans-serif;
   //font-family: 'Oswald', sans-serif;
   //font-family: 'Ubuntu', sans-serif;
   //font-family: 'Cantarell', sans-serif;
@@ -420,7 +420,7 @@ label.checkbox {
   position: relative;
   top: -2px;
   font-size: .75em;
-  margin-left: 11px;
+  margin-left: 10px;
 }
 
 .btnTxt {
