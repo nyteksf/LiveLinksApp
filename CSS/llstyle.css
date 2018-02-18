@@ -17,6 +17,10 @@ body, html {
   font-size: .7em;
 }
 
+div#linkOutputHeader {
+  pointer-events: none;
+}
+
 .navbar-brand,
 #navTxt {
   display: none;
