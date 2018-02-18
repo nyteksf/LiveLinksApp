@@ -305,7 +305,7 @@
         <div id="linkDisplayDiv"></div>
         <!-- Body hereby implied: ie, ...posted links & their contents... -->
         <div id="firebase-ico-divFooter">
-          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true"></i>
+          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu></i>
           <img src="img/firebase-ico.jpg" title="FIREBASE" id="firebase-ico" />
         </div>
       </div>
@@ -376,11 +376,7 @@ populatePageWLinks = function() {
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
       
-      let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
-      
-	  console.log("OUTPUT " + typeof $this.parent().parent().parent()[0].className)
-	  console.log("OUTPUT " + $this.parent().parent().parent()[0])
-	  
+      let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM 
       let postID = $this.parent().parent().parent()[0].className.split(" ");
       postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
       postID = postID[3]; //ID OF DIV BEING CLICKED HERE
