@@ -933,6 +933,8 @@ $('#submitButton').click(function() {
                           alert("ERR!");
                           break;
                   }
+		  console.log("userip " + userip);
+		      
                   icon = encodeURIComponent(icon);
                   //PUSH IT TO FIREBASE DB:
                   firebase.database().ref('links').push({
@@ -941,7 +943,7 @@ $('#submitButton').click(function() {
                       uid: uidNo,
                       author: uName,
                       timestamp: ts,
-                      ip: userip,
+                      ip: userip, /* THIS IS NOT WORKING */
                       category: icon,
                       catName: cName
                   }).then(setTimeout(function() {
