@@ -428,7 +428,7 @@ label.checkbox {
   position: relative;
   top: -2px;
   font-size: .7em; /* WAS .75em */
-  margin-left: 10px;
+  margin-left: 11px;
 }
 
 .btnTxt {
