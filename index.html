@@ -706,14 +706,7 @@ let getProviderForProviderId = function(pCred, email, uName, password, isPasswdA
         _providerFromName(provider, pCred, uName, email, password, isPasswdAcct);
     });
 };
-
-if (userip.indexOf('.') === -1) {
-    $('#fifthModal .modal-title').html("Error");
-    $('#fifthModal .modal-body').html("<center>Error logging IP address. You may be denied write access to your account. Check with your local sysadmin to see if your computer has been assigned an IPV4 or IPV6 address. Currently, this app only supports IPV4 address logging.</center>");
-    
-    // LOAD FIFTH MODAL:
-    $('#fifthModalTrig').click();
-};
+  
 
 $('#submitBtn').click(function() {
     if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
