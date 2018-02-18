@@ -17,6 +17,10 @@ body, html {
   display: none;
 }
 
+.clear {
+  clear: both;
+}
+
 #holderDiv {
   min-height: 100%;
   position: relative;
@@ -87,7 +91,7 @@ body, html {
   top: -2px;
   margin-right: 7px;
   font-size: .7em !important;
-  margin-left: 1px;
+  margin-left: -1px;
 }
 
 .fa-heart:hover,
