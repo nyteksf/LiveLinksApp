@@ -966,6 +966,7 @@ $('#submitEmailModal').click(function(e) {
     } else {
       console.log("SUCCESS SO FAR");
         let email = $('#emailResetInput').val();
+      console.log("email sanity check: " + email);
         firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
             // Handle Errors here:
             if (error) {
@@ -976,6 +977,7 @@ $('#submitEmailModal').click(function(e) {
                 $('#fifthModalTrig').click();
               console.log("error message: " + error.message);
             }
+          console.log("end function");
             return;
         });
     }
