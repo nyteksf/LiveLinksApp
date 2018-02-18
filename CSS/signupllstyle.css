@@ -128,9 +128,9 @@ span#greetTxt {
 
 #whiteText,
 .whiteText {
-  color: #FFFFFF !important;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
+  color: white !important;
+  //padding-left: 8px !important;
+  //padding-right: 8px !important;
 }
 
 /* default button */
