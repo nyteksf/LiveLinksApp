@@ -322,24 +322,29 @@ a#passResetLnk {
 }
 
 .row h1 {
+  font-family: 'Istok Web', sans-serif;
   font-family: 'Fjalla One', sans-serif;
 }
 
 #modalBody {
-  font-family: 'Fjalla', sans-serif;
+  font-family: 'Istok Web', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .row input {
-  font-family: 'Fjalla', sans-serif;
+  font-family: 'Istok Web', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 #modalTitle {
+  font-family: 'Istok Web', sans-serif;
   font-family: 'Cantarell', sans-serif;
   font-size: 1.4em !important;
 }
 
 .row button {
-  font-family: 'Fjalla', sans-serif;
+  font-family: 'Istok Web', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 #submitBtn {
