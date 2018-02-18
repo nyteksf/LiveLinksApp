@@ -247,7 +247,7 @@ a#passResetLnk {
 
 #myModal label {
   font-size: 1.1em !important;
-  margin-top: 5px;
+  margin-top: 8px !important;
 }
 
 #xClose {
@@ -340,7 +340,7 @@ a#passResetLnk {
 #modalTitle {
   font-family: 'Istok Web', sans-serif;
   //font-family: 'Cantarell', sans-serif;
-  font-size: 1.4em !important;
+  font-size: 1.45em !important;
 }
 
 .row button {
