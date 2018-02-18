@@ -10,6 +10,10 @@ a#passResetLnk:hover, a#registerNowLnk:hover {
   color: #FFFFFF;
 }
 
+#thirdModal .fa-times {
+    font-size: .85em !important;
+}
+
 a#navTxt,
 a#aboutNavBtn,
 a.dropdown-toggle {
@@ -122,7 +126,8 @@ span#greetTxt {
   text-shadow: 0.15px 0.15px #ff0000;
 }
 
-#whiteText {
+#whiteText,
+.whiteText {
   color: #FFFFFF !important;
   padding-left: 8px !important;
   padding-right: 8px !important;
