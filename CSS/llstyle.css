@@ -595,7 +595,7 @@ input, #submitButton {
 #refreshButton {
   position: relative;
   height: 23px;
-  width: 30px;
+  //width: 30px;
   border-radius: 5px;
   outline-width: 0;
 }
