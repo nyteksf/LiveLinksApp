@@ -26,9 +26,9 @@ div#linkOutputHeader {
   display: none;
 }
 
-.clear {
+/*.clear {
   clear: both;
-}
+}*/
 
 #holderDiv {
   min-height: 100%;
