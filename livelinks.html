@@ -378,7 +378,7 @@ populatePageWLinks = function() {
       
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM
       
-	  console.log("OUTPUT " + $this.parent().parent().parent()[0].className)
+	  console.log("OUTPUT " + typeof $this.parent().parent().parent()[0].className)
 	  console.log("OUTPUT " + $this.parent().parent().parent()[0])
 	  
       let postID = $this.parent().parent().parent()[0].className.split(" ");
