@@ -118,7 +118,8 @@ span#greetTxt {
 
 #cancelBtnModalSecond {
   color: darkred !important;
-  font-family: Helvetica, Arial, sans-serif !important;
+  font-family: 'Average', Helvetica, Arial, sans-serif !important;
+  text-shadow: 0.15px 0.15px #ff0000;
 }
 
 #whiteText {
@@ -178,6 +179,8 @@ div.modal-body {
 
 #thirdModal .modal-footer button {
   font-weight: bold;
+  font-size: 1em !important;
+  font-family: 'Average', sans-serif;
 }
 
 #fifthModal {
