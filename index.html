@@ -1220,15 +1220,13 @@ let keyGen = function() {
     return key
 };
   
-$('#cancelBtnModal, #cancelBtnModalSecond').mouseenter(function() {
-  $(this).addClass('btn-danger').removeClass('btn-default');
-  $(this).addClass('whiteText');
+$('#cancelBtnModal, #cancelBtnModalSecond, #cancelBtnModalThird').mouseenter(function() {
+  $(this).addClass('btn-danger whiteText').removeClass('btn-default');
   $(this).css('color', '#FFFFFF');
 });
   
-$('#cancelBtnModal, #cancelBtnModalSecond').mouseleave(function() {
-  $(this).removeClass('btn-danger').addClass('btn-default');
-  $(this).removeClass('whiteText');
+$('#cancelBtnModal, #cancelBtnModalSecond, #cancelBtnModalThird').mouseleave(function() {
+  $(this).removeClass('btn-danger whiteText').addClass('btn-default');
 });
 
 $('#aboutNavBtn').click(function() {
