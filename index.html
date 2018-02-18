@@ -957,13 +957,14 @@ $('#anonCB').change(function() {
 
 
 $('#submitEmailModal').click(function(e) {
-    //e.stopPropagation();
     e.preventDefault();
+  console.log("STARTED FUNCTION");
     if ($('#emailResetInput').val().length === 0) {
         $('#fifthModal .modal-title').html("Error!");
         $('#fifthModal .modal-body').html("Please input your email address and try again!");
         $('#fifthModalTrig').click();
     } else {
+      console.log("SUCCESS SO FAR");
         let email = $('#emailResetInput').val();
         firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
             // Handle Errors here:
@@ -973,6 +974,7 @@ $('#submitEmailModal').click(function(e) {
                 $('#fifthModal .modal-body').html(error.message);
                 //LOAD FIFTH MODAL:
                 $('#fifthModalTrig').click();
+              console.log("error message: " + error.message);
             }
             return;
         });
