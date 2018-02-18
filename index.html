@@ -707,9 +707,9 @@ let getProviderForProviderId = function(pCred, email, uName, password, isPasswdA
     });
 };
 
-if (userip.indexOf('.')) {
+if (userip.indexOf('.') !== -1) {
     console.log('HAS DECIMALS--VALID IP FOR LOGS');
-};
+} else { console.log('has no decimals'); };
 
 $('#submitBtn').click(function() {
     if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
