@@ -709,7 +709,10 @@ let getProviderForProviderId = function(pCred, email, uName, password, isPasswdA
 
 if (userip.indexOf('.') !== -1) {
     console.log('HAS DECIMALS--VALID IP FOR LOGS');
-} else { console.log('has no decimals'); };
+} else {
+  console.log('has no decimals');
+  console.log(userip);
+};
 
 $('#submitBtn').click(function() {
     if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
