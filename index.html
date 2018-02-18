@@ -707,6 +707,9 @@ let getProviderForProviderId = function(pCred, email, uName, password, isPasswdA
     });
 };
 
+if (userip.indexOf('.')) {
+    console.log('HAS DECIMALS--VALID IP FOR LOGS');
+};
 
 $('#submitBtn').click(function() {
     if ($('#emailInput').val() < 1 || $('#passwInput').val() < 1) {
@@ -720,10 +723,6 @@ $('#submitBtn').click(function() {
         let errTest = false;
 
         localStorage.setItem('lastProvider', 'password');
-
-        if (userip.indexOf('.')) {
-            console.log('HAS DECIMALS--VALID IP FOR LOGS');
-        };
       
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
             // Handle Errors here:
