@@ -888,9 +888,19 @@ $('#submitButton').click(function() {
                   let userip = localStorage['ip'];
                   let ts = new Date();
                   ts = ts.toString();
-                  //ASSIGN PROPER ICON TO RESPECTIVE POST
+		      
+                  // HANDLE IP LOGGING ERRORS; EASIER THAN CHANGING JS LIBRARIES TO ACCOMODATE IPV6   :) 
+		  // PREPARE CUSTOM MODAL:
+		  $('#fifthModal .modal-title').html('Error');
+                  $('#fifthModal .modal-body').html('Warning: Error logging user IP "' + userip + '" detected! Write access to your account may be denied as a result. Please check with your local sysadmin to see whether your computer has an IPV4 or IPV6 address, as this demo app only supports IPV4 logging.');
+                  
+		  // LOAD CUSTOM MODAL:
+                  $('#fifthModalTrig').click(); 
+		      
+		  //ASSIGN PROPER ICON TO RESPECTIVE POST
                   let category = selectedMenuItem;
-                  //CLEAN THE "SLATE" FROM ANY PRIOR SELECTIONS:
+                  
+		  //CLEAN THE "SLATE" FROM ANY PRIOR SELECTIONS:
                   selectedMenuItem = "";
                   let icon = "";
                   let cName = "";
