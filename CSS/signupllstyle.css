@@ -121,7 +121,7 @@ span#greetTxt {
 }
 
 #cancelBtnModalSecond {
-  color: darkred !important;
+  color: darkred; /* !important; */
   font-family: Helvetica, Arial, sans-serif !important;
   text-shadow: 0.15px 0.15px #ff0000;
 }
@@ -136,7 +136,7 @@ span#greetTxt {
 /* default button */
   #cancelBtnModal {
     border-color: #adadad !important;
-    color: darkred !important;
+    color: darkred; !important;
   }
     
   #cancelBtnModal:hover,
