@@ -981,9 +981,10 @@ $('#submitEmailModal').click(function(e) {
               
                 throw new Error(error.message);
             }
-        });
+        }).then(function(){ console.log('NEEEEEEXXXXTT'); });
         console.log("errFlag?!? ", errFlag);
-        console.log("h4rh4rh4rh4rrrr");
+        errflag = true;
+        console.log("spl0rt");
         if (!errFlag) {
             $('#fifthModal .modal-title').html('Success!');
             $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
