@@ -973,6 +973,12 @@ $('#submitEmailModal').click(function(e) {
                 console.log(error.code);
                 errFlag = true;
               
+                $('#fifthModal .modal-title').html('Error: ' + error.code);
+                $('#fifthModal .modal-body').html(error.message);
+            
+            // LOAD FIFTH MODAL:
+            $('#fifthModalTrig').click(); 
+              
                 return false;
             }
         }); /*
