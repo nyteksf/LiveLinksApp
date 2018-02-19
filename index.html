@@ -955,7 +955,7 @@ $('#anonCB').change(function() {
     }
 });
 
-
+let errFlag = false;
 $('#submitEmailModal').click(function(e) {
     e.preventDefault();
     if ($('#emailResetInput').val().length === 0) {
@@ -966,7 +966,7 @@ $('#submitEmailModal').click(function(e) {
         return;
     } else {
         let email = $('#emailResetInput').val();
-        let errFlag = false;
+        
         firebase.auth().sendPasswordResetEmail(email).catch(function(error) {
             // Handle Errors here:
             if (error) {
@@ -980,13 +980,15 @@ $('#submitEmailModal').click(function(e) {
                 $('#fifthModalTrig').click(); 
               
                 throw new Error(error.message);
-            } else { console.log("BLAMMO! SPLATOOIE!"); }
+            }
         });
-        console.log("errFlag? ", errFlag);
-        console.log("h3h3h3h3h3");
-        $('#fifthModal .modal-title').html('Success!');
-        $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
-        $('#fifthModalTrig').click(); 
+        console.log("errFlag?!? ", errFlag);
+        console.log("h4rh4rh4rh4rrrr");
+        if (!errFlag) {
+            $('#fifthModal .modal-title').html('Success!');
+            $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
+            $('#fifthModalTrig').click(); 
+        }
     }
     $('#emailResetInput').val("");
 });
