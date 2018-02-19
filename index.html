@@ -970,6 +970,7 @@ $('#submitEmailModal').click(function(e) {
             // Handle Errors here:
             if (error) {
                 //PASS DYNAMIC INFO TO FIFTH MODAL:
+                console.log(error.code);
                 errFlag = true;
               
                 return false;
