@@ -724,6 +724,7 @@ $('#submitBtn').click(function() {
             // Handle Errors here:
             if (error) {
                 errTest = true;
+              console.log("CONFIRMED");
                 if (error.code === "auth/wrong-password") {
                     $('#fifthModal .modal-title').html(error.code);
                     $('#fifthModal .modal-body').html("<center>" + error.message + "<br>Please try first registering an email/password account,<br>or performing a password reset.</center>");
@@ -982,6 +983,7 @@ $('#submitEmailModal').click(function(e) {
             }
         });
         if (!errFlag) {
+            console.log("HAHAHAHAHA");
             $('#fifthModal .modal-title').html('Success!');
             $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
             $('#fifthModalTrig').click(); 
