@@ -979,16 +979,14 @@ $('#submitEmailModal').click(function(e) {
                 // LOAD CUSTOM MODAL:
                 $('#fifthModalTrig').click(); 
               
-                return false;
+                throw new Error(error.message);
             }
         });
-        console.log("errflag ", errFlag);
-        if (!errFlag) {
-            console.log("HAHAHAHAHA");
-            $('#fifthModal .modal-title').html('Success!');
-            $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
-            $('#fifthModalTrig').click(); 
-        }
+        console.log("errFlag!!! ", errFlag);
+        console.log("h0h0h0h0h0");
+        $('#fifthModal .modal-title').html('Success!');
+        $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
+        $('#fifthModalTrig').click(); 
     }
     $('#emailResetInput').val("");
 });
