@@ -961,6 +961,8 @@ $('#submitEmailModal').click(function(e) {
         $('#fifthModal .modal-title').html("Error!");
         $('#fifthModal .modal-body').html("Please input your email address and try again!");
         $('#fifthModalTrig').click();
+      
+        return;
     } else {
         let email = $('#emailResetInput').val();
         let errFlag = false;
@@ -972,14 +974,14 @@ $('#submitEmailModal').click(function(e) {
               
                 return false;
             }
-        });
+        }); /*
         if (!errFlag) {
             $('#fifthModal .modal-title').html('Success!');
             $('#fifthModal .modal-body').html('Please check the email used to register your account for a link used to restore access.');
             
             // LOAD FIFTH MODAL:
             $('#fifthModalTrig').click(); 
-        }
+        } */
     }
     $('#emailResetInput').val("");
 });
