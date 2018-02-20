@@ -14,6 +14,7 @@ body, html {
 
 iframe#chatbox {
     margin-top: 0;
+    display: none;
 }
 
 #menu .fa {
@@ -21,8 +22,8 @@ iframe#chatbox {
   font-size: .7em;
 }
 
-.hideCB {
-    display: none;
+.showCB {
+    display: block;
 }
 
 div#linkOutputHeader {
