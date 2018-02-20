@@ -291,12 +291,13 @@
 	
     <!-- ADD IRC CHATROOM VIA iFRAME-->
     <iframe id="chatbox" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="647" height="550"></iframe>
-    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB></span> Toggle Chat</button>
+    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"></span> Toggle Chat</button>
 	    
 <script>
 $("#btn-ToggleCB").click(function() {
     $("#chatbox").toggleClass("hideCB");
     $("#btn-Span-ToggleCB").html() === "<i class='fa fa-angle-right'></i>" ? $("#btn-Span-ToggleCB").html("<i class='fa fa-angle-down'></i>") : $("#btn-Span-ToggleCB").html("<i class='fa fa-angle-right'></i>");
+
 });
 	    
 let curUser;
