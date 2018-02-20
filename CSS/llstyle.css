@@ -13,17 +13,20 @@ body, html {
 }
 
 iframe#chatbox {
-    margin-top: 0;
-    display: none;
+  margin-top: 0;
+}
+
+.showCB {
+  display: block !important;
+}
+
+.hideCB {
+  display: hidden;
 }
 
 #menu .fa {
   color: #333;
   font-size: .7em;
-}
-
-.showCB {
-    display: block;
 }
 
 div#linkOutputHeader {
