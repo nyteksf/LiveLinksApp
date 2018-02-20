@@ -290,14 +290,15 @@
     </div>
 	
     <!-- ADD IRC CHATROOM VIA iFRAME-->
-    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"></span> Toggle Chat</button>
+    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
+    <br/>
     <iframe id="chatbox" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
     	    
 <script>
 $("#btn-ToggleCB").click(function() {
 	console.log($("#btn-Span-ToggleCB").html());
-    $("#btn-Span-ToggleCB").html() === "<i class='fa fa-angle-right'></i>" ? $("#btn-Span-ToggleCB").html("<i class='fa fa-angle-down'></i>") : $("#btn-Span-ToggleCB").html("<i class='fa fa-angle-right'></i>");
-    $("#chatbox").toggleClass("hideCB");
+    $("#btn-Span-ToggleCB").html() === '<i class="fa fa-angle-right"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right"></i>');
+    $("#chatbox").toggleClass("showCB");
 });
 	    
 let curUser;
