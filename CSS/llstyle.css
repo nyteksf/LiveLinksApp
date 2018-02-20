@@ -17,6 +17,10 @@ body, html {
   font-size: .7em;
 }
 
+.hideCB {
+    display: none;
+}
+
 div#linkOutputHeader {
   pointer-events: none;
 }
