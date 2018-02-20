@@ -664,11 +664,15 @@ input, #submitButton {
   border-radius: 5px;
 }
 
+#selectTypeButton {
+  position: relative;
+  top: -1px;
+}
+
 #selectTypeButton,
 #refreshButton {
   position: relative;
   height: 23px;
-  //width: 30px;
   border-radius: 5px;
   outline-width: 0;
 }
