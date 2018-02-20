@@ -255,7 +255,7 @@
 <body>
     <a href="http://nyteksf.github.io/livelinks.html" title="LIVELINKS" id="titleLink"><h1>LiveLinks</h1><br/><h2><small>A Community For Sharing</small></h2></a>
 
-    <div class="link-form">
+    <div class="link-form" id="form-submit">
       <form>
         <input type="text" class="link-title" id="linkTitle" placeholder="New Link Title Here..." />
         <input type="text" class="link-url" id="linkUrl" placeholder="New URL Here..." />
@@ -291,15 +291,23 @@
 	
     <!-- ADD IRC CHATROOM VIA iFRAME-->
     <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
+    <button id="btn-ToggleLinks"><span id="btn-Span-ToggleLinks"><i class="fa fa-angle-right"></i></span> Toggle Links</button>
     <br/>
     <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
     	    
 <script>
 $("#chatbox").hide();
-$("#btn-ToggleCB").click(function() {
-	console.log($("#btn-Span-ToggleCB").html());
+$("#btn-ToggleCB").click(function(e) {
+    e.preventDefault();
     $("#btn-Span-ToggleCB").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
     $("#chatbox").toggleClass("showCB");
+});
+	
+$("#btn-ToggleLinks").click(function(e) {
+    e.preventDefault();
+    $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+    $("#holderDiv").toggleClass("hideLinks");
+    $(".").toggleClass("hideForm");
 });
 	    
 let curUser;
