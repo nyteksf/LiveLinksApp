@@ -24,7 +24,10 @@ iframe#chatbox {
   display: block !important;
 }
 
-.hideForm,
+.hideForm {
+  display: hidden !important;
+}
+
 .hideLinks {
   display: hidden !important;
 }
