@@ -29,6 +29,10 @@ iframe#chatbox {
   display: hidden !important;
 }
 
+#form-submit {
+  display: block;
+}
+
 button#btn-ToggleLinks {
   position: relative;
   background: none;
@@ -71,13 +75,10 @@ div#linkOutputHeader {
   display: none;
 }
 
-/*.clear {
-  clear: both;
-}*/
-
 #holderDiv {
   min-height: 100%;
   position: relative;
+  display: block;
 }
 
 #usernameFoundOutput {
