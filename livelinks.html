@@ -300,17 +300,18 @@ $("#chatbox").hide();
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     $("#btn-Span-ToggleCB").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+    
     $("#chatbox").toggleClass("showCB");
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
-	console.log("WTF m88888?");
+	console.log("WTF meng?");
     $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
-    console.log($("#btn-Span-ToggleLinks").html());
+
     $("#holderDiv").toggleClass("hideLinks");
     $("#form-submit").toggleClass("hideForm");
-	console.log("boooooooooom");
+	console.log("bang");
 });
 	    
 let curUser;
