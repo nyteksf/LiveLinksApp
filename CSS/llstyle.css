@@ -16,18 +16,21 @@ iframe#chatbox {
   margin-top: 8px;
 }
 
+.hideCB {
+  display: hidden;
+}
+
 .showCB {
   display: block !important;
 }
 
-.hideCB {
-  display: hidden;
+.hideLinks {
+  display: hidden !important;
 }
 
 button#btn-ToggleCB {
     position: relative;
     background: none;
-    /* border: 0; */
     outline: 0;
     cursor: pointer;
     top: -4px;
