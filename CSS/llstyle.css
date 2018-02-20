@@ -12,6 +12,10 @@ body, html {
   color: #333333;
 }
 
+iframe#chatbox {
+    margin-top: 0;
+}
+
 #menu .fa {
   color: #333;
   font-size: .7em;
