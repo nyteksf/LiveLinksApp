@@ -255,6 +255,10 @@
 <body>
     <a href="http://nyteksf.github.io/livelinks.html" title="LIVELINKS" id="titleLink"><h1>LiveLinks</h1><br/><h2><small>A Community For Sharing</small></h2></a>
 
+    <!-- ADD IRC CHATROOM VIA iFRAME-->
+    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
+    <button id="btn-ToggleLinks"><span id="btn-Span-ToggleLinks"><i class="fa fa-angle-down"></i></span> Toggle Links</button>	
+	
     <div class="link-form show-form" id="form-submit">
       <form>
         <input type="text" class="link-title" id="linkTitle" placeholder="New Link Title Here..." />
@@ -288,11 +292,8 @@
         </div>
       </div>
     </div>
-	
-    <!-- ADD IRC CHATROOM VIA iFRAME-->
-    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
-    <button id="btn-ToggleLinks"><span id="btn-Span-ToggleLinks"><i class="fa fa-angle-right"></i></span> Toggle Links</button>
-    <br/>
+    
+    <!-- ADD CHAT CONNECTIVITY -->
     <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
     	    
 <script>
@@ -306,12 +307,10 @@ $("#btn-ToggleCB").click(function(e) {
 	
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
-	console.log("WTF?");
     $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
 
     $("#holderDiv").toggle();
     $("#form-submit").toggle();
-	console.log("b");
 });
 	    
 let curUser;
