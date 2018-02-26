@@ -294,14 +294,18 @@
     </div>
     
     <!-- ADD CHAT CONNECTIVITY -->
-    <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
-    	    
+    <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
+    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
 <script>
 $("#chatbox").hide();
+
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
+    
+    /* HANDLE BUTTON ANIMATION ONCLICK */
     $("#btn-Span-ToggleCB").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
     
+    /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
 });
 	
@@ -1435,11 +1439,22 @@ $('#smbXtra').click(function() {
           if (usernameList[user].uid === uidNo) {
               userRegistered = true;
               $('#curUsername').removeClass('redErrorTxt');
+              
+              /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
+              
+              /* SET HREF OVERRIDE ON ANCHOR TAG TO INJECT USERNAME */
+              $('#chatbox').attr('src','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
+              
               break;
           } else {
               $('#curUsername').addClass('redErrorTxt');
-              $('#curUsername').text("User Unregistered");
+              
+              /* USER FEEDBACK: ERROR */
+              $('#curUsername').text("User Unregistered. Please Register.");
+              
+              /* SET HREF ON ANCHOR TAG USING USERNAME */
+              // $().attr('','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
           }
       }
   });
