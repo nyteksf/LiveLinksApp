@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
 
 <head>
@@ -149,7 +149,8 @@
     roughly came from observing a Firebase iPhone App tutorial written in Java.
   </center></p>
 </div>
-<!-- jQuery UI Dialog/Menu Segment End -->
+  <!-- jQuery UI Dialog/Menu Segment End -->
+
 
   <script>
   $('#noUserErrDialog').hide();
@@ -293,22 +294,11 @@
     </div>
     
     <!-- ADD CHAT CONNECTIVITY -->
-    <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
-    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->	
+    <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
+    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
 <script>
-	console.log("DONEEE");
 $("#chatbox").hide();
 
-/* SET NICK FOR IRC USAGE FROM LIVELINKS USERNAME */		
-var setNick = function() {
-    if (!setNick.prototype.done) {
-      $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
-      setNick.prototype.done = true;
-    } else {
-      console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
-    }
- };
-	
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     
@@ -317,10 +307,6 @@ $("#btn-ToggleCB").click(function(e) {
     
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
-    
-    /* RUN ONE TIME ONLY */
-    setNick();
-    
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
@@ -1445,7 +1431,6 @@ $('#smbXtra').click(function() {
           style: "color:lightpink"
       }]
   });
-  let ircNick = "";
   let userRegistered = false;
   let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
       usernameList = usernameList.responseJSON;
@@ -1457,14 +1442,19 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
-	      ircNick = usernameList[user].user;
-             
+              
+              /* SET HREF OVERRIDE ON ANCHOR TAG TO INJECT USERNAME */
+              $('#chatbox').attr('src','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
+              
               break;
           } else {
               $('#curUsername').addClass('redErrorTxt');
               
               /* USER FEEDBACK: ERROR */
               $('#curUsername').text("User Unregistered. Please Register.");
+              
+              /* SET HREF ON ANCHOR TAG USING USERNAME */
+              // $().attr('','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
           }
       }
   });
@@ -1498,6 +1488,6 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 </script>
-    
+
 </body>
 </html>
