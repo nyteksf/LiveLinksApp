@@ -299,7 +299,17 @@
 <script>
 $("#chatbox").hide();
 
-/* INSERT FUNC HERE */
+/* TRYING ES5 */
+var setNick = function() {
+    if (!setNick.prototype.done) {
+    console.log("click");
+      $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
+      setNick.prototype.done = true;
+      console.log("echo");
+    } else {
+      console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
+    }
+ };
     
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
