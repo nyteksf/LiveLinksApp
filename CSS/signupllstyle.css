@@ -264,7 +264,7 @@ a#passResetLnk {
   margin-bottom: -15px !important;
 }
 
-#xClose {
+.xClose {
   position: relative;
   top: 2px;
   font-weight: bold;
