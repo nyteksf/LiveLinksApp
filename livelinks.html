@@ -294,9 +294,11 @@
     </div>
     
     <!-- ADD CHAT CONNECTIVITY -->
-    <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
+    <iframe id="chatbox" class="hideCB" src="javascript:window.location=function(){return https://webchat.freenode.net?channels="+ nickhere +"%23livelinkschat&uio=Mj10cnVldd }" style="margin-top:15px;" width="688" height="550"></iframe>
     	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
 <script>
+let nickhere = "somenick";
+    
 $("#chatbox").hide();
 
 $("#btn-ToggleCB").click(function(e) {
@@ -1443,18 +1445,12 @@ $('#smbXtra').click(function() {
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
               
-              /* SET HREF OVERRIDE ON ANCHOR TAG TO INJECT USERNAME */
-              $('#chatbox').attr('src','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
-              
               break;
           } else {
               $('#curUsername').addClass('redErrorTxt');
               
               /* USER FEEDBACK: ERROR */
               $('#curUsername').text("User Unregistered. Please Register.");
-              
-              /* SET HREF ON ANCHOR TAG USING USERNAME */
-              // $().attr('','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
           }
       }
   });
