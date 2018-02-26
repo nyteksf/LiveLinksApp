@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
 
 <head>
@@ -299,21 +299,6 @@
 <script>
 $("#chatbox").hide();
 
-	
-let setNick = function() {
-    if (!setNick.prototype.done) {
-    console.log("click");
-      $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
-      setNick.prototype.done = true;
-      console.log("echo");
-    } else {
-      console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
-    }
- };
-
-	    /* RUN ONE TIME */
-    //setNick();
-
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     
@@ -322,9 +307,7 @@ $("#btn-ToggleCB").click(function(e) {
     
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
-	
 });
-	console.log("LOADED?");
 	
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
