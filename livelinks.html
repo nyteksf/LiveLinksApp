@@ -299,6 +299,7 @@
 <script>
 $("#chatbox").hide();
 
+	
 /* TRYING ES5 */
 var setNick = function() {
     if (!setNick.prototype.done) {
@@ -310,13 +311,8 @@ var setNick = function() {
 	    
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
-        console.log("echo");
-    } else {
-        console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
     }
  };
-    
-	console.log("LOADED!!!!!!");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
