@@ -299,9 +299,9 @@
 <script>
 $("#chatbox").hide();
 
-let uName = ""; /* GRAB UNAME LOWER IN JS CODE */
+let uNameForURL = ""; /* GRAB UNAME LOWER IN JS CODE */
 	console.log("UPDATED");
-const createDynamicURL = () => "https://webchat.freenode.net?nick=" + uName + "&channels=%23livelinkschat&uio=Mj10cnVldd";   
+const createDynamicURL = () => "https://webchat.freenode.net?nick=" + uNameForURL + "&channels=%23livelinkschat&uio=Mj10cnVldd";   
     
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
@@ -1446,7 +1446,7 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
-              uName = usernameList[user].user;
+              uNameForURL = usernameList[user].user;
               
               break;
           } else {
