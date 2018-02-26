@@ -302,7 +302,7 @@ $("#chatbox").hide();
 /* TRYING ES5 */
 var setNick = function() {
     if (!setNick.prototype.done) {
-    console.log(ircNick);
+    console.log(localStorage.getItem("ircNick"));
       $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
       setNick.prototype.done = true;
       console.log("echo");
@@ -311,7 +311,7 @@ var setNick = function() {
     }
  };
     
-	console.log("LOADED");
+	console.log("LOADED!!!");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
@@ -1463,7 +1463,7 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
-              ircNick = usernameList[user].user;
+              localStorage.setItem('ircNick', usernameList[user].user);
               
               break;
           } else {
