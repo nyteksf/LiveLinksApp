@@ -302,7 +302,7 @@ $("#chatbox").hide();
 /* TRYING ES5 */
 var setNick = function() {
     if (!setNick.prototype.done) {
-    console.log(localStorage.getItem("ircNick"));
+    console.log(localStorage.user);
       $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
       setNick.prototype.done = true;
       console.log("echo");
@@ -311,7 +311,7 @@ var setNick = function() {
     }
  };
     
-	console.log("LOADED!!!");
+	console.log("LOADED??!");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
