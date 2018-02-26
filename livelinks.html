@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -296,9 +296,19 @@
     <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
     	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->	
 <script>
-	console.log("DONe");
+	console.log("DONEEE");
 $("#chatbox").hide();
 
+/* SET NICK FOR IRC USAGE FROM LIVELINKS USERNAME */		
+var setNick = function() {
+    if (!setNick.prototype.done) {
+      $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
+      setNick.prototype.done = true;
+    } else {
+      console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
+    }
+ };
+	
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     
@@ -307,6 +317,10 @@ $("#btn-ToggleCB").click(function(e) {
     
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
+    
+    /* RUN ONE TIME ONLY */
+    setNick();
+    
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
@@ -1431,6 +1445,7 @@ $('#smbXtra').click(function() {
           style: "color:lightpink"
       }]
   });
+  let ircNick = "";
   let userRegistered = false;
   let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
       usernameList = usernameList.responseJSON;
@@ -1442,6 +1457,7 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
+	      ircNick = usernameList[user].user;
              
               break;
           } else {
