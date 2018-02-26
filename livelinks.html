@@ -294,13 +294,13 @@
     </div>
     
     <!-- ADD CHAT CONNECTIVITY -->
-  <!--  <iframe id="chatbox" class="hideCB" src="javascript:window.location=createDynamicURL();" style="margin-top:15px;" width="688" height="550"></iframe>
-    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
+  <!--  <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
+    	    <!-- src="javascript:window.location=createDynamicURL();" -->
 <script>
 $("#chatbox").hide();
 
 //let uNameForURL = ""; /* GRAB UNAME LOWER IN JS CODE */
-	console.log("UPDATED HAHAHA");
+	console.log("UPDATED=-=-");
 //const createDynamicURL = () => "https://webchat.freenode.net?nick=" + uNameForURL + "&channels=%23livelinkschat&uio=Mj10cnVldd";   
     
 $("#btn-ToggleCB").click(function(e) {
@@ -1446,14 +1446,14 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
-              uNameForURL = usernameList[user].user;
+              //uNameForURL = usernameList[user].user;
               
               break;
           } else {
               $('#curUsername').addClass('redErrorTxt');
               
               /* USER FEEDBACK: ERROR */
-              $('#curUsername').text("User Unregistered. Please Register.");
+              $('#curUsername').text("User Unregistered");
           }
       }
   });
