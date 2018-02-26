@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
 
 <head>
@@ -294,15 +294,11 @@
     </div>
     
     <!-- ADD CHAT CONNECTIVITY -->
-    <iframe id="chatbox" class="hideCB" src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" style="margin-top:15px;" width="688" height="550"></iframe>
-    	    <!-- src="javascript:window.location=createDynamicURL();" -->
+    <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
+    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
 <script>
 $("#chatbox").hide();
 
-//let uNameForURL = ""; /* GRAB UNAME LOWER IN JS CODE */
-	console.log("UPDATEDDD");
-//const createDynamicURL = () => "https://webchat.freenode.net?nick=" + uNameForURL + "&channels=%23livelinkschat&uio=Mj10cnVldd";   
-    
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     
@@ -1446,14 +1442,19 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
-              //uNameForURL = usernameList[user].user;
+              
+              /* SET HREF OVERRIDE ON ANCHOR TAG TO INJECT USERNAME */
+              $('#chatbox').attr('src','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
               
               break;
           } else {
               $('#curUsername').addClass('redErrorTxt');
               
               /* USER FEEDBACK: ERROR */
-              $('#curUsername').text("User Unregistered");
+              $('#curUsername').text("User Unregistered. Please Register.");
+              
+              /* SET HREF ON ANCHOR TAG USING USERNAME */
+              // $().attr('','https://webchat.freenode.net?nick=' + usernameList[user].user + '&channels=%23livelinkschat&uio=Mj10cnVldd');
           }
       }
   });
