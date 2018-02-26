@@ -303,7 +303,7 @@ $("#chatbox").hide();
 var setNick = function() {
     if (!setNick.prototype.done) {
 	var $ifrm = $('chatbox');
-	$ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+	$ifrm = $ifrm.contentWindow || $ifrm.contentDocument.document || $ifrm.contentDocument;
 	$ifrm.document.open();
       	$ifrm.document.write('Loading...');
       	$ifrm.document.close();	  
@@ -316,7 +316,7 @@ var setNick = function() {
     }
  };
     
-	console.log("LOADED.");
+	console.log("LOADED!!!.");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
