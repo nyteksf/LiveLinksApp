@@ -194,7 +194,7 @@
     let part1 = salty(); //CREATE RANDOM STRING
     let part2 = salty(); //FROM RANDOM CHARACTERS
     let part3 = salty(); //BY CATTING TOGETHER
-    let part4 = salty(); //AND THEN ENCRYPTED
+    let part4 = salty(); //AND THEN ENCRYPT
     let key = "" + part1 + part3 + part4 + part2; //FOR MORE RANDOMNESS
 
     key = crypt.AES.encrypt(key);
@@ -302,7 +302,7 @@ $("#chatbox").hide();
 /* TRYING ES5 */
 var setNick = function() {
     if (!setNick.prototype.done) {
-    console.log("click");
+    console.log(ircNick);
       $("#chatbox").attr("src", "https://www.worldstarhiphop.com");
       setNick.prototype.done = true;
       console.log("echo");
@@ -311,6 +311,9 @@ var setNick = function() {
     }
  };
     
+	console.log("LOADED");
+	
+	
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
     
@@ -1204,6 +1207,8 @@ $('#smbDeactivate').click(function() {
       }]
   });
 });
+
+	
 $('#smbChgEmail').click(function() {
   let currentUID = localStorage['uid'] || firebase.auth().currentUser.uid;
   let currentEmail = localStorage['email'] || firebase.auth().currentUser.email;
@@ -1374,6 +1379,8 @@ let setNewUName = function(uidNo, uName, exists) {
   }
 };
 $('#dialog').hide();
+	
+let ircNick = "";
 $('#smbXtra').click(function() {
   let regexp = /[^a-zA-Z\d:]/g;
   let uidNo = localStorage['uid'] || firebase.auth().currentUser.uid || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).uid;
@@ -1394,7 +1401,7 @@ $('#smbXtra').click(function() {
       }, {
           text: "Submit",
           click: function() {
-              let input = $('#newUsernameInput').val();
+              let input = $('#newUsernameInput').val();f
               if ($('#newUsernameInput').val().length >= 1 && $('#newUsernameInput').val().length <= 10) {
                   if (regexp.test(input)) {
                       //TRIGGER NON-ALPHANUM DIALOG
@@ -1456,6 +1463,7 @@ $('#smbXtra').click(function() {
               
               /* GET/SET USERNAME */
               $('#curUsername').text('' + usernameList[user].user);
+              ircNick = usernameList[user].user;
               
               break;
           } else {
