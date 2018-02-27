@@ -94,6 +94,7 @@ span#greetTxt {
   float: right;
   font-weight: bold;
   font-family: 'Average', serif;
+  margin-right: 2px;
 }
 
 #submitBtnModal {
@@ -412,7 +413,7 @@ a#passResetLnk {
 label.checkbox {
   font-size: .9em;
   top: 2px;
-  left: 0 !important;
+  //left: 0 !important;
   font-weight: bold !important;
   position: relative;
   left: 2px;
