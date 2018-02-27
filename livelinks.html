@@ -649,8 +649,9 @@ populatePageWLinks = function() {
                   usernameCount++;
                   
                   let keys = Object.keys(resJSONObj[likes]);
-                  keys = keys.filter(function() {
-                      if (keys[i] === postNo) {
+                  console.log(keys);
+                  keys = keys.filter(function(key) {
+                      if (key === postNo) {
 		          likeUNameList.push(likes);
 		      }
                   });
