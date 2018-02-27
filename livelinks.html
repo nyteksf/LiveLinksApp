@@ -304,8 +304,8 @@
 <script>
 $("#chatbox").hide();
 
-/* TRYING ES5 */
-var setNick = function() {
+/* SET NICK IN IRC COMPONENT */
+let setNick = () => {
     if (!setNick.prototype.done) {
 	var ifrm = document.getElementById('chatbox');
 	ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
@@ -315,13 +315,8 @@ var setNick = function() {
 	    
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
-        console.log("echo");
-    } else {
-        console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
     }
  };
-    
-	console.log("LOADED!!!!!!");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
@@ -974,7 +969,6 @@ $('#submitButton').click(function() {
                           alert("ERR!");
                           break;
                   }
-		  console.log("userip " + userip);
 		      
                   icon = encodeURIComponent(icon);
                   //PUSH IT TO FIREBASE DB:
@@ -1514,7 +1508,7 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("it's definitely loaded");	
+console.log("okay I'm loaded");	
 </script>
 
 </body>
