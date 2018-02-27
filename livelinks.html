@@ -648,9 +648,11 @@ populatePageWLinks = function() {
                   let usernames = Object.keys(resJSONObj);
                   usernameCount++;
                   
-                  let keys = resJSONObj[likes];
+                  let keys = Object.keys(resJSONObj[likes]);
                   keys = keys.filter(function() {
-                      return keys[i] === postNo;
+                      if (keys[i] === postNo) {
+		          likeUNameList.push(likes);
+		      }
                   });
                   
                   /*let arrLen = Object.keys(resJSONObj[likes]).length;
@@ -1600,7 +1602,7 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
     
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("okay I'm hhehehhehehe");	
+console.log("okay I'm blah");	
 </script>
 
 </body>
