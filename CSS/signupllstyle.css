@@ -396,7 +396,7 @@ a#passResetLnk {
   font-weight: bold;
 }
 
-.secondModalTrig {
+#secondModalTrig {
   display: none;
 }
 
