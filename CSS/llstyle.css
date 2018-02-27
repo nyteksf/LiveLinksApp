@@ -398,7 +398,7 @@ input#newUsernameInput {
   //z-index: 100;
 }
 
-#emptyFieldErrBody {
+.emptyFieldErrBody {
   font-size: .92em;
   margin-bottom: -10px;
 }
