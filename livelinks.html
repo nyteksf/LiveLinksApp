@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -304,6 +304,7 @@
 <script>
 $("#chatbox").hide();
 
+    
 /* SET NICK IN IRC COMPONENT */
 var setNick = function() {
     if (!setNick.prototype.done) {
@@ -311,8 +312,7 @@ var setNick = function() {
 	ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
 	ifrm.document.open();
       	ifrm.document.write('Loading...');
-      	ifrm.document.close();	  
-	    
+      	ifrm.document.close();	      
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
@@ -331,6 +331,7 @@ $("#btn-ToggleCB").click(function(e) {
     setNick();
 });
 	
+    
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
     $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
@@ -338,34 +339,42 @@ $("#btn-ToggleLinks").click(function(e) {
     $("#holderDiv").toggle();
     $("#form-submit").toggle();
 });
-	    
+	
+    
 let curUser;
 let selectedMenuItem = "";
 let uNameFound = false;
+    
+    
 $('#firebase-ico').click(function(evt) {
   evt.stopPropagation();
   window.open('http://www.firebase.com/', '_blank');
 });
+
+    
 //-=-SUMMARY OF FUNCTION:-=-
-//ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL DUE TO INITIAL AUTO OPEN-CLOSE SEQUENCE ON LOAD
-//INSTEAD OF USING NORMAL DUMB .CLICK() ACTION FOR TOGGLE
+//ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL INSTEAD OF USING NORMAL DUMB .CLICK() ACTION FOR TOGGLE
 function checkPanelState() {
   if (menuToggleStatus.prototype.menuPanelState === "opened") {
       //Close SP as normal w/ toggle:
       $('#offscreenMenuIco').click();
       return true;
   } else {
-      //OR WE DO NOTHING IF SP ALREADY CLOSED FOR CURRENT TOGGLE EVENT:
       return false;
   }
 }
+
+    console.log("return here");
 //SETS SLIDE MENU STATUS FOR SM BUTTON FUNCTION INTERFACE
 function menuToggleStatus() {
+  menuToggleStatus.prototype.menuPanelState = (menuToggleStatus.prototype.menuPanelState !== "opened") ? "opened": "closed";
+   /* 
   if (menuToggleStatus.prototype.menuPanelState !== "opened") {
       menuToggleStatus.prototype.menuPanelState = "opened";
   } else {
       menuToggleStatus.prototype.menuPanelState = "closed";
   }
+  */
 }
 let toggleMenuPanel = $('#togglePanel').scotchPanel({
   containerSelector: 'body', // Make this appear on the entire screen
