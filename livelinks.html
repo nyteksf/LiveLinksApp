@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <title>LIVELINKS</title>
+	
   <!-- Fav Icon -->
   <link rel="icon" href="img/livelinksIco.jpg" />
 
@@ -54,13 +56,13 @@
 
 
   <div id="confirmDeleteDialog" title="Deactivate">
-    <p><center id="confirmDelDialogBody">
+    <center id="confirmDelDialogBody"><p>
 	    Are you <i>sure</i> you want to leave LiveLinks?
       <br><br>
       This action will result in the permanent loss of
        any currently associated username, and ownership over all your prior
        posts.
-    </center></p>
+    </p></center>
   </div>
 
 
@@ -76,32 +78,34 @@
 
 
   <div id="noUserErrDialog" title="Error!">
-    <p><center id="errDialogBody">
+    <center id="errDialogBody"><p>
       Please be sure to set a username through your user menu before attempting to post again.
-    </center></p>
+    </p></center>
   </div>
 
 
   <div class="deleteRestricted" title="WARNING!">
-    <p><center id="deleteRestrictedDialogBody">
+    <center id="deleteRestrictedDialogBody"><p>
       Users are only allowed to delete posts created with their own usernames.
-    </center></p>
+    </p></center>
   </div>
 
 
   <div id="emptyFieldDialog" title="Error!">
-    <p><center id="emptyFieldErrBody"><strong>
-      Please be sure to choose a username between 1-10 characters in length.
-    </strong></center></p>
+      <p><center id="emptyFieldErrBody">
+          <strong>
+              Please be sure to choose a username between 1-10 characters in length.
+          </strong>
+      </p></center>
   </div>
 
 
   <div id="invalidFormInput" title="Error!">
-    <p><center id="emptyFieldErrBody">
+    <center id="emptyFieldErrBody"><p>
       <strong>
         Please check to ensure that all fields have been properly filled out before resubmitting.
       </strong>
-    </center></p>
+    </p></center>
   </div>
 
 
@@ -142,12 +146,12 @@
 
 
 <div id="smbAboutDialog" title="About">
-  <p><center id="smbAboutDialogBody">
+  <center id="smbAboutDialogBody"><p>
     This webpage is home to a project created with the intent of providing context
     for learning how to use Firebase; being a "JavaScript-centric" NoSQL database
     service. The project idea itself behind the creation of "LiveLinks"
     roughly came from observing a Firebase iPhone App tutorial written in Java.
-  </center></p>
+  </p></center>
 </div>
   <!-- jQuery UI Dialog/Menu Segment End -->
 
@@ -867,7 +871,7 @@ $('#submitButton').click(function() {
           modal: true,
           title: "Error!",
           open: function() {
-              var markup = '<p><center><span id="unassociatedCatBodyTxt">Please take a moment to associate your post with a category. Choose a selection from the nearby categories button, which is marked with a downward arrow, before attempting to resubmit.</span></center></p>';
+              var markup = '<center><p><span id="unassociatedCatBodyTxt">Please take a moment to associate your post with a category. Choose a selection from the nearby categories button, which is marked with a downward arrow, before attempting to resubmit.</span></p></center>';
               $(this).html(markup);
           },
           buttons: [ //SUCCESS MESSAGE CONFIRMATION:
@@ -1099,7 +1103,7 @@ $('#smbChgPass').click(function() {
               modal: false,
               title: error.code,
               open: function() {
-                  var markup = '<p><center><span id="passResetErrTxt">' + error.message + '</span></center></p>';
+                  var markup = '<center><p><span id="passResetErrTxt">' + error.message + '</span></center>';
                   $(this).html(markup);
               },
               buttons: [ //SUCCESS MESSAGE CONFIRMATION:
@@ -1146,7 +1150,7 @@ let validateEmail = function(e) {
           modal: false,
           title: "Invalid Email",
           open: function() {
-              var markup = '<p><center><span id="invalidEmailErrBody">The email address is badly formatted. Please check and try again.</span></center></p>';
+              var markup = '<center><p><span id="invalidEmailErrBody">The email address is badly formatted. Please check and try again.</span></p></center>';
               $(this).html(markup);
           },
           buttons: [ //SUCCESS MESSAGE CONFIRMATION:
@@ -1260,7 +1264,7 @@ $('#smbChgEmail').click(function() {
                               modal: true,
                               title: error.code,
                               open: function() {
-                                  $(this).html("<p><center><span id='genErrDialogBody'>Error! " + error.message + "</span></center></p>");
+                                  $(this).html("<center><p><span id='genErrDialogBody'>Error! " + error.message + "</span></p></center>");
                               },
                               buttons: [{
                                   text: "OK",
@@ -1310,7 +1314,7 @@ $('#smbChgEmail').click(function() {
                                           modal: false,
                                           title: "Success!",
                                           open: function() {
-                                              var markup = '<p><center>Email Successfully Changed!</center></p>';
+                                              var markup = '<center><p>Email Successfully Changed!</p></center>';
                                               $(this).html(markup);
                                           },
                                           buttons: [ //SUCCESS MESSAGE CONFIRMATION:
@@ -1413,7 +1417,7 @@ $('#smbXtra').click(function() {
                       $('#throwDynamicErr').dialog({
                           modal: false,
                           open: function() {
-                              var markup = "<p><center><span id='nonAlphanumErr'>Non-Alphanumeric Keypress Detected!<br>Usernames must be comprised of letters ('A-Z') and numbers ('0-9') only.</span></center></p>";
+                              var markup = "<center><p><span id='nonAlphanumErr'>Non-Alphanumeric Keypress Detected!<br>Usernames must be comprised of letters ('A-Z') and numbers ('0-9') only.</span></p></center>";
                               $(this).html(markup);
                           },
                           buttons: [{
