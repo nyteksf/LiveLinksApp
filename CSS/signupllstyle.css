@@ -20,6 +20,11 @@ a.dropdown-toggle {
   font-size: 1em !important;
 }
 
+.navbar-brand,
+a#navTxt {
+  //display: none;
+}
+
 .navbar-brand>img {
     display: block;
     height: 34px;
@@ -381,7 +386,7 @@ a#passResetLnk {
   width: 100px;
 }
 
-.thirdModalTrig {
+#thirdModalTrig {
   display: none;
 }
 
