@@ -2,8 +2,6 @@
 <html>
 
 <head>
-  <title>LIVELINKS</title>
-	
   <!-- Fav Icon -->
   <link rel="icon" href="img/livelinksIco.jpg" />
 
@@ -304,11 +302,11 @@ $("#chatbox").hide();
 /* TRYING ES5 */
 var setNick = function() {
     if (!setNick.prototype.done) {
-	var $ifrm = $('chatbox');
-	$ifrm = $ifrm.contentWindow || $ifrm.contentDocument.document || $ifrm.contentDocument;
-	$ifrm.document.open();
-      	$ifrm.document.write('Loading...');
-      	$ifrm.document.close();	  
+	var ifrm = document.getElementById('chatbox');
+	ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+	ifrm.document.open();
+      	ifrm.document.write('Loading...');
+      	ifrm.document.close();	  
 	    
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
@@ -318,7 +316,7 @@ var setNick = function() {
     }
  };
     
-	console.log("LOADED!!!.");
+	console.log("LOADED!!!!!!");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
