@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="en">
 
 <head>
@@ -182,8 +182,7 @@
     return jsonObj;
   }
 
-      
-  /* ENCRYPTION - SALT */
+
   function salty() {
     let letters = '0123456789ABCDEFGHIJKLMNO';
     let rand = '';
@@ -195,14 +194,13 @@
     return rand;
   }
 
-      
-  /* ADD ENCRYPTED USER KEY TO DB */
+
   let keyGen = function(uid) {
     let part1 = salty(); //CREATE RANDOM STRING
     let part2 = salty(); //FROM RANDOM CHARACTERS
     let part3 = salty(); //BY CATTING TOGETHER
     let part4 = salty(); //AND THEN ENCRYPT
-    let key = "" + part1 + part3 + part4 + part2; //FOR A LITTLE MORE RANDOMNESS
+    let key = "" + part1 + part3 + part4 + part2; //FOR MORE RANDOMNESS
 
     key = crypt.AES.encrypt(key);
     firebase.database().ref('/users/' + uid).update({
@@ -214,22 +212,19 @@
 
 
   setTimeout(function() {
-    let userID = localStorage['uid'] || firebase.auth().currentUser.uid;
+    let userID = localStorage['uid']; // = firebase.auth().currentUser.uid;
 
     if (localStorage["lastProvider"] === "password") {
     	let user;
         let userIsFound = false;
         let curUID = localStorage['uid'] || firebase.auth().currentUser.uid;
-        
-        /* IF PASSWORD LOGIN, SET USER INFO INTO LOCALSTORAGE, CREATE KEY */
         $.getJSON('https://livelinks01125.firebaseio.com/users.json', function(userlist) {
             for (let name in userlist) {
                 if (userlist[name].uid === curUID) {
                     user = userlist[name].user;
                     localStorage.setItem('user', user);
-                    k = keyGen(curUID); // SPAWN ONE-TIME USAGE KEY
+                    k = keyGen(curUID); //SPAWN ONE-TIME USAGE KEY
                     userIsFound = true;
-                    
                     break;
                 }
             }
@@ -239,7 +234,6 @@
     	}); 
     }
     
-    /* AUTOLOGIN FUNCTIONALITY: If used password login, encrypt PW for DB storage */
     if (localStorage["autoLogin"] === "true") {
         let k;
         let encryptedPW;
@@ -281,6 +275,7 @@
       </form>
     </div>
 
+
     <div id="holderDiv" class="show-links">
       <div id="togglePanel">
         <button type="submit" id="smbLogOut" class="btn slideMenuBtn"><span class="sldMenuTxt">Log Out</span></button>
@@ -290,12 +285,10 @@
         <button type="submit" id="smbAbout" class="btn slideMenuBtn"><span class="sldMenuTxt">About Developer</span></button>
 	<button type="submit" id="smbDeactivate" class="btn slideMenuBtn"><span class="sldMenuTxt">Unregister Account</span></button>
       </div>
-        
       <div id="dispLinksDiv">
         <div id="linkOutputHeader">
           <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
         </div>
-          
         <div id="linkDisplayDiv"></div>
         <!-- Body hereby implied: ie, ...posted links & their contents... -->
         <div id="firebase-ico-divFooter">
@@ -308,12 +301,10 @@
     <!-- ADD CHAT CONNECTIVITY -->
     <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
     	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
-    
 <script>
-    
 $("#chatbox").hide();
 
-/* SET NICK FOR USE IN IRC COMPONENT */
+/* SET NICK IN IRC COMPONENT */
 var setNick = function() {
     if (!setNick.prototype.done) {
 	var ifrm = document.getElementById('chatbox');
@@ -321,6 +312,7 @@ var setNick = function() {
 	ifrm.document.open();
       	ifrm.document.write('Loading...');
       	ifrm.document.close();	  
+	    
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
@@ -339,7 +331,6 @@ $("#btn-ToggleCB").click(function(e) {
     setNick();
 });
 	
-/* SHOW/HIDE LINKS */    
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
     $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
@@ -348,23 +339,19 @@ $("#btn-ToggleLinks").click(function(e) {
     $("#form-submit").toggle();
 });
 	    
-    
 let curUser;
 let selectedMenuItem = "";
 let uNameFound = false;
- 
-/* Firebase Icon - Bottom Right - Functionality: */    
 $('#firebase-ico').click(function(evt) {
   evt.stopPropagation();
   window.open('http://www.firebase.com/', '_blank');
 });
-    
-    
-// ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL DUE TO INITIAL AUTO OPEN-CLOSE SEQUENCE ON LOAD
-// INSTEAD OF USING NORMAL DUMB .CLICK() ACTION FOR TOGGLE
+//-=-SUMMARY OF FUNCTION:-=-
+//ENSURES NO MISFIRE RE-OPENINGS OF SLIDE PANEL DUE TO INITIAL AUTO OPEN-CLOSE SEQUENCE ON LOAD
+//INSTEAD OF USING NORMAL DUMB .CLICK() ACTION FOR TOGGLE
 function checkPanelState() {
   if (menuToggleStatus.prototype.menuPanelState === "opened") {
-      //Close Sliding Panel as normal w/ toggle:
+      //Close SP as normal w/ toggle:
       $('#offscreenMenuIco').click();
       return true;
   } else {
@@ -372,8 +359,7 @@ function checkPanelState() {
       return false;
   }
 }
-    
-// SETS SLIDE MENU STATUS FOR TRACKING
+//SETS SLIDE MENU STATUS FOR SM BUTTON FUNCTION INTERFACE
 function menuToggleStatus() {
   if (menuToggleStatus.prototype.menuPanelState !== "opened") {
       menuToggleStatus.prototype.menuPanelState = "opened";
@@ -381,9 +367,6 @@ function menuToggleStatus() {
       menuToggleStatus.prototype.menuPanelState = "closed";
   }
 }
-   
-    
-/* SHOW/HIDE SLIDING PANEL */    
 let toggleMenuPanel = $('#togglePanel').scotchPanel({
   containerSelector: 'body', // Make this appear on the entire screen
   direction: 'left', // Make it toggle in from the left
@@ -393,46 +376,36 @@ let toggleMenuPanel = $('#togglePanel').scotchPanel({
   distanceX: '129px', // Size of the toggle
   enableEscapeKey: true // Clicking Esc will close the panel
 });
-    
-    
 let constructJson = function(jsonKey, val) {
   let jsonObj = {};
   jsonObj[jsonKey] = val;
   return jsonObj;
 };
-    
-    
-// ON PAGE LOAD: Auto-open sliding menu....
+// ON PAGE LOAD: Auto-open....
 setTimeout(function() {
   $('#offscreenMenuIco').click();
 }, 500);
-    
-    
-// ON PAGE LOAD: ....and then auto-close off canvas slide-menu w/ time delay
+// ....then auto-close off canvas slide-menu w/ time delay
 setTimeout(function() {
   $('#offscreenMenuIco').click();
 }, 2750);
-    
-    
-$('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) {
+$('#offscreenMenuIco, #offscreenMenuIcoTop').click(function(evt) { /* REFACTOR WITH ALL ELSE */
   evt.preventDefault();
   evt.stopPropagation();
   menuToggleStatus();
   toggleMenuPanel.toggle();
 });
-    
-    
 let thisPKey;
 populatePageWLinks = function() {
-  function runOneTime($this, $this0) { // WHENEVER A LIKE BUTTON IS CLICKED, DO THIS:
+  function runOneTime($this, $this0) { //WHENEVER A LIKE BUTTON IS CLICKED, DO THIS:
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
       uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
       
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM 
       let postID = $this.parent().parent().parent()[0].className.split(" ");
-      postAuth = postID[1]; // WHOMEVER CREATED THE POST HERE
-      postID = postID[3]; // ID OF DIV BEING CLICKED HERE
+      postAuth = postID[1]; //WHOMEVER CREATED THE POST HERE
+      postID = postID[3]; //ID OF DIV BEING CLICKED HERE
       let classNameInfo = "";
 	  
       let isPostLikedAlready = classNameInfo = $this[0].className.split(" ");
@@ -441,57 +414,57 @@ populatePageWLinks = function() {
       let indexOfIcon = classNameInfo.indexOf("fa-heart"); 
       indexOfIcon = (indexOfIcon === -1) ? classNameInfo.indexOf("fa-heart-o") : $.noop();
       	 
-      isPostLikedAlready = isPostLikedAlready[2]; // TO CHECK: IS THIS ICO OF CLASS 'FA-HEART'?
+      isPostLikedAlready = isPostLikedAlready[2]; //IS THIS ICO OF CLASS 'FA-HEART'?
       
       if (isPostLikedAlready === "fa-heart" || isPostLikedAlready === "fa-heart-o") {
           let isUserListedInLikes = $this.parent().parent().parent().find(".userListed").val();
           
-          if ("" + isUserListedInLikes !== "true") {
+          if ("" + isUserListedInLikes !== "true") {// ...==="false"
 	      $this.parent().parent().parent().find(".userListed").val("true");
 
-	      // ADD 1 TO TOTAL COUNT OF LIKES:	  
-          $this.parent().parent().parent().find('.likeCount').text(function() { 
-		      uniqueLikeCount++;
-		      if(uniqueLikeCount > 1) {
+	   // ADD 1 TO TOTAL COUNT OF LIKES:	  
+              $this.parent().parent().parent().find('.likeCount').text(function() { 
+		  uniqueLikeCount++;
+		  if(uniqueLikeCount > 1) {
 		      	
-		          return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
-		      } else {
-		    	
-		          return 1;
-		      }
-          });	  
+		      return parseInt($this.parent().parent().parent().find(".likeCount").text())+1;	
+		  } else {
+		      	
+		      return 1;
+		  }
+            });	  
 		  
 	      if (uniqueLikeCount < 0) {  
                   alert("ERR: LIKE COUNT");
                   
                   return false;
-               } 
-               else if (uniqueLikeCount === 1) {
-		           let storedName = localStorage["user"];
-	               // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
-		           $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
-	               classNameInfo.splice(indexOfIcon, 1, "fa-heart");
-		           classNameInfo = classNameInfo.join(" ");
-		           let counterrr = 0;
+               } else if (uniqueLikeCount === 1) {
+		  let storedName = localStorage["user"];
+	       // SHOW COUNT, AND REPLACE 'UNLIKED' ICON WITH 'LIKED' ICO
+		  $this.parent().parent().parent().find(".likeCount").css('visibility', 'visible');
+	          classNameInfo.splice(indexOfIcon, 1, "fa-heart");
+		  classNameInfo = classNameInfo.join(" ");
+		       let counterrr = 0;
                   
-		           //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
-                   //  ONLY SHOW CURUSER IN THIS CASE:
-                   let $userDropToAdd = document.createElement("div"); // CREATE DIV
-                   $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
-                   let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
-	               let post = $this;
-              	   let el = document.createElement("option"); // CREATE BLANK ITEM TO ADD TO NEW LIKES DIV
+		  //  FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
+                  //  ONLY SHOW CURUSER IN THIS CASE:
+                      let $userDropToAdd = document.createElement("div"); // CREATE DIV
+                      $userDropToAdd.className = "selectNumber"; // GIVE IT STYLE AND GOOD LOOKS
+                      let user = localStorage["user"]; // STORE INPUT UNAME FOR USE THEREWITH
+	              let post = $this; // WHERE IT GOES
                    
-                   el.className = "firstOptionDD";
-                   el.textContent = " ";
-                   el.value = " ";
-                   $userDropToAdd.appendChild(el); // ADD SPACER ELEMENT IN TOP OF NEW LIKES DIV
-   		           el = null; // RESET EL
-             	   targetPost.append($userDropToAdd);
-              	   $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); 
-                   // ABOVE CREATES ABSTRACT USER LIKE LIST DROPDOWN ENTRY
-	          }
+              	      let el = document.createElement("option"); // START DIV INNERHTML WITH A SPACER
+                      el.className = "firstOptionDD";
+                      el.textContent = " ";
+                      el.value = " ";
+                      $userDropToAdd.appendChild(el); // ADD SPACER ELEMENT IN TOP OF NEW DIV
+		      
+		      el = null; // RESET EL
+                        
+             	      targetPost.append($userDropToAdd);
               
+              	      $this.parent().html('<i class="'+classNameInfo+'\" aria-hidden="true"></i>'); // USED TO BLINDLY DO FA-HEART W/ postAuth
+	      }
               // GATHER POSTED LINK META-DATA:
               let cN = $this.attr('class').split(' ');
               let pAuth = cN[0];
@@ -502,26 +475,28 @@ populatePageWLinks = function() {
               
               // ADD USER TO LIKE LIST
               targetPost.find(".selectNumber").append('<option class="'+storedName+'" value="'+storedName+'">'+storedName+'</option>');
+              
               $this.parent().parent().parent().find(".selectNumber").find("." + localStorage["user"]).css('display', 'block');
               
-              //  ADD "LIKE" TO DB NEXT ALONG WITH METADATA & USERNAME:
+              //  ADD ACTUAL "LIKE" TO DB NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
               $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
-                  // CUSTOM DYNAMIC JSON KEY VALUE GENERATOR:
+                  //CUSTOM DYNAMIC JSON KEY VALUE GENERATOR:
                   function constructJson(jsonKey) {
                       let jsonObj = {};
                       jsonObj[jsonKey] = true;
                       return jsonObj;
                   }
-                  
-                  // COMPARE TARGETED ELEMENT ATTRIBUTES AGAINST EXISTING POSTS IN DATABASE TO FIND TARGET LIKED POST
-                  // & UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE
+                  //COMPARE AGAINST EXISTING POSTS IN DATABASE TO FIND LIKED POST
+                  //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE
                   for (let link in responseList) {
                       responseURL = decodeURIComponent(responseList[link].url);
                       if (responseURL === url && responseList[link].author === pAuth) {
                           let pKey = link;
                           let res = constructJson(pKey);
                           
-                          firebase.database().ref('postLikes/' + outputUName).update(res);
+                          firebase.database().ref('postLikes/' + outputUName).update(res).then(function() {
+                           // NOOP
+			  });
                           break;
                       }
                   }
@@ -531,56 +506,59 @@ populatePageWLinks = function() {
            // FIRE 'UNLIKE' FUNCTION ONLY IF POST ALREADY LIKED BY CURRENT LOGGED IN USER:
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).val("");
               $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).className = "";
-              $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');		  	                    $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
+              $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).css('display', 'none');
+		  
+	      $this.parent().parent().parent().find(".selectNumber").find("."+localStorage["user"]).remove("."+localStorage["user"]);
     	      $this.parent().parent().parent().find(".userListed").val("false");
                
 	       if (uniqueLikeCount <= 0) {  
                   
-               return false;
-           } else if (uniqueLikeCount === 1) { 		       
-		       classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
-		       classNameInfo = classNameInfo.join(" ");		       
+                   return false;
+               } else if (uniqueLikeCount === 1) { 		       
+		   classNameInfo.splice(indexOfIcon, 1, "fa-heart-o");
+		   classNameInfo = classNameInfo.join(" ");		       
 	       }
 		       
-	       // ADD +1 TO TOTAL COUNT OF USER LIKES:	  
-               $this.parent().parent().parent().find('.likeCount').text(function() {
-		           if(uniqueLikeCount > 1) {
+	      // ADD +1 TO TOTAL COUNT OF USER LIKES:	  
+              $this.parent().parent().parent().find('.likeCount').text(function() {
+		  if(uniqueLikeCount > 1) {
 
-		               return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;
-		           } else {
-		               // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
-          	           $this.parent().parent().parent().find(".selectNumber").html('').remove();
-         	           $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
-           	           $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
+		      return parseInt($this.parent().parent().parent().find(".likeCount").text())-1;
+		  } else {
+		     // ELSE CLEAR USER LIKE LIST, HIDE COUNT, AND REPLACE ICON WITH 'UNLIKED' ICO
+          	      $this.parent().parent().parent().find(".selectNumber").html('').remove();
+         	      $this.parent().parent().parent().find(".likeCount").css('visibility', 'hidden'); //HIDE LIKECOUNT NOW
+         	      $this.parent().html('<i class="'+classNameInfo+'" aria-hidden="true"></i>'); //REPLACE ICO WITH FA-HEART-O
               
-		               return 0;
-		           }
-               });	
+		      return 0;
+		  }
+              });	
 
-               // GATHER POST META-DATA
-               let cNm2      = $this.attr('class').split(' ');
-               let auth 	 = cNm2[0];
-               let postedURL = cNm2[3];
+              //GATHER POST META-DATA
+              let cNm2      = $this.attr('class').split(' ');
+              let auth 	    = cNm2[0];
+              let postedURL = cNm2[3];
 
-               //  ADD "LIKE" TO DB NEXT ALONG WITH ABOVE METADATA & FOUND USER NAME:
-                   $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
-                     //COMPARE AGAINST EXISTING POSTS IN DATABASE TO FIND LIKED POST
-                     //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE      
-                     for (let link in responseList) {
-                         responseURL = decodeURIComponent(responseList[link].url);
-                         if (responseURL === postedURL && responseList[link].author === auth) {
-                             let thisPKey = link;
-                             firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove();
-                             break;
-                         }
-	                  }
-	              });
-                  return;
-              }
-          } else {
+              //  ADD ACTUAL "LIKE" NEXT; GOES WITH ABOVE METADATA & FOUND USER NAME:
+                  $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(responseList) {
+                    //COMPARE AGAINST EXISTING POSTS IN DATABASE TO FIND LIKED POST
+                    //UPON FINDING IT, ADD 1 TO ASSOCIATED 'likes' ROW WITHIN DATABASE      
+                    for (let link in responseList) {
+                      responseURL = decodeURIComponent(responseList[link].url);
+                      if (responseURL === postedURL && responseList[link].author === auth) {
+                        let thisPKey = link;
+                        firebase.database().ref('postLikes/' + localStorage["user"] + "/" + thisPKey).remove().then(function() {   
+                      });
+                      break;
+                      }
+	              }
+	            });
+                return;
+          }
+      } else {
           alert("ERROR--NEITHER CASE WORKED");
       }
-  } // END OF RUNONETIME() FUNCTION
+  } //END RUNONETIME() FUNCTION
   
   
   findIfUserExists = function(uidNo) {
@@ -602,21 +580,15 @@ populatePageWLinks = function() {
           }
       });
   };
-    
-    
   let resJSON = $.getJSON('https://livelinks01125.firebaseio.com/postLikes.json');
   let userLikeObj = {};
   let likeArray = [];
-  
-    
   resJSON.done(function(snapshot) {
       for (let likedPost in snapshot) {
           resJSON = resJSON;
           userLikeObj[likedPost] = Object.keys(snapshot[likedPost]);
       }
   });
-  
-    
   let thisUID = localStorage['uid'];
   let outputUName;
   let cachedUNameList;
@@ -629,9 +601,7 @@ populatePageWLinks = function() {
               break;
           }
       }
-  
-      
-      /* POPULATE INITIAL LINKS ON SCREEN ONLOAD */
+      /* POPULATE INITIAL LINKS ON SCREEN */
       let searchAndDestroy;
       let postNo;
       $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(snapshot) {
@@ -647,28 +617,20 @@ populatePageWLinks = function() {
               for (let likes in resJSONObj) {
                   let usernames = Object.keys(resJSONObj);
                   usernameCount++;
-                  
-                  let keys = resJSONObj[likes];
-                  keys.filter(function() {
-                      return keys[i] === postNo;
-                  });
-                  
-                  /*let arrLen = Object.keys(resJSONObj[likes]).length;
+                  let arrLen = Object.keys(resJSONObj[likes]).length;
                   let keys = Object.keys(resJSONObj[likes]);
-                  arr
                   for (let i = 0; i < arrLen; i++) {
                       if (keys[i] === postNo) {
                           likeUNameList.push(likes);
                       }
                   }
-                  */
               }
+              //'toggle':
               uNameFound = false;
               if (likeUNameList.indexOf("" + outputUName) !== -1) {
                   //AUTHED USER'S UNAME FOUND IN LIKE-LIST FOR CUR POST
                   uNameFound = true;
               }
-              
               let numOfLikes = likeUNameList.length;
               let newPost = document.createElement('div');
               newPost.id = 'div' + countDivs + 'Init'; //NUMBERS EACH DIV INDIVIDUALLY
@@ -682,8 +644,7 @@ populatePageWLinks = function() {
               newPost.created_at = snapshot[post].timestamp || new Date();
               newPost.catName = snapshot[post].catName;
               newPost.className = 'linkOutputDiv ' + newPost.author + ' ' + newPost.xDataMarker + ' ' + newPost.id + " " + newPost.catName;
-              
-              //  FORMAT POSTS
+              //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
               if (numOfLikes === 0) {
                   newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
                   newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
@@ -695,7 +656,6 @@ populatePageWLinks = function() {
                       newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot; <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
                       newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                   }
-                  
                   //FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
                   //FILTER OUT INVALID RESULTS=>
                   // TODO: for loop?
@@ -722,7 +682,6 @@ populatePageWLinks = function() {
               }
               $('#linkDisplayDiv').prepend(newPost);
           }
-          
           let uName = false;
           let toggleCategory = function(catTitle) {
               if (toggleCategory.prototype.togStatus === "true") {
@@ -733,8 +692,6 @@ populatePageWLinks = function() {
                   $('.linkoutputdiv').not('.' + catTitle).hide();
               }
           };
-          
-          /* SELECT A POST CATEGORY */
           $('#dispLinksDiv').delegate('i.postedLink', 'click', function(evt) {
               evt.stopPropagation();
               let catTitle = $(this)[0].title;
@@ -765,9 +722,7 @@ populatePageWLinks = function() {
                       break;
               }
           });
-          
-          
-          /* DARKEN INDIVIDUAL LINK POSTS ON MOUSE HOVER - TOGGLE */
+          //HIDE DIV OF LIKED USERS FOR CATEGORIES
           $('#dispLinksDiv').delegate('i.postedLink', 'mouseenter', function(evt) {
               evt.stopPropagation();
               evt.preventDefault();
@@ -776,7 +731,6 @@ populatePageWLinks = function() {
           });
           
           
-          /* SHOW USER LIKE LIST FOR CUR POST*/
           let hideLikeDisp;
           $('#dispLinksDiv').delegate('div.likeIco', 'mouseenter', function(evt) {
               evt.stopPropagation();
@@ -800,7 +754,7 @@ populatePageWLinks = function() {
               $(this).parent().parent().find('.selectNumber').css('visibility', 'hidden');
           });
           
-          /* LIKE BUTTON FUNCTIONALITY */
+          
           $('#dispLinksDiv').delegate('i.fa.fa-heart-o, i.fa.fa-heart', 'click', function(evt) {
               let $this = $(this);
               let $this0 = $(this)[0];
@@ -814,7 +768,6 @@ populatePageWLinks = function() {
               $(this).css('color', 'gray');
               $(this).find('.dropdownIco').css('color', 'gray');
           });
-          
           
           $('#menu').delegate('.ui-menu-item', 'mouseleave', function() {
               $(this).css('color', '#333333');
@@ -830,11 +783,9 @@ populatePageWLinks = function() {
                       //if url matches snapshot[post].url, then snapshot[post].url is used to form ref for parent to be .remove()'d
                       if (snapshot[post].url === url) {
                           firebase.database().ref('links/' + post).remove();
-                          
                           //LOG EVENT TO DATABASE:
                           let uEmail = localStorage['email'] || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).email || firebase.auth().currentUser.email;
                           let uidNo = localStorage['uid'] || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).uid || firebase.auth().currentUser.uid;
-                          
                           let delURL = url;
                           firebase.database().ref('deletedposts/').push({
                               email: uEmail,
@@ -875,7 +826,7 @@ populatePageWLinks = function() {
                               style: "color:lightpink"
                           }]
                       });
-                  } else { /* DESTROY POST */
+                  } else {
                       searchAndDestroy(delMarker);
                       // RUN FB QUERY, .THEN(...) delete and also .hide() associated.
                       $that.parent().css('display', 'none');
@@ -886,14 +837,10 @@ populatePageWLinks = function() {
   }); //END HERE -- FIRST FUNC -- OUTERMOST
 }; //END HERE -- populatePageWLinks() WRAPPER
 populatePageWLinks(); //RETURN HERE NOW
-
-    
 let res;
 let resString;
 let result;
 let uName;
-
-    
 //OPEN TARGET LINK IF AND WHEN POSTED LINK DIV CLICKED UPON:
 $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   evt.preventDefault();
@@ -903,62 +850,53 @@ $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   window.open(pUrl, '_blank');
   return false;
 });
-  
-    
-/* ADD UNDERLINE ON HOVER TO URL, REMOVE ON MOUSELEAVE */   
 $("#dispLinksDiv").delegate('div', 'mouseenter', function() {
   $(this).find(".divbody").css('text-decoration', 'underline');
 });
-    
-    
 $("#dispLinksDiv").delegate('div', 'mouseleave', function() {
   $(this).find(".divbody").css('text-decoration', 'none');
 });
-    
 let eUrl = encodeURIComponent($('#linkUrl').val());
 let lTitle = $('#linkTitle').val();
 let reg;
-    
-    
 //ADD NEW LIVELINK POST TO DATABASE/APP
 $('#submitButton').click(function() {
-    if (selectedMenuItem === "") {
-        $('#throwDynamicErr').dialog({
-            width: 355,
-            modal: true,
-            title: "Error!",
-            open: function() {
-                var markup = '<center><p><span id="unassociatedCatBodyTxt">Please take a moment to associate your post with a category. Choose a selection from the nearby categories button, which is marked with a downward arrow, before attempting to resubmit.</span></p></center>';
-                $(this).html(markup);
-            },
-            buttons: [
-              {   // SUCCESS MESSAGE CONFIRMATION:
+  if (selectedMenuItem === "") {
+      $('#throwDynamicErr').dialog({
+          width: 355,
+          modal: true,
+          title: "Error!",
+          open: function() {
+              var markup = '<center><p><span id="unassociatedCatBodyTxt">Please take a moment to associate your post with a category. Choose a selection from the nearby categories button, which is marked with a downward arrow, before attempting to resubmit.</span></p></center>';
+              $(this).html(markup);
+          },
+          buttons: [ //SUCCESS MESSAGE CONFIRMATION:
+              {
                   text: "OK",
                   click: function() {
                       $('#throwDynamicErr').dialog("close");
                   },
                   class: "okBtn2",
                   style: "color:lightpink"
-                  }
-            ]
+              }
+          ]
       });
-    } else {
-        if ($('#linkTitle').val().length === 0 || $('#linkUrl').val().length === 0) {
-            return false;
-        } else {
-            let rawJSONList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
-            rawJSONList.done(function(response) {
-            let uidNo = localStorage['uid'] || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).uid || firebase.auth().currentUser.uid;
-            reg = false;
-            for (let user in response) {
-                if (response[user].uid === uidNo) {
-                    uName = response[user].user;
-                    reg = true;
-                    break;
-                }
-            }
-                
-            if (!reg) {
+  } else {
+      if ($('#linkTitle').val().length === 0 || $('#linkUrl').val().length === 0) {
+          return false;
+      } else {
+          let rawJSONList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
+          rawJSONList.done(function(response) {
+              let uidNo = localStorage['uid'] || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).uid || firebase.auth().currentUser.uid;
+              reg = false;
+              for (let user in response) {
+                  if (response[user].uid === uidNo) {
+                      uName = response[user].user;
+                      reg = true;
+                      break;
+                  }
+              }
+              if (!reg) {
                   $("#noUserErrDialog").dialog({
                       modal: true,
                       buttons: {
@@ -975,17 +913,25 @@ $('#submitButton').click(function() {
                   let userip = localStorage['ip'];
                   let ts = new Date();
                   ts = ts.toString();
+		  
+		  /*
+                  // HANDLE IP LOGGING ERRORS; EASIER THAN CHANGING JS LIBRARIES TO ACCOMODATE IPV6   :) 
+		  // PREPARE CUSTOM MODAL:
+		  $('#fifthModal .modal-title').html('Error');
+                  $('#fifthModal .modal-body').html('Warning: Error logging user IP "' + userip + '" detected! Write access to your account may be denied as a result. Please check with your local sysadmin to see whether your computer has an IPV4 or IPV6 address, as this demo app only supports IPV4 logging.');
+		  // LOAD CUSTOM MODAL:
+                  $('#fifthModalTrig').click(); 
+		  */
 		      
-		          // ASSIGN PROPER ICON TO RESPECTIVE POST
+		  //ASSIGN PROPER ICON TO RESPECTIVE POST
                   let category = selectedMenuItem;
                   
-		          // CLEAN THE MENU FROM ANY PRIOR POST SUBJECT SELECTIONS:
+		  //CLEAN THE "SLATE" FROM ANY PRIOR SELECTIONS:
                   selectedMenuItem = "";
                   let icon = "";
                   let cName = "";
                   $('li.ui-menu-item').removeClass('ui-state-active');
                   $('li.ui-menu-item').removeClass('ui-state-disabled');
-                  
                   switch (category) {
                       case "Sports":
                           icon = '<i class="fa fa-futbol-o postedLink" title="Sports" aria-hidden="true"></i>';
@@ -1048,9 +994,6 @@ $('#submitButton').click(function() {
       }
   } //END OF NEW CONTEXT
 });
-    
-    
-/* REFRESH BUTTON FUNCTIONALITY */    
 let d;
 let dt;
 $('#dispLinksDiv').delegate('span.postCatIcon', 'click', function(evt) {
@@ -1071,23 +1014,16 @@ $('#selectTypeButton').click(function() {
       menuVisible = false;
   }
 });
-    
-    
-/* LOGOUT BTN FUNCTIONALITY */    
 let logOut = function() {
   setTimeout(function() {
       window.open('http://nyteksf.github.io/LiveLinksApp/loginli.html', '_self');
   }, 250);
 };
-    
-/* ON ENTER KEYPRESS, CLICK SUBMIT BTN */    
 $('#linkTitle, #linkUrl').keyup(function(evt) {
   if (evt.keyCode === 13) {
       $('#submitButton').click();
   }
 });
-    
-    
 //ON KEYUP INSIDE TEXT BOX, TRIGGER SCAN OF .JSON RECEIVED FOR .USER or .USERNAME IN TEXTBOX:
 let userName;
 $("#newUsernameInput").keyup(function(evt) {
@@ -1109,12 +1045,10 @@ $("#newUsernameInput").keyup(function(evt) {
   } else {
       alphaNumChars = true;
   }
-    
   if (evt.keyCode === 46 || evt.keyCode === 8) { //HIDE VALIDITY MSG ON DEL/BACKSPACE
       $('#validName').hide();
       $('#invalidName').hide();
   }
-    
   if (inputLength > 0 && inputLength <= 10 && alphaNumChars) {
       username = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
           uN = username.responseJSON;
@@ -1136,30 +1070,24 @@ $("#newUsernameInput").keyup(function(evt) {
       $('#validName').hide();
   }
 });
-    
-    
 $('#menu').delegate('li.ui-menu-item', 'click', function() {
   $('li.ui-menu-item').removeClass("ui-state-disabled");
   $('li.ui-menu-item').removeClass("ui-state-active");
   $(this).addClass("ui-state-disabled");
   $(this).addClass("ui-state-active");
   selectedMenuItem = $(this).find('span.menuTxtStyle').text();
-  //CALL FUNCTION AND SEND THIS DIRECTLY TO IT
+  //CALL FUNCTION AND SEND THIS DIRECTLY TO IT INSTEAD OF RELYING ON SCOPE/CONTEXT
   setTimeout(function() {
       $('#menu').css('display', 'none');
       menuVisible = false;
   }, 350);
 });
-    
-    
 // OFF CANVAS SLIDE MENU BUTTON FUNCTIONALITY
 $('#smbLogOut').click(function() {
   localStorage["autoLogin"] = false;
   firebase.auth().signOut();
   logOut();
 });
-    
-    
 $('#smbChgPass').click(function() {
   let email = localStorage['email'] || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).email || firebase.auth().currentUser.email;
   let err = false;
@@ -1191,7 +1119,7 @@ $('#smbChgPass').click(function() {
               modal: false,
               title: "Password Reset",
               open: function() {
-                  var markup = '<center><span id="emailChgBodyDialog"><br>Please check your primary email account for instructions on resetting your LiveLinks password.</span></center>';
+                  var markup = '<center><span id="emailChgBodyDialog"><br>Please check your primary email account for instructions on resetting your LiveLinks password immediately.</span></center>';
                   $(this).html(markup);
               },
               buttons: [ //SUCCESS MESSAGE CONFIRMATION:
@@ -1209,8 +1137,6 @@ $('#smbChgPass').click(function() {
       }
   });
 });
-    
-    
 let validateEmail = function(e) {
   let atpos = e.indexOf("@");
   let dotpos = e.lastIndexOf(".");
@@ -1238,8 +1164,6 @@ let validateEmail = function(e) {
       return true;
   }
 };
-    
-/* DEACTIVE ACCOUNT BTN FUNCTIONALITY */    
 $('#smbDeactivate').click(function() {
   $('#confirmDeleteDialog').show();
   //POP JQUERY UI DIALOG TO REQUEST CONFIRMATION:
@@ -1299,14 +1223,13 @@ $('#smbChgEmail').click(function() {
       alert("Critical error while updating base email in database. Stand by for error info.");
       alert(error.code + "\n" + error.message);
   });
-
   $('#curEmailDispBox').html("<span id='curEmailTxt'>" + currentEmail + "</span>");
   let err;
   let errMsg;
   let hoverTracker = function() {
     console.log("This function is used primarily for sake of control flow. It leverages the function prototype as storage.");
   };
-    
+  
   $('#changeEmail').dialog({
       modal: true,
       buttons: [{
@@ -1357,7 +1280,6 @@ $('#smbChgEmail').click(function() {
                               for (let email in userEmails) {
                                   emailAddyCounter++; //COUNT EXISTING EMAILS
                               }
-                              
                               //STORE OLD EMAIL IN UNIQUE VAR:
                               //$newEmail automatically reset to first slot in DB Child
                               let addEmail = constructJson("email" + emailAddyCounter, currentEmail);
@@ -1381,7 +1303,6 @@ $('#smbChgEmail').click(function() {
                                       });
                                   }
                               });
-                              
                               if (!err0r) {
                                   setTimeout(function() {
                                       $('#throwDynamicErr').dialog({
@@ -1406,8 +1327,6 @@ $('#smbChgEmail').click(function() {
                               }
                           });
                       }
-                      
-                      
                       //CLEAN UP ON SUBMIT/EXIT
                       $('input#newEmailInput').val("");
                       $('#changeEmail').dialog("close");
@@ -1436,8 +1355,6 @@ $('#smbChgEmail').click(function() {
       }]
   });
 });
-    
-/* ABOUT THIS PROJECT AND ITS CREATOR */   
 $('#smbAbout').click(function() {
   $('#smbAboutDialog').dialog({
       width: 700,
@@ -1452,8 +1369,6 @@ $('#smbAbout').click(function() {
       }]
   });
 });
-    
-    
 let setNewUName = function(uidNo, uName, exists) {
   if (exists) {
       firebase.database().ref("" + "users/" + uidNo).update({
@@ -1467,11 +1382,8 @@ let setNewUName = function(uidNo, uName, exists) {
       });
   }
 };
-    
 $('#dialog').hide();
 	
-
-/* ADD/CHANGE USERNAME BUTTON FUNCTIONALITY */    
 let ircNick = "";
 $('#smbXtra').click(function() {
   let regexp = /[^a-zA-Z\d:]/g;
@@ -1544,14 +1456,11 @@ $('#smbXtra').click(function() {
           style: "color:lightpink"
       }]
   });
-    
-    
   let userRegistered = false;
   let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
       usernameList = usernameList.responseJSON;
       let uidNo = firebase.auth().currentUser.uid;
       for (let user in usernameList) {
-          /* FIND USERNAME BY UID NUM */
           if (usernameList[user].uid === uidNo) {
               userRegistered = true;
               $('#curUsername').removeClass('redErrorTxt');
@@ -1569,13 +1478,10 @@ $('#smbXtra').click(function() {
           }
       }
   });
-    
   $('#dialog').show();
   $('#dialog').dialog();
 });
-    
- 
-// FUNCTION TO TOGGLE SHOWING ONLY OF INDIVIDUAL USER POSTS
+//FUNCTION TO TOGGLE SHOWING ONLY OF INDIVIDUAL USER POSTS
 function showHidePosts(evt) {
   evt.stopPropagation();
   evt.preventDefault();
@@ -1584,23 +1490,25 @@ function showHidePosts(evt) {
   if (showHidePosts.prototype.hidden) {
       showHidePosts.prototype.hidden = false;
       $('.linkoutputdiv').not("." + targetPosts).show();
-          // SHOW ONLY POSTS BY AUTHOR NAME CLICKED UPON
+          //SHOW ONLY POSTS BY SELECTED USER
   } else {
       showHidePosts.prototype.hidden = true;
       $('.linkoutputdiv').not("." + targetPosts).hide(); //HIDE ALL POSTS NOT BY SELECTED USER
   }
 }
-    
-    
 let hideMenu;
+$('.scotch-panel-canvas').delegate('ul#menu', 'mouseleave', function() {
+  hideMenu = setTimeout(function() {
+      //$('ul#menu').hide();
+      //menuVisible = false;
+  }, 850);
+});
 $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
   clearTimeout(hideMenu);
 });
-    
-    
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("okay I'm loaded");	
+console.log("okay I'm loaded=--");	
 </script>
 
 </body>
