@@ -648,12 +648,6 @@ populatePageWLinks = function() {
                   let usernames = Object.keys(resJSONObj);
                   usernameCount++;
                   
-                  let keys = Object.keys(resJSONObj[likes]);
-                  keys = keys.filter(function(key) {
-                      return key === postNo;
-                  });
-                  likeUNameList.push(keys);
-                  /*
 		  let arrLen = Object.keys(resJSONObj[likes]).length;
                   let keys = Object.keys(resJSONObj[likes]);
                   for (let i = 0; i < arrLen; i++) {
@@ -661,8 +655,8 @@ populatePageWLinks = function() {
                           likeUNameList.push(likes);
                       }
                   }
-                  */
               }
+		  
               uNameFound = false;
               if (likeUNameList.indexOf("" + outputUName) !== -1) {
                   //AUTHED USER'S UNAME FOUND IN LIKE-LIST FOR CUR POST
@@ -1600,7 +1594,7 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
     
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("okay I'm dfssssss");	
+console.log("okay I'm weeeee");	
 </script>
 
 </body>
