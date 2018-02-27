@@ -314,13 +314,10 @@ var setNick = function() {
 	    
         $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
-        console.log("echo");
-    } else {
-        console.log("setNick() FIRED -> SHOULD SEE THIS INSTEAD")
     }
  };
     
-	console.log("LOADED!!!!!!");
+	console.log("LOADED?");
 	
 	
 $("#btn-ToggleCB").click(function(e) {
@@ -973,7 +970,6 @@ $('#submitButton').click(function() {
                           alert("ERR!");
                           break;
                   }
-		  console.log("userip " + userip);
 		      
                   icon = encodeURIComponent(icon);
                   //PUSH IT TO FIREBASE DB:
@@ -1231,10 +1227,7 @@ $('#smbChgEmail').click(function() {
   $('#curEmailDispBox').html("<span id='curEmailTxt'>" + currentEmail + "</span>");
   let err;
   let errMsg;
-  let hoverTracker = function() {
-    console.log("This function is used primarily for sake of control flow. It leverages the function prototype as storage.");
-  };
-  
+
   $('#changeEmail').dialog({
       modal: true,
       buttons: [{
