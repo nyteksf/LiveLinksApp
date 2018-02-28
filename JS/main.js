@@ -5,6 +5,7 @@ let token;
 let storedToken;
 let storedEmail;
 
+console.log("JS FILE LOADED");
 
 function writeCookie(key, value, seconds) {
     window.document.cookie = key + "=" + value + ";max-age=" + seconds + ";path=/";
