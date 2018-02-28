@@ -1497,7 +1497,12 @@ function showHidePosts(evt) {
   }
 }
 let hideMenu;
-
+$('.scotch-panel-canvas').delegate('ul#menu', 'mouseleave', function() {
+  hideMenu = setTimeout(function() {
+      //$('ul#menu').hide();
+      //menuVisible = false;
+  }, 850);
+});
 $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
   clearTimeout(hideMenu);
 });
