@@ -1204,4 +1204,7 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("okay I'm loaded!");	
+/* Add Toggle Menu Button Functionality */
+$("#btn-ToggleMenu").click(function() {
+  $("#offscreenMenuIcoTop").click();
+})
