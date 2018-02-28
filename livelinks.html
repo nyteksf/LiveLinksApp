@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -304,7 +304,7 @@
 <script>
 $("#chatbox").hide();
 
-/* SET NICK IN IRC COMPONENT */
+/* SET NICK IN IRC COMPONENT - RUN ONCE ONLY */
 var setNick = function() {
     if (!setNick.prototype.done) {
 	var ifrm = document.getElementById('chatbox');
@@ -312,8 +312,7 @@ var setNick = function() {
 	ifrm.document.open();
       	ifrm.document.write('Loading...');
       	ifrm.document.close();	  
-	    
-        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
+	$("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
  };
@@ -328,7 +327,8 @@ $("#btn-ToggleCB").click(function(e) {
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
     
-    setNick();
+    checkForUsername();
+    setNick(); /* ...using said Username */
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
@@ -836,7 +836,7 @@ populatePageWLinks = function() {
       }); //END HERE -- INNER FUNC
   }); //END HERE -- FIRST FUNC -- OUTERMOST
 }; //END HERE -- populatePageWLinks() WRAPPER
-populatePageWLinks(); //RETURN HERE NOW
+populatePageWLinks();
 let res;
 let resString;
 let result;
@@ -1385,6 +1385,37 @@ let setNewUName = function(uidNo, uName, exists) {
 $('#dialog').hide();
 	
 let ircNick = "";
+	
+function checkForUsername() {	
+  let userRegistered = false;
+  let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
+      usernameList = usernameList.responseJSON;
+	  
+      let uidNo = firebase.auth().currentUser.uid;
+      for (let user in usernameList) {
+          if (usernameList[user].uid === uidNo) {
+              userRegistered = true;
+              $('#curUsername').removeClass('redErrorTxt');
+              
+              /* GET/SET USERNAME */
+              $('#curUsername').text('' + usernameList[user].user);
+              localStorage.setItem('ircNick', usernameList[user].user);
+		  
+              break;
+          } else {
+              $('#curUsername').addClass('redErrorTxt');
+              
+              /* USER FEEDBACK: ERROR */
+              $('#curUsername').text("User Unregistered. Please Register using the User Menu Panel to the left.");
+          }
+      }
+      let res = !userRegistered ? false : true;
+      
+      return res;
+  });
+};		
+	
+	
 $('#smbXtra').click(function() {
   let regexp = /[^a-zA-Z\d:]/g;
   let uidNo = localStorage['uid'] || firebase.auth().currentUser.uid || JSON.parse(localStorage['firebase:authUser:AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA:[DEFAULT]']).uid;
@@ -1456,28 +1487,8 @@ $('#smbXtra').click(function() {
           style: "color:lightpink"
       }]
   });
-  let userRegistered = false;
-  let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
-      usernameList = usernameList.responseJSON;
-      let uidNo = firebase.auth().currentUser.uid;
-      for (let user in usernameList) {
-          if (usernameList[user].uid === uidNo) {
-              userRegistered = true;
-              $('#curUsername').removeClass('redErrorTxt');
-              
-              /* GET/SET USERNAME */
-              $('#curUsername').text('' + usernameList[user].user);
-              localStorage.setItem('ircNick', usernameList[user].user);
-              
-              break;
-          } else {
-              $('#curUsername').addClass('redErrorTxt');
-              
-              /* USER FEEDBACK: ERROR */
-              $('#curUsername').text("User Unregistered. Please Register.");
-          }
-      }
-  });
+  checkForUsername();	
+	
   $('#dialog').show();
   $('#dialog').dialog();
 });
@@ -1490,25 +1501,20 @@ function showHidePosts(evt) {
   if (showHidePosts.prototype.hidden) {
       showHidePosts.prototype.hidden = false;
       $('.linkoutputdiv').not("." + targetPosts).show();
-          //SHOW ONLY POSTS BY SELECTED USER
+          //SHOW ONLY POSTS BY SELECTED USER ONCLICK
   } else {
       showHidePosts.prototype.hidden = true;
       $('.linkoutputdiv').not("." + targetPosts).hide(); //HIDE ALL POSTS NOT BY SELECTED USER
   }
 }
 let hideMenu;
-$('.scotch-panel-canvas').delegate('ul#menu', 'mouseleave', function() {
-  hideMenu = setTimeout(function() {
-      //$('ul#menu').hide();
-      //menuVisible = false;
-  }, 850);
-});
+
 $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
   clearTimeout(hideMenu);
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
 
-console.log("okay I'm loaded=--");	
+console.log("okay I'm loaded@@%@%!!!!");	
 </script>
 
 </body>
