@@ -1,3 +1,5 @@
+(function(){'use strict';})();
+
 $("#chatbox").hide();
 
 /* SET NICK IN IRC COMPONENT */
@@ -15,26 +17,54 @@ var setNick = function() {
  };
 	
 	
+/* ADD TOGGLE CHATBOX BUTTON FUNCTIONALITY */
 $("#btn-ToggleCB").click(function(e) {
     e.preventDefault();
-    
+    let $btnTxt = $("#btn-Span-ToggleCB").html();
+  
     /* HANDLE BUTTON ANIMATION ONCLICK */
-    $("#btn-Span-ToggleCB").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
-    
+    if ($btnTxt === '<i class="fa fa-angle-right"></i>') { 
+        $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-down"></i>');
+    } else { 
+        $("#btn-Span-ToggleCB").html('<i class="fa fa-angle-right"></i>');
+    }
+                                     
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
     
     setNick();
 });
-	
+
+
+/* ADD TOGGLE LINKS BUTTON FUNCTIONALITY */
 $("#btn-ToggleLinks").click(function(e) {
     e.preventDefault();
-    $("#btn-Span-ToggleLinks").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>' ? $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
-
-    $("#holderDiv").toggle();
-    $("#form-submit").toggle();
+    let $btnTxt = $("#btn-Span-ToggleLinks").html();
+    
+  if ($btnTxt === '<i class="fa fa-angle-right">') {
+      $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-down""></i>');
+  } else {
+      $("#btn-Span-ToggleLinks").html('<i class="fa fa-angle-right"></i>');
+  }
+      $("#holderDiv").toggle();
+      $("#form-submit").toggle();
 });
-	    
+
+
+/* ADD TOGGLE MENU BUTTON FUNCTIONALITY */
+$("#btn-ToggleMenu").click(function(e) {
+    e.preventDefault();
+    let $btnTxt = $("#btn-Span-ToggleMenu").html();
+
+    if ($btnTxt === '<i class="fa fa-angle-right"></i>') {
+        $("#btn-Span-ToggleMenu").html('<i class="fa fa-angle-down"></i>'); 
+    } else {
+        $("#btn-Span-ToggleMenu").html('<i class="fa fa-angle-right"></i>');
+    }
+    $("#offscreenMenuIcoTop").click();
+});
+
+
 let curUser;
 let selectedMenuItem = "";
 let uNameFound = false;
@@ -1203,8 +1233,3 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
   clearTimeout(hideMenu);
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
-
-/* Add Toggle Menu Button Functionality */
-$("#btn-ToggleMenu").click(function() {
-  $("#offscreenMenuIcoTop").click();
-})
