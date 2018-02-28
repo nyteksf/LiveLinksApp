@@ -5,8 +5,6 @@ let token;
 let storedToken;
 let storedEmail;
 
-console.log("JS FILE LOADED");
-
 function writeCookie(key, value, seconds) {
     window.document.cookie = key + "=" + value + ";max-age=" + seconds + ";path=/";
 
@@ -66,10 +64,8 @@ let checkUName = function(uName, modalName) {
         if (uName.toLowerCase() !== $('#inputUNameModal').val().toLowerCase()) {
             $('#validName').show();
             $('#invalidName').hide();
-            console.log(uName.toLowerCase()+" | "+$('#inputUNameModal').val().toLowerCase())
             $('#submitBtnModal').prop('disabled', false);
         } else {
-                console.log("bleh")
             $('#invalidName').show();
             $('#validName').hide();
             $('#submitBtnModal').prop('disabled', true);
@@ -258,7 +254,6 @@ $('#submitBtn').click(function() {
             // Handle Errors here:
             if (error) {
                 errTest = true;
-              console.log("CONFIRMED");
                 if (error.code === "auth/wrong-password") {
                     $('#fifthModal .modal-title').html(error.code);
                     $('#fifthModal .modal-body').html("<center>" + error.message + "<br>Please try first registering an email/password account,<br>or performing a password reset.</center>");
@@ -505,7 +500,6 @@ $('#submitEmailModal').click(function(e) {
             // Handle Errors here:
             if (error) {
                 //PASS DYNAMIC INFO TO CUSTOM MODAL:
-                console.log(error.code);
                 errFlag = true;
               
                 $('#fifthModal .modal-title').html('Error: ' + error.code + '!');
@@ -522,8 +516,6 @@ $('#submitEmailModal').click(function(e) {
           
             return true;
         });
-        console.log("errFlag?!? ", errFlag);
-        console.log("beep b33p");
     }
     $('#emailResetInput').val("");
 });
@@ -562,6 +554,7 @@ $('#myModal').delegate('.btn-success', 'click', function() {
                         //PASS DYNAMIC INFO TO FIFTH MODAL:
                         $('#fifthModal .modal-title').html(error.code);
                         $('#fifthModal .modal-body').html("<center>" + error.message + "</center>");
+                        
                         //FIRE OFF FIFTH MODAL:
                         $('#fifthModalTrig').click();
                     }
@@ -576,7 +569,6 @@ $('#myModal').delegate('.btn-success', 'click', function() {
                     }, 2000);
                 } else {
                     alert(error);
-                    console.log(error);
                 }
             });
         } else {
