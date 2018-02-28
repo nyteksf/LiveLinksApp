@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -304,16 +304,34 @@
 <script>
 $("#chatbox").hide();
 
+    
+function checkForUsername() {	
+  let usernameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
+      usernameList = usernameList.responseJSON;
+	  
+      let uidNo = firebase.auth().currentUser.uid;
+      for (let user in usernameList) {
+          if (usernameList[user].uid === uidNo) {
+              setNick(usernameList[user].user);
+		  
+              break;
+          } else {
+		      console.log("Error: User not found");
+          }
+      }
+      return;
+  });
+};		    
+    
 /* SET NICK IN IRC COMPONENT */
-var setNick = function() {
+let setNick = function(username) {
     if (!setNick.prototype.done) {
-	var ifrm = document.getElementById('chatbox');
+	let ifrm = document.getElementById('chatbox');
 	ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
 	ifrm.document.open();
       	ifrm.document.write('Loading...');
-      	ifrm.document.close();	  
-	    
-        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
+      	ifrm.document.close();
+        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + username + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
  };
@@ -328,7 +346,7 @@ $("#btn-ToggleCB").click(function(e) {
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
     
-    setNick();
+    checkForUsername();
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
