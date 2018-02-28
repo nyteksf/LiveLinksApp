@@ -305,7 +305,7 @@
 $("#chatbox").hide();
 
 /* SET NICK IN IRC COMPONENT */
-let setNick = function() {
+let setNick = function(username) {
     if (!setNick.prototype.done) {
 	let ifrm = document.getElementById('chatbox');
   	    ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
@@ -313,7 +313,7 @@ let setNick = function() {
       	ifrm.document.write('Loading...');
       	ifrm.document.close();	  
 	    
-        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.ircNick + "&channels=%23livelinkschat&uio=Mj10cnVldd");
+        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + username + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
  };
@@ -328,8 +328,7 @@ $("#btn-ToggleCB").click(function(e) {
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
     
-    breakTheDOM();
-    setNick();
+    searchUsername();
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
@@ -1510,15 +1509,14 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
     
-let breakTheDOM = function() {    
+let searchUsername = function() {    
     let unameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
         unameList = unameList.responseJSON;
         let uidNo = firebase.auth().currentUser.uid;
         for (let user in unameList) {
             if (unameList[user].uid === uidNo) { /* FIND USERNAME */
                 /* SET USERNAME */
-                $('#curUsername').text('' + unameList[user].user);
-                localStorage.setItem('ircNick', unameList[user].user);
+                setNick(unameList[user].user);
               
                 break;
             } else {
@@ -1529,7 +1527,7 @@ let breakTheDOM = function() {
     });
 };
     
-console.log("okay I'm loooooaded");	
+console.log("kthx I'm loaded bai");	
 </script>
 
 </body>
