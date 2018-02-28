@@ -1,7 +1,11 @@
-(function(){'use strict';})();
-console.log("test");
+(function(){
+    'use strict';
+})();
+
+console.log("test!!!!");
 
 $("#chatbox").hide();
+
 
 /* SET NICK IN IRC COMPONENT */
 var setNick = function() {
@@ -127,7 +131,7 @@ populatePageWLinks = function() {
   function runOneTime($this, $this0) { //WHENEVER A LIKE BUTTON IS CLICKED, DO THIS:
       let targetPost = $this.parent().parent().parent();
       let uniqueLikeCount = $this.parent().parent().parent().find(".selectNumber").html();
-      uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length //COUNT UNAMES
+      uniqueLikeCount = (uniqueLikeCount === undefined || uniqueLikeCount === 0) ? 0 : uniqueLikeCount.split("</option").slice(1,uniqueLikeCount.split("</option").length-1).length; //COUNT UNAMES
       
       let likeCountVal = parseInt($this.parent().parent().parent().find(".likeCount").text()); //COUNT LIKES FROM DOM 
       let postID = $this.parent().parent().parent()[0].className.split(" ");
@@ -312,7 +316,6 @@ populatePageWLinks = function() {
   let likeArray = [];
   resJSON.done(function(snapshot) {
       for (let likedPost in snapshot) {
-          resJSON = resJSON;
           userLikeObj[likedPost] = Object.keys(snapshot[likedPost]);
       }
   });
@@ -972,7 +975,7 @@ $('#smbChgEmail').click(function() {
           text: "Submit",
           click: function() {
               let $newEmail = $('input#newEmailInput').val();
-              if ($newEmail != null && $newEmail) {
+              if ($newEmail !== null && $newEmail) {
                   let validatedEmail = validateEmail($newEmail);
                   if (validatedEmail) {
                       //CHANGE EMAIL TO THE FOLLOWING:
@@ -1132,7 +1135,7 @@ $('#smbXtra').click(function() {
       }, {
           text: "Submit",
           click: function() {
-              let input = $('#newUsernameInput').val();f
+              let input = $('#newUsernameInput').val();
               if ($('#newUsernameInput').val().length >= 1 && $('#newUsernameInput').val().length <= 10) {
                   if (regexp.test(input)) {
                       //TRIGGER NON-ALPHANUM DIALOG
