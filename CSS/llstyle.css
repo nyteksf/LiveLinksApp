@@ -377,6 +377,7 @@ input#newUsernameInput {
   background: #FFFFFF;
   padding-bottom: 22px;
   margin-bottom: 15px;
+  left: 1px;
 }
 
 #firebase-ico-divFooter {
