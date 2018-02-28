@@ -103,7 +103,7 @@ span#greetTxt {
 
 #githubLoginBtn {
   position: relative;
-  margin-top: -18px;
+  margin-top: -1px; /* was margin-top: -18px; */
   height: 47px;
 }
 
@@ -221,7 +221,7 @@ a#passResetLnk {
 
 #registerNowLnk {
   position: relative;
-  top: -13px;
+  top: -19px; /* was top: -13px; */
   color: #4d4d4d;
   font-size: .9em;
 }
@@ -232,12 +232,12 @@ a#passResetLnk {
 
 #submitBtn {
   position: relative;
-  top: -20px;
+  top: -5px; /* was top: -20px; */
   font-size: 1.25em !important;
 }
 
 #googleLoginBtn {
-  margin-top: 2px;
+  margin-top: 1px;
   height: 47px;
 }
 
@@ -414,7 +414,6 @@ a#passResetLnk {
 label.checkbox {
   font-size: .9em;
   top: 2px;
-  //left: 0 !important;
   font-weight: bold !important;
   position: relative;
   left: 2px;
@@ -423,14 +422,14 @@ label.checkbox {
 
 .btnTxtGH {
   position: relative;
-  top: -2px;
-  font-size: .7em; /* WAS .75em */
-  margin-left: 11px;
+  top: -1px; /* was -2px */
+  font-size: .7em;
+  margin-left: 6px;
 }
 
 .btnTxt {
   position: relative;
-  top: -2px;
+  top: -1px;
   font-size: .7em; /* WAS .75em */
   margin-left: -1px;
 }
