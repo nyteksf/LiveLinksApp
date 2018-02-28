@@ -98,7 +98,7 @@ span#greetTxt {
 
 #githubLoginBtn {
   position: relative;
-  margin-top: -5px; /* was margin-top: -18px; */
+  margin-top: -4px; /* was margin-top: -18px; */
   height: 47px;
 }
 
@@ -216,7 +216,7 @@ a#passResetLnk {
 
 #registerNowLnk {
   position: relative;
-  top: -19px; /* was top: -13px; */
+  top: -16px; /* was top: -13px; */
   color: #4d4d4d;
   font-size: .9em;
 }
@@ -232,7 +232,7 @@ a#passResetLnk {
 }
 
 #googleLoginBtn {
-  margin-top: 0;
+  margin-top: 1px;
   height: 47px;
 }
 
