@@ -1,3 +1,4 @@
+  console.log("FIREBASE JS LOADED");
   $('#noUserErrDialog').hide();
   $('#emptyFieldDialog').hide();
   $('.deleteRestricted').hide();
