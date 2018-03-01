@@ -204,7 +204,7 @@ img#firebase-ico:hover {
 }
 
 .okBtn:hover {
-  border-color: #23297A !important;
+  //border-color: #23297A !important;
 }
 
 .cancelDialogBtn:hover {
@@ -543,6 +543,29 @@ font-family: 'Cantarell', sans-serif;
   width: 100px;
 }
 
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix.ui-draggable-handle {
+    border: none;
+}
+
+.ui-dialog,.ui-widget,
+.ui-widget-content,
+.ui-corner-all,
+.ui-draggable,
+.ui-resizable {
+  background: #D3D3D3;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    border: 1px solid #b7b2b2;
+    background: #FFF 50% 50% repeat-x;
+    font-weight: bold;
+    color: #333333 !important;
+}
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable {
+    border: 1px solid #d9d9d9;
+
+
 #deleteRestrictedDialogBody {
   font-weight: bold;
   font-size: .95em;
@@ -561,12 +584,7 @@ font-family: 'Cantarell', sans-serif;
   font-weight: bold;
   width: 125px;
   height: 15.6666667%;
-  //background-color: #DEEDF7 !important;
-  //border-color: #D3D3D3;
   color: #FFFFFF;
-  //background-color: #D3D3D3;
-  //background-color: #e0f7f7 !important;
-  //background-color: #ecfafa	!important;
   border: 2.75px solid #333333;
   -moz-box-shadow: inset -11px -11px 23px -14px rgba(0,0,0,0.75), inset 13px 14px 8px -12px rgba(220,220,220,1), inset 22px 22px 59px -14px rgba(220,220,220,0.54), 1px 1px 3px 1px rgba(227,227,227,1), 1px -1px 3px 1px rgba(227,227,227,1);
   -webkit-box-shadow: inset -11px -11px 23px -14px rgba(0,0,0,0.75), inset 13px 14px 8px -12px rgba(220,220,220,1), inset 22px 22px 59px -14px rgba(220,220,220,0.54), 1px 1px 3px 1px rgba(227,227,227,1), 1px -1px 3px 1px rgba(227,227,227,1);
@@ -574,7 +592,6 @@ font-family: 'Cantarell', sans-serif;
 }
 
 .slideMenuBtn:hover {
-  color: #cecaca !important;
   color: #7f848a !important;
   -webkit-box-shadow: inset -11px -11px 23px -14px rgba(220,220,220,1), inset 13px 14px 6px -13px rgba(0,0,0,0.75);
   -moz-box-shadow: inset -11px -11px 23px -14px rgba(220,220,220,1), inset 13px 14px 6px -13px rgba(0,0,0,0.75);
