@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+	<script>console.log("kthx I'm broken but loaded!")</script>
+
 <head>
   <title>LIVELINKS</title>
   <meta charset="utf-8"/>
@@ -480,7 +482,7 @@ populatePageWLinks = function() {
               postNo = post;
               let usernameCount = 0;
               for (let likes in resJSONObj) {
-                  if (listeners.hasOwnProperty(resJSONObj)) {
+                  if (likes.hasOwnProperty(resJSONObj)) {
                       let usernames = Object.keys(resJSONObj);
                       usernameCount++;
                       let arrLen = Object.keys(resJSONObj[likes]).length;
@@ -1399,8 +1401,6 @@ let searchUsername = function() {
         }
     });
 };
-    
-console.log("kthx I'm broken but loaded....////");	
   </script>
 
 </body>
