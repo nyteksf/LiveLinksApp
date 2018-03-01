@@ -93,7 +93,7 @@
 
 
   <div id="emptyFieldDialog" title="Error!">
-      <p><center id="emptyFieldErrBody">
+      <center id="emptyFieldErrBody"><p>
           <strong>
               Please be sure to choose a username between 1-10 characters in length.
           </strong>
@@ -1412,7 +1412,7 @@ $('#smbXtra').click(function() {
       }, {
           text: "Submit",
           click: function() {
-              let input = $('#newUsernameInput').val();f
+              let input = $('#newUsernameInput').val();
               if ($('#newUsernameInput').val().length >= 1 && $('#newUsernameInput').val().length <= 10) {
                   if (regexp.test(input)) {
                       //TRIGGER NON-ALPHANUM DIALOG
