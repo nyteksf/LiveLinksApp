@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="en">
 
 <head>
   <title>LIVELINKS</title>
   <meta charset="utf-8"/>
-	<script> console.log("kthx I'm not yet loaded....////"); </script>
+	
   <!-- Fav Icon -->
   <link rel="icon" href="img/livelinksIco.jpg" />
 
@@ -93,7 +93,7 @@
 
 
   <div id="emptyFieldDialog" title="Error!">
-      <center id="emptyFieldErrBody"><p>
+      <p><center id="emptyFieldErrBody">
           <strong>
               Please be sure to choose a username between 1-10 characters in length.
           </strong>
@@ -293,7 +293,7 @@
         <!-- Body hereby implied: ie, ...posted links & their contents... -->
         <div id="firebase-ico-divFooter">
           <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
-          <img src="img/firebase-ico.jpg" alt="Powered By Firebase" id="firebase-ico" />
+          <img src="img/firebase-ico.jpg" title="Powered By Firebase" id="firebase-ico" />
         </div>
       </div>
     </div>
@@ -1412,7 +1412,7 @@ $('#smbXtra').click(function() {
       }, {
           text: "Submit",
           click: function() {
-              let input = $('#newUsernameInput').val();
+              let input = $('#newUsernameInput').val();f
               if ($('#newUsernameInput').val().length >= 1 && $('#newUsernameInput').val().length <= 10) {
                   if (regexp.test(input)) {
                       //TRIGGER NON-ALPHANUM DIALOG
@@ -1527,6 +1527,7 @@ let searchUsername = function() {
     });
 };
     
+console.log("kthx I'm loaded....////.....");	
 </script>
 
 </body>
