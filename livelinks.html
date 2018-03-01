@@ -305,15 +305,15 @@
 $("#chatbox").hide();
 
 /* SET NICK IN IRC COMPONENT */
-var setNick = function() {
+let setNick = function(username) {
     if (!setNick.prototype.done) {
-	var ifrm = document.getElementById('chatbox');
-	ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
-	ifrm.document.open();
+	let ifrm = document.getElementById('chatbox');
+  	    ifrm = ifrm.contentWindow || ifrm.contentDocument.document || ifrm.contentDocument;
+	    ifrm.document.open();
       	ifrm.document.write('Loading...');
       	ifrm.document.close();	  
 	    
-        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + localStorage.user + "&channels=%23livelinkschat&uio=Mj10cnVldd");
+        $("#chatbox").attr("src", "https://webchat.freenode.net?nick=" + username + "&channels=%23livelinkschat&uio=Mj10cnVldd");
         setNick.prototype.done = true;
     }
  };
@@ -328,7 +328,7 @@ $("#btn-ToggleCB").click(function(e) {
     /* SHOW/HIDE */
     $("#chatbox").toggleClass("showCB");
     
-    setNick();
+    searchUsername();
 });
 	
 $("#btn-ToggleLinks").click(function(e) {
@@ -841,6 +841,7 @@ let res;
 let resString;
 let result;
 let uName;
+    
 //OPEN TARGET LINK IF AND WHEN POSTED LINK DIV CLICKED UPON:
 $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   evt.preventDefault();
@@ -850,15 +851,21 @@ $("#dispLinksDiv").delegate('div', 'click', function(evt) {
   window.open(pUrl, '_blank');
   return false;
 });
+    
+    
 $("#dispLinksDiv").delegate('div', 'mouseenter', function() {
   $(this).find(".divbody").css('text-decoration', 'underline');
 });
+    
+    
 $("#dispLinksDiv").delegate('div', 'mouseleave', function() {
   $(this).find(".divbody").css('text-decoration', 'none');
 });
+    
 let eUrl = encodeURIComponent($('#linkUrl').val());
 let lTitle = $('#linkTitle').val();
 let reg;
+    
 //ADD NEW LIVELINK POST TO DATABASE/APP
 $('#submitButton').click(function() {
   if (selectedMenuItem === "") {
@@ -1497,18 +1504,30 @@ function showHidePosts(evt) {
   }
 }
 let hideMenu;
-$('.scotch-panel-canvas').delegate('ul#menu', 'mouseleave', function() {
-  hideMenu = setTimeout(function() {
-      //$('ul#menu').hide();
-      //menuVisible = false;
-  }, 850);
-});
 $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
   clearTimeout(hideMenu);
 });
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
-
-console.log("okay I'm loaded=--");	
+    
+let searchUsername = function() {    
+    let unameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
+        unameList = unameList.responseJSON;
+        let uidNo = firebase.auth().currentUser.uid;
+        for (let user in unameList) {
+            if (unameList[user].uid === uidNo) { /* FIND USERNAME */
+                /* SET USERNAME */
+                setNick(unameList[user].user);
+              
+                break;
+            } else {
+                /* USER FEEDBACK: ERROR */
+                $('#curUsername').text("User Unregistered. Please Register.");
+            }
+        }
+    });
+};
+    
+console.log("kthx I'm loaded....////");	
 </script>
 
 </body>
