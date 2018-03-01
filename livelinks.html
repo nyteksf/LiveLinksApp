@@ -1,160 +1,174 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>LIVELINKS</title>
-  <meta charset="utf-8"/>
-	
-  <!-- Fav Icon -->
-  <link rel="icon" href="img/livelinksIco.jpg" />
+    <head>
+        <title>LIVELINKS</title>
+        <meta charset="utf-8" />
 
-  <!-- Scripts -->
-  <script src="https://use.fontawesome.com/fca801246c.js"></script>
-  <script src="JS/underscore-min.js"></script>
-  <script src="JS/jquery-1.11.3.js" type="text/javascript"></script>
-  <script src="JS/moment.js" type="text/javascript"></script>
-  <script src="JS/livestamp.js" type="text/javascript"></script>
-  <script src="JS/scotchPanels.js" type="text/javascript"></script>
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js" type="text/javascript"></script>
-  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous" type="text/javascript"></script>
-  <script src="JS/functions_cryptography.js"></script>
-  <script type="text/javascript">
-    let crypt = new Crypt();
-  </script>
+        <!-- Fav Icon -->
+        <link rel="icon" href="img/livelinksIco.jpg" />
 
-    <!-- Style Related -->
-    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" type="text/css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="CSS/llstyle.css" type="text/css" />
+        <!-- Scripts -->
+        <script src="https://use.fontawesome.com/fca801246c.js"></script>
+        <script src="JS/underscore-min.js"></script>
+        <script src="JS/jquery-1.11.3.js" type="text/javascript"></script>
+        <script src="JS/moment.js" type="text/javascript"></script>
+        <script src="JS/livestamp.js" type="text/javascript"></script>
+        <script src="JS/scotchPanels.js" type="text/javascript"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous" type="text/javascript"></script>
+        <script src="JS/functions_cryptography.js"></script>
+        <script type="text/javascript">
+            let crypt = new Crypt();
+        </script>
 
-    <!-- jQuery UI Dialog Segment Begin -->
-    <div id="toggleFirstDialog">
-    <div id="dialog" title="Add/Change Username">
+        <!-- Style Related -->
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css" type="text/css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell:400,400italic,700italic,700" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="CSS/llstyle.css" type="text/css" />
 
-    <div id="usernameDiv">
-    <span id="curUserLabel">Current Username:</span>
-    <div id="secondBorderDiv">
-    <div id="checkCurUsernameDiv"><span id="curUsername"></span></div>
-    </div>
+        <!-- jQuery UI Dialog Segment Begin -->
+        <div id="toggleFirstDialog">
+            <div id="dialog" title="Add/Change Username">
 
-    <div id="containUNameSearch">
-    <input type="text" id="newUsernameInput" placeholder="New Username Here..." />
-    <span id="validName"> - Available</span>
-    <span id="invalidName"> - Unavailable</span>
-    </div>
-    </div>
-  </div>
-</div>
+                <div id="usernameDiv">
+                    <span id="curUserLabel">Current Username:</span>
+                    <div id="secondBorderDiv">
+                        <div id="checkCurUsernameDiv"><span id="curUsername"></span></div>
+                    </div>
 
-
-  <div id="throwDynamicErr" title="Error!">
-    <center id="dynamicErrDialogBody">
-      Unique Firebase generated error message content goes here.
-    </center>
-  </div>
+                    <div id="containUNameSearch">
+                        <input type="text" id="newUsernameInput" placeholder="New Username Here..." />
+                        <span id="validName"> - Available</span>
+                        <span id="invalidName"> - Unavailable</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-  <div id="confirmDeleteDialog" title="Deactivate">
-    <center id="confirmDelDialogBody"><p>
-	    Are you <i>sure</i> you want to leave LiveLinks?
-      <br><br>
-      This action will result in the permanent loss of
-       any currently associated username, and ownership over all your prior
-       posts.
-    </p></center>
-  </div>
+        <div id="throwDynamicErr" title="Error!">
+            <center id="dynamicErrDialogBody">
+                Unique Firebase generated error message content goes here.
+            </center>
+        </div>
 
 
-  <div id="changeEmail" title="Change Primary Email">
-      <div id="curEmailDivWrapper">
-        <span id="curEmailOutput">Current Email:</span>
-        <div id="curEmailDispBox"></div>
-      </div>
-      <div id="newEmailInputWrapper">
-        <input type="text" id="newEmailInput" placeholder="New Primary Email..." />
-      </div>
-  </div>
+        <div id="confirmDeleteDialog" title="Deactivate">
+            <center id="confirmDelDialogBody">
+                <p>
+                    Are you <i>sure</i> you want to leave LiveLinks?
+                    <br><br> This action will result in the permanent loss of any currently associated username, and ownership over all your prior posts.
+                </p>
+            </center>
+        </div>
 
 
-  <div id="noUserErrDialog" title="Error!">
-    <center id="errDialogBody"><p>
-      Please be sure to set a username through your user menu before attempting to post again.
-    </p></center>
-  </div>
+        <div id="changeEmail" title="Change Primary Email">
+            <div id="curEmailDivWrapper">
+                <span id="curEmailOutput">Current Email:</span>
+                <div id="curEmailDispBox"></div>
+            </div>
+            <div id="newEmailInputWrapper">
+                <input type="text" id="newEmailInput" placeholder="New Primary Email..." />
+            </div>
+        </div>
 
 
-  <div class="deleteRestricted" title="WARNING!">
-    <center id="deleteRestrictedDialogBody"><p>
-      Users are only allowed to delete posts created with their own usernames.
-    </p></center>
-  </div>
+        <div id="noUserErrDialog" title="Error!">
+            <center id="errDialogBody">
+                <p>
+                    Please be sure to set a username through your user menu before attempting to post again.
+                </p>
+            </center>
+        </div>
 
 
-  <div id="emptyFieldDialog" title="Error!">
-      <p><center id="emptyFieldErrBody">
-          <strong>
+        <div class="deleteRestricted" title="WARNING!">
+            <center id="deleteRestrictedDialogBody">
+                <p>
+                    Users are only allowed to delete posts created with their own usernames.
+                </p>
+            </center>
+        </div>
+
+
+        <div id="emptyFieldDialog" title="Error!">
+            <center id="emptyFieldErrBody">
+                <p>
+                    <strong>
               Please be sure to choose a username between 1-10 characters in length.
           </strong>
-      </p></center>
-  </div>
+                </p>
+            </center>
+        </div>
 
 
-  <div id="invalidFormInput" title="Error!">
-    <center id="emptyFieldErrBody"><p>
-      <strong>
+        <div id="invalidFormInput" title="Error!">
+            <center id="emptyFieldErrBody">
+                <p>
+                    <strong>
         Please check to ensure that all fields have been properly filled out before resubmitting.
       </strong>
-    </p></center>
-  </div>
+                </p>
+            </center>
+        </div>
 
 
-  <ul id="menu">
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-futbol-o dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Sports</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-university dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Politics</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-line-chart dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Finance</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-film dropdownIco"  aria-hidden="true"></i>
-      <span class="menuTxtStyle menuEntTxt">Entertainment</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-bar-chart dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Science</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-lightbulb-o dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Technology</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-newspaper-o dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">News</span></span></div>
-  </li>
-  <li>
-    <div><span class="menuItemWrap"><i class="fa fa-asterisk dropdownIco" aria-hidden="true"></i>
-<span class="menuTxtStyle">Misc.</span></span></div>
-  </li>
-</ul>
+        <ul id="menu">
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-futbol-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Sports</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-university dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Politics</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-line-chart dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Finance</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-film dropdownIco"  aria-hidden="true"></i>
+      <span class="menuTxtStyle menuEntTxt">Entertainment</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-bar-chart dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Science</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-lightbulb-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Technology</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-newspaper-o dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">News</span></span>
+                </div>
+            </li>
+            <li>
+                <div><span class="menuItemWrap"><i class="fa fa-asterisk dropdownIco" aria-hidden="true"></i>
+<span class="menuTxtStyle">Misc.</span></span>
+                </div>
+            </li>
+        </ul>
 
 
-<div id="smbAboutDialog" title="About">
-  <center id="smbAboutDialogBody"><p>
-    This webpage is home to a project created with the intent of providing context
-    for learning how to use Firebase; being a "JavaScript-centric" NoSQL database
-    service. The project idea itself behind the creation of "LiveLinks"
-    roughly came from observing a Firebase iPhone App tutorial written in Java.
-  </p></center>
-</div>
-  <!-- jQuery UI Dialog/Menu Segment End -->
+        <div id="smbAboutDialog" title="About">
+            <center id="smbAboutDialogBody">
+                <p>
+                    This webpage is home to a project created with the intent of providing context for learning how to use Firebase; being a "JavaScript-centric" NoSQL database service. The project idea itself behind the creation of "LiveLinks" roughly came from observing a Firebase iPhone App tutorial written in Java.
+                </p>
+            </center>
+        </div>
+        <!-- jQuery UI Dialog/Menu Segment End -->
 
 
   <script>
@@ -164,8 +178,6 @@
   $('#changeEmail').hide();
   $('#throwDynamicErr').hide();
   $('#invalidFormInput').hide();
-
-
   let config = {
     apiKey: "AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA",
     authDomain: "livelinks01125.firebaseapp.com",
@@ -173,47 +185,33 @@
     storageBucket: "livelinks01125.appspot.com",
   };
   firebase.initializeApp(config);
-
-
   function createJSON(jsonKey, val) {
     let jsonObj = {};
     jsonObj[jsonKey] = val;
-
     return jsonObj;
   }
-
-
   function salty() {
     let letters = '0123456789ABCDEFGHIJKLMNO';
     let rand = '';
-
     for (var i = 0; i < 5; i++) {
         rand += letters[Math.floor(Math.random() * 24)];
     }
-
     return rand;
   }
-
-
   let keyGen = function(uid) {
     let part1 = salty(); //CREATE RANDOM STRING
     let part2 = salty(); //FROM RANDOM CHARACTERS
     let part3 = salty(); //BY CATTING TOGETHER
     let part4 = salty(); //AND THEN ENCRYPT
     let key = "" + part1 + part3 + part4 + part2; //FOR MORE RANDOMNESS
-
     key = crypt.AES.encrypt(key);
     firebase.database().ref('/users/' + uid).update({
         key: true
     });
-
     return key;
   };
-
-
   setTimeout(function() {
     let userID = localStorage['uid']; // = firebase.auth().currentUser.uid;
-
     if (localStorage["lastProvider"] === "password") {
     	let user;
         let userIsFound = false;
@@ -241,66 +239,70 @@
      /* encrypt */
         let passToCrypt = localStorage['pw'];
         encryptedPW = crypt.AES.encrypt(passToCrypt, k);
-
      /* store one-use key w/ UID */
         localStorage['pw'] = encryptedPW;
         let encodedPW = encodeURIComponent(encryptedPW);
         let setKey = createJSON("key", encodeURIComponent(k));
         let uid = localStorage["uid"] || firebase.auth().currentUser.uid;
         let setUID = createJSON("uid", uid);
-
         firebase.database().ref('crypt/' + uid).update(setUID);
         firebase.database().ref('crypt/' + uid).update(setKey);
      }
     
   }, 900);
+
 </script>
 
-</head>
-<body>
-    <a href="http://nyteksf.github.io/livelinks.html" title="LIVELINKS" id="titleLink"><h1>LiveLinks</h1><br/><h2><small>A Community For Sharing</small></h2></a>
+    </head>
 
-    <!-- ADD IRC CHATROOM VIA iFRAME-->
-    <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
-    <button id="btn-ToggleLinks"><span id="btn-Span-ToggleLinks"><i class="fa fa-angle-down"></i></span> Toggle Links</button>	
-	
-    <div class="link-form show-form" id="form-submit">
-      <form>
-        <input type="text" class="link-title" id="linkTitle" placeholder="New Link Title Here..." />
-        <input type="text" class="link-url" id="linkUrl" placeholder="New URL Here..." />
-        <button type="button" id="selectTypeButton" title="SELECT A CATEGORY"><i class="fa fa-arrow-down" aria-hidden="true"></i> CATEGORY</button>
-        <button type="button" id="submitButton" title="SUBMIT"><i class="fa fa-cloud-upload" aria-hidden="true"></i> SUBMIT</button>
-        <button type="button" id="refreshButton" title="REFRESH"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    <body>
+        <a href="http://nyteksf.github.io/livelinks.html" title="LIVELINKS" id="titleLink">
+            <h1>LiveLinks</h1><br/>
+            <h2><small>A Community For Sharing</small></h2>
+        </a>
 
-      </form>
-    </div>
+        <!-- ADD IRC CHATROOM VIA iFRAME-->
+        <button id="btn-ToggleCB"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right"></i></span> Toggle Chat</button>
+        <button id="btn-ToggleLinks"><span id="btn-Span-ToggleLinks"><i class="fa fa-angle-down"></i></span> Toggle Links</button>
 
+        <div class="link-form show-form" id="form-submit">
+            <form>
+                <input type="text" class="link-title" id="linkTitle" placeholder="New Link Title Here..." />
+                <input type="text" class="link-url" id="linkUrl" placeholder="New URL Here..." />
+                <button type="button" id="selectTypeButton" title="SELECT A CATEGORY"><i class="fa fa-arrow-down" aria-hidden="true"></i> CATEGORY</button>
+                <button type="button" id="submitButton" title="SUBMIT"><i class="fa fa-cloud-upload" aria-hidden="true"></i> SUBMIT</button>
+                <button type="button" id="refreshButton" title="REFRESH"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
-    <div id="holderDiv" class="show-links">
-      <div id="togglePanel">
-        <button type="submit" id="smbLogOut" class="btn slideMenuBtn"><span class="sldMenuTxt">Log Out</span></button>
-        <button type="submit" id="smbXtra" class="btn slideMenuBtn"><span class="sldMenuTxt">Add/Chg. Username</span></button>
-        <button type="submit" id="smbChgPass" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Password</span></button>
-        <button type="submit" id="smbChgEmail" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Email</span></button>
-        <button type="submit" id="smbAbout" class="btn slideMenuBtn"><span class="sldMenuTxt">About Developer</span></button>
-	<button type="submit" id="smbDeactivate" class="btn slideMenuBtn"><span class="sldMenuTxt">Unregister Account</span></button>
-      </div>
-      <div id="dispLinksDiv">
-        <div id="linkOutputHeader">
-          <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
+            </form>
         </div>
-        <div id="linkDisplayDiv"></div>
-        <!-- Body hereby implied: ie, ...posted links & their contents... -->
-        <div id="firebase-ico-divFooter">
-          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
-          <img src="img/firebase-ico.jpg" title="Powered By Firebase" id="firebase-ico" />
+
+
+        <div id="holderDiv" class="show-links">
+            <div id="togglePanel">
+                <button type="submit" id="smbLogOut" class="btn slideMenuBtn"><span class="sldMenuTxt">Log Out</span></button>
+                <button type="submit" id="smbXtra" class="btn slideMenuBtn"><span class="sldMenuTxt">Add/Chg. Username</span></button>
+                <button type="submit" id="smbChgPass" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Password</span></button>
+                <button type="submit" id="smbChgEmail" class="btn slideMenuBtn"><span class="sldMenuTxt">Change<br>Email</span></button>
+                <button type="submit" id="smbAbout" class="btn slideMenuBtn"><span class="sldMenuTxt">About Developer</span></button>
+                <button type="submit" id="smbDeactivate" class="btn slideMenuBtn"><span class="sldMenuTxt">Unregister Account</span></button>
+            </div>
+            <div id="dispLinksDiv">
+                <div id="linkOutputHeader">
+                    <i id="offscreenMenuIcoTop" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
+                </div>
+                <div id="linkDisplayDiv"></div>
+                <!-- Body hereby implied: ie, ...posted links & their contents... -->
+                <div id="firebase-ico-divFooter">
+                    <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
+                    <img src="img/firebase-ico.jpg" alt="Powered By Firebase" id="firebase-ico" />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    
-    <!-- ADD CHAT CONNECTIVITY -->
-    <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
-    	    <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
+
+        <!-- ADD CHAT CONNECTIVITY -->
+        <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
+        <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
+
 <script>
 $("#chatbox").hide();
 
@@ -1527,8 +1529,8 @@ let searchUsername = function() {
     });
 };
     
-console.log("kthx I'm loaded....////");	
 </script>
 
-</body>
+    </body>
+
 </html>
