@@ -1,4 +1,4 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -93,7 +93,7 @@
 
 
   <div id="emptyFieldDialog" title="Error!">
-      <p><center id="emptyFieldErrBody">
+      <center id="emptyFieldErrBody"><p>
           <strong>
               Please be sure to choose a username between 1-10 characters in length.
           </strong>
@@ -292,7 +292,7 @@
         <div id="linkDisplayDiv"></div>
         <!-- Body hereby implied: ie, ...posted links & their contents... -->
         <div id="firebase-ico-divFooter">
-          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" title="Toggle User Menu"></i>
+          <i id="offscreenMenuIco" class="fa fa-bars" aria-hidden="true" alt="Toggle User Menu"></i>
           <img src="img/firebase-ico.jpg" title="Powered By Firebase" id="firebase-ico" />
         </div>
       </div>
@@ -1412,7 +1412,7 @@ $('#smbXtra').click(function() {
       }, {
           text: "Submit",
           click: function() {
-              let input = $('#newUsernameInput').val();f
+              let input = $('#newUsernameInput').val();
               if ($('#newUsernameInput').val().length >= 1 && $('#newUsernameInput').val().length <= 10) {
                   if (regexp.test(input)) {
                       //TRIGGER NON-ALPHANUM DIALOG
@@ -1527,7 +1527,7 @@ let searchUsername = function() {
     });
 };
     
-console.log("kthx I'm loaded....////.....");	
+console.log("kthx I'm loaded..");	
 </script>
 
 </body>
