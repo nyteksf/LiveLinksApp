@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="en">
 
 <head>
@@ -1510,7 +1510,6 @@ $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
 $('div#dispLinksDiv').delegate('span#newPostAuthor', 'click', showHidePosts);
     
 let searchUsername = function() {    
-    console.log("searchusername start")
     let unameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json', function() {
         unameList = unameList.responseJSON;
         let uidNo = firebase.auth().currentUser.uid;
@@ -1518,18 +1517,17 @@ let searchUsername = function() {
             if (unameList[user].uid === uidNo) { /* FIND USERNAME */
                 /* SET USERNAME */
                 setNick(unameList[user].user);
-                console.log("setnick fired);
+              
                 break;
             } else {
                 /* USER FEEDBACK: ERROR */
                 $('#curUsername').text("User Unregistered. Please Register.");
             }
         }
-        console.log("searchusername fin")
     });
 };
     
-console.log("kthx?!");	
+console.log("kthx I'm loaded....////");	
 </script>
 
 </body>
