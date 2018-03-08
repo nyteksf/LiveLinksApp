@@ -576,6 +576,7 @@ input#newEmailInput {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   font-family: 'Cantarell', sans-serif;
+  background: #FFFFFF;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
