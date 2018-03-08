@@ -1,30 +1,29 @@
-  console.log("FIREBASE JS LOADED");
-  $('#noUserErrDialog').hide();
-  $('#emptyFieldDialog').hide();
-  $('.deleteRestricted').hide();
-  $('#changeEmail').hide();
-  $('#throwDynamicErr').hide();
-  $('#invalidFormInput').hide();
+$('#noUserErrDialog').hide();
+$('#emptyFieldDialog').hide();
+$('.deleteRestricted').hide();
+$('#changeEmail').hide();
+$('#throwDynamicErr').hide();
+$('#invalidFormInput').hide();
 
 
-  let config = {
+let config = {
     apiKey: "AIzaSyDEP7PX9rcrbtTwTZ85mLyt2ALzczuUomA",
     authDomain: "livelinks01125.firebaseapp.com",
     databaseURL: "https://livelinks01125.firebaseio.com",
     storageBucket: "livelinks01125.appspot.com",
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 
-  function createJSON(jsonKey, val) {
+function createJSON(jsonKey, val) {
     let jsonObj = {};
     jsonObj[jsonKey] = val;
 
     return jsonObj;
-  }
+}
 
 
-  function salty() {
+function salty() {
     let letters = '0123456789ABCDEFGHIJKLMNO';
     let rand = '';
 
@@ -33,10 +32,10 @@
     }
 
     return rand;
-  }
+}
 
 
-  let keyGen = function(uid) {
+let keyGen = function(uid) {
     let part1 = salty(); //CREATE RANDOM STRING
     let part2 = salty(); //FROM RANDOM CHARACTERS
     let part3 = salty(); //BY CATTING TOGETHER
@@ -49,14 +48,14 @@
     });
 
     return key;
-  };
+};
 
 
-  setTimeout(function() {
+setTimeout(function() {
     let userID = localStorage['uid']; // = firebase.auth().currentUser.uid;
 
     if (localStorage["lastProvider"] === "password") {
-    	let user;
+        let user;
         let userIsFound = false;
         let curUID = localStorage['uid'] || firebase.auth().currentUser.uid;
         $.getJSON('https://livelinks01125.firebaseio.com/users.json', function(userlist) {
@@ -72,18 +71,18 @@
             if (!userIsFound) {
                 alert("ERR! No username created!");
             }
-    	}); 
+        });
     }
-    
+
     if (localStorage["autoLogin"] === "true") {
         let k;
         let encryptedPW;
-        
-     /* encrypt */
+
+        /* encrypt */
         let passToCrypt = localStorage['pw'];
         encryptedPW = crypt.AES.encrypt(passToCrypt, k);
 
-     /* store one-use key w/ UID */
+        /* store one-use key w/ UID */
         localStorage['pw'] = encryptedPW;
         let encodedPW = encodeURIComponent(encryptedPW);
         let setKey = createJSON("key", encodeURIComponent(k));
@@ -92,6 +91,6 @@
 
         firebase.database().ref('crypt/' + uid).update(setUID);
         firebase.database().ref('crypt/' + uid).update(setKey);
-     }
-    
-  }, 900);
+    }
+
+}, 900);
