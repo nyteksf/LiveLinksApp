@@ -53,16 +53,17 @@ button#btn-XCloseSearch {
 }
 
 button.modalSubmit {
-    bottom: 10px;
-    padding-left: 5px;
-    padding-top: 1px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 4px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 4px;
-    height: 27px;
-    border: 1px solid #333333;
-    float: right;
+ position: absolute;
+ right: -79px;
+ bottom: 10px;
+ padding-left: 4px;
+ padding-top: 1px;
+ border-bottom-left-radius: 0;
+ border-bottom-right-radius: 4px;
+ border-top-left-radius: 0;
+ border-top-right-radius: 4px;
+ height: 27px;
+ border: 1px solid #333333;
 }
 
 .clear {
@@ -251,16 +252,16 @@ div#linkOutputHeader {
 }
 
 .input-comment {
-  background: #FFFFFF;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  min-width: 363px;
-  height: 27px;
-  float: left;
-  margin-left: 1px;
-  padding-right: 1px !important;
+ background: #FFFFFF;
+ margin-top: 2px;
+ border-top-left-radius: 3px;
+ border-bottom-left-radius: 3px;
+ border-top-right-radius: 0;
+ border-bottom-right-radius: 0;
+ width: 358px;
+ height: 27px;
+ position: absolute;
+ bottom: 10px;
 }
 
 #wrapper__input-comment {
@@ -295,19 +296,18 @@ div#linkOutputHeader {
 }
 
 #div-comment-output {
-    background: #FFFFFF;
-    border: 1px solid #333333;
-    min-height: 100px;
-    max-height: 500px;
-    width: 100%;
-    padding: 3px 0;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    float: left;
-    margin-left: -1px;
-    overflow: auto;
+ background: #FFFFFF;
+ border: 1px solid #333333;
+ min-height: 100px;
+ max-height: 750px;
+ width: 127%;
+ padding: 3px 0;
+ border-top-right-radius: 3px;
+ border-top-left-radius: 3px;
+ border-bottom-left-radius: 3px;
+ border-bottom-right-radius: 3px;
+ position: relative;
+  top: -42px !important;
 }
 
 .div-comment-output__span {
@@ -482,11 +482,12 @@ input#newUsernameInput {
   width: 175px;
 }
 
-#label__InputComment { /* ADD TAG TO HTML SO IT WORKS */
-  display: inline-block;
-  font-weight: bold;
-  bottom: 37px;
-  left: 15px;
+#label__InputComment { /* I THINK THIS TAG MUST BE ADDED TO HTML TO WORK */
+ display: block;
+ font-weight: bold;
+ position: absolute;
+ bottom: 37px;
+ left: 15px;
 }
 
 .stretch-Input-Comment {
@@ -948,10 +949,6 @@ input, #submitButton {
  padding-left: 9px;
  bottom: 0;
  right: 0px;
-}
-
-#selectTypeButton {
-  font-size: .7em; /* .925em; */
 }
 
 #menu {
