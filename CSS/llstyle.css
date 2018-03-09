@@ -13,7 +13,6 @@ body, html {
 }
 
 div#main-container {
- border: 1px solid black;
  position: relative;
  width: 517px;
  height: 40px;
@@ -103,7 +102,6 @@ input#input-Search {
  visibility: hidden;
  position: absolute;
  right: 0px;
- border: 1px solid black;
  width: 147px;
  height: 44px;
  top: -4px;
@@ -162,7 +160,6 @@ input#linkTitle {  /* DITTO ABOVE */
 
 div#form-submit {
  margin-top: 12px;
- border: 1px solid black;
  width: 518px;
  height: 40px;
  position: relative;
