@@ -294,17 +294,18 @@ div#linkOutputHeader {
   max-height: 750px;
   width: 100%;
   padding: 3px 0;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-top-right-radius:    3px;
+  border-top-left-radius:     3px;
+  border-bottom-left-radius:  3px;
   border-bottom-right-radius: 3px;
   float: left;
-  margin-left: -1px;
-  margin-top: 9px;
+  margin-left:  -1px;
+  margin-top:   10px;
+  margin-bottom: 1px;
 }
 
 .div-comment-output__span {
-  padding-left: 3px;
+  padding-left:  3px;
   padding-right: 3px;
 }
 
@@ -314,7 +315,7 @@ div#linkOutputHeader {
 
 .subcontainer {
   position: relative;
-  top: -4px;
+  top:    -4px;
   height: 30px;
   width: 100px;
 }
@@ -328,9 +329,9 @@ div#linkOutputHeader {
 .fa-heart-o {
   position: relative;
   font-size: .83em !important;
-  top: 4px;
+  top:   4px;
   top: -17px;
-  left: 2px;
+  left:  2px;
   left: 36px;
 }
 
@@ -338,7 +339,7 @@ div#linkOutputHeader {
   position: relative;
   top: -2px;
   margin-right: 7px;
-  font-size: .7em !important;
+  font-size:    .7em !important;
   margin-left: -1px;
 }
 
