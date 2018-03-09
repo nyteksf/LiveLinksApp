@@ -13,26 +13,34 @@ body, html {
 }
 
 div#main-container {
- position: relative;
- width: 517px;
- height: 40px;
- margin-top: -30px;
+  position: relative;
+  width: 517px;
+  height: 40px;
+  margin-top: -30px;
 }
 
 #btn-ToggleSearch {
- position: absolute;
- bottom: 0;
- left: 276px;
- font-size: .85em;
- padding: 1.5px 4px 2px 4px;
+  position: absolute;
+  bottom: 0;
+  left: 276px;
+  font-size: .85em;
+  padding: 1.5px 4px 2px 4px;
+  border-top-left-radius:  3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 #btn-SubmitSearch {
- padding-top: 3px !important;
- padding-bottom: 3px !important;
- position: absolute;
- right: 0;
- bottom: 0;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-top-left-radius:     3px;
+  margin-top-right-radius:    3px;
+  margin-bottom-right-radius: 3px;
+  margin-bottom-left-radius:  3px;
 }
 
 #btn-ToggleSearch {
