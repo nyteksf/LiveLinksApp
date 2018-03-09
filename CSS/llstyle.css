@@ -53,7 +53,6 @@ button#btn-XCloseSearch {
 }
 
 button.modalSubmit {
-  bottom: 10px;
   padding-left: 5px;
   padding-top: 1px;
   border-bottom-left-radius: 0;
@@ -63,6 +62,7 @@ button.modalSubmit {
   height: 27px;
   border: 1px solid #333333;
   float: right;
+  margin-top: 3px;
 }
 .clear {
   clear: both;
@@ -81,7 +81,6 @@ select#searchTypeDropdown {
 
 fieldset {
  border: 0;
- position: absolute;
  bottom: 0;
  left: -2px;
 }
@@ -139,7 +138,7 @@ iframe#chatbox {
   display: block;
 }
 
-label#label__linkTitle { /* NEED TO ADD AN ID TO ACTUAL ELEMENT ASAP! */ 
+label#label__linkTitle {
  position: absolute;
  left: 5px;
  top: 0;
@@ -480,12 +479,11 @@ input#newUsernameInput {
   width: 175px;
 }
 
-#label__InputComment { /* I THINK THIS TAG MUST BE ADDED TO HTML TO WORK */
- display: block;
- font-weight: bold;
- position: absolute;
- bottom: 37px;
- left: 15px;
+#label__InputComment {
+    display: block;
+    font-weight: bold;
+    margin-bottom: -1.5px;
+    margin-left: 2px;
 }
 
 .stretch-Input-Comment {
