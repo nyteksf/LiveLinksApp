@@ -70,8 +70,9 @@ button.modalSubmit {
   height: 27px;
   border: 1px solid #333333;
   float: right;
-  transition: height 2s;
-  transition-timing-function: ease-in-out;
+  transition: height 1s;
+  -webkit-transition: height 1s;
+  -o-transition: height 1s;
 }
 
 .clear {
@@ -496,8 +497,9 @@ input#newUsernameInput {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 65px !important;
-  transition: height 2s;
-  transition-timing-function: ease-in-out;
+  transition: height 1s;
+  -webkit-transition: height 1s;
+  -o-transition: height 1s;
 }
 
 .stretch-Btn-SubmitModal {
@@ -635,7 +637,8 @@ input#newUsernameInput {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 1s;
-  transition: opacity 2s;
+  transition: opacity 1s;
+  -o-transition: opacity 1s;
   pointer-events: none;
 }
 
