@@ -1851,11 +1851,12 @@ $(() => {
         $("#dialog-form").attr("style", "display: none;");
     
         // WIPE COMMENT BOX OF DATA 
-        $(".input-comment").val("");  // TMP: REMOVE ME
+        $(".input-comment").val("");  // TMP: REFACTOR ME (D.R.Y.)
         $("#div-comment-output").html("");
         $(".linkOutputDiv").css("background-color", "#FFFFFF");
         
         // RESTORE ELS BACK TO PRIOR STATE
+        $(".linkOutputDiv").css("border-left", "1px solid #333333");
         $(".input-comment").removeClass("stretch-Input-Comment");
         $(".modalSubmit").removeClass("stretch-Btn-SubmitModal");
     });
@@ -1943,8 +1944,6 @@ $(() => {
         nameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
       
         nameList.done(function(list) {
-            let username; 
-    
             for (user in list) {
                 commentCounter++;
                 uNameArray.push(list[user].user);
@@ -1965,5 +1964,32 @@ $(() => {
         $(".input-comment").addClass("stretch-Input-Comment");
         $(".modalSubmit").addClass("stretch-Btn-SubmitModal");
     });
+    
+    /* ALPHABETICAL USER SEARCH"
+    let nameList, user;
+        let uNameArray = [];
+        let commentCounter = 0;
+
+        //$("#div-comment-output").append("<span class='div-comment-output__span' style='margin-bottom: 15px !important;'>Test Dump: <strong>SELECT user FROM usernames</strong> =></span><br/>");
+        
+        nameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
+      
+        nameList.done(function(list) {
+            list.sort(function(a,b) {
+                return a.user < b.user;
+            });
+
+            for (user in list) {
+                commentCounter++;
+                uNameArray.push(list[user].user);
+            }
+            uNameArray.forEach((username) => {
+                console.log(username);
+                 
+                // $("#div-comment-output").append("<span class='div-comment-output__span'>" + username + "</span><br/>");
+            });        
+        });
+    
+    */
     
 }); // END OF ONLOAD
