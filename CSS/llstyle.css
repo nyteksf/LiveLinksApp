@@ -315,7 +315,7 @@ div#linkOutputHeader {
     background: #FFFFFF;
     border: 1px solid #333333;
     min-height: 100px;
-    max-height: 750px;
+    max-height: 500px;
     width: 100%;
     padding: 3px 0;
     border-top-right-radius: 3px;
@@ -324,6 +324,7 @@ div#linkOutputHeader {
     border-bottom-right-radius: 3px;
     float: left;
     margin-left: -1px;
+    overflow: auto;
 }
 
 .div-comment-output__span {
