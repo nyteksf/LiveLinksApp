@@ -72,14 +72,14 @@ button.modalSubmit {
 
 select#searchTypeDropdown {
     padding: 3px;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    left: -15px;
-    top: 29px;
-}
+  }
 
 fieldset {
  border: 0;
