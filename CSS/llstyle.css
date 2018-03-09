@@ -70,6 +70,8 @@ button.modalSubmit {
   height: 27px;
   border: 1px solid #333333;
   float: right;
+  transition: height 2s;
+  transition-timing-function: ease-in-out;
 }
 
 .clear {
@@ -494,6 +496,8 @@ input#newUsernameInput {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 65px !important;
+  transition: height 2s;
+  transition-timing-function: ease-in-out;
 }
 
 .stretch-Btn-SubmitModal {
