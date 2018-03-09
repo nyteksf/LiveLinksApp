@@ -261,11 +261,6 @@ div#linkOutputHeader {
   padding-right: 1px !important;
 }
 
-#wrapper__input-comment {
-  margin-top: 15px;
-  margin-bottom: -15px;
-}
-
 #dialog-form {
     top: 50%;
     left: 50%;
@@ -305,6 +300,7 @@ div#linkOutputHeader {
   border-bottom-right-radius: 3px;
   float: left;
   margin-left: -1px;
+  margin-top: 9px;
 }
 
 .div-comment-output__span {
@@ -482,7 +478,6 @@ input#newUsernameInput {
 #label__InputComment {
     display: block;
     font-weight: bold;
-    margin-bottom: -1px;
     margin-left: 2px;
 }
 
