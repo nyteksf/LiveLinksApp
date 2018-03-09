@@ -10,7 +10,7 @@
 
         <!-- Scripts -->
         <script src="JS/underscore-min.js"></script>
-        <script src="https://use.fontawesome.com/fca801246c.js"></script>
+        <script src="https://use.awesome.com/fca801246c.js"></script>
         <script src="JS/jquery-1.11.3.js" type="text/javascript"></script>
         <script src="JS/moment.js" type="text/javascript"></script>
         <script src="JS/livestamp.js" type="text/javascript"></script>
@@ -181,7 +181,9 @@
             <h1>LiveLinks</h1><br/>
             <h2><small>A Community For Sharing</small></h2>
         </a>
-
+ 
+        <div id="main-container">
+        
         <!-- ADD IRC CHATROOM VIA iFRAME-->
         <button id="btn-ToggleCB" class="nav__btn"><span id="btn-Span-ToggleCB"><i class="fa fa-angle-right" aria-hidden="true"></i></span> Toggle Chat</button>
     
@@ -205,6 +207,9 @@
             <button id="btn-XCloseSearch" type="button"><i class="fa fa-times"></i></button>     
         </div>
         
+        </div>
+        
+            
         <div class="link-form show-form" id="form-submit">
             <form>
                 <label for="linkTitle"><small>Create New Post</small></label><br/>
@@ -239,6 +244,20 @@
             </div>
         </div>
 
+        <div id="dialog-form" title="Post a comment">
+            <form>
+                <fieldset>
+                    <div id="div-comment-output"></div>
+                    <div id="wrapper__input-comment">
+                        <label for="input-comment" id="label__InputComment"><small>Post Comment</small></label>
+                        <textarea type="text" name="input-comment" class="input-comment" placeholder="WARNING: COMMENTS UNDER CONSTRUCTION!" class="text ui-widget-content ui-corner-all"></textarea>
+ 
+                        <button class="modalSubmit" type="button"><i class="fa fa-share"></i> SUBMIT</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        
         <!-- ADD CHAT CONNECTIVITY -->
         <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
         

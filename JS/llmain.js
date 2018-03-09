@@ -393,6 +393,7 @@ $(() => {
                         countDivs++;
                         postNo = post;
                         let usernameCount = 0;
+                        // GENERATE A LIST OF LIKES FOR CURRENT LINK/POST
                         for (let likes in resJSONObj) {
                             let usernames = Object.keys(resJSONObj);
                             usernameCount++;
@@ -406,6 +407,13 @@ $(() => {
                             }
 
                         }
+                        
+                        // GENERATE A LIST OF COMMENTS FOR CURRENT POST 
+                        /* let drawComments = function() {
+                               $.getJSON('https://livelinks01125.firebaseio.com/comments.json', function(snapshot) { 
+                           
+                           };
+                        */
 
                         // TOGGLE
                         uNameFound = false;
@@ -431,15 +439,15 @@ $(() => {
 
                         //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
                         if (numOfLikes === 0) {
-                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                            newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                            newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                         } else { //...LOAD VERSION WITH LIKES INSTEAD, BUT PREVE FURTHER CLICKS:
                             if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
-                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             } else {
-                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot; <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             }
 
                             // FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
@@ -695,6 +703,8 @@ $(() => {
                         countDivs++;
                         postNo = post;
                         let usernameCount = 0;
+                        
+                        // CREATE A LIST OF USERS LIKED CURRENT POST
                         for (let likes in resJSONObj) {
                             let usernames = Object.keys(resJSONObj);
                             usernameCount++;
@@ -708,7 +718,12 @@ $(() => {
                             }
 
                         }
-
+                        
+                        // CREATE A LIST OF USERS AND COMMENTS RELATED TO CUR POST
+                        /* let getComments = () => {
+                        
+                        }; */
+                        
                         // TOGGLE
                         uNameFound = false;
                         if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
@@ -733,15 +748,15 @@ $(() => {
 
                         //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
                         if (numOfLikes === 0) {
-                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                            newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                            newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                         } else { //...LOAD VERSION WITH LIKES INSTEAD, BUT PREVE FURTHER CLICKS:
                             if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
-                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot;  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             } else {
-                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="postCatIcon">' + newPost.category + '</span>&middot; <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '  &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
+                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + '   <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             }
 
                             // FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
@@ -1718,7 +1733,9 @@ $(() => {
         });
     };
 
-
+    
+    
+    
     $("#btn-SubmitSearch").click(e => {
         e.preventDefault();
         e.stopPropagation();
@@ -1811,10 +1828,118 @@ $(() => {
     });
 
 
-    // Function For Back Button
+    // ADD FUNCTION FOR A BACK BUTTON
     $(".back").click(function() {
         parent.history.back();
+        
         return false;
     });
+    
+    // HIDE ADD COMMENTS MODAL
+    $("#dialog-form").attr("style", "display: none;")
+    
+    
+    // PREVENT CLICKS ON DIALOG-FORM FROM CLOSING DIALOG-FORM
+    $("#dialog-form").click(e => {
+        e.stopPropagation();
+    });
+    
+    
+    /* CLOSE 'ADD A COMMENT' DIV WHEN CLICK OUTSIDE BOX */
+    $(window).click(function() {
+        // Hide the menus if visible
+        $("#dialog-form").attr("style", "display: none;");
+    
+        // WIPE COMMENT BOX OF DATA 
+        $(".input-comment").val("");  // TMP: REMOVE ME
+        $("#div-comment-output").html("");
+        
+        // RESTORE ELS BACK TO PRIOR STATE
+        $(".input-comment").removeClass("stretch-Input-Comment");
+        $(".modalSubmit").removeClass("stretch-Btn-SubmitModal");
+    });
+    
+    
+    /* BUTTON: SUBMIT COMMENT */
+    $("button.modalSubmit").click(e => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        let $inputComment = $(".input-comment").val();
+        let $inputLength = $(".input-comment").val().split("").length;
+        
+        console.log($inputLength);  // SANITY CHECK -> INPUT LENGTH
+        
+        if ($inputLength > 0 && $inputLength <= 210) {
+            // SUBMIT COMMENT TO DB
+            /*
+            firebase.database().ref('comments').push({
+                // GATHER THE BELOW DATA! 
+                        author: uName,
+                        uid: uidNo,
+                        comment: $inputComment,
+                        timestamp: ts,
+                        ip: userip,
+                        postID: $().parent()...etc.parent().id
+                    }).then(setTimeout(function() {
+                        $(".input-comment").val("");  // WIPE LAST COMMENT
+                    }, 250));
+            */
+            $("#dialog-form").attr("style", "display: none;");  // HIDE COMMENT BOX
+            $(".input-comment").val("");  // TMP: REMOVE ME
+            $("#div-comment-output").html("");
+            
+            return true;
+        } else {
+            // SWITCH TO MODAL FORM OF BELOW ERROR WHEN POSSIBLE
+            alert("Comments are limited to a minimum of 1 and a maximum of 210 characters. Your attempt was " + $inputLength + " characters long. Please try again.")
+            
+            return false;
+        }
+    });
+    
+    
+    /* ADD A COMMENT TO CURRENT POST AS AUTH'D USER */
+    $('#dispLinksDiv').delegate('.ico-comment', 'click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        // HIGHLIGHT PARENT DIV BACKGROUND
+        let $targetEl = $(this).parent().parent();
+        //$($parentDiv).attr("background", "#D7D7D7 !important");
+        console.log($targetEl);
+        
+        console.log("working");
+        
+        let nameList;
+        let uNameArray = [];
 
+        $("#div-comment-output").append("<span class='div-comment-output__span' style='margin-bottom: 15px !important;'>Test Dump: <strong>SELECT user FROM usernames</strong> =></span><br/>");
+        
+        nameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
+
+        nameList.done(function(list) {
+            let username; 
+    
+            for (user in list) {
+                uNameArray.push(list[user].user);
+            }
+            uNameArray.forEach((username) => {
+                $("#div-comment-output").append("<span class='div-comment-output__span'>" + username + "</span><br/>");
+            });        
+        });
+        
+        $("#dialog-form").attr("style", "display: block;");
+        
+        console.log("working")
+    });
+
+    
+    /* WHEN CLICK COMMENT INPUT, ADD FOLLOWING TRANSITIONS */
+    $(".input-comment").focus(() => {
+        $(".input-comment").addClass("stretch-Input-Comment");
+        $(".modalSubmit").addClass("stretch-Btn-SubmitModal");
+    });
+    
 }); // END OF ONLOAD
