@@ -16,7 +16,14 @@ div#main-container {
     margin-top: -69px;
 }
 
-#btn-ToggleSearch,
+#btn-ToggleSearch {
+ position: absolute;
+ bottom: 0;
+ left: 276px;
+ font-size: .85em;
+ padding: 1.5px 4px 2px 4px;
+}
+
 #btn-SubmitSearch {
     position: relative;
     outline: 0;
@@ -56,20 +63,20 @@ button#btn-XCloseSearch {
 }
 
 button.modalSubmit {
-    display: inline-block;
-    float: right;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-right: 39px;
-    margin-bottom: 10px;
+    bottom: 10px;
     padding-left: 5px;
     padding-top: 1px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 4px;
     border-top-left-radius: 0;
     border-top-right-radius: 4px;
-    height: 25px;
+    height: 27px;
+    border: 1px solid #333333;
+    float: right;
+}
+
+.clear {
+  clear: both;
 }
 
 select#searchTypeDropdown {
@@ -104,8 +111,12 @@ input#input-Search {
 .input-group {
     visibility: hidden;
     display: inline-block;
-    position: relative;
-    left: 51px;
+    position: absolute;
+    right: 0px;
+    border: 1px solid black;
+    width: 147px;
+    height: 45px;
+    top: -4px;
 }
 
 iframe#chatbox {
@@ -141,43 +152,66 @@ iframe#chatbox {
   display: block;
 }
 
+label#label__linkTitle { /* NEED TO ADD AN ID TO ACTUAL ELEMENT ASAP! */ 
+ position: absolute;
+ left: 5px;
+ top: 0;
+}
+
+input#linkUrl {  /* DITTO ABOVE */
+ position: absolute;
+ bottom: 0;
+ left: 137px;
+}
+
+input#linkTitle {  /* DITTO ABOVE */
+ position: absolute;
+ bottom: 0;
+ left: 0;
+}
+
 div#form-submit {
-  margin-top: 15px;
+ margin-top: 12px;
+ border: 1px solid black;
+ width: 518px;
+ height: 40px;
+ position: relative;
 }
 
 #btn-ToggleMenu {
-    position: relative;
+ position: absolute;
+ outline: 0;
+ cursor: pointer;
+ bottom: 0;
+ border-top-right-radius: 4px;
+ border-top-left-radius: 4px;
+ border-bottom-left-radius: 4px;
+ border-bottom-right-radius: 4px;
+ left: 183px;
+}
+
+#btn-ToggleLinks {
+ position: absolute;
+ outline: 0;
+ cursor: pointer;
+ bottom: 0;
+ border-top-right-radius: 4px;
+ border-top-left-radius: 4px;
+ border-bottom-left-radius: 4px;
+ border-bottom-right-radius: 4px;
+ left: 89px;
+}
+
+#btn-ToggleCB {
+    position: absolute;
     outline: 0;
     cursor: pointer;
-    top: -5px;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    margin-top: 1px;
-}
-
-#btn-ToggleLinks {
-  position: relative;
-  outline: 0;
-  cursor: pointer;
-  top: -5px;   
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-#btn-ToggleCB {
-  position: relative;
-  outline: 0;
-  cursor: pointer;
-  top: -5px;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  margin-top: 1px;
+    bottom: 0;
+    /* height: 20px; */
 }
 
 #menu .fa {
@@ -230,16 +264,16 @@ div#linkOutputHeader {
 }
 
 .input-comment {
-    display: block;
-    width: 76%;
-    background: #FFFFFF;
-    margin-top: 2px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 321px;
-    height: 25px;
+  background: #FFFFFF;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  min-width: 363px;
+  height: 27px;
+  float: left;
+  margin-left: 1px;
+  padding-right: 1px !important;
 }
 
 #wrapper__input-comment {
@@ -248,21 +282,20 @@ div#linkOutputHeader {
 }
 
 #dialog-form {
-  display: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #D7D7D7;
-  position: absolute;
-  padding-top: 5px;
-  padding-right: 10px;
-  min-height: 155px;    
-  width: 450px;
-  border: 1px solid #333333;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #D7D7D7;
+    position: relative;
+    padding-top: 5px;
+    min-height: 155px;
+    width: 463px;
+    border: 1px solid #333333;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    position: absolute;
 }
 
 .postCatIcon {
@@ -275,19 +308,18 @@ div#linkOutputHeader {
 }
 
 #div-comment-output {
-  background: #FFFFFF;
-  display: block;
-  overflow: auto;
-  border: 1px solid #333333;
-  width: 100%;
-  min-height: 100px;
-  max-height: 750px;
-  width: 100%;
-  padding: 3px 0;
-  border-top-right-radius:    3px;
-  border-top-left-radius:     3px;
-  border-bottom-left-radius:  3px;
-  border-bottom-right-radius: 3px;
+    background: #FFFFFF;
+    border: 1px solid #333333;
+    min-height: 100px;
+    max-height: 750px;
+    width: 100%;
+    padding: 3px 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    float: left;
+    margin-left: -1px;
 }
 
 .div-comment-output__span {
@@ -462,11 +494,11 @@ input#newUsernameInput {
   width: 175px;
 }
 
-#label__InputComment {
-  display: block;
+#label__InputComment { /* ADD TAG TO HTML SO IT WORKS */
+  display: inline-block;
   font-weight: bold;
-  margin-top: 13px;
-  margin-bottom: -2px;
+  bottom: 37px;
+  left: 15px;
 }
 
 .stretch-Input-Comment {
@@ -900,21 +932,34 @@ input, #submitButton {
   border-radius: 5px;
 }
 
+#submitButton {
+ font-size: .75em;
+ font-family: 'Cantarell', sans-serif;
+ border-radius: 5px;
+ position: absolute;
+ bottom: 0;
+ left: 370px;
+ padding-top: 2px;
+ cursor: pointer;
+}
+
 #selectTypeButton {
-  position: relative;
-  top: -1px;
-}
-
-#selectTypeButton,
-#refreshButton {
-  position: relative;
-  height: 23px;
-  border-radius: 5px;
-  outline-width: 0;
+ position: absolute;
+ border-radius: 5px;
+ outline-width: 0;
+ left: 274px;
+ height: 23px;
+ font-size: .75em;
+ bottom: 0;
 }
 
 #refreshButton {
-  left: 39px;
+ position: absolute;
+ height: 23px;
+ border-radius: 5px;
+ padding-left: 9px;
+ bottom: 0;
+ right: 0px;
 }
 
 #selectTypeButton {
@@ -1001,9 +1046,9 @@ input, #submitButton {
 }
 
 .fa.fa-refresh {
-  position: relative;
-  left: -1px;
-  font-size: 1.025em;
+ position: relative;
+ left: -1px;
+ font-size: 1.025em;
 }
 
 #newPostAuthor:hover {
