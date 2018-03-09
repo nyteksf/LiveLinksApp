@@ -1853,6 +1853,7 @@ $(() => {
         // WIPE COMMENT BOX OF DATA 
         $(".input-comment").val("");  // TMP: REMOVE ME
         $("#div-comment-output").html("");
+        $(".linkOutputDiv").css("background-color", "#FFFFFF");
         
         // RESTORE ELS BACK TO PRIOR STATE
         $(".input-comment").removeClass("stretch-Input-Comment");
@@ -1905,11 +1906,17 @@ $(() => {
         e.stopPropagation();
         e.preventDefault();
         
-        // HIGHLIGHT PARENT DIV BACKGROUND
-        let $targetEl = $(this).parent().parent();
-        //$($parentDiv).attr("background", "#D7D7D7 !important");
-        console.log($targetEl);
+        // EXECUTE PREMPTIVE DATA WIPE/RESET
+        $(".input-comment").val("");  // TMP: REMOVE ME
+        $("#div-comment-output").html("");
+        $(".linkOutputDiv").css("background-color", "#FFFFFF");
         
+        // HIGHLIGHT PARENT DIV BACKGROUND
+        let $parentDiv = $(this).parent().parent();
+        let parentID = "#"+$parentDiv[0].id;
+        
+        $(parentID).css("background-color", "#D7D7D7 !important");
+    
         console.log("working");
         
         let nameList;
