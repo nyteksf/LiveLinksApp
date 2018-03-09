@@ -1870,8 +1870,6 @@ $(() => {
         let $inputComment = $(".input-comment").val();
         let $inputLength = $(".input-comment").val().split("").length;
         
-        console.log($inputLength);  // SANITY CHECK -> INPUT LENGTH
-        
         if ($inputLength > 0 && $inputLength <= 210) {
             // SUBMIT COMMENT TO DB
             /*
@@ -1888,13 +1886,30 @@ $(() => {
                     }, 250));
             */
             $("#dialog-form").attr("style", "display: none;");  // HIDE COMMENT BOX
-            $(".input-comment").val("");  // TMP: REMOVE ME
+            $(".input-comment").val("");  // TMP: REFACTOR ME! (D.R.Y.)
             $("#div-comment-output").html("");
             
             return true;
         } else {
-            // SWITCH TO MODAL FORM OF BELOW ERROR WHEN POSSIBLE
-            alert("Comments are limited to a minimum of 1 and a maximum of 210 characters. Your attempt was " + $inputLength + " characters long. Please try again.")
+            // TRIGGER DYNAMIC MODAL
+            $('#throwDynamicErr').dialog({
+                width: 355,
+                modal: true,
+                title: "Warning!",
+                open: function() {
+                    var markup = '<center><p><strong><span id="unassociatedCatBodyTxt">Comment length is limited to a minimum of 1 and a maximum of 210 characters. Your attempt was ' + $inputLength + ' characters long. Please try again.</strong></span></p></center>';
+                    $(this).html(markup);
+                },
+                buttons: [ // SUCCESS MESSAGE CONFIRMATION
+                    {
+                        text: "OK",
+                        click: function() {
+                            $('#throwDynamicErr').dialog("close");
+                        },
+                        class: "okBtn2"
+                    }
+                ]
+            });
             
             return false;
         }
@@ -1910,26 +1925,28 @@ $(() => {
         $(".input-comment").val("");  // TMP: REMOVE ME
         $("#div-comment-output").html("");
         $(".linkOutputDiv").css("background-color", "#FFFFFF");
+        $(".linkOutputDiv").css("border-left", "1px solid #333333");
         
         // HIGHLIGHT PARENT DIV BACKGROUND
         let $parentDiv = $(this).parent().parent();
         let parentID = "#"+$parentDiv[0].id;
         
-        $(parentID).css("background-color", "#D7D7D7 !important");
-    
-        console.log("working");
+        $(parentID).css("background-color", "#D7D7D7");
+        $(parentID).css("border-left", "4px solid #333333");
         
-        let nameList;
+        let nameList, user;
         let uNameArray = [];
+        let commentCounter = 0;
 
         $("#div-comment-output").append("<span class='div-comment-output__span' style='margin-bottom: 15px !important;'>Test Dump: <strong>SELECT user FROM usernames</strong> =></span><br/>");
         
         nameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
-
+      
         nameList.done(function(list) {
             let username; 
     
             for (user in list) {
+                commentCounter++;
                 uNameArray.push(list[user].user);
             }
             uNameArray.forEach((username) => {

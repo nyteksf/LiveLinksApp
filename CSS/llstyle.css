@@ -1017,9 +1017,18 @@ input, #submitButton {
   cursor: pointer;
 }
 
+i.fa.fa-comment-o:hover {
+    text-decoration: underline;
+}
+
 .linkoutputdiv:hover {
+  background: lightgray !important;
+  border-left: 4px solid #333333 !important;
+}
+
+.activeOutputDiv {
   background: lightgray;
-  border-left: 4px solid #000000;
+  border-left: 4px solid #333333;
 }
 
 .divTitle a,
