@@ -14,9 +14,8 @@ body, html {
 
 p#charCountDisp {
     padding: 0;
-    position: absolute;
-    bottom: 37px;
-    right: 14px;
+    margin: 0;
+    float: right;
 }
 
 div#main-container {
@@ -29,7 +28,7 @@ div#main-container {
 #btn-ToggleSearch {
   position: absolute;
   bottom: 0;
-  left: 305px;
+  left: 284px;
   font-size: .85em;
   padding: 1.5px 4px 2px 4px;
   border-top-left-radius:  3px;
@@ -498,6 +497,8 @@ input#newUsernameInput {
     display: block;
     font-weight: bold;
     margin-left: 2px;
+    position: relative;
+    top: 2px;
 }
 
 .stretch-Input-Comment {
