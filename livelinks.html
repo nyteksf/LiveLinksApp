@@ -177,6 +177,20 @@
     </head>
 
     <body>
+        <div id="dialog-form" title="Post a comment">
+            <form>
+                <fieldset>
+                    <div id="div-comment-output"><span class="div-comment-output__span" style="margin-bottom: 15px !important;">Test Dump: <strong>SELECT user FROM usernames</strong> =&gt;</span><br><span class="div-comment-output__span">nyteksf</span><br><span class="div-comment-output__span">amberlamps</span><br><span class="div-comment-output__span">joho</span><br><span class="div-comment-output__span">beardo</span><br><span class="div-comment-output__span">amber</span><br><span class="div-comment-output__span">kirill</span><br><span class="div-comment-output__span">kievcake</span><br><span class="div-comment-output__span">Cowboysfan</span><br><span class="div-comment-output__span">admin</span><br></div>
+                    <div id="wrapper__input-comment">
+                        <label for="input-comment" id="label__InputComment"><small>Post Comment</small></label>
+                        <textarea type="text" name="input-comment" class="input-comment" placeholder="WARNING: COMMENTS UNDER CONSTRUCTION!"></textarea>
+ 
+                        <button class="modalSubmit" type="button"><i class="fa fa-share"></i> SUBMIT</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        
         <a href="http://nyteksf.github.io/livelinks.html" title="LIVELINKS" id="titleLink">
             <h1>LiveLinks</h1><br/>
             <h2><small>A Community For Sharing</small></h2>
@@ -249,22 +263,7 @@
         
         <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
         <script src="JS/llmain.js" type="text/javascript"></script>
- 
-        <!-- ADD COMMENT DIALOG FORM -->
-        <div id="dialog-form" title="Post a comment" style="display: block;">
-            <form>
-                <fieldset>
-                    <div id="div-comment-output"><span class="div-comment-output__span" style="margin-bottom: 15px !important;">Test Dump: <strong>SELECT user FROM usernames</strong> =&gt;</span><br><span class="div-comment-output__span">nyteksf</span><br><span class="div-comment-output__span">amberlamps</span><br><span class="div-comment-output__span">joho</span><br><span class="div-comment-output__span">beardo</span><br><span class="div-comment-output__span">amber</span><br><span class="div-comment-output__span">kirill</span><br><span class="div-comment-output__span">kievcake</span><br><span class="div-comment-output__span">Cowboysfan</span><br><span class="div-comment-output__span">admin</span><br></div>
-                    <div id="wrapper__input-comment">
-                        <p id="charCountDisp"><span id="span__charCount"><small>255</small></span> <small>Characters Remaining</small></p>
-                        <label for="input-comment" id="label__InputComment"><small>Post Comment</small></label>
-                        <textarea type="text" name="input-comment" class="input-comment" placeholder="WARNING: COMMENTS UNDER CONSTRUCTION!"></textarea>
- 
-                        <button class="modalSubmit" type="button"><i class="fa fa-share"></i> SUBMIT</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+            
     </body>
 
 </html>
