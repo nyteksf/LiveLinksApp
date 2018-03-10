@@ -1845,6 +1845,13 @@ $(() => {
     });
     
     
+    /* WHEN CLICK COMMENT INPUT, ADD FOLLOWING TRANSITIONS */
+    $(".input-comment").focus(() => {
+        $(".input-comment").addClass("stretch-Input-Comment");
+        $(".modalSubmit").addClass("stretch-Btn-SubmitModal");
+    });
+    
+    
     /* CLOSE 'ADD A COMMENT' DIV WHEN CLICK OUTSIDE BOX */
     $(window).click(function() {
         // Hide the menus if visible
@@ -1954,37 +1961,29 @@ $(() => {
                 $("#div-comment-output").append("<span class='div-comment-output__span'>" + username + "</span><br/>");
             });        
         });
-        
         $("#dialog-form").attr("style", "display: block;");
-        
-        console.log("working")
     });
-
-let inputLimit = 255;
-
     
+    
+    /* UI - ENFORCE COMMENT LENGTH RESTRICTION */
+    let inputLimit = 255;
 $('.input-comment').bind('input', function(){
     let $inputLen = $(".input-comment").val().split("").length;
-    console.log(inputLimit - $inputLen);
-    
-    if (inputLimit - $inputLen <= 0) {  /* DISABLE COMMENT FUNCTIONALITY & PROVIDE FEEDBACK */
+    let curCharCount = inputLimit - $inputLen;
+
+    $("#span__charCount").html("<small>" + curCharCount + "</small>");
+
+    if (inputLimit - $inputLen <= 0) {
         $("button.modalSubmit").attr("disabled", "true");
         $(".input-comment").css("border", "1px solid red");
         $(".modalSubmit").css("border", "1px solid #333333");
         $(".input-comment").blur();
-    } else { /* RESTORE UI FUNCTIONALITY AROUND COMMENTS */
+    } else {
         $(".modalSubmit").removeAttr("disabled");
         $(".modalSubmit").css("border", "1px solid #333333");
         $(".input-comment").css("border", "1px solid #333333");
     }
 });
-
-    
-    
-    /* UI - ENFORCE COMMENT LENGTH RESTRICTION */
-    $(".input-comment").bind('input', function(){
-        console.log('this actually works');
-    });
     
     
     /* ALPHABETICAL USER SEARCH"
