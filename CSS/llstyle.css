@@ -12,6 +12,13 @@ body, html {
   overflow-x: hidden;
 }
 
+p#charCountDisp {
+    padding: 0;
+    position: absolute;
+    bottom: 37px;
+    right: 14px;
+}
+
 div#main-container {
   position: relative;
   width: 517px;
