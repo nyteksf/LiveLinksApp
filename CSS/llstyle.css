@@ -292,7 +292,7 @@ div#linkOutputHeader {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     position: fixed;
-    display: block
+    display: block;
     z-index: 99999999;
 }
 
