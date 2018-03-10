@@ -1842,6 +1842,7 @@ $(() => {
     // PREVENT CLICKS ON DIALOG-FORM FROM CLOSING DIALOG-FORM
     $("#dialog-form").click(e => {
         e.stopPropagation();
+        e.stopImmediatePropagation();
     });
     
     
