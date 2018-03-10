@@ -279,11 +279,10 @@ div#linkOutputHeader {
 }
 
 #dialog-form {
-    top: 50%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     background: #D7D7D7;
-    position: relative;
     padding-top: 5px;
     min-height: 155px;
     width: 463px;
@@ -292,7 +291,7 @@ div#linkOutputHeader {
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-    position: absolute;
+    position: fixed;
 }
 
 .postCatIcon {
