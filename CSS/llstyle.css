@@ -12,94 +12,87 @@ body, html {
   overflow-x: hidden;
 }
 
-p#charCountDisp {
-    padding: 0;
-    margin: 0;
-    float: right;
-}
-
 div#main-container {
-  position: relative;
-  width: 517px;
-  height: 40px;
-  margin-top: -30px;
+    margin-top: -69px;
 }
 
-#btn-ToggleSearch {
-  position: absolute;
-  bottom: 0;
-  left: 283px;
-  font-size: .85em;
-  padding: 1.5px 4px 2px 4px;
-  border-top-left-radius:  3px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-left-radius: 3px;
+#btn-ToggleSearch,
+#btn-SubmitSearch {
+    position: relative;
+    outline: 0;
+    cursor: pointer;
+    top: -5px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-top: 1px;
 }
 
 #btn-SubmitSearch {
-  padding-top: 3px !important;
-  padding-bottom: 3px !important;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-top-left-radius:     3px;
-  margin-top-right-radius:    3px;
-  margin-bottom-right-radius: 3px;
-  margin-bottom-left-radius:  3px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    position: relative;
+    left: 118px;
 }
 
 #btn-ToggleSearch {
- position: absolute;
- bottom: 0;
- left: 276px;
- font-size: .85em;
- padding: 1.5px 4px 2px 4px;
+    padding: 2px 5px;
+    font-size: .85em;
+    position: relative;
+    top: -4px;
 }
 
 button#btn-XCloseSearch {
- background: none;
- border: none;
- outline: none;
- position: absolute;
- right: 2px;
- bottom: 24px;
+    background: none;
+    border: none;
+    outline: none;
+    position: relative;
+    transform: translateY(-32%);
+    left: 87px;
+    cursor: pointer;
+    width: 21px;
+    top: -28px;
+}
+
+#div-modal-input-and-button {
+    text-align: center;
 }
 
 button.modalSubmit {
-  padding-left: 5px;
-  padding-top: 1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 4px;
-  height: 27px;
-  border: 1px solid #333333;
-  float: right;
-  transition: height .65s;
-  -webkit-transition: height .65s;
-  -o-transition: height .65s;
-}
-
-.clear {
-  clear: both;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-top: 3px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-top: 1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 4px;
+    height: 25px;
 }
 
 select#searchTypeDropdown {
     padding: 3px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-  }
+    left: -15px;
+    top: 29px;
+}
 
 fieldset {
- border: 0;
- bottom: 0;
- left: -2px;
+    border: 0;
+    display: inline-block;
+    width: 94%;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 input {
@@ -107,19 +100,16 @@ input {
 }
 
 input#input-Search {
- position: absolute;
- width: 147px;
- top: 0;
- left: 0;
+    position: relative;
+    top: 40px; /* -5px; */
+    width: 147px;
 }
 
 .input-group {
- visibility: hidden;
- position: absolute;
- right: 0px;
- width: 147px;
- height: 44px;
- top: -4px;
+    visibility: hidden;
+    display: inline-block;
+    position: relative;
+    left: 51px;
 }
 
 iframe#chatbox {
@@ -155,65 +145,43 @@ iframe#chatbox {
   display: block;
 }
 
-label#label__linkTitle {
- position: absolute;
- left: 5px;
- top: 0;
-}
-
-input#linkUrl {  /* DITTO ABOVE */
- position: absolute;
- bottom: 0;
- left: 137px;
-}
-
-input#linkTitle {  /* DITTO ABOVE */
- position: absolute;
- bottom: 0;
- left: 0;
-}
-
 div#form-submit {
- margin-top: 12px;
- width: 518px;
- height: 40px;
- position: relative;
+  margin-top: 15px;
 }
 
 #btn-ToggleMenu {
- position: absolute;
- outline: 0;
- cursor: pointer;
- bottom: 0;
- border-top-right-radius: 4px;
- border-top-left-radius: 4px;
- border-bottom-left-radius: 4px;
- border-bottom-right-radius: 4px;
- left: 183px;
-}
-
-#btn-ToggleLinks {
- position: absolute;
- outline: 0;
- cursor: pointer;
- bottom: 0;
- border-top-right-radius: 4px;
- border-top-left-radius: 4px;
- border-bottom-left-radius: 4px;
- border-bottom-right-radius: 4px;
- left: 89px;
-}
-
-#btn-ToggleCB {
-    position: absolute;
+    position: relative;
     outline: 0;
     cursor: pointer;
+    top: -5px;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    bottom: 0;
-    /* height: 20px; */
+    margin-top: 1px;
+}
+
+#btn-ToggleLinks {
+  position: relative;
+  outline: 0;
+  cursor: pointer;
+  top: -5px;   
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+#btn-ToggleCB {
+  position: relative;
+  outline: 0;
+  cursor: pointer;
+  top: -5px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-top: 1px;
 }
 
 #menu .fa {
@@ -266,34 +234,52 @@ div#linkOutputHeader {
 }
 
 .input-comment {
+  display: block;
   background: #FFFFFF;
+  margin-top: 2px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  min-width: 363px;
-  height: 27px;
-  float: left;
-  margin-left: 1px;
-  padding-right: 1px !important;
+  min-width: 345px;
+  height: 25px;
+  width: 75%;
+}
+
+a#a-prev-comments {
+    float: right;
+    margin-right: 22px;
+    color: #333333;
+    position: relative;
+    top: 14px;
+    display: none;
+}
+
+.noCommentsTxt {
+  margin-left: 5px;
+}
+
+#wrapper__input-comment {
+  margin-top: 15px;
+  margin-bottom: -15px;
 }
 
 #dialog-form {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #D7D7D7;
-    padding-top: 5px;
-    min-height: 155px;
-    width: 463px;
-    border: 1px solid #333333;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    position: fixed;
-    display: block;
-    z-index: 99999999;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #D7D7D7;
+  position: absolute;
+  padding-top: 5px;
+  padding-right: 10px;
+  min-height: 155px;    
+  width: 450px;
+  border: 1px solid #333333;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .postCatIcon {
@@ -306,25 +292,51 @@ div#linkOutputHeader {
 }
 
 #div-comment-output {
-  background: #FFFFFF;
+  background: #D3D3D3;
+  display: block;
+  overflow: auto;
   border: 1px solid #333333;
-  min-height: 100px;
-  max-height: 750px;
   width: 100%;
-  padding: 3px 0;
-  border-top-right-radius:    3px;
-  border-top-left-radius:     3px;
-  border-bottom-left-radius:  3px;
-  border-bottom-right-radius: 3px;
-  float: left;
-  margin-left:  -1px;
-  margin-top:   10px;
-  margin-bottom: 1px;
+  min-height: 100px;
+  max-height: 365px;
+  width: 100%;
+  padding: 16px 0 0 0;
+  border-top-right-radius:    4px;
+  border-top-left-radius:     4px;
+  border-bottom-left-radius:  4px;
+  border-bottom-right-radius: 4px;
+}
+
+button.btn-xclose-modal__del-comment {
+    background: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    left: 97%;
+    transform: translate(-50%,-50%);
 }
 
 .div-comment-output__span {
-  padding-left:  3px;
-  padding-right: 3px;
+    padding-left: 10px;
+    padding-right: 34px;
+    border: 1px solid #333333;
+    margin-left: 3px;
+    border-top-right-radius: 21px;
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 4px;
+    min-height: 35px;
+    background: #FFFFFF;
+}
+
+p#charCountWrapper {
+    margin: 0;
+    padding: 0;
+    float: right;
 }
 
 .killCursor {
@@ -333,7 +345,7 @@ div#linkOutputHeader {
 
 .subcontainer {
   position: relative;
-  top:    -4px;
+  top: -4px;
   height: 30px;
   width: 100px;
 }
@@ -347,9 +359,9 @@ div#linkOutputHeader {
 .fa-heart-o {
   position: relative;
   font-size: .83em !important;
-  top:   4px;
+  top: 4px;
   top: -17px;
-  left:  2px;
+  left: 2px;
   left: 36px;
 }
 
@@ -357,7 +369,7 @@ div#linkOutputHeader {
   position: relative;
   top: -2px;
   margin-right: 7px;
-  font-size:    .7em !important;
+  font-size: .7em !important;
   margin-left: -1px;
 }
 
@@ -495,20 +507,16 @@ input#newUsernameInput {
 }
 
 #label__InputComment {
-    display: block;
-    font-weight: bold;
-    margin-left: 2px;
-    position: relative;
-    top: 2px;
+  display: block;
+  font-weight: bold;
+  margin-top: 13px;
+  margin-bottom: -2px;
 }
 
 .stretch-Input-Comment {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 65px !important;
-  transition: height .65s;
-  -webkit-transition: height .65s;
-  -o-transition: height .65s;
 }
 
 .stretch-Btn-SubmitModal {
@@ -645,9 +653,8 @@ input#newUsernameInput {
   margin-top: -60px;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity .65s;
-  transition: opacity .65s;
-  -o-transition: opacity .65s;
+  -webkit-transition: opacity 1s;
+  transition: opacity 2s;
   pointer-events: none;
 }
 
@@ -937,43 +944,34 @@ input, #submitButton {
   border-radius: 5px;
 }
 
-#submitButton {
- font-size: .75em;
- font-family: 'Cantarell', sans-serif;
- border-radius: 5px;
- position: absolute;
- bottom: 0;
- left: 370px;
- padding-top: 2px;
- cursor: pointer;
+#selectTypeButton {
+  position: relative;
+  top: -1px;
 }
 
-#selectTypeButton {
- position: absolute;
- border-radius: 5px;
- outline-width: 0;
- left: 274px;
- height: 23px;
- font-size: .75em;
- bottom: 0;
+#selectTypeButton,
+#refreshButton {
+  position: relative;
+  height: 23px;
+  border-radius: 5px;
+  outline-width: 0;
 }
 
 #refreshButton {
- position: absolute;
- height: 23px;
- border-radius: 5px;
- padding-left: 9px;
- bottom: 0;
- right: 0px;
+  left: 39px;
+}
+
+#selectTypeButton {
+  font-size: .7em; /* .925em; */
 }
 
 #menu {
     position: absolute;
-    top: 85px;
+    top: 151px;
     width: 185px;
     display: none;
     z-index: 999999999;
-    left: 270px;
+    left: 274px;
 }
 
 .yle {
@@ -1036,6 +1034,21 @@ input, #submitButton {
   left: -30px !important;
 }
 
+.postedComment {
+    position: relative;
+    border: 1px solid #333333;
+    border-top-right-radius: 21px;
+    border-top-left-radius: 21px;
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+    margin-bottom: -37px;
+    margin-left: 5px;
+    background: #FFFFFF;
+    margin-right: 5px;
+    padding: 6px;
+    min-height: 17px;
+}
+
 .menuItemWrap {
   position: relative;
   font-size: .85em;
@@ -1047,9 +1060,9 @@ input, #submitButton {
 }
 
 .fa.fa-refresh {
- position: relative;
- left: -1px;
- font-size: 1.025em;
+  position: relative;
+  left: -1px;
+  font-size: 1.025em;
 }
 
 #newPostAuthor:hover {

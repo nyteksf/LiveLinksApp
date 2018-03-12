@@ -1840,11 +1840,10 @@ $(() => {
     /* CLOSE 'ADD A COMMENT' DIV WHEN CLICK OUTSIDE BOX */
     $(window).click(function() {
         // Hide the menus if visible
-        range = 5;  // RESET RANGE FOR "PREV COMMENTS" FUNC
         $("#dialog-form").attr("style", "display: none;");
     
         // WIPE COMMENT BOX OF DATA 
-        $(".input-comment").val("");
+        $(".input-comment").val("");  // TMP: REFACTOR ME (D.R.Y.)
         $("#div-comment-output").html("");
         $(".linkOutputDiv").css("background-color", "#FFFFFF");
         
@@ -1871,20 +1870,15 @@ $(() => {
             // SUBMIT COMMENT TO DB
             let n = localStorage["user"];
             let u = firebase.auth().currentUser.uid || localStorage["uid"];
-            let thisDate = new Date();
-            thisDate = thisDate.toString();
-            let uniqueID = firebase.database().ref('comments/').push();
-            uniqueID = uniqueID.path.o[1];
-            console.log("uniqueID ->  ", uniqueID)
+            let d = new Date();
             
             // PUSH COMMENT TO DB
             firebase.database().ref('comments').push({
                 // GATHER/ASSIGN BELOW DATA! 
                 author: n,
                 uid: u,
-                uniqueID: uniqueID,
                 comment: $inputCommentStr,
-                timestamp: thisDate,
+                timestamp: d.toString().split(" "),
                 ip: localStorage["ip"],
                 postID: localStorage["parentID"]
             }).then(setTimeout(() => {
@@ -1894,7 +1888,7 @@ $(() => {
             $(".input-comment").val("");  // CLEAR INPUT TEXT COMMENT
             
             // PREPEND LAST COMMENT TO DOM SEAMLESSLY
-            $("#div-comment-output").prepend("<div class='postedComment'>" + n + " - " + $inputCommentStr + " &middot; <span class='timestamp'><small>" + moment(d).fromNow() + "</small></span><button class='btn-xclose-modal__del-comment'><i id='" + uniqueID + "' class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
+            $("#div-comment-output").prepend("<div class='postedComment'>" + n + " - " + $inputCommentStr + "<button class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
             
             return true;
         } else {
@@ -1911,13 +1905,12 @@ $(() => {
                     {
                         text: "OK",
                         click: function() {
-                           $('#throwDynamicErr').dialog("close");  // HIDE COMMENT BOX
+                          $("#dialog-form").attr("style", "display: none;");  // HIDE COMMENT BOX
                         },
                         class: "okBtn2"
                     }
                 ]
             });
-            range = 5;  // RESET RANGE FOR "PREV COMMENTS" FUNC
             
             return false;
         }
@@ -1929,36 +1922,36 @@ $(() => {
         e.stopPropagation();
         e.preventDefault();
         
-        // REFRESH UI CHARCOUNTER TO DEFAULT POST LENGTH LIMIT
-        $("span#charCountDisp").text("255");
-        
-        // EXECUTE PREMPTIVE DATA WIPE/UI RESET
+        // EXECUTE PREMPTIVE DATA WIPE/RESET
         $(".linkOutputDiv").css("background-color", "#FFFFFF");
         $(".linkOutputDiv").css("border-left", "1px solid #333333");
         
-        // GRAB CURRENT SELECTED PARENT DIV
+        // HIGHLIGHT PARENT DIV BACKGROUND
         let $parentDiv = $(this).parent().parent();
         let $parentID = "#"+$parentDiv[0].id;
         localStorage["parentID"] = $parentID;
         
-        // VISUALLY MARK WHICH DIV IS BEING COMMENTED UPON FOR USER
+        // MARK WHICH DIV IS BEING COMMENTED UPON FOR USER
         $($parentID).css("background-color", "#D7D7D7");
         $($parentID).css("border-left", "4px solid #333333");
         
-        let $commentList;
+        let $nameList, user;
+        let uNameArray = [];
         let commentCounter = 0;
 
-        // LET USER KNOW COMMENTS ARE LOADING
+        // WARM UP DIV WITH FEEDBACK
         $("#div-comment-output").append("<span style='padding-left:3px;'><strong>Loading...</strong></span><br/>");        
         
         // POPULATE COMMENT BOX DYNAMICALLY WITH COMMENTS
-        $commentList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
+        $nameList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
       
-        $commentList.done(function(comments) {
+        $nameList.done(function(comments) {
             let comment; 
             
             $("#div-comment-output").html("");  // ON LOAD CLEAN OUTPUT DIV OF ANY OLD COMMENTS FIRST
             
+            let commentCount = 0;
+            let last5Comments = 5;
             let resArr = [];
             
             // FORCE OBJECT INTO ARRAY FORM
@@ -1969,79 +1962,80 @@ $(() => {
             // REVERSE ORDER OF NEW COMMENT ARRAY
             resArr = resArr.reverse();
   
+            // USE BELOW FORMAT TO ADD 5 MORE COMMENTS TO OUTPUT DIV
+            console.log(resArr.slice(5,10));  // NEXT "MORE COMMENTS" -> ADD 5 to SECOND DIGIT OF SLICE
+            // THEN FEED THIS ARRAY CHUNK INTO THE output div to load them each. 
+  
+            // IF last position of resArr was not undefined, then display "more links" and allow to continue else remove "more links" anchor.
+
+            /*
+            WHEN === 0, HIDE ANCHOR.
+            EACH CLICK OF "PRIOR COMMENTS" ANCHOR REDUCES "pagesofComments" BY 1
+            EACH CLICK ADD 5 TO FIRST, SECOND INDEX IN ARRAY.SLICE(X,Y);
+            */
+            // WHEN PREV. POSTS ANCHOR CLICKED, SUBTRACT 1 FROM pagesOfComments. When it is 0, remove anchor. 
+            
             // ALSO ADD TIME STAMP TO POSTS!!!
             let commentFound = false;
             
-            let commentArray = [];
-            
             resArr.forEach((link) => {
-                let thisComment = comments[comment];
-                let curUID = firebase.auth().currentUser.uid || localStorage["uid"];
+                console.log(link.author);
+                if (last5Comments >= 0) {
 
-                if (link.postID === localStorage["parentID"]) {  // Is our cur post ID same as the one found via click event just now?
-                    commentFound = true;
-                    commentArray.push(link);         
-                }
-            });
+                for (comment in comments) {
+                    
+                    if (comments.hasOwnProperty(comment)) {
+                        let thisComment = comments[comment];
+                        let curUID = firebase.auth().currentUser.uid || localStorage["uid"];
+                        
+                        // RUN THROUGH 5 INDEXES ON FIRST LAUNCH ONLY
+                        if (last5Comments > 0) {
+                            last5Comments--;
+                        } else {
+                            
+                            // NOOP
+                            return false;
+                        }
+    
+                        // PAGINATION: FIND OUT HOW MANY INDIVIDUAL PAGES OF 5 COMMENTS TO CREATE
+                        let pagesOfComments = Math.ceil(resArr.length / 5);
             
-            if (!commentFound) {
-                $("#div-comment-output").append("<div class='noCommentsTxt'>No comments yet. Be the first.</div><br/><br/>");
-                    
-                return false;
-            } else {  // COMMENT(S) FOUND FOR CURRENT POST
-                let last5Comments = 5;
-
-                // ADD PAGINATION: FIND OUT HOW MANY INDIVIDUAL PAGES OF 5 COMMENTS TO CREATE
-                let pagesToGenerate = Math.ceil(commentArray.length / 5);
-                localStorage["pagesToGenerate"] = pagesToGenerate;
-                    
-                if (pagesToGenerate > 1) { 
-                    // SHOW "Prior Comments..." ANCHOR
-                    $("#a-prev-comments").show();
-                    
-                    // LAZY-LOAD FIRST FIVE POSTS ONLY
-                    if (last5Comments > 0) {
-                        for (let i = 4; i >= 0; i--) {
-                            // IF THE LOGGED IN USER OWNS POST ->
-                            if (firebase.auth().currentUser.uid === commentArray[i].uid) {   
-                                // LOAD THIS COMMENT WITH BTN-XCLOSE
-                                $("#div-comment-output").prepend("<div class='postedComment'>" + commentArray[i].author + " - " + commentArray[i].comment + " &middot; <span class='timestamp'><small>" + moment(commentArray[i].timestamp).fromNow() + "</small></span><button id='" + commentArray[i].uniqueID + "' class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
-                            } else {  // LOAD NON-CLOSABLE VERSION OF COMMENT
-                                $("#div-comment-output").prepend("<div class='postedComment'>" + commentArray[i].author + " - " + commentArray[i].comment + " &middot; <span class='timestamp'><small>" + moment(commentArray[i].timestamp).fromNow() + "</small></span></div><br/><br/><br/>");
+                        if (pagesOfComments > 0) { 
+                            // SHOW "Prior Comments..." ANCHOR
+                            $("#a-prev-comments").show();
+                        } else {
+                            $("#a-prev-comments").hide();
+                        }            
+                        
+                        if (thisComment.postID === localStorage["parentID"]) {  // Is our cur post ID same as the one found via click event just now?
+                            commentCount++;  // COUNT COMMENTS RELEVANT TO CLICKED POST
+                            // OUTPUT AS COMMENT COUNT NEXT TO ICON
+                            
+                                // IF THE LOGGED IN USER OWNS POST ->
+                                if (curUID === thisComment.uid) {  // LOAD THIS COMMENT WITH BTN-XCLOSE
+                                    $("#div-comment-output").append("<div class='postedComment'>" + thisComment.author + " - " + thisComment.comment + "<button class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
+                                } else {  // LOAD NON-CLOSABLE VERSION OF COMMENT
+                                    $("#div-comment-output").append("<div class='postedComment'>" + thisComment.author + " - " + thisComment.comment + "</div><br/><br/><br/>");
+                                }   
+                                commentFound = true;
                             }
                         }
-                    } else {
-                        
-                        // NOOP
-                        return false;
                     }
-                } else {
-                    // HIDE "PREV COMMENTS" ANCHOR IF NOT MORE THAN 5 COMMENTS YET...
-                    $("#a-prev-comments").hide();
-                    
-                    commentArray = commentArray.reverse();
-                    
-                    commentArray.forEach((post) => {        
-                        // IF THE LOGGED IN USER OWNS POST ->
-                        if (firebase.auth().currentUser.uid === post.uid) {   
-                            // LOAD THIS COMMENT WITH BTN-XCLOSE
-                            $("#div-comment-output").prepend("<div class='postedComment'>" + post.author + " - " + post.comment + " &middot; <span class='timestamp'><small>" + moment(post.timestamp).fromNow() + "</small></span><button id='" + post.uniqueID + "' class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
-                        } else {  // LOAD NON-CLOSABLE VERSION OF COMMENT
-                            $("#div-comment-output").prepend("<div class='postedComment'>" + post.author + " - " + post.comment + " &middot; <span class='timestamp'><small>" + moment(post.timestamp).fromNow() + "</small></span></div><br/><br/><br/>");
-                        }
-                                
-                    }); 
                 }
-
-                return true;
+            });
+            if (!commentFound) {
+                    $("#div-comment-output").append("<div class='noCommentsTxt'>No comments yet. Be the first.</div><br/><br/>");
+                    
+                    return false;
+            } else {
+                
+                    return true;
             }
         });
         $("#dialog-form").attr("style", "display: block;");
         
     });
 
-    let commentList;
-    
     
     // ADD EVENT LISTENERS TO COMMENTS XCLOSE BTN ALLOW DISMISSAL
     $("#div-comment-output").delegate(".btn-xclose-modal__del-comment", "click", function(e) {
@@ -2049,19 +2043,12 @@ $(() => {
         e.stopPropagation();
         e.stopImmediatePropagation();
         
-        // GET ID OF THIS COMMENT
-        let commentID = $(this)[0].id;
-        
-        // REMOVE COMMENT FROM DOM
+        // REMOVE REPRESENTED COMMENT FROM DOM
         $(this).parent().remove();
-       
-       // THEN REMOVE COMMENT FROM DB
-        firebase.database().ref("comments").orderByChild("uniqueID").equalTo(commentID).once('value').then(function(snapshot) {
-            snapshot.forEach(post => {
-                firebase.database().ref("comments/" + post.key).remove(); 
-            });
-        }); 
+        
+        // ToDo: REMOVE ACTUAL COMMENT FROM DB
     });
+    
     
     
     /* WHEN CLICK COMMENT INPUT, ADD FOLLOWING TRANSITIONS */
@@ -2073,15 +2060,15 @@ $(() => {
     let commentCharLimit = 255;
     
     
-    /* PROVIDE USER FEEDBACK ABOUT CHARACTER LIMIT FOR COMMENTS */
+    /* PROVIDE USER FEEDBACK ABOUT CHARACTER LIMIT ON COMMENTS */
     $(".input-comment").bind("input", () => {
         let $charCount = $(".input-comment").val().split("").length;    
         
         let remainingChars = commentCharLimit - $charCount;
         
         if (remainingChars === 0) {
-            $(".modalSubmit").attr("disabled","true");
-            $(".input-comment").css("border","1px solid red");
+            $(".modalSubmit").attr("disabled", "true");
+            $(".input-comment").css("border", "1px solid red");
             $("#charCountWrapper").css("color","red");  // ERROR!
             $(".input-comment").blur();
         } else if (remainingChars > 0 && remainingChars <= 15) {
@@ -2096,65 +2083,13 @@ $(() => {
         return;
     });
     
-    let range = 5;  // INITIAL VALUE FOR ARRAY.SLICE()
-    let objDiv;
     
     /* PROVIDE MORE COMMENTS ONCLICK IF POSSIBLE */
     $("a#a-prev-comments").click(e => {
         e.preventDefault();
+        e.stopPropagation();
         
-        // POPULATE COMMENT BOX DYNAMICALLY WITH COMMENTS
-        $nameList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
-      
-        $nameList.done(function(comments) {
-            let comment; 
-            
-            $("#div-comment-output").html("");  // ON LOAD CLEAN OUTPUT DIV OF ANY OLD COMMENTS FIRST
-            
-            let allCommentsArray  = [];
-            let thisPostsComments = [];
-            
-            let pagesToGenerate = localStorage["pagesToGenerate"];
-            
-            // FORCE OBJECT INTO ARRAY OF OBJECTS FORMAT
-            for (comment in comments) {
-                allCommentsArray.push(comments[comment]);
-            }
-
-            // REVERSE ORDER OF NEW COMMENT ARRAY
-            allCommentsArray = allCommentsArray.reverse();
-            
-            // FILTER ONLY COMMENTS RELATED TO CURRENT POST
-            thisPostsComments = allCommentsArray.filter((comment) => comment.postID === localStorage["parentID"]);   
-            
-            let updatedOutput;
-            
-            if (pagesToGenerate >= 1) {
-                range += 5;
-                
-                pagesToGenerate--;
-                localStorage["pagesToGenerate"] = pagesToGenerate;
-                
-                updatedOutput = thisPostsComments.slice(0, range);
-            }
-            
-            // METE OUT FIVE MORE COMMENTS PER CLICK
-            if (pagesToGenerate === 1) {
-                $("a#a-prev-comments").css("display","none");
-            }
-            
-            updatedOutput.forEach(post => {
-                if (firebase.auth().currentUser.uid === post.uid) {   
-                    // LOAD THIS COMMENT WITH BTN-XCLOSE
-                    $("#div-comment-output").append("<div class='postedComment'>" + post.author + " - " + post.comment + " &middot; <span class='timestamp'><small>" + moment(post.timestamp).fromNow() + "</small></span><button id='" + post.uniqueID + "' class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
-                } else {  // LOAD NON-CLOSABLE VERSION OF COMMENT
-                    $("#div-comment-output").append("<div class='postedComment'>" + post.author + " - " + post.comment + " &middot; <span class='timestamp'><small>" + moment(timestamp).fromNow() + "</small></span></div><br/><br/><br/>");
-                }
-            });
-            // AUTOMATICALLY SCROLL DOWN TO PREV COMMENTS
-            objDiv = document.getElementById("div-comment-output");
-            objDiv.scrollTop = objDiv.scrollHeight;
-        });
+        alert("brother, moar posts, plz.")
     });
     
     
