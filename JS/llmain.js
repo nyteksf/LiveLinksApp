@@ -650,9 +650,19 @@ $(() => {
                                     }]
                                 });
                             } else {
+                                console.log($(this))
+                                
                                 searchAndDestroy(delMarker);
                                 // RUN FB QUERY, .THEN(...) delete and also .hide() associated.
                                 $that.parent().css('display', 'none');
+                                
+                               // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
+                                firebase.database().ref('comments').orderByChild('postID').equalTo().on("value", function(snapshot) {
+                                    snapshot.forEach(function(parent) {
+                                        let postKey = parent.key;
+                                        firebase.database().ref("comments/"+postKey).remove();
+                                    }); 
+                                });
                             }
                         });
                     });
@@ -735,7 +745,8 @@ $(() => {
                         newPost.created_at = snapshot[post].timestamp || new Date();
                         newPost.catName = snapshot[post].catName;
                         newPost.uniqueID = snapshot[post].uniqueID;
-                        newPost.className = 'linkOutputDiv ' + newPost.author + ' ' + newPost.xDataMarker + ' ' + newPost.id + " " + newPost.catName + " " + newPost.uniqueID;
+                        newPost.postKey = snapshot[post].postKey;  // MAIN NODE NAME OF POST
+                        newPost.className = 'linkOutputDiv ' + newPost.author + ' ' + newPost.xDataMarker + ' ' + newPost.id + " " + newPost.catName + " " + newPost.uniqueID + " " + newPost.postKey;
                         newPost.totalComments = (snapshot[post].commentCount > 0) ? snapshot[post].commentCount : '<div id="placeholderDiv" style="display:none;"></div>';  // POST NUMBER > 0 OR NOTHING
                         
                         //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
@@ -935,6 +946,8 @@ $(() => {
                         let delMarker = $(this).parent()[0].className.split(" ");
                         let $that = $(this);
 
+                        let parentID = "#"+$that.parent()[0].id;
+                        
                         postAuthor = delMarker[1];
                         delMarker = delMarker[2];
                         curUID = localStorage["uid"] || firebase.auth().currentUser.uid;
@@ -966,12 +979,17 @@ $(() => {
                                 searchAndDestroy(delMarker);
                                 // RUN FB QUERY, .THEN(...) delete and also .hide() associated.
                                 $that.parent().css('display', 'none');
+                                
+                                // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
+                                firebase.database().ref('comments').orderByChild('postID').equalTo(parentID).on("value", function(snapshot) {
+                                    snapshot.forEach(function(parent) {
+                                        let postKey = parent.key;
+                                        firebase.database().ref("comments/"+postKey).remove();
+                                    }); 
+                                }); 
                             }
                         });
-                    });
-                    
-                    // END OF GET COMMENTS FUNC GOES HERE
-                    
+                    });    
                 }); // END HERE -- INNER FUNC
             }); // END HERE -- OUTERMOST FUNC
         }
@@ -979,11 +997,11 @@ $(() => {
 
     populatePageWLinks();
 
+    
     let res;
     let resString;
     let result;
     let uName;
-
 
     /* OPEN TARGETED LINK IF AND WHEN POSTED LINK DIV CLICKED UPON: */
     $("#dispLinksDiv").delegate('div', 'click', function(evt) {
@@ -1101,7 +1119,7 @@ $(() => {
                     let uniqueID = firebase.database().ref('comments/').push();
                     uniqueID = uniqueID.path.o[1];
                         
-                    let zero = 0;
+                    
                  // PUSH POST DATA TO FIREBASE DB:
                     firebase.database().ref('links').push({
                         title: lTitle,
@@ -1113,11 +1131,18 @@ $(() => {
                         category: icon,
                         catName: cName,
                         uniqueID: uniqueID
-                    }).then(setTimeout(function() {
-                        // AND THEN RECREATE ALL DIVS SEAMLESSLY VIA AJAX:
-                        $('#linkDisplayDiv').html("");
+                    }).then(function(snapshot) {
+                        // ADD NODE NAME FOR REFERENCE USE IN OTHER FUNCS
+                        let postKey = snapshot.key;
+                        firebase.database().ref('links').child(postKey).update({
+                            postKey: postKey
+                        });
+                        setTimeout(() => {
+                            // AND THEN RECREATE ALL DIVS SEAMLESSLY VIA AJAX:
+                            $('#linkDisplayDiv').html("");
                         populatePageWLinks();
-                    }, 250));
+                        }, 250);
+                    });
 
                     // CLEAN UP INPUTS FOR NEXT:
                     icon = "";
@@ -1870,7 +1895,28 @@ $(() => {
     });
     
     
-    /* MODAL BUTTON: SUBMIT COMMENT */
+    /* SUBMIT COMMENT ACTION */
+    let setPost = function(lastClassName, commentCount) {
+        if (!setPost.prototype.hasRun) {
+            setPost.prototype.hasRun = true;
+            firebase.database().ref('links').orderByChild('uniqueID').equalTo(lastClassName).on("value", function(snapshot) {
+                snapshot.forEach(function(parent) {
+                    let postKey = parent.key;
+                    console.log("postKey ->" + postKey)
+                   
+                   // UPDATE COMMENT COUNT
+                    firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);
+                    
+                   
+                   // UPDATE 
+                    //firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);  
+                });
+            }); 
+        }
+    };
+    
+    
+    /* MODAL BUTTON: SUBMIT A COMMENT ON A LINK */
     $("button.modalSubmit").click(e => {
         e.preventDefault();
         e.stopPropagation();
@@ -1890,12 +1936,14 @@ $(() => {
             thisDate = thisDate.toString();
             let uniqueID = firebase.database().ref('comments/').push();
             uniqueID = uniqueID.path.o[1];
-            
+
             let objArr = [];
             let objArrLen;
             let thisCommentCount = 0;
             let postID = localStorage["parentID"];
             
+            let nodeName = $(postID)[0].className.split(" ")[6];
+            console.log("nodeName -> " + nodeName)
             // PUSH COMMENT TO DB
             firebase.database().ref('comments').push({
                 // GATHER/ASSIGN BELOW DATA! 
@@ -1905,51 +1953,30 @@ $(() => {
                 comment: $inputCommentStr,
                 timestamp: thisDate,
                 ip: localStorage["ip"],
-                postID: postID
+                postID: postID,
+                parentNode: nodeName
             }).then(setTimeout(() => {
-                $(".input-comment").val("");  // WIPE LAST COMMENT
-                //$('#linkDisplayDiv').html("");
-                //populatePageWLinks();
+                $(".input-comment").val("");  // WIPE LAST INPUT COMMENT
             }, 250));
-                        
-            $(".input-comment").val("");  // CLEAR INPUT TEXT COMMENT
             
             // PREPEND LAST COMMENT TO DOM SEAMLESSLY
-            $("#div-comment-output").prepend("<div class='postedComment'>" + n + " - " + $inputCommentStr + " &middot; <span class='timestamp'><small>" + moment(d).fromNow() + "</small></span><button class='btn-xclose-modal__del-comment'><i id='" + uniqueID + "' class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
+            $("#div-comment-output").prepend("<div class='postedComment'>" + n + " - " + $inputCommentStr + " &middot; <span class='timestamp'><small>" + moment(d).fromNow() + "</small></span><button id='"+ uniqueID +"' class='btn-xclose-modal__del-comment'><i class='fa fa-times-circle-o'></i></button></div><br/><br/><br/>");
             
             // UPDATE LINK COMMENT COUNT IN DB
-            let parentID = localStorage["parentID"],
-                lastClassName = localStorage["lastClassName"],
-                comment;
+            let lastClassName = localStorage["lastClassName"],
+                postKey = localStorage["postKey"];
+            let comment;
                
-            // ADD GET COMMENT COUNT TO LINK PROPER HERE
-            function countComments() {
-                let commentCount = 0;
-                return firebase.database().ref("comments").orderByChild("postID").equalTo(postID).once('value').then(function(snapshot) {
-                    snapshot.forEach(comment => {   
-                        commentCount++;      
-                    });
-                    
-                    return commentCount;
-                });
-            }
-            let commentsPromise = countComments();
-           
-            commentsPromise.then(commentCount => { 
-                // REMOVE CURRENT COMMENT COUNT FROM DOM 
-                $(postID).find("sup").text(commentCount);
-           firebase.database().ref('links').orderByChild('uniqueID').equalTo(lastClassName).on("value", function(snapshot) {
-                    snapshot.forEach(function(parent) {
-                        let postKey = parent.key;
-                        console.log("postKey ->" + postKey)
-                        firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);  
-                    });
-                }); 
-            });
+            // ADD GET COMMENT COUNT TO LINK PROPER HERE (DOM)
+            let newCommentCount = (+$(postID).find("sup").text()) + 1;
+            $(postID).find("sup").text(newCommentCount);  // REMEMBER TO MAKE INVISIBLE IF VAL IS ZERO
+                
+            console.log("curCommentCount -> " + newCommentCount)
+            //setPost(lastClassName, curCommentCount);
             
-            // UPDATE COMMENT COUNT IN DOM
-            // $("").text() // OR RELOAD THE PAGE populatePageWLinks();
-            
+           console.log("nodeName -> " + nodeName);
+            firebase.database().ref("links/"+nodeName).child("commentCount").set(newCommentCount);
+ 
             return true;
         } else {
             // TRIGGER DYNAMIC MODAL
@@ -1976,11 +2003,11 @@ $(() => {
             return false;
         }
     });
+    
         
     let theThing = document.querySelector("#dialog-form");
     let container = document.querySelector(".scotch-panel-wrapper");
     let posX, posY;
-    
     
     // GATHER COORDS FOR THIS ICON & MOVE DIALOG FORM THEREUNTO
     function moveDialog(child) {
@@ -2015,7 +2042,9 @@ $(() => {
         
         // BECAUSE ADDING COMMENTS COMES NEXT, LOAD INTO MEMORY
         // COULD ALSO STORE GLOBALLY AND CALL MODALSUBMIT WITH THAT VAL
-        localStorage["lastClassName"] = $(this).parent().parent()[0].className.split(" ")[5];
+        localStorage["lastClassName"] = $(this).parent().parent()[0].className.split(" ")[5];  // UNIQUE ID
+        
+        let nodeKey = $(this).parent().parent()[0].className.split(" ")[6];  // MAIN NODE KEY
 
         // REFRESH UI CHARCOUNTER TO DEFAULT POST LENGTH LIMIT
         $("span#charCountDisp").text("255");
@@ -2030,10 +2059,9 @@ $(() => {
         let parentID = "#"+$parentDiv[0].id;
         localStorage["parentID"] = parentID;
         
-        // MOVE DIALOG ABOVE CLICKED DIV
+        // MOVE ADD COMMENT DIALOG TO CLICKED LINK DIV
         waitForElement("#dialog-form", parentID);
         
-        // MOVE FORM DIALOG TO POSITION OF CURRENT CLICKED POST
         $("#dialog-form").css("position", "element(" + $parentDiv + ")");
         $("#dialog-form").css("transform", "translateY(-100%)");
         
@@ -2044,7 +2072,7 @@ $(() => {
         let $commentList;
         let commentCounter = 0;
 
-        // LET USER KNOW COMMENTS ARE LOADING
+        // LET USER KNOW THE COMMENTS ARE LOADING
         $("#div-comment-output").append("<span style='padding-left:3px;'><strong>Loading...</strong></span><br/>");        
         
         // POPULATE COMMENT BOX DYNAMICALLY WITH COMMENTS
@@ -2073,8 +2101,9 @@ $(() => {
             resArr.forEach((link) => {
                 let thisComment = comments[comment];
                 let curUID = firebase.auth().currentUser.uid || localStorage["uid"];
-
-                if (link.postID === localStorage["parentID"]) {  // Is our cur post ID same as the one found via click event just now?
+                
+                // SWITCHED TO POSTKEY (PARENT NODE) INSTEAD OF POSTID
+                if (link.parentNode === nodeKey) {  // Is our cur post ID same as the one found via click event just now?
                     commentFound = true;
                     commentArray.push(link);         
                 }
@@ -2086,7 +2115,13 @@ $(() => {
                 return false;
             } else {  // COMMENT(S) FOUND FOR CURRENT POST
                 let last5Comments = 5;
-
+                
+                // SET DOM TO DISP CUR COMMENT COUNT FOR POST
+                $(parentID).find("sup").text(commentArray.length);
+                
+                // PUSH CUR COMMENT COUNT TO DB
+                firebase.database().ref().child("links").child(nodeKey).child("commentCount").set(commentArray.length);
+                
                 // ADD PAGINATION: FIND OUT HOW MANY INDIVIDUAL PAGES OF 5 COMMENTS TO CREATE
                 let pagesToGenerate = Math.ceil(commentArray.length / 5);
                 localStorage["pagesToGenerate"] = pagesToGenerate;
@@ -2145,6 +2180,18 @@ $(() => {
         e.stopPropagation();
         e.stopImmediatePropagation();
         
+        // PREVENT LOOP
+        let runOnceOnly = function(postKey, commentCounter) {
+            if (!runOnceOnly.prototype.hasRun) {
+                runOnceOnly.prototype.hasRun = true;
+                console.log("running....")
+                firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCounter);  
+            }
+        };
+        
+        // RESET FOR EACH NEW CLICK
+        runOnceOnly.prototype.hasRun = false;
+        
         // GET ID OF THIS COMMENT
         let $commentID = $(this)[0].id;  // UNIQUE ID FOR COMMENT
         let className = localStorage["lastClassName"];  // UNIQUE ID FOR (PARENT) POST
@@ -2152,6 +2199,8 @@ $(() => {
         
         // REMOVE COMMENT FROM DOM
         $(this).parent().remove();
+       
+       // REMOVE COMMENT FROM DB
         firebase.database().ref('comments').orderByChild('uniqueID').equalTo($commentID).on("value", function(snapshot) {
             snapshot.forEach(function(parent) {
                 let postKey = parent.key;
@@ -2178,7 +2227,8 @@ $(() => {
                 firebase.database().ref('links').orderByChild('uniqueID').equalTo(className).on("value", function(snapshot) {
                     snapshot.forEach(function(parent) {
                         let postKey = parent.key;
-                        firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCounter);  
+                        
+                        runOnceOnly(postKey, commentCounter);
                     });
                 });
                 
