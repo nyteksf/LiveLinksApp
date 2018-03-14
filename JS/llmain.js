@@ -650,19 +650,17 @@ $(() => {
                                     }]
                                 });
                             } else {
-                                console.log($(this))
-                                
                                 searchAndDestroy(delMarker);
-                                // RUN FB QUERY, .THEN(...) delete and also .hide() associated.
+                                // ABOVE, WE RUN FB QUERY, .THEN(...) BELOW DELETE AND ALSO .hide() ASSOCIATED LINK DIV
                                 $that.parent().css('display', 'none');
                                 
-                               // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
+                                // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
                                 firebase.database().ref('comments').orderByChild('postID').equalTo().on("value", function(snapshot) {
                                     snapshot.forEach(function(parent) {
                                         let postKey = parent.key;
                                         firebase.database().ref("comments/"+postKey).remove();
                                     }); 
-                                });
+                                }); 
                             }
                         });
                     });
@@ -941,11 +939,13 @@ $(() => {
                     /* DELETE TARGETED LINK ON 'X' CLICK */
                     $('#dispLinksDiv').delegate('button.xDataDismiss', 'click', function(e) {
                         e.stopPropagation();
+                        e.stopImmediatePropagation();
 
+                        let $that = $(this);
+                        let $thatEl = $that.parent()[0].className.split(" ")[6];
+                        
                         // FIND THE CORRESPONDING URL TO QUERY:
                         let delMarker = $(this).parent()[0].className.split(" ");
-                        let $that = $(this);
-
                         let parentID = "#"+$that.parent()[0].id;
                         
                         postAuthor = delMarker[1];
@@ -979,14 +979,11 @@ $(() => {
                                 searchAndDestroy(delMarker);
                                 // RUN FB QUERY, .THEN(...) delete and also .hide() associated.
                                 $that.parent().css('display', 'none');
-                                
+                                //
                                 // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
-                                firebase.database().ref('comments').orderByChild('postID').equalTo(parentID).on("value", function(snapshot) {
-                                    snapshot.forEach(function(parent) {
-                                        let postKey = parent.key;
-                                        firebase.database().ref("comments/"+postKey).remove();
-                                    }); 
-                                }); 
+                                let postKey = $thatEl;
+                                firebase.database().ref("comments/"+postKey).remove();
+
                             }
                         });
                     });    
@@ -1134,9 +1131,7 @@ $(() => {
                     }).then(function(snapshot) {
                         // ADD NODE NAME FOR REFERENCE USE IN OTHER FUNCS
                         let postKey = snapshot.key;
-                        firebase.database().ref('links').child(postKey).update({
-                            postKey: postKey
-                        });
+                        firebase.database().ref('links/'+postKey).child("postKey").set(postKey);
                         setTimeout(() => {
                             // AND THEN RECREATE ALL DIVS SEAMLESSLY VIA AJAX:
                             $('#linkDisplayDiv').html("");
@@ -1415,7 +1410,7 @@ $(() => {
         let currentEmail = localStorage['email'] || firebase.auth().currentUser.email;
 
         // SET CURRENT EMAIL AS BASE:
-        firebase.database().ref('userEmails/' + currentUID).update({
+        firebase.database().ref('userEmails/'+currentUID).update({
             currentEmail: currentEmail
         }).catch(function(error) {
             alert("Critical error while updating base email in database. Stand by for error info.");
@@ -1425,11 +1420,9 @@ $(() => {
         $('#curEmailDispBox').html("<span id='curEmailTxt'>" + currentEmail + "</span>");
         let err;
         let errMsg;
-
-
-        let hoverTracker = function() {
-            console.log("This function is used primarily for sake of control flow. It leverages the function prototype as storage.");
-        };
+        
+        
+        /* CHANGE EMAIL DIALOG */
 
         $('#changeEmail').dialog({
             modal: true,
@@ -1575,11 +1568,11 @@ $(() => {
     /* SET NEW USERNAME FUNCTION */
     let setNewUName = function(uidNo, uName, exists) {
         if (exists) {
-            firebase.database().ref("users/" + uidNo).update({
+            firebase.database().ref("users/"+uidNo).update({
                 user: uName
             });
         } else {
-            firebase.database().ref("users/" + uidNo).set({
+            firebase.database().ref("users/"+uidNo).set({
                 user: uName,
                 uid: uidNo
             });
@@ -1902,14 +1895,10 @@ $(() => {
             firebase.database().ref('links').orderByChild('uniqueID').equalTo(lastClassName).on("value", function(snapshot) {
                 snapshot.forEach(function(parent) {
                     let postKey = parent.key;
-                    console.log("postKey ->" + postKey)
                    
                    // UPDATE COMMENT COUNT
-                    firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);
+                   firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);
                     
-                   
-                   // UPDATE 
-                    //firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCount);  
                 });
             }); 
         }
@@ -1920,6 +1909,9 @@ $(() => {
     $("button.modalSubmit").click(e => {
         e.preventDefault();
         e.stopPropagation();
+        
+        // RESTORE VALUE OF CHAR LIMIT FOR USER FEEDBACK
+        $("#charCountDisp").text(255);
         
         if ($("#div-comment-output").html() === '<div class="noCommentsTxt">No comments yet. Be the first.</div><br><br>') {
             $("#div-comment-output").html("");
@@ -1940,10 +1932,9 @@ $(() => {
             let objArr = [];
             let objArrLen;
             let thisCommentCount = 0;
-            let postID = localStorage["parentID"];
-            
+            let postID = localStorage["parentID"];            
             let nodeName = $(postID)[0].className.split(" ")[6];
-            console.log("nodeName -> " + nodeName)
+
             // PUSH COMMENT TO DB
             firebase.database().ref('comments').push({
                 // GATHER/ASSIGN BELOW DATA! 
@@ -1964,17 +1955,13 @@ $(() => {
             
             // UPDATE LINK COMMENT COUNT IN DB
             let lastClassName = localStorage["lastClassName"],
-                postKey = localStorage["postKey"];
-            let comment;
+                postKey = localStorage["postKey"],
+                comment;
                
             // ADD GET COMMENT COUNT TO LINK PROPER HERE (DOM)
             let newCommentCount = (+$(postID).find("sup").text()) + 1;
             $(postID).find("sup").text(newCommentCount);  // REMEMBER TO MAKE INVISIBLE IF VAL IS ZERO
-                
-            console.log("curCommentCount -> " + newCommentCount)
-            //setPost(lastClassName, curCommentCount);
-            
-           console.log("nodeName -> " + nodeName);
+
             firebase.database().ref("links/"+nodeName).child("commentCount").set(newCommentCount);
  
             return true;
@@ -2004,16 +1991,13 @@ $(() => {
         }
     });
     
-        
-    let theThing = document.querySelector("#dialog-form");
-    let container = document.querySelector(".scotch-panel-wrapper");
+    
     let posX, posY;
     
     // GATHER COORDS FOR THIS ICON & MOVE DIALOG FORM THEREUNTO
     function moveDialog(child) {
         if (!$(".postedLink").height() && !$(".dialog-form").height()) {
             window.requestAnimationFrame(moveDialog);
-            console.log("loading...")
         } else {
             let parent = $('#dispLinksDiv');
 
@@ -2052,6 +2036,9 @@ $(() => {
         // EXECUTE PREMPTIVE DATA WIPE/UI RESET
         $(".linkOutputDiv").css("background-color", "#FFFFFF");
         $(".linkOutputDiv").css("border-left", "1px solid #333333");
+        
+        // RESET CHAR LIMIT TO 255 CHARS
+        $("#charCountDisp").text(255);
         
         // GRAB CURRENT SELECTED PARENT DIV
         let $parentDiv = $(this).parent().parent();
@@ -2178,13 +2165,11 @@ $(() => {
     $("#div-comment-output").delegate(".btn-xclose-modal__del-comment", "click", function(e) {
         e.preventDefault();
         e.stopPropagation();
-        e.stopImmediatePropagation();
         
         // PREVENT LOOP
         let runOnceOnly = function(postKey, commentCounter) {
             if (!runOnceOnly.prototype.hasRun) {
                 runOnceOnly.prototype.hasRun = true;
-                console.log("running....")
                 firebase.database().ref().child("links").child(postKey).child("commentCount").set(commentCounter);  
             }
         };
@@ -2205,12 +2190,12 @@ $(() => {
             snapshot.forEach(function(parent) {
                 let postKey = parent.key;
                     firebase.database().ref("comments/"+postKey).remove();
-                }); 
-            });
+            }); 
+        });
         
    
-            // REMOVE 1 FROM COMMENT COUNT HERE
-            $nameList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
+        // REMOVE 1 FROM COMMENT COUNT HERE
+        $nameList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
     
             $nameList.done(function(comments) {
                 let comment;
@@ -2221,9 +2206,8 @@ $(() => {
                         commentCounter++;
                     };
                 }
-                // REMOVE CURRENT COMMENT FROM DB
-                commentCounter = commentCounter - 1;
-                
+                // REMOVE CURRENT COMMENT FROM DB FOR UI
+                commentCounter = (+commentCounter) - 1;
                 firebase.database().ref('links').orderByChild('uniqueID').equalTo(className).on("value", function(snapshot) {
                     snapshot.forEach(function(parent) {
                         let postKey = parent.key;
@@ -2241,13 +2225,10 @@ $(() => {
                     }
                 }, 350);        
                 
-                
             })  // END NAMELIST.DONE
     });
     
         
-    
-    
     /* WHEN CLICK COMMENT INPUT, ADD FOLLOWING TRANSITIONS */
     $(".input-comment").focus(() => {
         $(".input-comment").addClass("stretch-Input-Comment");
