@@ -238,6 +238,30 @@
                 </div>
                 <div id="linkDisplayDiv"></div>
                 <!-- Body hereby implied: ie, ...posted links & their contents... -->
+                <div id="dialog-form" title="Post a comment">
+                <form>
+                    <a id="a-prev-comments" href="javascript: void();">Previous Comments...</a>    
+                    <fieldset>
+                        <div id="div-comment-output">
+                                Loading...
+                                <br/>
+                        </div>
+                    
+                        <div id="wrapper__input-comment">
+                            <p id="charCountWrapper">
+                                <small>
+                                    <span id="charCountDisp">255</span> characters remaining
+                                </small>     
+                            </p>   
+                        
+                            <label for="input-comment" id="label__InputComment"><small>Post Comment</small></label>
+                            <textarea type="text" name="input-comment" class="input-comment" placeholder="WARNING: COMMENTS UNDER CONSTRUCTION!"></textarea>
+ 
+                            <button class="modalSubmit" type="button"><i class="fa fa-share"> </i> SUBMIT</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
                 <div id="firebase-ico-divFooter">
                     <i id="offscreenMenuIco" class="fa fa-bars" title="Toggle User Menu"></i>
                     <img src="img/firebase-ico.jpg" title="Powered By Firebase" id="firebase-ico" />
@@ -248,36 +272,10 @@
         <!-- ADD CHAT CONNECTIVITY -->
         <iframe id="chatbox" class="hideCB" style="margin-top:15px;" width="688" height="550"></iframe>
         
-        <!-- src="https://webchat.freenode.net?channels=%23livelinkschat&uio=Mj10cnVldd" -->
+        <!-- CUSTOM JS FILE -->
         <script src="JS/llmain.js" type="text/javascript"></script>
+        
     </body>
     
-    <footer>
-    
-        <div id="dialog-form" title="Post a comment">
-            <form>
-            <a id="a-prev-comments" href="javascript: void();">Previous Comments...</a>    
-                <fieldset>
-                    <div id="div-comment-output">
-                            Loading...
-                            <br/>
-                    </div>
-                    
-                    <div id="wrapper__input-comment">
-                        <p id="charCountWrapper">
-                            <small>
-                                <span id="charCountDisp">255</span> characters remaining
-                            </small>     
-                        </p>   
-                        
-                        <label for="input-comment" id="label__InputComment"><small>Post Comment</small></label>
-                        <textarea type="text" name="input-comment" class="input-comment" placeholder="WARNING: COMMENTS UNDER CONSTRUCTION!"></textarea>
- 
-                        <button class="modalSubmit" type="button"><i class="fa fa-share"></i> SUBMIT</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        
-    </footer>
+    <footer></footer>
 </html>

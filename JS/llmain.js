@@ -152,7 +152,7 @@ $(() => {
     });
 
 
-    /* JSON FORMATTER */
+    /* ToJSON FORMATTER */
     let constructJson = function(jsonKey, val) {
         let jsonObj = {};
         jsonObj[jsonKey] = val;
@@ -182,8 +182,8 @@ $(() => {
         toggleMenuPanel.toggle();
     });
 
+    
     let thisPKey;
-
 
     /* CONVERT POST DATA INTO DOM ELEMENTS ON PAGE */
     populatePageWLinks = function(resArray) {
@@ -677,7 +677,23 @@ $(() => {
             let thisUID = localStorage['uid'];
             let outputUName;
             let cachedUNameList;
+            
+/*
+   let cList = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
 
+   cList.done(function(dbSnapshot) {
+       let res = [];
+       let resLen = 0;
+       let comment;
+    
+       for (comment in dbSnapshot) {
+           // console.log(dbSnapshot[comment]);
+           res.push(dbSnapshot[comment]);
+       }
+       thisCommentCount = res.length;
+   }).then(resLen => { console.log(resLen) });  
+  */          
+            
             cachedUNameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
 
             cachedUNameList.done(function(cachedUNameList) {
@@ -708,13 +724,7 @@ $(() => {
                                     likeUNameList.push(likes);
                                 }
                             }
-
                         }
-                        
-                        // CREATE A LIST OF USERS AND COMMENTS RELATED TO CUR POST
-                        /* let getComments = () => {
-                        
-                        }; */
                         
                         // TOGGLE
                         uNameFound = false;
@@ -723,9 +733,12 @@ $(() => {
                             uNameFound = true;
                         }
 
+                        // POST ELEMENT CREATION
                         let numOfLikes = likeUNameList.length;
                         let newPost = document.createElement('div');
 
+                        thisCommentCount = 0;  // TMP <- ADD VAR TO DB AT COMMENT ENTRY POINT
+                        
                         newPost.id = 'div' + countDivs + 'Init'; //NUMBERS EACH DIV INDIVIDUALLY
                         newPost.pTitle = snapshot[post].title.length >= 42 ? snapshot[post].title.substring(0, 41) + "..." : snapshot[post].title;
                         newPost.xDataMarker = newPost.rawUrl = snapshot[post].url;
@@ -737,17 +750,18 @@ $(() => {
                         newPost.created_at = snapshot[post].timestamp || new Date();
                         newPost.catName = snapshot[post].catName;
                         newPost.className = 'linkOutputDiv ' + newPost.author + ' ' + newPost.xDataMarker + ' ' + newPost.id + " " + newPost.catName;
-
+                        newPost.totalComments = (thisCommentCount > 0) ? thisCommentCount : '<div id="placeholderDiv" style="display:none;"></div>';  // POST NUMBER > 0 OR NOTHING
+                        
                         //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
                         if (numOfLikes === 0) {
-                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i><span class="div__comment-output"><small><sup>' + newPost.totalComments + '</small></span></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
                             newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot;  <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                         } else { //...LOAD VERSION WITH LIKES INSTEAD, BUT PREVE FURTHER CLICKS:
                             if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
-                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i><span class="div__comment-output"><small><sup>' + newPost.totalComments + '</sup></small></span></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
                                 newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot;  <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             } else {
-                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
+                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i><span class="div__comment-output"><small><sup>' + newPost.totalComments + '</sup></small></span></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
                                 newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot; <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
                             }
 
@@ -770,11 +784,13 @@ $(() => {
                                         el.value = user;
                                     }
                                     $select.appendChild(el);
+                        
                                 }
                                 newPost.appendChild($select);
                             }
                         }
                         $('#linkDisplayDiv').prepend(newPost);
+                        
                     }
 
                     let uName = false;
@@ -967,6 +983,9 @@ $(() => {
                             }
                         });
                     });
+                    
+                    // END OF GET COMMENTS FUNC GOES HERE
+                    
                 }); // END HERE -- INNER FUNC
             }); // END HERE -- OUTERMOST FUNC
         }
@@ -1091,10 +1110,19 @@ $(() => {
                             alert("ERR!");
                             break;
                     }
-
                     icon = encodeURIComponent(icon);
 
-                    // PUSH POST DATA TO FIREBASE DB:
+                    function requestUniqueID() {
+                            return firebase.database().ref('comments/').push();
+                    }
+                                   
+                    
+                    Promise.all([requestUniqueID()])
+    .then(function(allData) {
+        // All data available here in the order it was called.
+        let distinctID = allData[0].path.o[1];
+        
+                // PUSH POST DATA TO FIREBASE DB:
                     firebase.database().ref('links').push({
                         title: lTitle,
                         url: eUrl,
@@ -1103,7 +1131,8 @@ $(() => {
                         timestamp: ts,
                         ip: userip,
                         category: icon,
-                        catName: cName
+                        catName: cName,
+                        uniqueID: distinctID
                     }).then(setTimeout(function() {
                         // AND THEN RECREATE ALL DIVS SEAMLESSLY VIA AJAX:
                         $('#linkDisplayDiv').html("");
@@ -1114,6 +1143,7 @@ $(() => {
                     icon = "";
                     $('#linkUrl').val("");
                     $('#linkTitle').val("");
+    });
                 });
             }
         } // END OF NEW CONTEXT
@@ -1664,12 +1694,13 @@ $(() => {
     let hideMenu;
 
 
-    /* IF MOUSELEAVE LIKE ICON, AND THEN MOUSEOVER AGAIN, CANCEL ASSOCIATED TIMER FOR CLOSING IT */
+    /* IF MOUSELEAVE POST LIKE ICON, AND THEN MOUSEOVER AGAIN, CANCEL ASSOCIATED TIMER FOR CLOSING IT */
     $('.scotch-panel-canvas').delegate('ul#menu', 'mouseenter', function() {
         clearTimeout(hideMenu);
     });
 
 
+    /* BTN TOGGLE SEARCH FUNCTION */
     $("#btn-ToggleSearch").click(e => {
         e.preventDefault();
         e.stopPropagation();
@@ -1679,6 +1710,7 @@ $(() => {
     });
 
 
+    /* HIDE OPENED SEARCH DIV */
     $("#btn-XCloseSearch").click(e => {
         e.preventDefault();
         e.stopPropagation();
@@ -1725,8 +1757,6 @@ $(() => {
         });
     };
 
-    
-    
     
     $("#btn-SubmitSearch").click(e => {
         e.preventDefault();
@@ -1792,8 +1822,9 @@ $(() => {
                 $("#input-Search").autocomplete({
                     source: availableAuthors
                 });
-
+                
                 break;
+                
             case "Category":
                 const categories = [
                     "Entertainment",
@@ -1810,12 +1841,15 @@ $(() => {
                 $("#input-Search").autocomplete({
                     source: categories
                 });
-
+                
                 break;
+                
             case "Choose Type:": // DO NOOP      
             case "Title Contains": // DO NOOP
             default:
+                
                 break;
+                
         }
     });
 
@@ -1827,8 +1861,9 @@ $(() => {
         return false;
     });
     
+    
     // HIDE ADD COMMENTS MODAL
-    $("#dialog-form").attr("style", "display: none;")
+    $("#dialog-form").attr("style", "visibility: hidden;")
     
     
     // PREVENT CLICKS ON DIALOG-FORM FROM CLOSING DIALOG-FORM
@@ -1841,7 +1876,7 @@ $(() => {
     $(window).click(function() {
         // Hide the menus if visible
         range = 5;  // RESET RANGE FOR "PREV COMMENTS" FUNC
-        $("#dialog-form").attr("style", "display: none;");
+        $("#dialog-form").attr("style", "visibility: hidden;");
     
         // WIPE COMMENT BOX OF DATA 
         $(".input-comment").val("");
@@ -1877,6 +1912,11 @@ $(() => {
             uniqueID = uniqueID.path.o[1];
             console.log("uniqueID ->  ", uniqueID)
             
+            let objArr = [];
+            let objArrLen;
+            let thisCommentCount = 0;
+            let postID = localStorage["parentID"];
+
             // PUSH COMMENT TO DB
             firebase.database().ref('comments').push({
                 // GATHER/ASSIGN BELOW DATA! 
@@ -1884,9 +1924,10 @@ $(() => {
                 uid: u,
                 uniqueID: uniqueID,
                 comment: $inputCommentStr,
+                commentCount: thisCommentCount,
                 timestamp: thisDate,
                 ip: localStorage["ip"],
-                postID: localStorage["parentID"]
+                postID: postID
             }).then(setTimeout(() => {
                 $(".input-comment").val("");  // WIPE LAST COMMENT
             }, 250));
@@ -1922,6 +1963,36 @@ $(() => {
             return false;
         }
     });
+        
+    let theThing = document.querySelector("#dialog-form");
+    let container = document.querySelector(".scotch-panel-wrapper");
+    let posX, posY;
+    
+    
+    // GATHER COORDS FOR THIS ICON & MOVE DIALOG FORM THEREUNTO
+    function moveDialog(child) {
+        if (!$(".postedLink").height() && !$(".dialog-form").height()) {
+            window.requestAnimationFrame(moveDialog);
+            console.log("loading...")
+        } else {
+            let parent = $('#dispLinksDiv');
+
+            let posY = $(child).offset().top - parent.offset().top;
+            
+            $("#dialog-form").css("top", posY+"px"); 
+        }
+    };
+    
+    /* DELAY EXECUTION OF CSS/JS UNTIL DOM NODE LOADED */
+    function waitForElement(elementPath, targetLoc){
+        window.setTimeout(() => {
+            if($(elementPath).length){
+                moveDialog(targetLoc)
+            } else {
+                waitForElement(elementPath, targetLoc);
+            }
+        }, 250)
+    }
     
     
     /* ADD A COMMENT TO CURRENT POST AS AUTH'D USER */
@@ -1938,12 +2009,20 @@ $(() => {
         
         // GRAB CURRENT SELECTED PARENT DIV
         let $parentDiv = $(this).parent().parent();
-        let $parentID = "#"+$parentDiv[0].id;
-        localStorage["parentID"] = $parentID;
+        
+        let parentID = "#"+$parentDiv[0].id;
+        localStorage["parentID"] = parentID;
+        
+        // MOVE DIALOG ABOVE CLICKED DIV
+        waitForElement("#dialog-form", parentID);
+        
+        // MOVE FORM DIALOG TO POSITION OF CURRENT CLICKED POST
+        $("#dialog-form").css("position", "element(" + $parentDiv + ")");
+        $("#dialog-form").css("transform", "translateY(-100%)");
         
         // VISUALLY MARK WHICH DIV IS BEING COMMENTED UPON FOR USER
-        $($parentID).css("background-color", "#D7D7D7");
-        $($parentID).css("border-left", "4px solid #333333");
+        $(parentID).css("background-color", "#D7D7D7");
+        $(parentID).css("border-left", "4px solid #333333");
         
         let $commentList;
         let commentCounter = 0;
@@ -1996,7 +2075,7 @@ $(() => {
                 localStorage["pagesToGenerate"] = pagesToGenerate;
                     
                 if (pagesToGenerate > 1) { 
-                    // SHOW "Prior Comments..." ANCHOR
+                    // SHOW "Prev Comments..." ANCHOR
                     $("#a-prev-comments").show();
                     
                     // LAZY-LOAD FIRST FIVE POSTS ONLY
@@ -2036,12 +2115,12 @@ $(() => {
                 return true;
             }
         });
-        $("#dialog-form").attr("style", "display: block;");
+        $("#dialog-form").attr("style", "visibility: visible;");
         
     });
+    
 
     let commentList;
-    
     
     // ADD EVENT LISTENERS TO COMMENTS XCLOSE BTN ALLOW DISMISSAL
     $("#div-comment-output").delegate(".btn-xclose-modal__del-comment", "click", function(e) {
@@ -2050,17 +2129,29 @@ $(() => {
         e.stopImmediatePropagation();
         
         // GET ID OF THIS COMMENT
-        let commentID = $(this)[0].id;
+        let $commentID = $(this)[0].id;
         
         // REMOVE COMMENT FROM DOM
         $(this).parent().remove();
        
-       // THEN REMOVE COMMENT FROM DB
-        firebase.database().ref("comments").orderByChild("uniqueID").equalTo(commentID).once('value').then(function(snapshot) {
-            snapshot.forEach(post => {
-                firebase.database().ref("comments/" + post.key).remove(); 
-            });
-        }); 
+        // THEN REMOVE COMMENT FROM DB
+        let listComments = $.getJSON('https://livelinks01125.firebaseio.com/comments.json');
+       
+        listComments.done(function(commentList) {
+            let comment;
+            for (comment in commentList) {
+                if (commentList[comment].uniqueID === $commentID) {
+ 
+                   firebase.database().ref('comments').orderByChild('uniqueID').equalTo($commentID).on("value", function(snapshot) {
+                        snapshot.forEach(function(parent) {
+                            let postKey = parent.key;
+                            
+                            firebase.database().ref("comments/"+postKey).remove();
+                        }); 
+                    });
+                }
+            }
+        });
     });
     
     
@@ -2070,8 +2161,8 @@ $(() => {
         $(".modalSubmit").addClass("stretch-Btn-SubmitModal");
     });
     
-    let commentCharLimit = 255;
     
+    let commentCharLimit = 255;
     
     /* PROVIDE USER FEEDBACK ABOUT CHARACTER LIMIT FOR COMMENTS */
     $(".input-comment").bind("input", () => {
@@ -2079,6 +2170,7 @@ $(() => {
         
         let remainingChars = commentCharLimit - $charCount;
         
+        // HANDLE DISP TXT OUTPUT, COLOR AND BUTTON ENABLE/DISABLE
         if (remainingChars === 0) {
             $(".modalSubmit").attr("disabled","true");
             $(".input-comment").css("border","1px solid red");
@@ -2095,6 +2187,7 @@ $(() => {
         
         return;
     });
+    
     
     let range = 5;  // INITIAL VALUE FOR ARRAY.SLICE()
     let objDiv;
@@ -2151,9 +2244,10 @@ $(() => {
                     $("#div-comment-output").append("<div class='postedComment'>" + post.author + " - " + post.comment + " &middot; <span class='timestamp'><small>" + moment(timestamp).fromNow() + "</small></span></div><br/><br/><br/>");
                 }
             });
-            // AUTOMATICALLY SCROLL DOWN TO PREV COMMENTS
+            // AUTOMATICALLY SCROLL DOWN TO NOW LOADED PREV COMMENTS
             objDiv = document.getElementById("div-comment-output");
             objDiv.scrollTop = objDiv.scrollHeight;
+            
         });
     });
     
