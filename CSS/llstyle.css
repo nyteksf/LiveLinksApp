@@ -356,9 +356,7 @@ p#charCountWrapper {
 .fa-heart-o {
   position: relative;
   font-size: .83em !important;
-  top: 4px;
-  top: -17px;
-  left: 2px;
+  top: -14px;
   left: 36px;
 }
 
@@ -408,7 +406,7 @@ img#firebase-ico:hover {
 
 .likeCount {
     position: relative;
-    top: -37px;
+    top: -35px;
     font-size: .73em;
     left: 40px;
 }
