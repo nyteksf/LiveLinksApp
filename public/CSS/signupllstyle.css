@@ -1,0 +1,438 @@
+body {
+  background: lightgray !important;
+}
+
+a#passResetLnk:hover, a#registerNowLnk:hover {
+  color: lightpink;
+}
+
+.navbarLinks:hover {
+  color: #FFFFFF;
+}
+
+#thirdModal .fa-times {
+    font-size: .85em !important;
+}
+
+a#navTxt,
+a#aboutNavBtn,
+a.dropdown-toggle {
+  font-size: 1em !important;
+}
+
+.navbar-brand>img {
+    display: block;
+    height: 34px;
+    width: 34px;
+    margin-top: -6px;
+}
+
+#container-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  height: 500px !important;
+  width: 800px !important;
+  background: #FFFFFF;
+  background-size: contain;
+  color: #FFFFFF;
+  border: 22px solid #333333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-57%);
+}
+
+div.row {
+    margin: 0 auto !important;
+}
+
+.login-panel {
+  position: absolute;
+  left: 25%;
+}
+
+#navTxt {
+  font-size: 1.025em;
+}
+
+#topNavbar {
+  font-size: 1.35em;
+}
+
+span#greetTxt {
+  font-size: 1.10em;
+  color: #4d4d4d;
+  font-family: inherit;
+}
+
+.container small {
+  color: #FFFFFF !important;
+}
+
+#holder {
+  position: relative;
+  top: -5px;
+  left: 2px;
+}
+
+#passResetLnk {
+  position: relative;
+  top: 12px;
+  left: -21px;
+  font-size: .91em !important;
+  float: right;
+  font-weight: bold;
+  font-family: 'Average', serif;
+  margin-right: 2px;
+}
+
+#submitBtnModal {
+  font-size: 1.1em !important;
+}
+
+#githubLoginBtn {
+  position: relative;
+  margin-top: -4px; /* was margin-top: -18px; */
+  height: 47px;
+}
+
+#modalTrig {
+  display: none;
+}
+
+#eighthModalTrig {
+  display: none;
+}
+
+#cancelBtnModal {
+  font-weight: bold !important;
+  font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 1.1em !important;
+  text-shadow: -0.15px -0.15px #ff0000;
+}
+
+#cancelBtnModalSecond {
+  color: darkred;
+  font-family: Helvetica, Arial, sans-serif !important;
+  text-shadow: -0.15px -0.15px #ff0000;
+}
+
+#cancelBtnModalThird {
+  text-shadow: -0.15px -0.15px #ff0000;
+}
+
+#whiteText,
+.whiteText {
+  color: white !important;
+  //padding-left: 8px !important;
+  //padding-right: 8px !important;
+}
+
+/* default button */
+  #cancelBtnModal {
+    border-color: #adadad !important;
+    color: darkred; !important;
+  }
+    
+  #cancelBtnModal:hover,
+  #cancelBtnModal:focus,
+  #cancelBtnModal:active    {
+    color: #FFFFFF !important;
+    //background-color: #BD1B1B !important;
+    //*background-color: #003bb3 !important; */
+  }
+
+div.modal-body {
+  padding: 13px 5px 13px 15px !important;
+}
+
+#registerUNameModal {
+  font-weight: bold;
+  color: red;
+  position: relative;
+  top: -15px;
+}
+
+.closeBtnTxt {
+  position: relative;
+  top: 2px;
+}
+
+#formModalDiv {
+  position: relative;
+  top:6px;
+}
+
+#myModal {
+  top: 21%;
+}
+
+#myModal .btn-success,
+#myModal .btn-danger {
+  font-weight: bold !important;
+  font-family: 'Cantarell', sans-serif;
+}
+
+.btn {
+  font-size: 1.3em !important;
+}
+
+#thirdModal .modal-footer button {
+  font-weight: bold;
+  font-size: 1em !important;
+}
+
+#fifthModal {
+  position: relative;
+  top: -5.5%; /* SMALL MODE */
+  top: 22%;
+}
+
+#fifthModalOkBtn {
+  font-weight: bold;
+  position: relative;
+  left: -41%;
+  width: 105px;
+}
+
+#seventhModalTrig {
+    display: none;
+}
+
+.row {
+  position: relative;
+  top: 35px;
+}
+
+a#passResetLnk {
+  color: #4d4d4d;
+}
+
+#registerNowLnk {
+  position: relative;
+  top: -16px; /* was top: -13px; */
+  color: #4d4d4d;
+  font-size: .9em;
+}
+
+.fa {
+  font-size: 0.85em !important; /* 1.3em; */
+}
+
+#submitBtn {
+  position: relative;
+  top: -5px; /* was top: -20px; */
+  font-size: 1.25em !important;
+}
+
+#googleLoginBtn {
+  margin-top: 1px;
+  height: 47px;
+}
+
+#setCookieDiv {
+  position: relative;
+  top: -5px;
+  left: 21px;
+  font-size: .95em;
+}
+
+#newAcctDiv {
+  position: relative;
+  top: -13px;
+  text-align: center;
+  display: block;
+  font-size: .98em;
+}
+
+#myModal label {
+  font-size: 1.1em !important;
+  margin-top: 20px !important;
+}
+
+.input-name {
+  margin-bottom: -15px !important;
+}
+
+.xClose {
+  position: relative;
+  top: 2px;
+  font-weight: bold;
+  font-size: 2.1em !important;
+}
+
+#anonCBDiv {
+  position: relative;
+  padding-left: 429px;
+}
+
+#validName,
+#validUName {
+  color: #419641;
+  font-weight: bold;
+  font-size: .925em;
+  display: none;
+}
+
+#validUName {
+  position: relative;
+  font-size: 1em;
+  left: 122px;
+}
+
+#invalidName,
+#invalidUName {
+  color: #C12E2A;
+  font-weight: bold;
+  font-size: .925em;
+  display: none;
+}
+
+#invalidUName {
+  position: relative;
+  left: 103px;
+  font-size: 1em;
+}
+
+#persistCBDiv {
+  position: relative;
+  left: 5px;
+}
+
+#signinBtnModal,
+#dangerBtnModal {
+  font-weight: bold;
+}
+
+#fourthModal,
+#thirdModal {
+  position: relative;
+  top: 22%;
+}
+
+#fourthModalTrig {
+  display: none;
+}
+
+#fourthModal .modal-body {
+  text-align: center;
+}
+
+#fifthModalTrig {
+  display: none;
+}
+
+.modal-header {
+  font-size: 1.25em;
+}
+
+.row h1 {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+#modalBody {
+  font-family: 'Istok Web', sans-serif;
+}
+
+.row input {
+  font-family: 'Istok Web', sans-serif;
+}
+
+.modalTitle {
+  font-family: 'Istok Web', sans-serif;
+  font-size: 1.45em !important;
+}
+
+.row button {
+  font-family: 'Istok Web', sans-serif;
+}
+
+#submitBtn {
+  font-size: 1.3em !important;
+  font-weight: bold;
+}
+
+#ninthModalTrig {
+  display: none;
+}
+
+#smbAboutDialogBody {
+  font-weight: bold;
+  color: #333333;
+}
+
+#optionModalOkBtn {
+  font-weight: bold;
+  position: relative;
+  left: -41%;
+  width: 100px;
+}
+
+#secondModalOkBtn {
+  position: relative;
+  font-size: 1.1em;
+  font-weight: bold;
+  left: -32%;
+  width: 100px;
+}
+
+#thirdModalTrig {
+  display: none;
+}
+
+.row a {
+  font-family: 'Fjalla', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#SecondModalTrig,
+#secondModalTrig {
+  display: none;
+}
+
+#secondModal {
+  position: relative;
+  top: 19%;
+}
+
+#thirdModal label {
+  margin-top: 8px !important;
+}
+
+label.checkbox {
+  font-size: .9em;
+  top: 2px;
+  font-weight: bold !important;
+  position: relative;
+  left: 2px;
+  font-family: 'Average', sans-serif;
+}
+
+.btnTxtGH {
+  position: relative;
+  top: -1px; /* was -2px */
+  font-size: .7em;
+  margin-left: 6px;
+}
+
+.btnTxt {
+  position: relative;
+  top: -1px;
+  font-size: .7em; /* WAS .75em */
+  margin-left: -1px;
+}
+
+#orLogin {
+  color: #333333;
+  position: absolute;
+  left: 50px;
+  top: -3px;
+  font-size: 1.3em;
+}
