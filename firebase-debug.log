@@ -1,0 +1,41 @@
+[debug] [2018-03-15T00:34:04.300Z] ----------------------------------------------------------------------
+[debug] [2018-03-15T00:34:04.305Z] Command:       /usr/bin/nodejs /home/linuxbrew/.linuxbrew/bin/firebase serve
+[debug] [2018-03-15T00:34:04.305Z] CLI Version:   3.17.6
+[debug] [2018-03-15T00:34:04.306Z] Platform:      linux
+[debug] [2018-03-15T00:34:04.306Z] Node Version:  v4.8.4
+[debug] [2018-03-15T00:34:04.306Z] Time:          Wed Mar 14 2018 17:34:04 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:04.306Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-03-15T00:34:04.321Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-15T00:34:04.321Z] > authorizing via signed-in user
+[debug] [2018-03-15T00:34:04.324Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-15T00:34:04.325Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/oA1NJ8-pbBNkz4zxiI87sLORG8dtz2ooUUTylyVg-9k',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Mar 14 2018 17:34:04 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:04.721Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-15T00:34:04.753Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/livelinks01125  
+  
+ Wed Mar 14 2018 17:34:04 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:05.410Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-15T00:34:05.411Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/livelinks01125/tokens  
+  
+ Wed Mar 14 2018 17:34:05 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:05.924Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-15T00:34:05.927Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/livelinks01125  
+  
+ Wed Mar 14 2018 17:34:05 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:06.508Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/inf/Desktop/LiveLinksLocal/public'...
+[info] 
+[debug] [2018-03-15T00:34:06.515Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/95610037542/clients/_:getWebAppConfig  
+  
+ Wed Mar 14 2018 17:34:06 GMT-0700 (PDT)
+[debug] [2018-03-15T00:34:07.046Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

@@ -12,6 +12,16 @@ body, html {
   overflow-x: hidden;
 }
 
+span#radio__alphasort {
+    position: absolute;
+    bottom: -12px;
+}
+
+input#radio__alphasort {
+    position: relative;
+    top: 3px;
+}
+
 div#main-container {
     margin-top: -69px;
 }
@@ -280,8 +290,8 @@ a#a-prev-comments {
 }
 
 .postCatIcon {
-  margin-right: -6px;
-  pointer-events: none;
+    position: absolute;
+    padding-top: 1px;
 }
 
 .timestamp {
@@ -354,10 +364,8 @@ p#charCountWrapper {
 
 .fa-heart,
 .fa-heart-o {
-  position: relative;
-  font-size: .83em !important;
-  top: -14px;
-  left: 36px;
+    font-size: .83em !important;
+    top: -14px;
 }
 
 .fa.fa-film {
@@ -406,25 +414,32 @@ img#firebase-ico:hover {
 
 .likeCount {
     position: relative;
-    top: -35px;
+    top: -3px;
     font-size: .73em;
-    left: 40px;
+    left: 79px;
+}
+
+i.fa.fa-search {
+    top: -1px;
+    position: relative;
 }
 
 #likeIcoWrap,
 .likeIcoWrap {
     position: relative;
-    left: 605px;
+    left: 565px;
     top: -15px;
-    height: 15px;
-    width: 28px;
+    height: 16px;
+    width: 93px;
 }
 
 .likeIco {
-    position: relative;
-    left: -15px;
-    height: 20px;
-    width: 50px;
+  position: absolute;
+  left: 57px;
+  height: 13px;
+  width: 28px;
+  top: -1px;
+  margin-left: 7px;
 }
 
 #confirmDeleteDialog {
@@ -432,8 +447,8 @@ img#firebase-ico:hover {
 }
 
 #confirmDelDialogBody {
-    font-size: .925em;
-    font-weight: bold;
+  font-size: .925em;
+  font-weight: bold;
 }
 
 #newPostAuthor {
@@ -551,11 +566,6 @@ input#newUsernameInput {
   color: #C12E2A !important;
 }
 
-.biggerIco {
-  font-size: 1.1em;
-  position: relative;
-  left: 4px !important;
-}
 
 #checkCurUsernameDiv {
   position: relative;
@@ -609,8 +619,11 @@ input#newUsernameInput {
 }
 
 .ico-comment {
-    margin-right: -14px;
-    margin-left:  -13px;
+    position: absolute;
+    left: 25px;
+    top: -4px;
+    width: 33px;
+    margin-left: 2px;
 }
 
 .scotch-panel-canvas {
@@ -1001,7 +1014,7 @@ input, #submitButton {
 .fa-lightbulb-o {
   position: relative;
   font-size: .7em;
-  top: -2px;
+  top: -1px;
   left: 2px;
   margin-right: 13px;
   color: #0f2a88;
@@ -1022,11 +1035,10 @@ input, #submitButton {
 }
 
 .postedLink {
-  position: relative;
-  top: -1px;
-  font-size: .75em !important;
-  color: #333333;
-  left: -30px !important;
+    position: relative;
+    font-size: .75em !important;
+    color: #333333;
+    left: -5px !important;
 }
 
 .postedComment {
@@ -1099,7 +1111,7 @@ i.fa.fa-comment-o:hover {
 
 .divBody a {
   position: relative;
-  top: -5px;
+  top: -5px;  
   left: -1px;
   z-index: 0;
   font-family: 'Cantarell', sans-serif;
@@ -1121,7 +1133,7 @@ i.fa.fa-comment-o:hover {
   text-decoration: none !important;
   margin-top: 4px;
   margin-bottom: 0;
-  padding-left: 3px;
+  padding-left: 2px;
 }
 
 .divbody {

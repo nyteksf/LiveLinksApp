@@ -356,318 +356,6 @@ $(() => {
 
         $('#linkDisplayDiv').html(""); // WIPE THE OLD LINKS BEFORE RECREATING DISPLAY
 
-        if (resArray) { // RENDER CUSTOM SEARCH RESULTS -> UI
-
-            let resJSON = $.getJSON('https://livelinks01125.firebaseio.com/postLikes.json');
-            let userLikeObj = {};
-            let likeArray = [];
-
-            resJSON.done(function(snapshot) {
-                snapshot = snapshot.responseJSON;
-
-                for (let likedPost in snapshot) {
-                    if (snapshot.hasOwnProperty(likedPost)) {
-                        userLikeObj[likedPost] = Object.keys(snapshot[likedPost]);
-                    }
-                }
-            });
-
-            let thisUID = localStorage['uid'];
-            let outputUName;
-            let cachedUNameList;
-
-            cachedUNameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
-
-            cachedUNameList.done(function(cachedUNameList) {
-                /* POPULATE INITIAL LINKS ON SCREEN */
-                let searchAndDestroy;
-                let postNo;
-
-                $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(snapshot) {
-                    let likeUserList = [];
-                    let countDivs = 0;
-                    for (let post in resArray) {
-                        let resJSONObj = resJSON.responseJSON;
-                        let likeUNameList = [];
-                        let likeCounter = 0;
-                        countDivs++;
-                        postNo = post;
-                        let usernameCount = 0;
-                        // GENERATE A LIST OF LIKES FOR CURRENT LINK/POST
-                        for (let likes in resJSONObj) {
-                            let usernames = Object.keys(resJSONObj);
-                            usernameCount++;
-                            let arrLen = Object.keys(resJSONObj[likes]).length;
-                            let keys = Object.keys(resJSONObj[likes]);
-
-                            for (let i = 0; i < arrLen; i++) {
-                                if (keys[i] === postNo) {
-                                    likeUNameList.push(likes);
-                                }
-                            }
-                        }
-  
-                        // TOGGLE
-                        uNameFound = false;
-                        if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
-                            // AUTHED USER'S UNAME FOUND IN LIKE-LIST FOR CUR POST
-                            uNameFound = true;
-                        }
-
-                        let numOfLikes = likeUNameList.length;
-                        let newPost = document.createElement('div');
-
-                        newPost.id = 'div' + countDivs + 'Init'; //NUMBERS EACH DIV INDIVIDUALLY
-                        newPost.pTitle = snapshot[post].title.length >= 42 ? snapshot[post].title.substring(0, 41) + "..." : snapshot[post].title;
-                        newPost.xDataMarker = newPost.rawUrl = snapshot[post].url;
-                        newPost.prettyURL = decodeURIComponent(snapshot[post].url);
-                        newPost.pUrl = snapshot[post].url.length >= 53 ? decodeURIComponent(snapshot[post].url).substring(0, 52) + "..." : decodeURIComponent(snapshot[post].url);
-                        newPost.author = snapshot[post].author;
-                        newPost.ip = snapshot[post].ip || "0.0.0.0";
-                        newPost.category = decodeURIComponent(snapshot[post].category); //<=String of HTML
-                        newPost.created_at = snapshot[post].timestamp || new Date();
-                        newPost.catName = snapshot[post].catName;
-                        newPost.className = 'linkOutputDiv ' + newPost.author + ' ' + newPost.xDataMarker + ' ' + newPost.id + " " + newPost.catName;
-
-                        //  IF NOT ABOVE LIKES === 0, THEN LOAD .FA-HEART-O ICON INSTEAD OF .FA-HEART
-                        if (numOfLikes === 0) {
-                            newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pTitle + '</a></span></h3><div id="likeIcoWrap" class="' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart-o ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount"></span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                            newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot;  <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
-                        } else { //...LOAD VERSION WITH LIKES INSTEAD, BUT PREVE FURTHER CLICKS:
-                            if (likeUNameList.indexOf(localStorage["user"]) !== -1) {
-                                newPost.innerHTML = '<h3 class="h3items"><span class="divTitle"><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span>  <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="true"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class=\'divBody\'><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot;  <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
-                            } else {
-                                newPost.innerHTML = '<h3 class="h3items"><span class=\'divTitle\'><a href="javascript:void(0);" url=' + newPost.rawUrl + '>' + newPost.pTitle + '</a></span></h3><div class="likeIcoWrap ' + newPost.pUrl + " " + newPost.author + '"><span class="ico-comment"><i class="fa fa-comment-o" style="display: inline-block;" aria-hidden="true"> </i></span><span class="postCatIcon">' + newPost.category + '</span> <div class="likeIco"><i class="' + newPost.author + ' fa fa-heart ' + newPost.prettyURL + '" aria-hidden="true"></i></div><div class="likeWrapper"><span class="likeCount">' + numOfLikes + '</span><input type="text" class="userListed" value="false"/></div></div></div><button type="button" class="xDataDismiss " title="Delete Post">&times;</button><br />';
-                                newPost.innerHTML += '<span class="divBody"><a href="javascript:void(0);" url="' + newPost.rawUrl + '">' + newPost.pUrl + '</a></span><span id="newPostAuthor" class="' + newPost.author + '"><a href="javascript:void(0);" class="authorDescribe" title="' + newPost.ip + '">Posted By: ' + newPost.author + ' &middot;  <span class="timestamp" data-livestamp="' + newPost.created_at + '"></span></a></span>';
-                            }
-
-                            // FORM A DYNAMIC DROPDOWN LIST OF USERS CLICKED 'LIKE':
-                            // FILTER OUT INVALID RESULTS=>
-                            if (likeUNameList[0] !== "undefined") {
-                                let $select = document.createElement("div");
-                                $select.className = "selectNumber";
-                                newPost.dropdownUserList = likeUNameList; // <= WHOLE ARRAY AUTOMATICALLY VALID
-                                for (let i = 0; i < newPost.dropdownUserList.length + 1; i++) {
-                                    let el = document.createElement("option");
-                                    if (i === 0) {
-                                        el.className = "firstOptionDD";
-                                        el.textContent = " ";
-                                        el.value = " ";
-                                    } else {
-                                        let user = newPost.dropdownUserList[i - 1];
-                                        el.className = user;
-                                        el.textContent = user;
-                                        el.value = user;
-                                    }
-                                    $select.appendChild(el);
-                                }
-                                newPost.appendChild($select);
-                            }
-                        }
-                        $('#linkDisplayDiv').prepend(newPost);
-                    }
-
-                    let uName = false;
-
-                    /* SHOW/HIDE POSTS BY POST AUTHOR WHEN "POST BY..." IS CLICKED UPON */
-                    let toggleCategory = function(catTitle) {
-                        if (toggleCategory.prototype["togStatus"] === "true") {
-                            toggleCategory.prototype["togStatus"] = "false";
-                            $('.linkoutputdiv').not('.' + catTitle).show();
-                        } else {
-                            toggleCategory.prototype["togStatus"] = "true";
-                            $('.linkoutputdiv').not('.' + catTitle).hide();
-                        }
-                    };
-
-
-                    /* SET POST CATEGORY ON CLICK */
-                    $('#dispLinksDiv').delegate('i.postedLink', 'click', function(e) {
-                        e.stopPropagation();
-
-                        let catTitle = $(this)[0].title;
-                        switch (catTitle) {
-                            case "Misc.":
-                                toggleCategory("Misc");
-                                break;
-                            case "Technology":
-                                toggleCategory(catTitle);
-                                break;
-                            case "News":
-                                toggleCategory(catTitle);
-                                break;
-                            case "Science":
-                                toggleCategory(catTitle);
-                                break;
-                            case "Entertainment":
-                                toggleCategory(catTitle);
-                                break;
-                            case "Finance":
-                                toggleCategory(catTitle);
-                                break;
-                            case "Sports":
-                                toggleCategory(catTitle);
-                                break;
-                            case "Politics":
-                                toggleCategory(catTitle);
-                                break;
-                        }
-                    });
-
-
-                    /* HIDE DIV OF LIKED USERS FOR CATEGORIES */
-                    $('#dispLinksDiv').delegate('i.postedLink', 'mouseenter', function(evt) {
-                        evt.stopPropagation();
-                        evt.preventDefault();
-
-
-                        $(this).parent().parent().parent().parent().find('.selectNumber').removeClass('fadeIn');
-                        $(this).parent().parent().parent().parent().find('.selectNumber').css('visibility', 'hidden');
-                    });
-
-                    let hideLikeDisp;
-
-
-                    /* ON MOUSEOVER OF LIKE ICON, SHOW LIKE LIST */
-                    $('#dispLinksDiv').delegate('div.likeIco', 'mouseenter', function(evt) {
-                        evt.stopPropagation();
-                        evt.preventDefault();
-
-                        let likeUserCount = $(this).parent().parent().find(".likeCount").text();
-                        if (likeUserCount === "") {
-
-                            return false;
-                        } else {
-                            $(this).parent().parent().find('.selectNumber').addClass('fadeIn');
-                            $(this).parent().parent().find('.selectNumber').css('visibility', 'visible');
-
-                            return true;
-                        }
-                    });
-
-
-                    /* ON MOUSELEAVE OF LIKE ICON, HIDE LIKE LIST */
-                    $('#dispLinksDiv').delegate('div.likeIco', 'mouseleave', function(evt) {
-                        evt.stopPropagation();
-                        evt.preventDefault();
-
-                        $(this).parent().parent().find('.selectNumber').removeClass('fadeIn');
-                        $(this).parent().parent().find('.selectNumber').css('visibility', 'hidden');
-                    });
-
-
-                    /* ON CLICK OF LIKE ICON, RUN ADD/REMOVE LIKE LOGIC */
-                    $('#dispLinksDiv').delegate('i.fa.fa-heart-o, i.fa.fa-heart', 'click', function(evt) {
-                        evt.stopPropagation();
-                        evt.preventDefault();
-                        evt.stopImmediatePropagation();
-
-                        let $this = $(this);
-                        let $this0 = $(this)[0];
-
-                        runOneTimeEach($this, $this0);
-
-                        return false;
-                    });
-
-
-                    /* SHADE DROPDOWN CATEGORIES ON MOUSEOVER */
-                    $('#menu').delegate('.ui-menu-item', 'mouseenter', function() {
-                        $(this).css('color', 'gray');
-                        $(this).find('.dropdownIco').css('color', 'gray');
-                    });
-
-
-                    /* UNSHADE DROPDOWN CATEGORIES ON MOUSELEAVE */
-                    $('#menu').delegate('.ui-menu-item', 'mouseleave', function() {
-                        $(this).css('color', '#333333');
-                        $(this).find('.dropdownIco').css('color', '#333333');
-                    });
-
-                    let textRes;
-
-
-                    /* CAPTURE/RECORD DATA REGARDING DELETION OF POSTS */
-                    searchAndDestroy = function(url) {
-                        $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(snapshot) {
-                            for (let post in snapshot) {
-                                // IF URL MATCH SNAPSHOT[POST.url], THEN SAME IS USED TO FORM REF FOR PARENT LINK TO BE .REMOVE()'d
-                                if (snapshot[post].url === url) {
-                                    // REMOVE POST DATA FROM DB
-                                    firebase.database().ref('links/' + post).remove();
-
-                                    // GATHER RELATED METADATA:
-                                    let uEmail = localStorage['email'] || firebase.auth().currentUser.email;
-                                    let uidNo = localStorage['uid'] || firebase.auth().currentUser.uid;
-                                    let delURL = url;
-
-                                    // PUSH EVENT DATA TO DB
-                                    firebase.database().ref('deletedposts/').push({
-                                        email: uEmail,
-                                        url: delURL,
-                                        uid: uidNo
-                                    });
-                                }
-                            }
-                        });
-                    };
-
-
-                    /* DELETE TARGETED LINK ON 'X' CLICK */
-                    $('#dispLinksDiv').delegate('button.xDataDismiss', 'click', function(e) {
-                        e.stopPropagation();
-
-                        // FIND THE CORRESPONDING URL TO QUERY:
-                        let delMarker = $(this).parent()[0].className.split(" ");
-                        let $that = $(this);
-
-                        postAuthor = delMarker[1];
-                        delMarker = delMarker[2];
-                        curUID = localStorage["uid"] || firebase.auth().currentUser.uid;
-                        let userAuthedForPostDel = false;
-
-                        $.getJSON('https://livelinks01125.firebaseio.com/users.json', function(snapshot) {
-                            for (let username in snapshot) {
-                                if (snapshot[username].uid === curUID) {
-                                    if (postAuthor === snapshot[username].user) {
-                                        userAuthedForPostDel = true;
-
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (!userAuthedForPostDel) {
-                                $('.deleteRestricted').dialog({
-                                    modal: true,
-                                    buttons: [{
-                                        text: "OK",
-                                        click: function() {
-                                            $('.deleteRestricted').dialog("close");
-                                        },
-                                        class: "okBtn"
-                                    }]
-                                });
-                            } else {
-                                searchAndDestroy(delMarker);
-                                // ABOVE, WE RUN FB QUERY, .THEN(...) BELOW DELETE AND ALSO .hide() ASSOCIATED LINK DIV
-                                $that.parent().css('display', 'none');
-                                
-                                // AND DELETE ALL LIKES ASSOCIATED WITH DEAD POST
-                                firebase.database().ref('comments').orderByChild('postID').equalTo().on("value", function(snapshot) {
-                                    snapshot.forEach(function(parent) {
-                                        let postKey = parent.key;
-                                        firebase.database().ref("comments/"+postKey).remove();
-                                    }); 
-                                }); 
-                            }
-                        });
-                    });
-                }); // END HERE -- INNER FUNC
-            }); // END HERE -- OUTERMOST FUNC
-        } else { // NORMAL RENDERING OF ALL LINKS IN DB:
-
             let resJSON = $.getJSON('https://livelinks01125.firebaseio.com/postLikes.json');
             let userLikeObj = {};
             let likeArray = [];
@@ -696,7 +384,8 @@ $(() => {
                 $.getJSON('https://livelinks01125.firebaseio.com/links.json', function(snapshot) {
                     let likeUserList = [];
                     let countDivs = 0;
-                    for (let post in snapshot) {
+                    let linkList = (resArray) ? resArray : snapshot;
+                    for (let post in linkList) {
                         // All data available here in the order it was called.    
                         let resJSONObj = resJSON.responseJSON;
                         let likeUNameList = [];
@@ -989,7 +678,6 @@ $(() => {
                     });    
                 }); // END HERE -- INNER FUNC
             }); // END HERE -- OUTERMOST FUNC
-        }
     }; // END HERE -- populatePageWLinks() WRAPPER
 
     populatePageWLinks();
@@ -1738,13 +1426,13 @@ $(() => {
                 for (let keyName in resTxt) {
                     let titleOutput = resTxt[keyName].title;
                     if (regExp.test(titleOutput)) {
-                        result[keyName] = resTxt[keyName];
+                        return result[keyName] = resTxt[keyName];
                     }
                 }
             } else {
                 for (let key in resTxt) {
                     if (resTxt[key][searchType] === searchVal) {
-                        result[key] = resTxt[key];
+                        return result[key] = resTxt[key];
                     }
                 }
             }
@@ -1783,13 +1471,20 @@ $(() => {
 
             return false;
         }
-
+        
         // GATHER SEARCH INPUT VALUES
         let searchVal = $("#input-Search").val();
         let searchType = $("#searchTypeDropdown").val();
-
+        
         // SEARCH LIVE LINKS FOR MATCHING RESULTS
-        searchLiveLinks(searchVal, searchType); // -> E.g., searchLiveLinks("nyteksf","Author")
+        // ALPHABETICAL ->
+        if ($("input#radio__alphasort").prop('checked')) {
+            sortResArray(searchVal, searchType)
+        } else {  // OR VIA REGULAR MODE
+            searchLiveLinks(searchVal, searchType);    
+        }  // -> E.g., searchLiveLinks("nyteksf","Author")
+        
+        return true;
     });
 
 
@@ -1885,8 +1580,7 @@ $(() => {
         $(".linkOutputDiv").css("border-left", "1px solid #333333");
         $(".input-comment").removeClass("stretch-Input-Comment");
         $(".modalSubmit").removeClass("stretch-Btn-SubmitModal");
-    });
-    
+    });    
     
     /* SUBMIT COMMENT ACTION */
     let setPost = function(lastClassName, commentCount) {
@@ -2218,12 +1912,9 @@ $(() => {
                 
                 // REMOVE CURRENT COMMENT COUNT FROM DOM 
                 $(parentID).find("sup").text(commentCounter);
-                
-                setTimeout(() => {
-                    if (commentCounter === 0) {
-                        populatePageWLinks();  // HIDE 0 COMMENT COUNT
-                    }
-                }, 350);        
+                if (commentCounter === 0) {
+                     $(parentID).find(parentID+"__comment-output").html('<div id="placeholderDiv" style="display:none;"></div>');
+                }        
                 
             })  // END NAMELIST.DONE
     });
@@ -2326,31 +2017,29 @@ $(() => {
     });
     
     
-    /* ADD ALPHABETICAL USER SEARCH OPTION
+// ADD ALPHABETICAL USER SEARCH OPTION
+function sortResArray(searchVal, searchType) {
     let nameList, user;
-        let uNameArray = [];
-        let commentCounter = 0;
+    let uNameArray = [];
+    let commentCounter = 0;
 
-        //E.g. Usernames: $("#div-comment-output").append("<span class='div-comment-output__span' style='margin-bottom: 15px !important;'>Test Dump: <strong>SELECT user FROM usernames</strong> =></span><br/>");
-        
-        nameList = $.getJSON('https://livelinks01125.firebaseio.com/users.json');
-      
-        nameList.done(function(list) {
-            list.sort(function(a,b) {
-                return a.user < b.user;
-            });
-
-            for (user in list) {
-                commentCounter++;
-                uNameArray.push(list[user].user);
-            }
-            uNameArray.forEach((username) => {
-                console.log(username);
-                 
-                // $("#div-comment-output").append("<span class='div-comment-output__span'>" + username + "</span><br/>");
-            });        
-        });
-    */
+    let responseList = searchLiveLinks(searchVal, searchType);
+    console.log(responseList)
+    responseList = responseList.sort(function(a,b) {
+        return a.user < b.user;
+    });
+    console.log(responseList)
+    for (user in responseList) {
+        commentCounter++;
+        uNameArray.push(list[user].user);
+    }
+    console.log(uNameArray);
+    uNameArray.forEach(sortedArrToPrint => {
+        console.log(sortedArrToPrint);    
+        populatePageWLinks(sortedArrToPrint);
+    });
+}
+    
 
     
 }); // END OF ONLOAD
