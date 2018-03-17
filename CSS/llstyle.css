@@ -926,6 +926,7 @@ fieldset[disabled] .slideMenuBtn.active {
   top: -40px;
   position: relative;
   color: #333333;
+  cursor: pointer;
 }
 
 h1 {
