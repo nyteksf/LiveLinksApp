@@ -14,7 +14,6 @@ body, html {
   display: block;
   overflow-y: auto !important;
   overflow-x: hidden;
-}
 
 span#radio__alphasort {
     position: absolute;
@@ -293,8 +292,8 @@ a#a-prev-comments {
 }
 
 .noCommentsTxt {
-    margin-left: 5px;
-    margin-top: -6px;
+    margin-left: 6px;
+    margin-top: -7px;
 }
 
 div#modal-form__wrapper-bottom {
