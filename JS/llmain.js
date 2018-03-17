@@ -1,11 +1,11 @@
-/* ALLOW FOR ES6 */
 $(function() {
-    'use strict';
+    'use strict';  // ALLOW FOR ES6
 });
 
 
 $(() => {
 
+    
     /* PREVENT UNAUTHED USER FROM LOADING LIVELINKS */
     $(firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
@@ -16,8 +16,8 @@ $(() => {
         }
     }));
 
+    
     $("#chatbox").hide();
-
 
     /* SET NICK IN IRC COMPONENT */
     let setNick = function(username) {
@@ -37,13 +37,11 @@ $(() => {
     // HANDLE BUTTON ANIMATION ONCLICK
     $(".nav__btn").click(function(e) {
         e.preventDefault();
-
         let $this = $(this);
-
-        ($this.find("span").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>') ? $this.find("span").html('<i class="fa fa-angle-down" aria-hidden="true"></i>'): $this.find("span").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+        $this.find("span").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>') ? $this.find("span").html('<i class="fa fa-angle-down" aria-hidden="true"></i>'): $this.find("span").html('<i class="fa fa-angle-right" aria-hidden="true"></i>';
     });
 
-
+        
     /* TOGGLE CHATBOX FUNCTION */
     $("#btn-ToggleCB").click(e => {
         e.preventDefault();
@@ -55,15 +53,17 @@ $(() => {
         setNick(localStorage["user"]); // SET: CHAT (IRC) NICK
     });
 
-    /* SET UP  OBJECT FOR TRACKING */
+        
+    /* SET UP  OBJECT FOR TRACKING CLICK STATUS VIA MEMO */
     let trackStatus = new Function();
-
+        
+  
     /* SET INITIAL FIELDS FOR TRACKING */
     trackStatus.prototype.linksOpen = true;
     trackStatus.prototype.selectCategory = true;
     trackStatus.prototype.menuOpen = false;
 
-
+        
     /* TOGGLE LINKS FUNCTION */
     $("#btn-ToggleLinks").click(e => {
         e.preventDefault();
@@ -101,10 +101,10 @@ $(() => {
         }
     });
 
+
     let curUser;
     let selectedMenuItem = "";
     let uNameFound = false;
-
 
     /* MAKE FIREBASE ICON CLICKABLE */
     $('#firebase-ico').click(function(e) {
@@ -152,7 +152,7 @@ $(() => {
     });
 
 
-    /* ToJSON FORMATTER */
+    /* -> ToJSON FORMATTER -> */
     let constructJson = function(jsonKey, val) {
         let jsonObj = {};
         jsonObj[jsonKey] = val;
@@ -1476,6 +1476,8 @@ $(() => {
         let searchVal = $("#input-Search").val();
         let searchType = $("#searchTypeDropdown").val();
         
+        searchLiveLinks(searchVal, searchType);
+        /*
         // SEARCH LIVE LINKS FOR MATCHING RESULTS
         // ALPHABETICAL ->
         if ($("input#radio__alphasort").prop('checked')) {
@@ -1483,7 +1485,7 @@ $(() => {
         } else {  // OR VIA REGULAR MODE
             searchLiveLinks(searchVal, searchType);    
         }  // -> E.g., searchLiveLinks("nyteksf","Author")
-        
+        */
         return true;
     });
 
