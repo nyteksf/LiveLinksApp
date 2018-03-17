@@ -284,15 +284,19 @@ a#a-prev-comments {
 }
 
 .noCommentsTxt {
-    margin-left: 5px;
-    margin-top: -5px;
+  margin-left: 5px;
 }
+
+
 
 div#modal-form__wrapper-bottom {
     width: 100%;
 }
 
-dialog-form {
+
+
+
+#dialog-form {
     background: #D7D7D7;
     position: absolute;
     padding-top: 5px;
