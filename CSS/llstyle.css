@@ -89,8 +89,12 @@ button.modalSubmit {
     border-top-left-radius: 0;
     border-top-right-radius: 4px;
     height: 25px;
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    width: 20%;
 }
-
+    
 select#searchTypeDropdown {
     padding: 3px;
     position: relative;
@@ -242,12 +246,12 @@ div#linkOutputHeader {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     height: 25px;
-    padding-right: 111px;
-    padding-left: 111px;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #333;
-    border-right: none !important;
+    top: 1px;
+    position: relative;
+    padding-top: 0;
+    text-align: left;
+    width: 80%;
+    padding-left: 0;
 }
 
 .disabledIco {
@@ -288,18 +292,13 @@ a#a-prev-comments {
 }
 
 .noCommentsTxt {
-  margin-left: 5px;
+    margin-left: 5px;
+    margin-top: -6px;
 }
-
-
 
 div#modal-form__wrapper-bottom {
     width: 100%;
 }
-
-
-
-
 #dialog-form {
     background: #D7D7D7;
     position: absolute;
