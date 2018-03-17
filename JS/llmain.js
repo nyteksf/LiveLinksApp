@@ -10,7 +10,7 @@ $(() => {
     $(firebase.auth().onAuthStateChanged(function(user) {
         if (!user) {
             // No user is signed in.
-            alert("NOT SIGNED IN");
+            alert("ERROR: USER NOT SIGNED IN");
             window.location.href = 'index.html';
             //window.location.href = "loginli.html";
         }
