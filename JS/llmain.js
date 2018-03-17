@@ -38,7 +38,7 @@ $(() => {
     $(".nav__btn").click(function(e) {
         e.preventDefault();
         let $this = $(this);
-        $this.find("span").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>') ? $this.find("span").html('<i class="fa fa-angle-down" aria-hidden="true"></i>'): $this.find("span").html('<i class="fa fa-angle-right" aria-hidden="true"></i>';
+        ($this.find("span").html() === '<i class="fa fa-angle-right" aria-hidden="true"></i>') ? $this.find("span").html('<i class="fa fa-angle-down" aria-hidden="true"></i>') : $this.find("span").html('<i class="fa fa-angle-right" aria-hidden="true"></i>';)
     });
 
         
