@@ -4,6 +4,10 @@ body, html {
   color: #333333;
 }
 
+#test {
+  height: 0;  
+}
+
 .scotch-panel-wrapper {
   position: relative;
   visibility: visible;
