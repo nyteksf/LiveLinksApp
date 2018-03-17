@@ -32,6 +32,10 @@ body, html {
      border-bottom-right-radius: 4px;
      margin-top: 1px;
 }
+.sup__comment-output {
+    position: relative;
+    top: 1px;
+}
  #btn-SubmitSearch {
      padding-top: 2px !important;
      padding-bottom: 2px !important;
