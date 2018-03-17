@@ -1089,8 +1089,6 @@ input, #submitButton {
 }
 
 .fa.fa-refresh {
-  position: relative;
-  left: -1px;
   font-size: 1.025em;
 }
 
