@@ -40,10 +40,11 @@ div#main-container {
 }
 
 #btn-SubmitSearch {
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
     position: relative;
     left: 118px;
+    margin-top: 6px;
 }
 
 #btn-ToggleSearch {
@@ -62,7 +63,7 @@ button#btn-XCloseSearch {
     left: 87px;
     cursor: pointer;
     width: 21px;
-    top: -28px;
+    top: -25px;
 }
 
 #div-modal-input-and-button {
@@ -228,6 +229,23 @@ div#linkOutputHeader {
   display: none;
 }
 
+.input-comment {
+    display: block;
+    background: #FFFFFF;
+    margin-top: 2px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 25px;
+    padding-right: 111px;
+    padding-left: 111px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: none !important;
+}
+
 .disabledIco {
   cursor: default;
 }
@@ -269,10 +287,14 @@ a#a-prev-comments {
   margin-left: 5px;
 }
 
-#wrapper__input-comment {
-  margin-top: 15px;
-  margin-bottom: -15px;
+
+
+div#modal-form__wrapper-bottom {
+    width: 100%;
 }
+
+
+
 
 #dialog-form {
     background: #D7D7D7;
@@ -417,11 +439,6 @@ img#firebase-ico:hover {
     top: -3px;
     font-size: .73em;
     left: 79px;
-}
-
-i.fa.fa-search {
-    top: -1px;
-    position: relative;
 }
 
 #likeIcoWrap,
@@ -954,15 +971,19 @@ input, #submitButton {
 
 #selectTypeButton {
   position: relative;
-  top: -1px;
+  top: 0;
 }
 
 #selectTypeButton,
 #refreshButton {
   position: relative;
-  height: 23px;
+  height: 22px;
   border-radius: 5px;
   outline-width: 0;
+}
+
+#refreshButton {
+  height: 23px;
 }
 
 #refreshButton {
