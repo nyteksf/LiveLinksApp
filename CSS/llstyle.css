@@ -250,7 +250,6 @@ div#linkOutputHeader {
     position: relative;
     padding-top: 4px;
     text-align: left;
-    width: 80%;
     padding-left: 4px;
 }
 
@@ -355,7 +354,6 @@ button.btn-xclose-modal__del-comment {
     padding-left: 10px;
     padding-right: 34px;
     border: 1px solid #333333;
-    margin-left: 3px;
     border-top-right-radius: 21px;
     border-top-left-radius: 21px;
     border-bottom-left-radius: 21px;
