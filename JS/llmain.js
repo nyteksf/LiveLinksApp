@@ -11,8 +11,7 @@ $(() => {
         if (!user) {
             // No user is signed in.
             alert("ERROR: USER NOT SIGNED IN");
-            window.location.href = 'index.html';
-            //window.location.href = "loginli.html";
+            window.location.href = "loginli.html";
         }
     }));
 
@@ -1426,19 +1425,19 @@ $(() => {
                 for (let keyName in resTxt) {
                     let titleOutput = resTxt[keyName].title;
                     if (regExp.test(titleOutput)) {
-                        return result[keyName] = resTxt[keyName];
+                        result[keyName] = resTxt[keyName];
                     }
                 }
             } else {
                 for (let key in resTxt) {
                     if (resTxt[key][searchType] === searchVal) {
-                        return result[key] = resTxt[key];
+                        result[key] = resTxt[key];
                     }
                 }
             }
 
             return result;
-        }).done(() => {
+        }).done((result) => {
             populatePageWLinks(result);
         });
     };
@@ -2021,25 +2020,27 @@ $(() => {
     
 // ADD ALPHABETICAL USER SEARCH OPTION
 function sortResArray(searchVal, searchType) {
-    let nameList, user;
-    let uNameArray = [];
+    let value, nameList, user;
+    let postArray = [];
     let commentCounter = 0;
-
+    
     let responseList = searchLiveLinks(searchVal, searchType);
     console.log(responseList)
-    responseList = responseList.sort(function(a,b) {
-        return a.user < b.user;
+    
+    responseList = responseList.sort((a,b) => {
+        (a.title).toLowerCase() < (b.title).toLowerCase();  // CAPS HAVE DIFFERENT NUMERIC VALUES THAN LOWERCASE
     });
+
     console.log(responseList)
-    for (user in responseList) {
+    
+    for (post in responseList) {
         commentCounter++;
-        uNameArray.push(list[user].user);
+        postArray.push(responseList[post]);
     }
-    console.log(uNameArray);
-    uNameArray.forEach(sortedArrToPrint => {
-        console.log(sortedArrToPrint);    
-        populatePageWLinks(sortedArrToPrint);
-    });
+    console.log(postArray);
+    
+    populatePageWLinks(postArray);
+
 }
     
 
