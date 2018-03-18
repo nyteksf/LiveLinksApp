@@ -640,12 +640,13 @@ $(() => {
         }, 1000);
     });
 
+    
     /*
      * Match text color to color theme of given background photo
-     **/
-
-    $(document).ready(function() {
-        let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
+     */
+    $(document).ready(() => {
+        (function loadBG() {
+            let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
         let randBG = function() {
             return Math.floor(Math.random() * 8);
         };
@@ -680,10 +681,18 @@ $(() => {
         if (BGUrl === 'img/background0.jpg') {
             $('span#greetTxt').css('font-weight', 'bold');
         }
-
+            
         $('.container').css('background', 'url(' + BGUrl + ')');
         $('.container').css('background-size', 'cover');
         $('.container').css('background-repeat', 'no-repeat');
+
+        })();
+      
+        
+        setTimeout(() => {
+            loadBG();
+        }, 2000);
+        
     });
 
 
