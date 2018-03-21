@@ -1408,7 +1408,7 @@ $(() => {
 
 
     /* ADD "SEARCH BY NAME, TITLE, SUBJECT OR AUTHOR" FUNCTION */
-    let searchLiveLinks = (searchVal, searchType) => {
+    let searchLiveLinks = (searchVal, searchType, alphaOn) => {
         let result = {};
 
         // FORMAT CATNAME -> CASE INSENSITIVE INPUT FOR CATEGORY SEARCH TERMS    
@@ -1419,25 +1419,52 @@ $(() => {
         }
 
         let $resArr = $.getJSON('https://livelinks01125.firebaseio.com/links.json');
+        
         $resArr.done((resTxt) => {
             if (searchType === "title") { // SEE IF TITLE CONTAINS 'X' 
                 let regExp = RegExp(searchVal, 'gi');
                 for (let keyName in resTxt) {
                     let titleOutput = resTxt[keyName].title;
                     if (regExp.test(titleOutput)) {
+                        console.log(regExp.test(titleOutput))
+                        console.log(resTxt[keyName])
                         result[keyName] = resTxt[keyName];
                     }
                 }
             } else {
                 for (let key in resTxt) {
                     if (resTxt[key][searchType] === searchVal) {
+                        console.log(resTxt[key][searchType])
+                        console.log(searchVal)
                         result[key] = resTxt[key];
                     }
                 }
             }
+            
+            if (alphaOn) {
+                // ADD ALPHABETICAL SEARCH RESULTS OPTION
+                let objAsArray = [];
+                
+                for (let post in result) {
+                    objAsArray.push(result[post]);
+                }
+                
+                objAsArray = objAsArray.sort((a,b) => {
+                    (a.title).toLowerCase() > (b.title).toLowerCase();  // CAPS HAVE DIFFERENT NUMERIC VALUES THAN LOWERCASE; WON'T SORT CLEANLY OTHERWISE
+                });
 
-            return result;
-        }).done((result) => {
+                result = {};
+                
+                for (let i=0, len=objAsArray.length; i<len; i++) {
+                    let curPost = objAsArray[i];
+                    
+                    result[i] = curPost;
+                }
+                
+                console.log("Sorted")
+                console.log(result)
+            }
+            
             populatePageWLinks(result);
         });
     };
@@ -1475,16 +1502,17 @@ $(() => {
         let searchVal = $("#input-Search").val();
         let searchType = $("#searchTypeDropdown").val();
         
-        searchLiveLinks(searchVal, searchType);
-        /*
         // SEARCH LIVE LINKS FOR MATCHING RESULTS
         // ALPHABETICAL ->
+        // -> E.g., searchLiveLinks("nyteksf","Author")
         if ($("input#radio__alphasort").prop('checked')) {
-            sortResArray(searchVal, searchType)
-        } else {  // OR VIA REGULAR MODE
-            searchLiveLinks(searchVal, searchType);    
-        }  // -> E.g., searchLiveLinks("nyteksf","Author")
-        */
+            searchLiveLinks(searchVal, searchType, "alphaOn");
+            
+        } else {  // OR VIA REGULAR MODE           
+            searchLiveLinks(searchVal, searchType);  
+            
+        }  
+        
         return true;
     });
 
@@ -1565,9 +1593,9 @@ $(() => {
         e.stopPropagation();
     });
     
-    
+ 
     /* CLOSE 'ADD A COMMENT' DIV WHEN CLICK OUTSIDE BOX */
-    $(window).click(function() {
+    $(window).click(() => {
         // Hide the menus if visible
         range = 5;  // RESET RANGE FOR "PREV COMMENTS" FUNC
         $("#dialog-form").attr("style", "visibility: hidden;");
@@ -1582,6 +1610,7 @@ $(() => {
         $(".input-comment").removeClass("stretch-Input-Comment");
         $(".modalSubmit").removeClass("stretch-Btn-SubmitModal");
     });    
+    
     
     /* SUBMIT COMMENT ACTION */
     let setPost = function(lastClassName, commentCount) {
@@ -1793,7 +1822,9 @@ $(() => {
             
             if (!commentFound) {
                 $("#div-comment-output").append("<div class='noCommentsTxt'>No comments yet. Be the first.</div><br/><br/>");
-                    
+                
+                $("#a-prev-comments").hide();
+                
                 return false;
             } else {  // COMMENT(S) FOUND FOR CURRENT POST
                 let last5Comments = 5;
@@ -2017,32 +2048,5 @@ $(() => {
         });
     });
     
-    
-// ADD ALPHABETICAL USER SEARCH OPTION
-function sortResArray(searchVal, searchType) {
-    let value, nameList, user;
-    let postArray = [];
-    let commentCounter = 0;
-    
-    let responseList = searchLiveLinks(searchVal, searchType);
-    console.log(responseList)
-    
-    responseList = responseList.sort((a,b) => {
-        (a.title).toLowerCase() < (b.title).toLowerCase();  // CAPS HAVE DIFFERENT NUMERIC VALUES THAN LOWERCASE
-    });
-
-    console.log(responseList)
-    
-    for (post in responseList) {
-        commentCounter++;
-        postArray.push(responseList[post]);
-    }
-    console.log(postArray);
-    
-    populatePageWLinks(postArray);
-
-}
-    
-
     
 }); // END OF ONLOAD

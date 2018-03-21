@@ -645,53 +645,56 @@ $(() => {
      * Match text color to color theme of given background photo
      */
     $(document).ready(() => {
-        (function loadBG() {
-            let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
-        let randBG = function() {
-            return Math.floor(Math.random() * 8);
-        };
-        let BGUrl = backgroundImgs[randBG()];
-
-        if (BGUrl === 'img/background0.jpg') {
-            $('a#registerNowLnk').css('color', '#121121');
-            $('a#passResetLnk').css('color', '#4d4d4d');
-        }
-
-        if (BGUrl === 'img/background2.jpg' || BGUrl === 'img/background4.jpg') {
-            $('a#registerNowLnk').css('color', '#FFFFFF');
-        }
-
-        if (BGUrl === 'img/background2.jpg') {
-            $('span#greetTxt').css('color', '#333333');
-        }
-
-        if (BGUrl === 'img/background3.jpg') {
-            $('span#greetTxt').css('color', '#C7AC98');
-            $('span#greetTxt').css('font-weight', 'bold');
-            $('label.checkbox').css('color', '#4E5572');
-            $('a#passResetLnk').css('color', '#2C214A');
-        }
-
-        if (BGUrl === 'img/background1.jpg') {
-            $('span#greetTxt').css('color', '#2A224B');
-            $('span#greetTxt').css('font-weight', 'bold');
-            $('.row h1').css('color', '#ECE9E4');
-        }
-
-        if (BGUrl === 'img/background0.jpg') {
-            $('span#greetTxt').css('font-weight', 'bold');
-        }
-            
-        $('.container').css('background', 'url(' + BGUrl + ')');
-        $('.container').css('background-size', 'cover');
-        $('.container').css('background-repeat', 'no-repeat');
-
-        })();
-      
         
-        setTimeout(() => {
-            loadBG();
-        }, 2000);
+        function loadBG() {
+        
+            let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
+            
+            let randBG = function() {
+                return Math.floor(Math.random() * 8);
+            };
+            
+            let BGUrl = backgroundImgs[randBG()];
+
+            if (BGUrl === 'img/background0.jpg') {
+                $('a#registerNowLnk').css('color', '#121121');
+                $('a#passResetLnk').css('color', '#4d4d4d');
+            }
+
+            if (BGUrl === 'img/background2.jpg' || BGUrl === 'img/background4.jpg') {
+                $('a#registerNowLnk').css('color', '#FFFFFF');
+            }
+
+            if (BGUrl === 'img/background2.jpg') {
+                $('span#greetTxt').css('color', '#333333');
+            }
+
+            if (BGUrl === 'img/background3.jpg') {
+                $('span#greetTxt').css('color', '#C7AC98');
+                $('span#greetTxt').css('font-weight', 'bold');
+                $('label.checkbox').css('color', '#4E5572');
+                $('a#passResetLnk').css('color', '#2C214A');
+            }
+
+            if (BGUrl === 'img/background1.jpg') {
+                $('span#greetTxt').css('color', '#2A224B');
+                $('span#greetTxt').css('font-weight', 'bold');
+                $('.row h1').css('color', '#ECE9E4');
+            }
+
+            if (BGUrl === 'img/background0.jpg') {
+                $('span#greetTxt').css('font-weight', 'bold');
+            }
+            
+            $('.container').css('background', 'url(' + BGUrl + ')');
+            $('.container').css('background-size', 'cover');
+            $('.container').css('background-repeat', 'no-repeat');
+        }
+        loadBG();
+        
+        setInterval(() => {
+            loadBG();    
+        }, 3750);
         
     });
 
