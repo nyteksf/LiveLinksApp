@@ -24,7 +24,6 @@ $(() => {
 
     let goToApp = function() {
         window.open("livelinks.html", "_self");
-        // window.open("https://nyteksf.github.io/LiveLinksApp/livelinks.html", "_self");
     };
 
 
@@ -694,7 +693,7 @@ $(() => {
         
         setInterval(() => {
             loadBG();    
-        }, 3750);
+        }, 5000);
         
     });
 
