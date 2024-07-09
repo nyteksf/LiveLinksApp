@@ -693,7 +693,7 @@ $(() => {
         
         setInterval(() => {
             loadBG();    
-        }, 10000);
+        }, 900000); /* REFRESH SCREEN EVERY 15 MINUTES */
         
     });
 
