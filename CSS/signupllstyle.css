@@ -98,8 +98,8 @@ span#greetTxt {
 
 #githubLoginBtn {
   position: relative;
-  margin-top: -4px; /* was margin-top: -18px; */
-  height: 47px;
+  margin-top: -4px;
+  /* height: 47px; */
 }
 
 #modalTrig {
@@ -233,7 +233,7 @@ a#passResetLnk {
 
 #googleLoginBtn {
   margin-top: 1px;
-  height: 47px;
+  /* height: 47px; */
 }
 
 #setCookieDiv {
@@ -419,7 +419,7 @@ label.checkbox {
   position: relative;
   top: -1px; /* was -2px */
   font-size: .7em;
-  margin-left: 6px;
+  margin-left: 3px;
 }
 
 .btnTxt {
