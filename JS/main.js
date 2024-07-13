@@ -647,10 +647,14 @@ $(() => {
         
         function loadBG() {
         
+            let backgroundImgs = ['./img/background2.jpg','img/background3.jpg']
+
+            /*
             let backgroundImgs = ['img/background0.jpg', 'img/background1.jpg', 'img/background2.jpg', 'img/background2.jpg', 'img/background3.jpg', 'img/background4.jpg', 'img/background4.jpg', 'img/background5.jpg', 'img/background5.jpg'];
+            */
             
             let randBG = function() {
-                return Math.floor(Math.random() * 8);
+                return Math.floor(Math.random() * 1);
             };
             
             let BGUrl = backgroundImgs[randBG()];
@@ -815,5 +819,4 @@ $(() => {
     checkInitialCookie();
     checkForJWT();
 
-    
 });
